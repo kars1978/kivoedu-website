@@ -27,13 +27,11 @@ export default function Home() {
         <div className="hero-inner">
           <div className="badge">Early access open for schools</div>
           <h1 className="hero-h1">
-            Your textbook.<br />
-            <span className="accent">Your AI tutor.</span>
+            AI tutoring built<br />
+            <span className="accent">for your school.</span>
           </h1>
           <p className="hero-sub">
-            KivoEdu ingests your school&apos;s own textbooks and builds an AI tutor
-            that answers only from verified content — no hallucination, deterministic
-            formula solving, and a validated question bank per chapter.
+            Upload your curriculum. KivoEdu does the rest.
           </p>
           <div className="hero-ctas">
             <a href="mailto:hello@kivoedu.ai" className="btn-primary">Get early access</a>
@@ -47,15 +45,15 @@ export default function Home() {
       <section className="features" id="features">
         <div className="section-inner">
           <p className="section-eyebrow">What KivoEdu does</p>
-          <h2 className="section-h2">Built for accuracy, not just convenience.</h2>
+          <h2 className="section-h2">Everything your students need.<br />Nothing you don't.</h2>
           <div className="feature-grid">
             {[
-              { icon: "◈", title: "Textbook-Grounded Answers", desc: "Every answer is retrieved from your school's own uploaded textbooks. If the answer isn't in the book, the tutor says so — no fabrication." },
-              { icon: "⬡", title: "Formula & Concept Brain", desc: "A deterministic engine solves Physics, Chemistry and Maths formulas using SymPy, then the AI explains the working. The number is never guessed." },
-              { icon: "◉", title: "24/7 AI Tutor", desc: "Students ask questions in plain language and get step-by-step explanations grounded in their own syllabus — available any time, on any device." },
-              { icon: "◫", title: "Validated Question Bank", desc: "MCQs go through a 4-pass pipeline: intent classification, generation, quality pre-check, and Brain verification before entering the question bank." },
-              { icon: "⬢", title: "Chapter-by-Chapter Coverage", desc: "The engine indexes full textbooks chapter by chapter, builds searchable summaries, and maintains a knowledge vault per board, grade and subject." },
-              { icon: "◌", title: "Secure & Private", desc: "Student data stays within your account. No data is used to train models or shared with third parties. Privacy by design, not as an afterthought." },
+              { icon: "◈", title: "Grounded in your curriculum", desc: "Answers come from your school's own materials — not the internet. Students get the right answer for their syllabus, every time." },
+              { icon: "⬡", title: "Maths & science covered", desc: "Formulas, equations and worked examples — solved step by step. Not guessed." },
+              { icon: "◉", title: "24/7 AI tutor", desc: "Students ask questions any time, in plain language, and get clear explanations — like a tutor that never sleeps." },
+              { icon: "◫", title: "Practice & exam prep", desc: "Auto-generated quizzes and past-paper style questions, tailored to each chapter and subject." },
+              { icon: "⬢", title: "Full syllabus coverage", desc: "Every subject, every chapter, every grade level — indexed and ready." },
+              { icon: "◌", title: "Private & secure", desc: "Student data stays within your account. Never shared, never used to train models." },
             ].map(f => (
               <div className="feature-card" key={f.title}>
                 <span className="feature-icon">{f.icon}</span>
@@ -74,9 +72,9 @@ export default function Home() {
           <h2 className="section-h2">From textbook PDF to verified AI tutor in three steps.</h2>
           <div className="steps">
             {[
-              { n: "01", title: "Upload your textbooks", desc: "Your school uploads PDFs of the prescribed textbooks. KivoEdu extracts text, diagrams and formulas — chapter by chapter — using OCR and vision models." },
-              { n: "02", title: "Knowledge vault is built", desc: "The engine indexes every chunk into a vector database, generates chapter summaries, and builds deterministic Brain configs for formula-heavy subjects." },
-              { n: "03", title: "Students learn with their AI tutor", desc: "Students ask questions and get answers sourced directly from the textbook. Quizzes are validated before they reach students — conceptual and numerical questions handled separately." },
+              { n: "01", title: "Upload your curriculum", desc: "Share your textbooks, syllabi or lesson materials. That's all we need." },
+              { n: "02", title: "KivoEdu builds your AI tutor", desc: "We create a tutor that knows only your content — ready to teach within hours." },
+              { n: "03", title: "Students start learning", desc: "Ask questions, get explanations, practise with quizzes. Teachers see progress in the dashboard." },
             ].map(s => (
               <div className="step" key={s.n}>
                 <div className="step-n">{s.n}</div>
@@ -95,19 +93,17 @@ export default function Home() {
         <div className="section-inner schools-inner">
           <div className="schools-text">
             <p className="section-eyebrow">Built for schools</p>
-            <h2 className="section-h2">The school owns the curriculum.<br />We make it come alive.</h2>
+            <h2 className="section-h2">Built around<br />what you already teach.</h2>
             <p className="schools-body">
-              Most AI tutoring tools are trained on generic internet data — your students
-              get answers that may contradict your textbooks, or simply made up.
-              KivoEdu is grounded in your own materials from day one.
-              The AI cannot teach anything that isn&apos;t in your uploaded content.
+              KivoEdu doesn't replace your teachers or rewrite your curriculum.
+              It takes what your school already has and makes it available to every student, any time.
             </p>
             <ul className="schools-list">
-              <li>Answers sourced only from your uploaded textbooks — no hallucination</li>
-              <li>Deterministic Brain engines for Maths, Physics and Chemistry formulas</li>
-              <li>4-pass validated MCQ question bank per chapter and subject</li>
-              <li>Student data stays within your account — never shared or used for training</li>
-              <li>Works with any curriculum, board or grade level</li>
+              <li>Works with your existing curriculum documents</li>
+              <li>Covers any subject, board or grade level</li>
+              <li>Teachers stay in control of what the AI teaches</li>
+              <li>Student data is private and secure</li>
+              <li>Multilingual support on the roadmap</li>
             </ul>
           </div>
           <div className="schools-card">
