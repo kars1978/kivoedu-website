@@ -55,7 +55,7 @@ export default function Home() {
               { icon: "◉", title: "24/7 AI Tutor", desc: "Students ask questions in plain language and get step-by-step explanations grounded in their own syllabus — available any time, on any device." },
               { icon: "◫", title: "Validated Question Bank", desc: "MCQs go through a 4-pass pipeline: intent classification, generation, quality pre-check, and Brain verification before entering the question bank." },
               { icon: "⬢", title: "Chapter-by-Chapter Coverage", desc: "The engine indexes full textbooks chapter by chapter, builds searchable summaries, and maintains a knowledge vault per board, grade and subject." },
-              { icon: "◌", title: "Offline-First & Private", desc: "Runs on your own hardware. Student data never leaves your school. No per-query API costs at scale — the model and the data are yours." },
+              { icon: "◌", title: "Secure & Private", desc: "Student data stays within your account. No data is used to train models or shared with third parties. Privacy by design, not as an afterthought." },
             ].map(f => (
               <div className="feature-card" key={f.title}>
                 <span className="feature-icon">{f.icon}</span>
@@ -106,7 +106,7 @@ export default function Home() {
               <li>Answers sourced only from your uploaded textbooks — no hallucination</li>
               <li>Deterministic Brain engines for Maths, Physics and Chemistry formulas</li>
               <li>4-pass validated MCQ question bank per chapter and subject</li>
-              <li>Runs on your hardware — student data stays on-premise</li>
+              <li>Student data stays within your account — never shared or used for training</li>
               <li>Works with any curriculum, board or grade level</li>
             </ul>
           </div>
