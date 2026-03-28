@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KivoEdu — AI-Powered Learning for Every School",
+  title: "KivoEdu — AI Tutor Grounded in Your School's Own Textbooks",
   description:
-    "KivoEdu ingests your school's curriculum and generates personalised lessons, quizzes and exam prep — powered by AI, built for educators.",
+    "KivoEdu ingests your school's textbooks and builds an AI tutor that answers only from verified content — no hallucination, deterministic formula solving, validated question banks.",
 };
 
 export default function Home() {
@@ -27,13 +27,13 @@ export default function Home() {
         <div className="hero-inner">
           <div className="badge">Early access open for schools</div>
           <h1 className="hero-h1">
-            Your curriculum.<br />
-            <span className="accent">Supercharged by AI.</span>
+            Your textbook.<br />
+            <span className="accent">Your AI tutor.</span>
           </h1>
           <p className="hero-sub">
-            KivoEdu ingests your school&apos;s own curriculum and generates
-            personalised lessons, quizzes and exam prep —
-            so teachers spend less time preparing and students learn more.
+            KivoEdu ingests your school&apos;s own textbooks and builds an AI tutor
+            that answers only from verified content — no hallucination, deterministic
+            formula solving, and a validated question bank per chapter.
           </p>
           <div className="hero-ctas">
             <a href="mailto:hello@kivoedu.ai" className="btn-primary">Get early access</a>
@@ -47,15 +47,15 @@ export default function Home() {
       <section className="features" id="features">
         <div className="section-inner">
           <p className="section-eyebrow">What KivoEdu does</p>
-          <h2 className="section-h2">Built for how schools actually work.</h2>
+          <h2 className="section-h2">Built for accuracy, not just convenience.</h2>
           <div className="feature-grid">
             {[
-              { icon: "◈", title: "Curriculum Ingestion", desc: "Upload your syllabi, textbooks and lesson plans. KivoEdu builds from your materials — not generic internet data." },
-              { icon: "⬡", title: "AI Content Generation", desc: "Automatically produces lessons, worked examples, practice sets and mock exams aligned to your curriculum standards." },
-              { icon: "◉", title: "AI Tutor", desc: "Students get a conversational AI tutor available 24/7 — always grounded in your school's syllabus." },
-              { icon: "◫", title: "Exam Preparation", desc: "Adaptive quiz engine that classifies questions as conceptual or numerical and adjusts its approach per student." },
-              { icon: "⬢", title: "Teacher Analytics", desc: "Track comprehension gaps, individual progress and quiz performance in a clean dashboard." },
-              { icon: "◌", title: "Privacy First", desc: "Your curriculum and student data stays within your account. Never used to train models or shared with third parties." },
+              { icon: "◈", title: "Textbook-Grounded Answers", desc: "Every answer is retrieved from your school's own uploaded textbooks. If the answer isn't in the book, the tutor says so — no fabrication." },
+              { icon: "⬡", title: "Formula & Concept Brain", desc: "A deterministic engine solves Physics, Chemistry and Maths formulas using SymPy, then the AI explains the working. The number is never guessed." },
+              { icon: "◉", title: "24/7 AI Tutor", desc: "Students ask questions in plain language and get step-by-step explanations grounded in their own syllabus — available any time, on any device." },
+              { icon: "◫", title: "Validated Question Bank", desc: "MCQs go through a 4-pass pipeline: intent classification, generation, quality pre-check, and Brain verification before entering the question bank." },
+              { icon: "⬢", title: "Chapter-by-Chapter Coverage", desc: "The engine indexes full textbooks chapter by chapter, builds searchable summaries, and maintains a knowledge vault per board, grade and subject." },
+              { icon: "◌", title: "Offline-First & Private", desc: "Runs on your own hardware. Student data never leaves your school. No per-query API costs at scale — the model and the data are yours." },
             ].map(f => (
               <div className="feature-card" key={f.title}>
                 <span className="feature-icon">{f.icon}</span>
@@ -71,12 +71,12 @@ export default function Home() {
       <section className="how" id="how">
         <div className="section-inner">
           <p className="section-eyebrow">How it works</p>
-          <h2 className="section-h2">From curriculum to classroom in three steps.</h2>
+          <h2 className="section-h2">From textbook PDF to verified AI tutor in three steps.</h2>
           <div className="steps">
             {[
-              { n: "01", title: "Upload your curriculum", desc: "Your school uploads existing syllabus documents, textbooks, past papers and lesson notes. KivoEdu ingests and indexes everything." },
-              { n: "02", title: "AI generates the coursework", desc: "Our engine produces chapter summaries, explanations, exercises, quizzes and model answers — all grounded in your own materials." },
-              { n: "03", title: "Students learn with their AI tutor", desc: "Students ask questions, get personalised explanations and practise with adaptive quizzes. Teachers see everything in the dashboard." },
+              { n: "01", title: "Upload your textbooks", desc: "Your school uploads PDFs of the prescribed textbooks. KivoEdu extracts text, diagrams and formulas — chapter by chapter — using OCR and vision models." },
+              { n: "02", title: "Knowledge vault is built", desc: "The engine indexes every chunk into a vector database, generates chapter summaries, and builds deterministic Brain configs for formula-heavy subjects." },
+              { n: "03", title: "Students learn with their AI tutor", desc: "Students ask questions and get answers sourced directly from the textbook. Quizzes are validated before they reach students — conceptual and numerical questions handled separately." },
             ].map(s => (
               <div className="step" key={s.n}>
                 <div className="step-n">{s.n}</div>
@@ -97,16 +97,17 @@ export default function Home() {
             <p className="section-eyebrow">Built for schools</p>
             <h2 className="section-h2">The school owns the curriculum.<br />We make it come alive.</h2>
             <p className="schools-body">
-              Most AI learning tools replace teachers and ignore existing curricula.
-              KivoEdu starts with what your school has already built
-              and uses AI to multiply its impact — teachers stay firmly in control.
+              Most AI tutoring tools are trained on generic internet data — your students
+              get answers that may contradict your textbooks, or simply made up.
+              KivoEdu is grounded in your own materials from day one.
+              The AI cannot teach anything that isn&apos;t in your uploaded content.
             </p>
             <ul className="schools-list">
-              <li>Works with your existing curriculum documents</li>
-              <li>Supports multiple subjects and grade levels</li>
-              <li>Teacher controls what the AI teaches</li>
-              <li>No per-student AI fees to manage</li>
-              <li>Multilingual support on the roadmap</li>
+              <li>Answers sourced only from your uploaded textbooks — no hallucination</li>
+              <li>Deterministic Brain engines for Maths, Physics and Chemistry formulas</li>
+              <li>4-pass validated MCQ question bank per chapter and subject</li>
+              <li>Runs on your hardware — student data stays on-premise</li>
+              <li>Works with any curriculum, board or grade level</li>
             </ul>
           </div>
           <div className="schools-card">
@@ -127,7 +128,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-inner">
           <span className="logo">kivo<em>edu</em></span>
-          <p className="footer-copy">© 2025 KivoEdu. All rights reserved.</p>
+          <p className="footer-copy">© 2026 KivoEdu. All rights reserved.</p>
         </div>
       </footer>
 
