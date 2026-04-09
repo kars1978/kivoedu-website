@@ -139,9 +139,9 @@ export default function Home() {
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-          --bg:       #0D0F2E;
-          --bg-2:     #131538;
-          --bg-3:     #191C44;
+          --bg:       #12103C;
+          --bg-2:     #181644;
+          --bg-3:     #1E1C4C;
           --border:   rgba(255,255,255,0.07);
           --border-2: rgba(255,255,255,0.13);
           --text:     #E8E8F0;
@@ -163,7 +163,7 @@ export default function Home() {
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 100;
           border-bottom: 1px solid var(--border);
-          background: rgba(13,15,46,0.88); backdrop-filter: blur(20px);
+          background: rgba(18,16,60,0.88); backdrop-filter: blur(20px);
         }
         .nav-inner {
           max-width: var(--max); margin: 0 auto; padding: 0 2rem;
