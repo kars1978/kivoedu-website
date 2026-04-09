@@ -14,7 +14,7 @@ export default function Home() {
       <nav className="nav">
         <div className="nav-inner">
           <a href="#" className="logo-link">
-            <Image src="/kivo_logo.png" alt="Kivo" width={100} height={40} style={{ objectFit: "contain" }} priority />
+            <Image src="/kivo_logo_transparent_bg.png" alt="Kivo" width={100} height={40} style={{ objectFit: "contain" }} priority />
           </a>
           <ul className="nav-links">
             <li><a href="#features">Features</a></li>
