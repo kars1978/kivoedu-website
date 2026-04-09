@@ -14,7 +14,7 @@ export default function Home() {
       <nav className="nav">
         <div className="nav-inner">
           <a href="#" className="logo-link">
-            <Image src="/kivo_logo.png" alt="Kivo" width={100} height={40} style={{ objectFit: "contain" }} priority />
+            <Image src="/kivo_logo.png" alt="Kivo" width={150} height={56} style={{ objectFit: "contain" }} priority />
           </a>
           <ul className="nav-links">
             <li><a href="#features">Features</a></li>
@@ -167,7 +167,7 @@ export default function Home() {
         }
         .nav-inner {
           max-width: var(--max); margin: 0 auto; padding: 0 2rem;
-          height: 60px; display: flex; align-items: center; gap: 2rem;
+          height: 72px; display: flex; align-items: center; gap: 2rem;
         }
         .logo-link { display: flex; align-items: center; text-decoration: none; }
         .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; }
@@ -183,7 +183,7 @@ export default function Home() {
 
         /* ── HERO ── */
         .hero {
-          padding: 160px 2rem 100px;
+          padding: 172px 2rem 100px;
           display: flex; flex-direction: column; align-items: center;
         }
         .hero-inner {
