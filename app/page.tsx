@@ -14,7 +14,7 @@ export default function Home() {
       <nav className="nav">
         <div className="nav-inner">
           <a href="#" className="logo-link">
-            <Image src="/kivo_logo.png" alt="Kivo" width={150} height={56} style={{ objectFit: "contain" }} priority />
+            <Image src="/kivo_logo_transparent_bg_1.png" alt="Kivo" width={150} height={56} style={{ objectFit: "contain" }} priority />
           </a>
           <ul className="nav-links">
             <li><a href="#features">Features</a></li>
@@ -127,7 +127,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footer-inner">
           <a href="#" className="logo-link">
-            <Image src="/kivo_logo.png" alt="Kivo" width={80} height={32} style={{ objectFit: "contain" }} />
+            <Image src="/kivo_logo_transparent_bg_1.png" alt="Kivo" width={80} height={32} style={{ objectFit: "contain" }} />
           </a>
           <p className="footer-copy">© 2026 KivoEdu. All rights reserved.</p>
         </div>
