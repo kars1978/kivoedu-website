@@ -1,9 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "KivoEdu — AI Tutor Grounded in Your School's Own Textbooks",
+  title: "KivoEdu — AI Tutor Grounded in Your School's Own Curriculum",
   description:
-    "KivoEdu ingests your school's textbooks and builds an AI tutor that answers only from verified content — no hallucination, deterministic formula solving, validated question banks.",
+    "KivoEdu builds an AI tutor from your school's own curriculum — answers grounded in verified content, deterministic formula solving, validated question banks.",
 };
 
 export default function Home() {
@@ -12,7 +13,9 @@ export default function Home() {
       {/* NAV */}
       <nav className="nav">
         <div className="nav-inner">
-          <span className="logo">kivo<em>edu</em></span>
+          <a href="#" className="logo-link">
+            <Image src="/kivo_logo.png" alt="Kivo" width={100} height={40} style={{ objectFit: "contain" }} priority />
+          </a>
           <ul className="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#how">How it works</a></li>
@@ -31,7 +34,7 @@ export default function Home() {
             <span className="accent">for your school.</span>
           </h1>
           <p className="hero-sub">
-            Upload your curriculum. KivoEdu does the rest.
+            Share your curriculum. KivoEdu builds a tutor that teaches only what you teach.
           </p>
           <div className="hero-ctas">
             <a href="mailto:hello@kivoedu.ai" className="btn-primary">Get early access</a>
@@ -69,10 +72,10 @@ export default function Home() {
       <section className="how" id="how">
         <div className="section-inner">
           <p className="section-eyebrow">How it works</p>
-          <h2 className="section-h2">From textbook PDF to verified AI tutor in three steps.</h2>
+          <h2 className="section-h2">From your curriculum to a verified AI tutor in three steps.</h2>
           <div className="steps">
             {[
-              { n: "01", title: "Upload your curriculum", desc: "Share your textbooks, syllabi or lesson materials. That's all we need." },
+              { n: "01", title: "Share your curriculum materials", desc: "Send us your syllabi, lesson content or subject materials. That's all we need." },
               { n: "02", title: "KivoEdu builds your AI tutor", desc: "We create a tutor that knows only your content — ready to teach within hours." },
               { n: "03", title: "Students start learning", desc: "Ask questions, get explanations, practise with quizzes. Teachers see progress in the dashboard." },
             ].map(s => (
@@ -123,7 +126,9 @@ export default function Home() {
       {/* FOOTER */}
       <footer className="footer">
         <div className="footer-inner">
-          <span className="logo">kivo<em>edu</em></span>
+          <a href="#" className="logo-link">
+            <Image src="/kivo_logo.png" alt="Kivo" width={80} height={32} style={{ objectFit: "contain" }} />
+          </a>
           <p className="footer-copy">© 2026 KivoEdu. All rights reserved.</p>
         </div>
       </footer>
@@ -134,16 +139,17 @@ export default function Home() {
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-          --bg:       #0e0e10;
-          --bg-2:     #141416;
-          --bg-3:     #1a1a1d;
+          --bg:       #0D0F2E;
+          --bg-2:     #131538;
+          --bg-3:     #191C44;
           --border:   rgba(255,255,255,0.07);
-          --border-2: rgba(255,255,255,0.12);
-          --text:     #e2e2e4;
-          --muted:    #6e6e78;
-          --muted-2:  #9090a0;
-          --accent:   #4ade9a;
-          --accent-dim: rgba(74,222,154,0.1);
+          --border-2: rgba(255,255,255,0.13);
+          --text:     #E8E8F0;
+          --muted:    #6B6B88;
+          --muted-2:  #9090B0;
+          --accent:   #FF6B35;
+          --accent-2: #4CAF72;
+          --accent-dim: rgba(255,107,53,0.1);
           --serif: 'Lora', Georgia, serif;
           --sans:  'Inter', system-ui, sans-serif;
           --radius: 10px;
@@ -157,14 +163,13 @@ export default function Home() {
         .nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 100;
           border-bottom: 1px solid var(--border);
-          background: rgba(14,14,16,0.85); backdrop-filter: blur(20px);
+          background: rgba(13,15,46,0.88); backdrop-filter: blur(20px);
         }
         .nav-inner {
           max-width: var(--max); margin: 0 auto; padding: 0 2rem;
           height: 60px; display: flex; align-items: center; gap: 2rem;
         }
-        .logo { font-family: var(--serif); font-size: 1.25rem; letter-spacing: -0.01em; color: var(--text); }
-        .logo em { color: var(--accent); font-style: normal; }
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
         .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; }
         .nav-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.01em; transition: color .15s; }
         .nav-links a:hover { color: var(--text); }
@@ -187,7 +192,7 @@ export default function Home() {
         }
         .badge {
           font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-          color: var(--accent); border: 1px solid rgba(74,222,154,.25);
+          color: var(--accent); border: 1px solid rgba(255,107,53,.28);
           background: var(--accent-dim); padding: .3rem .85rem; border-radius: 999px;
           animation: up .5s ease both;
         }
@@ -207,7 +212,7 @@ export default function Home() {
         }
         .btn-primary {
           display: inline-block; padding: .7rem 1.75rem;
-          background: var(--accent); color: #0e0e10;
+          background: var(--accent); color: #fff;
           font-weight: 500; font-size: .875rem; border-radius: 7px;
           text-decoration: none; transition: opacity .15s;
         }
@@ -248,7 +253,7 @@ export default function Home() {
         .feature-card:hover { background: var(--bg-2); }
         .feature-card:nth-child(3n) { border-right: none; }
         .feature-card:nth-child(4), .feature-card:nth-child(5), .feature-card:nth-child(6) { border-bottom: none; }
-        .feature-icon { font-size: 1.1rem; display: block; margin-bottom: .9rem; color: var(--accent); opacity: .7; }
+        .feature-icon { font-size: 1.1rem; display: block; margin-bottom: .9rem; color: var(--accent); opacity: .75; }
         .feature-title { font-size: .9rem; font-weight: 500; margin-bottom: .5rem; color: var(--text); }
         .feature-desc { font-size: .825rem; line-height: 1.65; color: var(--muted-2); font-weight: 300; }
 
@@ -262,7 +267,7 @@ export default function Home() {
         .step:last-child { border-bottom: none; }
         .step-n {
           font-family: var(--serif); font-size: 1.6rem; font-style: italic;
-          color: var(--muted); min-width: 40px; padding-top: 2px;
+          color: var(--accent); opacity: .6; min-width: 40px; padding-top: 2px;
         }
         .step-title { font-size: .95rem; font-weight: 500; margin-bottom: .4rem; color: var(--text); }
         .step-desc { font-size: .825rem; line-height: 1.65; color: var(--muted-2); font-weight: 300; }
@@ -275,7 +280,7 @@ export default function Home() {
         .schools-list li {
           font-size: .825rem; color: var(--muted-2); font-weight: 300; padding-left: 1.1rem; position: relative;
         }
-        .schools-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+        .schools-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: .5; }
         .schools-card {
           background: var(--bg-2); border: 1px solid var(--border-2);
           border-radius: var(--radius); padding: 2rem;
