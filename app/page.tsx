@@ -1,320 +1,749 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+const features = [
+  {
+    k: "01",
+    title: "Curriculum-aware answers",
+    desc: "KivoEdu responds from your approved lessons, notes, syllabi, and question banks so students learn the way your school teaches.",
+  },
+  {
+    k: "02",
+    title: "Step-by-step tutoring",
+    desc: "Students get guided explanations for math, science, reading, and revision without jumping straight to a final answer.",
+  },
+  {
+    k: "03",
+    title: "Practice that adapts",
+    desc: "Generate quizzes, chapter checks, and exam-style practice from the exact material students are working through.",
+  },
+  {
+    k: "04",
+    title: "Teacher visibility",
+    desc: "Spot common questions, stuck topics, and progress patterns so teachers can support the class with better context.",
+  },
+];
+
+const steps = [
+  "Upload curriculum materials",
+  "Kivo indexes and verifies the content",
+  "Students ask, practice, and revise",
+];
+
 export const metadata: Metadata = {
-  title: "KivoEdu — AI Tutor Grounded in Your School's Own Curriculum",
+  title: "KivoEdu | AI Tutoring Built for Students",
   description:
-    "KivoEdu builds an AI tutor from your school's own curriculum — answers grounded in verified content, deterministic formula solving, validated question banks.",
+    "KivoEdu is a curriculum-grounded AI tutor that helps students ask questions, practice, and revise with content approved by their school.",
 };
 
 export default function Home() {
   return (
     <main className="root">
-      {/* NAV */}
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#" className="logo-link">
-            <Image src="/kivo_logo_transparent_bg_1.png" alt="Kivo" width={150} height={56} style={{ objectFit: "contain" }} priority />
+          <a href="#" className="logo-link" aria-label="KivoEdu home">
+            <Image
+              src="/kivo_logo_transparent_bg_1.png"
+              alt="KivoEdu"
+              width={138}
+              height={52}
+              style={{ objectFit: "contain" }}
+              priority
+            />
           </a>
-          <ul className="nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how">How it works</a></li>
-            <li><a href="#schools">For schools</a></li>
-          </ul>
-          <a href="mailto:hello@kivoedu.ai" className="btn-nav">Request Access</a>
+          <div className="nav-links" aria-label="Primary navigation">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#schools">Schools</a>
+          </div>
+          <a href="mailto:hello@kivoedu.ai" className="btn btn-nav">
+            Request demo
+          </a>
         </div>
       </nav>
 
-      {/* HERO */}
       <section className="hero">
-        <div className="hero-inner">
-          <div className="badge">Early access open for schools</div>
-          <h1 className="hero-h1">
-            AI tutoring built<br />
-            <span className="accent">for your school.</span>
-          </h1>
-          <p className="hero-sub">
-            Share your curriculum. KivoEdu builds a tutor that teaches only what you teach.
-          </p>
-          <div className="hero-ctas">
-            <a href="mailto:hello@kivoedu.ai" className="btn-primary">Get early access</a>
-            <a href="#how" className="btn-ghost">See how it works →</a>
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">Curriculum-grounded AI tutoring</p>
+            <h1>
+              AI tutoring built
+              <span> for students.</span>
+            </h1>
+            <p className="hero-sub">
+              KivoEdu helps every student ask questions, practice tough topics,
+              and revise with a tutor grounded in the curriculum your school
+              already trusts.
+            </p>
+            <div className="hero-actions">
+              <a href="mailto:hello@kivoedu.ai" className="btn btn-primary">
+                Request demo
+              </a>
+              <a href="#features" className="btn btn-secondary">
+                Explore features
+              </a>
+            </div>
+            <div className="hero-stats" aria-label="Product strengths">
+              <div>
+                <strong>24/7</strong>
+                <span>student support</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>school-controlled content</span>
+              </div>
+              <div>
+                <strong>Any</strong>
+                <span>subject or grade</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="product-shell" aria-label="KivoEdu tutoring preview">
+            <div className="window-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="student-card">
+              <p className="card-kicker">Student question</p>
+              <h2>Can you explain quadratic factorization?</h2>
+              <p>
+                Use the method from Chapter 4 and show each step before the
+                final answer.
+              </p>
+            </div>
+            <div className="answer-card">
+              <div className="answer-head">
+                <span className="pulse" />
+                <p>Grounded response</p>
+              </div>
+              <ol>
+                <li>Identify two numbers that multiply to the constant.</li>
+                <li>Check they add to the middle coefficient.</li>
+                <li>Rewrite the expression as two brackets.</li>
+              </ol>
+            </div>
+            <div className="mini-row">
+              <div>
+                <span>Quiz ready</span>
+                <strong>8 questions</strong>
+              </div>
+              <div>
+                <span>Source match</span>
+                <strong>Chapter 4</strong>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="hero-rule" />
       </section>
 
-      {/* FEATURES */}
       <section className="features" id="features">
         <div className="section-inner">
-          <p className="section-eyebrow">What KivoEdu does</p>
-          <h2 className="section-h2">Everything your students need.<br />Nothing you don't.</h2>
+          <div className="section-heading">
+            <p className="eyebrow">Why students use it</p>
+            <h2>Clear help when they need it, from content teachers approve.</h2>
+          </div>
           <div className="feature-grid">
-            {[
-              { icon: "◈", title: "Grounded in your curriculum", desc: "Answers come from your school's own materials — not the internet. Students get the right answer for their syllabus, every time." },
-              { icon: "⬡", title: "Maths & science covered", desc: "Formulas, equations and worked examples — solved step by step. Not guessed." },
-              { icon: "◉", title: "24/7 AI tutor", desc: "Students ask questions any time, in plain language, and get clear explanations — like a tutor that never sleeps." },
-              { icon: "◫", title: "Practice & exam prep", desc: "Auto-generated quizzes and past-paper style questions, tailored to each chapter and subject." },
-              { icon: "⬢", title: "Full syllabus coverage", desc: "Every subject, every chapter, every grade level — indexed and ready." },
-              { icon: "◌", title: "Private & secure", desc: "Student data stays within your account. Never shared, never used to train models." },
-            ].map(f => (
-              <div className="feature-card" key={f.title}>
-                <span className="feature-icon">{f.icon}</span>
-                <h3 className="feature-title">{f.title}</h3>
-                <p className="feature-desc">{f.desc}</p>
-              </div>
+            {features.map((feature) => (
+              <article className="feature-card" key={feature.title}>
+                <span>{feature.k}</span>
+                <h3>{feature.title}</h3>
+                <p>{feature.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
       <section className="how" id="how">
-        <div className="section-inner">
-          <p className="section-eyebrow">How it works</p>
-          <h2 className="section-h2">From your curriculum to a verified AI tutor in three steps.</h2>
+        <div className="section-inner how-inner">
+          <div>
+            <p className="eyebrow">How it works</p>
+            <h2>Turn existing school material into a focused AI tutor.</h2>
+          </div>
           <div className="steps">
-            {[
-              { n: "01", title: "Share your curriculum materials", desc: "Send us your syllabi, lesson content or subject materials. That's all we need." },
-              { n: "02", title: "KivoEdu builds your AI tutor", desc: "We create a tutor that knows only your content — ready to teach within hours." },
-              { n: "03", title: "Students start learning", desc: "Ask questions, get explanations, practise with quizzes. Teachers see progress in the dashboard." },
-            ].map(s => (
-              <div className="step" key={s.n}>
-                <div className="step-n">{s.n}</div>
-                <div className="step-body">
-                  <h3 className="step-title">{s.title}</h3>
-                  <p className="step-desc">{s.desc}</p>
-                </div>
+            {steps.map((step, index) => (
+              <div className="step" key={step}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{step}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FOR SCHOOLS */}
       <section className="schools" id="schools">
         <div className="section-inner schools-inner">
-          <div className="schools-text">
-            <p className="section-eyebrow">Built for schools</p>
-            <h2 className="section-h2">Built around<br />what you already teach.</h2>
-            <p className="schools-body">
-              KivoEdu doesn't replace your teachers or rewrite your curriculum.
-              It takes what your school already has and makes it available to every student, any time.
-            </p>
-            <ul className="schools-list">
-              <li>Works with your existing curriculum documents</li>
-              <li>Covers any subject, board or grade level</li>
-              <li>Teachers stay in control of what the AI teaches</li>
-              <li>Student data is private and secure</li>
-              <li>Multilingual support on the roadmap</li>
-            </ul>
+          <div>
+            <p className="eyebrow">Built with schools in mind</p>
+            <h2>Keep teachers in control while giving students more support.</h2>
           </div>
-          <div className="schools-card">
-            <p className="card-label">Early access</p>
-            <p className="card-body">
-              We&apos;re onboarding a small group of partner schools to shape the product.
-              If you&apos;re a school administrator, teacher or edtech coordinator — we&apos;d love to talk.
+          <div className="schools-panel">
+            <p>
+              KivoEdu does not replace teachers or rewrite your curriculum. It
+              extends the learning materials your school already uses into a
+              private AI tutor students can rely on after class, during study
+              hall, or while preparing for exams.
             </p>
-            <a href="mailto:hello@kivoedu.ai" className="btn-primary btn-full">
-              Request early access
+            <ul>
+              <li>Works with your existing curriculum documents</li>
+              <li>Supports any subject, board, or grade level</li>
+              <li>Uses school-approved content as the source of truth</li>
+              <li>Keeps student data private and secure</li>
+            </ul>
+            <a href="mailto:hello@kivoedu.ai" className="btn btn-primary">
+              Talk to KivoEdu
             </a>
-            <p className="card-note">No commitment. Just a conversation.</p>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <div className="footer-inner">
-          <a href="#" className="logo-link">
-            <Image src="/kivo_logo_transparent_bg_1.png" alt="Kivo" width={80} height={32} style={{ objectFit: "contain" }} />
+          <a href="#" className="logo-link" aria-label="KivoEdu home">
+            <Image
+              src="/kivo_logo_transparent_bg_1.png"
+              alt="KivoEdu"
+              width={92}
+              height={34}
+              style={{ objectFit: "contain" }}
+            />
           </a>
-          <p className="footer-copy">© 2026 KivoEdu. All rights reserved.</p>
+          <p>© 2026 KivoEdu. All rights reserved.</p>
         </div>
       </footer>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
 
         :root {
-          --bg:       #12103C;
-          --bg-2:     #181644;
-          --bg-3:     #1E1C4C;
-          --border:   rgba(255,255,255,0.07);
-          --border-2: rgba(255,255,255,0.13);
-          --text:     #E8E8F0;
-          --muted:    #6B6B88;
-          --muted-2:  #9090B0;
-          --accent:   #FF6B35;
-          --accent-2: #4CAF72;
-          --accent-dim: rgba(255,107,53,0.1);
-          --serif: 'Lora', Georgia, serif;
-          --sans:  'Inter', system-ui, sans-serif;
-          --radius: 10px;
-          --max: 1080px;
+          --bg: #070a12;
+          --panel: #0d1320;
+          --panel-2: #111b2c;
+          --line: rgba(196, 217, 255, 0.12);
+          --line-strong: rgba(196, 217, 255, 0.22);
+          --text: #f4f7fb;
+          --muted: #a8b3c6;
+          --soft: #707d94;
+          --cyan: #4fd1c5;
+          --blue: #79a7ff;
+          --green: #7ee787;
+          --orange: #ffb86b;
+          --max: 1160px;
         }
 
-        html { scroll-behavior: smooth; }
-        .root { font-family: var(--sans); color: var(--text); background: var(--bg); min-height: 100vh; }
+        html {
+          scroll-behavior: smooth;
+        }
 
-        /* ── NAV ── */
+        body {
+          margin: 0;
+        }
+
+        .root {
+          min-height: 100vh;
+          color: var(--text);
+          background:
+            radial-gradient(circle at 12% 8%, rgba(79, 209, 197, 0.18), transparent 30rem),
+            radial-gradient(circle at 88% 0%, rgba(121, 167, 255, 0.2), transparent 28rem),
+            linear-gradient(180deg, #070a12 0%, #0a0f1b 52%, #070a12 100%);
+          font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
+          overflow-x: hidden;
+        }
+
         .nav {
-          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-          border-bottom: 1px solid var(--border);
-          background: rgba(18,16,60,0.88); backdrop-filter: blur(20px);
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 20;
+          border-bottom: 1px solid var(--line);
+          background: rgba(7, 10, 18, 0.78);
+          backdrop-filter: blur(18px);
         }
+
+        .nav-inner,
+        .section-inner,
+        .hero-grid,
+        .footer-inner {
+          width: min(var(--max), calc(100% - 40px));
+          margin: 0 auto;
+        }
+
         .nav-inner {
-          max-width: var(--max); margin: 0 auto; padding: 0 2rem;
-          height: 72px; display: flex; align-items: center; gap: 2rem;
+          height: 76px;
+          display: flex;
+          align-items: center;
+          gap: 28px;
         }
-        .logo-link { display: flex; align-items: center; text-decoration: none; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; margin-left: auto; }
-        .nav-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.01em; transition: color .15s; }
-        .nav-links a:hover { color: var(--text); }
-        .btn-nav {
-          font-size: 0.78rem; font-weight: 500; padding: .4rem 1rem;
-          border: 1px solid var(--border-2); color: var(--text); background: transparent;
-          border-radius: 6px; text-decoration: none; transition: border-color .15s, color .15s;
+
+        .logo-link {
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        .nav-links {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 26px;
+        }
+
+        .nav-links a {
+          color: var(--muted);
+          font-size: 0.88rem;
+          text-decoration: none;
+        }
+
+        .nav-links a:hover {
+          color: var(--text);
+        }
+
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 42px;
+          border-radius: 8px;
+          padding: 0 18px;
+          font-weight: 650;
+          font-size: 0.92rem;
+          text-decoration: none;
+          transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
           white-space: nowrap;
         }
-        .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* ── HERO ── */
-        .hero {
-          padding: 172px 2rem 100px;
-          display: flex; flex-direction: column; align-items: center;
+        .btn:hover {
+          transform: translateY(-1px);
         }
-        .hero-inner {
-          max-width: 660px; text-align: center;
-          display: flex; flex-direction: column; align-items: center; gap: 1.75rem;
+
+        .btn-nav,
+        .btn-secondary {
+          color: var(--text);
+          border: 1px solid var(--line-strong);
+          background: rgba(255, 255, 255, 0.04);
         }
-        .badge {
-          font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-          color: var(--accent); border: 1px solid rgba(255,107,53,.28);
-          background: var(--accent-dim); padding: .3rem .85rem; border-radius: 999px;
-          animation: up .5s ease both;
-        }
-        .hero-h1 {
-          font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.6rem);
-          font-weight: 400; line-height: 1.18; letter-spacing: -0.02em;
-          animation: up .5s .08s ease both;
-        }
-        .accent { color: var(--accent); font-style: italic; }
-        .hero-sub {
-          font-size: 1rem; line-height: 1.75; color: var(--muted-2); font-weight: 300;
-          max-width: 520px; animation: up .5s .16s ease both;
-        }
-        .hero-ctas {
-          display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center;
-          animation: up .5s .24s ease both;
-        }
+
         .btn-primary {
-          display: inline-block; padding: .7rem 1.75rem;
-          background: var(--accent); color: #fff;
-          font-weight: 500; font-size: .875rem; border-radius: 7px;
-          text-decoration: none; transition: opacity .15s;
-        }
-        .btn-primary:hover { opacity: .88; }
-        .btn-ghost {
-          display: inline-block; padding: .7rem 1.4rem;
-          color: var(--muted-2); font-size: .875rem; font-weight: 400;
-          text-decoration: none; border: 1px solid var(--border);
-          border-radius: 7px; transition: border-color .15s, color .15s;
-        }
-        .btn-ghost:hover { border-color: var(--border-2); color: var(--text); }
-        .hero-rule { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--border-2), transparent); margin-top: 80px; }
-
-        @keyframes up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-
-        /* ── SHARED ── */
-        .section-inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
-        .section-eyebrow {
-          font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-          color: var(--accent); margin-bottom: .6rem;
-        }
-        .section-h2 {
-          font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem);
-          font-weight: 400; line-height: 1.22; letter-spacing: -0.02em;
-          color: var(--text); margin-bottom: 3rem;
+          color: #061018;
+          border: 1px solid rgba(126, 231, 135, 0.35);
+          background: linear-gradient(135deg, var(--green), var(--cyan));
+          box-shadow: 0 18px 44px rgba(79, 209, 197, 0.2);
         }
 
-        /* ── FEATURES ── */
-        .features { padding: 100px 0; border-top: 1px solid var(--border); }
+        .hero {
+          padding: 160px 0 88px;
+        }
+
+        .hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.78fr);
+          align-items: center;
+          gap: 60px;
+        }
+
+        .hero-copy {
+          max-width: 710px;
+        }
+
+        .eyebrow {
+          margin: 0 0 16px;
+          color: var(--cyan);
+          font-size: 0.76rem;
+          font-weight: 750;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+          margin-top: 0;
+        }
+
+        h1 {
+          margin-bottom: 24px;
+          max-width: 760px;
+          font-size: clamp(3.5rem, 8vw, 6.8rem);
+          line-height: 0.94;
+          letter-spacing: 0;
+        }
+
+        h1 span {
+          display: block;
+          color: transparent;
+          background: linear-gradient(135deg, #f4f7fb 10%, var(--cyan) 48%, var(--blue) 92%);
+          background-clip: text;
+          -webkit-background-clip: text;
+        }
+
+        .hero-sub {
+          max-width: 650px;
+          color: var(--muted);
+          font-size: 1.16rem;
+          line-height: 1.72;
+        }
+
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin: 34px 0 42px;
+        }
+
+        .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+          max-width: 680px;
+        }
+
+        .hero-stats div,
+        .mini-row div,
+        .feature-card,
+        .schools-panel {
+          border: 1px solid var(--line);
+          background: rgba(255, 255, 255, 0.045);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-stats div {
+          min-height: 104px;
+          border-radius: 8px;
+          padding: 18px;
+        }
+
+        .hero-stats strong {
+          display: block;
+          margin-bottom: 8px;
+          color: var(--text);
+          font-size: 1.48rem;
+        }
+
+        .hero-stats span {
+          color: var(--soft);
+          font-size: 0.9rem;
+          line-height: 1.4;
+        }
+
+        .product-shell {
+          position: relative;
+          border: 1px solid var(--line-strong);
+          border-radius: 8px;
+          padding: 18px;
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+            rgba(13, 19, 32, 0.86);
+          box-shadow: 0 36px 100px rgba(0, 0, 0, 0.35);
+        }
+
+        .product-shell::before {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          z-index: -1;
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(79, 209, 197, 0.36), rgba(255, 184, 107, 0.12), rgba(121, 167, 255, 0.24));
+        }
+
+        .window-bar {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 18px;
+        }
+
+        .window-bar span {
+          width: 10px;
+          height: 10px;
+          border-radius: 99px;
+          background: var(--line-strong);
+        }
+
+        .student-card,
+        .answer-card {
+          border-radius: 8px;
+          padding: 22px;
+        }
+
+        .student-card {
+          background: linear-gradient(135deg, rgba(121, 167, 255, 0.22), rgba(79, 209, 197, 0.08));
+          border: 1px solid rgba(121, 167, 255, 0.2);
+        }
+
+        .card-kicker,
+        .answer-head p {
+          margin-bottom: 10px;
+          color: var(--cyan);
+          font-size: 0.76rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+
+        .student-card h2 {
+          margin-bottom: 12px;
+          font-size: clamp(1.4rem, 3vw, 2.1rem);
+          line-height: 1.08;
+        }
+
+        .student-card p,
+        .answer-card li,
+        .schools-panel p,
+        .schools-panel li,
+        .feature-card p {
+          color: var(--muted);
+          line-height: 1.65;
+        }
+
+        .answer-card {
+          margin-top: 14px;
+          background: rgba(7, 10, 18, 0.58);
+          border: 1px solid var(--line);
+        }
+
+        .answer-head {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .pulse {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--green);
+          box-shadow: 0 0 0 8px rgba(126, 231, 135, 0.1);
+        }
+
+        .answer-card ol {
+          margin: 0;
+          padding-left: 22px;
+        }
+
+        .answer-card li + li {
+          margin-top: 10px;
+        }
+
+        .mini-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-top: 14px;
+        }
+
+        .mini-row div {
+          border-radius: 8px;
+          padding: 16px;
+        }
+
+        .mini-row span {
+          display: block;
+          margin-bottom: 6px;
+          color: var(--soft);
+          font-size: 0.82rem;
+        }
+
+        .mini-row strong {
+          color: var(--orange);
+          font-size: 1rem;
+        }
+
+        .features,
+        .how,
+        .schools {
+          padding: 92px 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+          max-width: 780px;
+          margin-bottom: 36px;
+        }
+
+        h2 {
+          margin-bottom: 0;
+          font-size: clamp(2rem, 4vw, 3.7rem);
+          line-height: 1.03;
+          letter-spacing: 0;
+        }
+
         .feature-grid {
-          display: grid; grid-template-columns: repeat(3, 1fr);
-          border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 14px;
         }
+
         .feature-card {
-          padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
-          transition: background .15s;
+          min-height: 292px;
+          border-radius: 8px;
+          padding: 24px;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
         }
-        .feature-card:hover { background: var(--bg-2); }
-        .feature-card:nth-child(3n) { border-right: none; }
-        .feature-card:nth-child(4), .feature-card:nth-child(5), .feature-card:nth-child(6) { border-bottom: none; }
-        .feature-icon { font-size: 1.1rem; display: block; margin-bottom: .9rem; color: var(--accent); opacity: .75; }
-        .feature-title { font-size: .9rem; font-weight: 500; margin-bottom: .5rem; color: var(--text); }
-        .feature-desc { font-size: .825rem; line-height: 1.65; color: var(--muted-2); font-weight: 300; }
 
-        /* ── HOW ── */
-        .how { padding: 100px 0; border-top: 1px solid var(--border); }
-        .steps { display: flex; flex-direction: column; }
+        .feature-card span {
+          display: inline-flex;
+          margin-bottom: 34px;
+          color: var(--cyan);
+          font-weight: 800;
+        }
+
+        .feature-card h3 {
+          margin-bottom: 14px;
+          font-size: 1.1rem;
+          line-height: 1.25;
+        }
+
+        .feature-card p {
+          font-size: 0.94rem;
+        }
+
+        .how-inner,
+        .schools-inner {
+          display: grid;
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 56px;
+          align-items: start;
+        }
+
+        .steps {
+          border-top: 1px solid var(--line);
+        }
+
         .step {
-          display: flex; align-items: flex-start; gap: 2.5rem; padding: 2.25rem 0;
-          border-bottom: 1px solid var(--border);
+          display: grid;
+          grid-template-columns: 72px 1fr;
+          align-items: center;
+          min-height: 94px;
+          border-bottom: 1px solid var(--line);
         }
-        .step:last-child { border-bottom: none; }
-        .step-n {
-          font-family: var(--serif); font-size: 1.6rem; font-style: italic;
-          color: var(--accent); opacity: .6; min-width: 40px; padding-top: 2px;
-        }
-        .step-title { font-size: .95rem; font-weight: 500; margin-bottom: .4rem; color: var(--text); }
-        .step-desc { font-size: .825rem; line-height: 1.65; color: var(--muted-2); font-weight: 300; }
 
-        /* ── SCHOOLS ── */
-        .schools { padding: 100px 0; border-top: 1px solid var(--border); }
-        .schools-inner { display: grid; grid-template-columns: 1fr 360px; gap: 5rem; align-items: start; }
-        .schools-body { font-size: .9rem; line-height: 1.8; color: var(--muted-2); font-weight: 300; margin-bottom: 2rem; }
-        .schools-list { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-        .schools-list li {
-          font-size: .825rem; color: var(--muted-2); font-weight: 300; padding-left: 1.1rem; position: relative;
+        .step span {
+          color: var(--cyan);
+          font-weight: 800;
         }
-        .schools-list li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: .5; }
-        .schools-card {
-          background: var(--bg-2); border: 1px solid var(--border-2);
-          border-radius: var(--radius); padding: 2rem;
-          display: flex; flex-direction: column; gap: 1.1rem;
-        }
-        .card-label { font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-        .card-body { font-size: .825rem; line-height: 1.65; color: var(--muted-2); font-weight: 300; }
-        .btn-full { width: 100%; text-align: center; }
-        .card-note { font-size: .72rem; color: var(--muted); text-align: center; }
 
-        /* ── FOOTER ── */
-        .footer { padding: 40px 2rem; border-top: 1px solid var(--border); }
+        .step p {
+          margin-bottom: 0;
+          color: var(--text);
+          font-size: 1.18rem;
+          font-weight: 650;
+        }
+
+        .schools-panel {
+          border-radius: 8px;
+          padding: 30px;
+        }
+
+        .schools-panel ul {
+          display: grid;
+          gap: 12px;
+          margin: 26px 0 30px;
+          padding: 0;
+          list-style: none;
+        }
+
+        .schools-panel li {
+          position: relative;
+          padding-left: 24px;
+        }
+
+        .schools-panel li::before {
+          content: "";
+          position: absolute;
+          top: 0.72em;
+          left: 0;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: var(--green);
+        }
+
+        .footer {
+          border-top: 1px solid var(--line);
+          padding: 34px 0;
+        }
+
         .footer-inner {
-          max-width: var(--max); margin: 0 auto;
-          display: flex; align-items: center; justify-content: space-between;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
         }
-        .footer-copy { font-size: .75rem; color: var(--muted); }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 860px) {
-          .feature-grid { grid-template-columns: 1fr 1fr; }
-          .feature-card:nth-child(3n) { border-right: 1px solid var(--border); }
-          .feature-card:nth-child(2n) { border-right: none; }
-          .feature-card:nth-child(4), .feature-card:nth-child(5), .feature-card:nth-child(6) { border-bottom: 1px solid var(--border); }
-          .feature-card:nth-child(5), .feature-card:nth-child(6) { border-bottom: none; }
-          .schools-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-          .nav-links { display: none; }
+        .footer p {
+          margin-bottom: 0;
+          color: var(--soft);
+          font-size: 0.88rem;
         }
-        @media (max-width: 560px) {
-          .feature-grid { grid-template-columns: 1fr; }
-          .feature-card { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
-          .feature-card:last-child { border-bottom: none !important; }
-          .step { gap: 1.25rem; }
-          .footer-inner { flex-direction: column; gap: .5rem; text-align: center; }
+
+        @media (max-width: 980px) {
+          .hero-grid,
+          .how-inner,
+          .schools-inner {
+            grid-template-columns: 1fr;
+          }
+
+          .feature-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .product-shell {
+            max-width: 620px;
+          }
+        }
+
+        @media (max-width: 720px) {
+          .nav-inner,
+          .section-inner,
+          .hero-grid,
+          .footer-inner {
+            width: min(var(--max), calc(100% - 28px));
+          }
+
+          .nav-links {
+            display: none;
+          }
+
+          .nav-inner {
+            height: 68px;
+          }
+
+          .btn-nav {
+            margin-left: auto;
+            padding: 0 13px;
+          }
+
+          .hero {
+            padding-top: 120px;
+          }
+
+          h1 {
+            font-size: clamp(3rem, 17vw, 4.5rem);
+          }
+
+          .hero-stats,
+          .feature-grid,
+          .mini-row {
+            grid-template-columns: 1fr;
+          }
+
+          .feature-card {
+            min-height: auto;
+          }
+
+          .step {
+            grid-template-columns: 52px 1fr;
+          }
+
+          .footer-inner {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
       `}</style>
     </main>
