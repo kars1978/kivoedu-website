@@ -25,9 +25,18 @@ const features = [
 ];
 
 const steps = [
-  "Upload curriculum materials",
-  "Kivo indexes and verifies the content",
-  "Students ask, practice, and revise",
+  {
+    title: "Choose a supported curriculum",
+    desc: "Students learn from the country, board, grade, subject, and curriculum content already available in the KivoEdu database.",
+  },
+  {
+    title: "Tutor stays inside verified content",
+    desc: "Answers, explanations, examples, and practice are grounded only in the curriculum data we support and maintain.",
+  },
+  {
+    title: "Coverage expands over time",
+    desc: "The KivoEdu team updates existing material and adds new countries, boards, subjects, and curriculum versions as coverage grows.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -93,8 +102,8 @@ export default function Home() {
                 <span>school-controlled content</span>
               </div>
               <div>
-                <strong>Any</strong>
-                <span>subject or grade</span>
+                <strong>DB</strong>
+                <span>verified curriculum coverage</span>
               </div>
             </div>
           </div>
@@ -160,13 +169,22 @@ export default function Home() {
         <div className="section-inner how-inner">
           <div>
             <p className="eyebrow">How it works</p>
-            <h2>Turn existing school material into a focused AI tutor.</h2>
+            <h2>Students learn from the curriculum already supported by KivoEdu.</h2>
+            <p className="how-copy">
+              Students do not upload materials. The tutor works from
+              curriculum, board, country, grade, and subject data that already
+              exists in our database. KivoEdu maintains that content and keeps
+              adding new curriculum coverage over time.
+            </p>
           </div>
           <div className="steps">
             {steps.map((step, index) => (
-              <div className="step" key={step}>
+              <div className="step" key={step.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{step}</p>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -182,14 +200,14 @@ export default function Home() {
           <div className="schools-panel">
             <p>
               KivoEdu does not replace teachers or rewrite your curriculum. It
-              extends the learning materials your school already uses into a
+              extends supported curriculum content from our database into a
               private AI tutor students can rely on after class, during study
               hall, or while preparing for exams.
             </p>
             <ul>
-              <li>Works with your existing curriculum documents</li>
-              <li>Supports any subject, board, or grade level</li>
-              <li>Uses school-approved content as the source of truth</li>
+              <li>Works with supported curriculum in the KivoEdu database</li>
+              <li>Coverage is organized by country, board, grade, and subject</li>
+              <li>New curriculum coverage is added and updated by KivoEdu</li>
               <li>Keeps student data private and secure</li>
             </ul>
             <a href="mailto:hello@kivoedu.ai" className="btn btn-primary">
@@ -611,15 +629,19 @@ export default function Home() {
         }
 
         .steps {
-          border-top: 1px solid var(--line);
+          display: grid;
+          gap: 14px;
         }
 
         .step {
           display: grid;
           grid-template-columns: 72px 1fr;
-          align-items: center;
-          min-height: 94px;
-          border-bottom: 1px solid var(--line);
+          align-items: start;
+          min-height: 132px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          padding: 22px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
         }
 
         .step span {
@@ -627,11 +649,26 @@ export default function Home() {
           font-weight: 800;
         }
 
+        .how-copy {
+          max-width: 520px;
+          margin-top: 22px;
+          color: var(--muted);
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .step h3 {
+          margin-bottom: 10px;
+          color: var(--text);
+          font-size: 1.16rem;
+          line-height: 1.25;
+        }
+
         .step p {
           margin-bottom: 0;
-          color: var(--text);
-          font-size: 1.18rem;
-          font-weight: 650;
+          color: var(--muted);
+          font-size: 0.96rem;
+          line-height: 1.62;
         }
 
         .schools-panel {
