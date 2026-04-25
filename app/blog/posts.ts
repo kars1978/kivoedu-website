@@ -64,7 +64,7 @@ export const blogPosts: BlogPost[] = [
     slug: "high-level-architecture",
     title: "A high-level look at the Kivo architecture",
     description:
-      "How Kivo thinks about curriculum ingestion, retrieval, tutoring workflows, and responsible AI boundaries.",
+      "KivoEdu is built on a simple principle: AI tutoring works best when responses are grounded in the exact curriculum a student is studying.",
     date: "2026-04-25",
     author: "Kivo Engineering",
     category: "Architecture",
@@ -76,29 +76,35 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Curriculum data as the foundation",
         body: [
-          "The architecture starts with structured curriculum content. Material is organized by education system, board, grade, subject, chapter, topic, and assessment style so the tutor can reason with the right learning context.",
-          "This gives the product a clearer source of truth than a general chat experience.",
+          "The system begins with structured curriculum data organized by country, board, grade, subject, chapter, topic, and assessment style.",
+          "This allows tutoring responses to stay relevant to what students are expected to learn—not just what a general model happens to know.",
         ],
       },
       {
         heading: "Retrieval before generation",
         body: [
-          "When a student asks a question, the system should first identify the relevant curriculum scope and supporting material. The tutoring response can then be generated from retrieved context rather than from an unconstrained model answer.",
-          "This retrieval-first pattern helps Kivo keep explanations aligned with supported content and makes it easier to expand coverage over time.",
+          "When a student asks a question, KivoEdu first identifies the relevant curriculum scope and supporting learning material.",
+          "Only then is a response generated.",
+          "This retrieval-first approach helps improve syllabus alignment, explanation quality, and long-term scalability as new subjects and regions are added.",
         ],
       },
       {
         heading: "Tutor workflows",
         body: [
-          "A tutoring product needs more than answers. Kivo is designed for guided explanations, practice generation, revision support, and topic-level feedback.",
-          "At a high level, the product separates curriculum ingestion, content indexing, student interaction, response generation, and teacher or school visibility so each layer can improve independently.",
+          "Learning support requires more than one-off answers. KivoEdu is designed for:",
+          "- guided explanations",
+          "- practice generation",
+          "- revision sessions",
+          "- topic-level feedback",
+          "- structured academic support",
+          "Internally, curriculum ingestion, indexing, tutoring logic, and reporting can evolve independently.",
         ],
       },
       {
-        heading: "SEO and transparency",
+        heading: "Responsible AI by design",
         body: [
-          "Publishing technical posts like this helps schools, parents, and future partners understand the decisions behind the product.",
-          "Good architecture writing should explain the tradeoffs without exposing private implementation details or sensitive operational information.",
+          "For schools and families, trust matters as much as capability.",
+          "That means building systems with clear boundaries around content sources, privacy, academic intent, and operational transparency.",
         ],
       },
     ],
