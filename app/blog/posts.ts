@@ -64,7 +64,7 @@ export const blogPosts: BlogPost[] = [
     slug: "high-level-architecture",
     title: "A high-level look at the Kivo architecture",
     description:
-      "KivoEdu is built on a simple principle: AI tutoring works best when responses are grounded in the exact curriculum a student is studying.",
+      "Kivo is built on a simple principle: AI tutoring works best when responses are grounded in the exact curriculum a student is studying.",
     date: "2026-04-25",
     author: "Kivo Engineering",
     category: "Architecture",
@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Retrieval before generation",
         body: [
-          "When a student asks a question, KivoEdu first identifies the relevant curriculum scope and supporting learning material.",
+          "When a student asks a question, Kivo first identifies the relevant curriculum scope and supporting learning material.",
           "Only then is a response generated.",
           "This retrieval-first approach helps improve syllabus alignment, explanation quality, and long-term scalability as new subjects and regions are added.",
         ],
@@ -91,7 +91,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Tutor workflows",
         body: [
-          "Learning support requires more than one-off answers. KivoEdu is designed for:",
+          "Learning support requires more than one-off answers. Kivo is designed for:",
           "- guided explanations",
           "- practice generation",
           "- revision sessions",
