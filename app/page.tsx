@@ -64,6 +64,7 @@ export default function Home() {
             <a href="#features">Features</a>
             <a href="#how">How it works</a>
             <a href="#schools">Schools</a>
+            <a href="/blog">Blog</a>
           </div>
           <a href="mailto:hello@kivoedu.ai" className="btn btn-nav">
             Request demo
@@ -229,6 +230,7 @@ export default function Home() {
             />
           </a>
           <p>© 2026 KivoEdu. All rights reserved.</p>
+          <a href="/blog">Blog</a>
         </div>
       </footer>
 
@@ -716,6 +718,16 @@ export default function Home() {
           margin-bottom: 0;
           color: var(--soft);
           font-size: 0.88rem;
+        }
+
+        .footer a {
+          color: var(--muted);
+          font-size: 0.88rem;
+          text-decoration: none;
+        }
+
+        .footer a:hover {
+          color: var(--text);
         }
 
         @media (max-width: 980px) {
