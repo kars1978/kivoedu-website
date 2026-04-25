@@ -5,7 +5,7 @@ export type BlogPost = {
   date: string;
   updated?: string;
   author: string;
-  category: "Company" | "Architecture" | "Product";
+  category: "Company" | "Architecture" | "Education" | "Product";
   readingTime: string;
   tags: string[];
   intro: string;

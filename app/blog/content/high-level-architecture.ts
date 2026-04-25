@@ -5,7 +5,7 @@ export const highLevelArchitecturePost: BlogPost = {
   title: "A high-level look at the Kivo architecture",
   description:
     "Kivo is built on a simple principle: AI tutoring works best when responses are grounded in the exact curriculum a student is studying.",
-  date: "2026-04-25",
+  date: "2026-04-20",
   author: "Kivo Engineering",
   category: "Architecture",
   readingTime: "5 min read",

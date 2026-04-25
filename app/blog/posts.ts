@@ -1,11 +1,8 @@
-import { highLevelArchitecturePost } from "./content/high-level-architecture";
-import { whatIsKivoPost } from "./content/what-is-kivo";
+
+import { getAllPosts } from "./content";
 import type { BlogPost } from "./types";
 
-export const blogPosts: BlogPost[] = [
-  whatIsKivoPost,
-  highLevelArchitecturePost,
-];
+export const blogPosts: BlogPost[] = getAllPosts();
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);

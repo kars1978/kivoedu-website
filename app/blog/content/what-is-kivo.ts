@@ -5,7 +5,7 @@ export const whatIsKivoPost: BlogPost = {
   title: "What is Kivo AI?",
   description:
     "A clear introduction to Kivo AI, the students it helps, and the learning problem it is built to solve.",
-  date: "2026-04-25",
+  date: "2026-04-15",
   author: "Kivo Team",
   category: "Company",
   readingTime: "4 min read",
