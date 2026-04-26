@@ -66,7 +66,7 @@ export default function Home() {
             <a href="#schools">Schools</a>
             <a href="/blog">Blog</a>
           </div>
-          <a href="mailto:hello@kivoedu.ai" className="btn btn-nav">
+          <a href="mailto:admin@kivoedu.ai" className="btn btn-nav">
             Request demo
           </a>
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
               already trusts.
             </p>
             <div className="hero-actions">
-              <a href="mailto:hello@kivoedu.ai" className="btn btn-primary">
+              <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
                 Request demo
               </a>
               <a href="#features" className="btn btn-secondary">
@@ -211,7 +211,7 @@ export default function Home() {
               <li>New curriculum coverage is added and updated by KivoEdu</li>
               <li>Keeps student data private and secure</li>
             </ul>
-            <a href="mailto:hello@kivoedu.ai" className="btn btn-primary">
+            <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
               Talk to KivoEdu
             </a>
           </div>
