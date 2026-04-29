@@ -177,6 +177,25 @@ export default function Home() {
               exists in our database. KivoEdu maintains that content and keeps
               adding new curriculum coverage over time.
             </p>
+            <div className="availability-note" aria-label="Current availability and AI guidance">
+              <div>
+                <strong>Current availability</strong>
+                <p>
+                  KivoEdu currently supports the CBSE board for Grades 9 and 10
+                  in India. We are working to add more boards, expand coverage
+                  to Grades 6 through 12, and bring KivoEdu to more countries
+                  later this year.
+                </p>
+              </div>
+              <div>
+                <strong>Teacher-first guidance</strong>
+                <p>
+                  KivoEdu uses AI to generate content and responses, so it may
+                  make mistakes. Always trust your human teacher, tutor, and
+                  textbooks as the final source of truth.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="steps">
             {steps.map((step, index) => (
@@ -426,6 +445,7 @@ export default function Home() {
         .hero-stats div,
         .mini-row div,
         .feature-card,
+        .availability-note,
         .schools-panel {
           border: 1px solid var(--line);
           background: rgba(255, 255, 255, 0.045);
@@ -513,6 +533,7 @@ export default function Home() {
 
         .student-card p,
         .answer-card li,
+        .availability-note p,
         .schools-panel p,
         .schools-panel li,
         .feature-card p {
@@ -657,6 +678,28 @@ export default function Home() {
           color: var(--muted);
           font-size: 1rem;
           line-height: 1.7;
+        }
+
+        .availability-note {
+          display: grid;
+          gap: 18px;
+          max-width: 560px;
+          margin-top: 28px;
+          border-radius: 8px;
+          padding: 22px;
+          background: linear-gradient(135deg, rgba(126, 231, 135, 0.09), rgba(79, 209, 197, 0.04));
+        }
+
+        .availability-note strong {
+          display: block;
+          margin-bottom: 8px;
+          color: var(--text);
+          font-size: 0.96rem;
+        }
+
+        .availability-note p {
+          margin-bottom: 0;
+          font-size: 0.94rem;
         }
 
         .step h3 {

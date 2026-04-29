@@ -5,13 +5,6 @@
 ▲ Next.js 16.2.1 (Turbopack)
 - Local:         http://localhost:3001
 - Network:       http://10.0.0.176:3001
-✓ Ready in 431ms
-⨯ Another next dev server is already running.
+✓ Ready in 505ms
+Creating turbopack project { dir: 'C:\\Dev\\Projects\\kivoedu-website', testMode: true }
 
-- Local:        http://localhost:3000
-- PID:          34076
-- Dir:          C:\Dev\Projects\kivoedu-website
-- Log:          .next\dev\logs\next-development.log
-
-Run taskkill /PID 34076 /F to stop it.
-[?25h
