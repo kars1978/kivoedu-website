@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     siteName: "KivoEdu",
     type: "website",
   },
+  verification: {
+    google: "qsSb3_qeeewo8NHLFNG_vg9wQmC6yMY7b22_86lTTv0",
+  },
 };
 
 export default function RootLayout({
