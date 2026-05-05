@@ -582,8 +582,8 @@ export default function Home() {
         h1 {
           margin-bottom: 26px;
           max-width: 820px;
-          font-size: clamp(3.3rem, 6.8vw, 6.1rem);
-          line-height: 0.96;
+          font-size: clamp(2.8rem, 5.4vw, 4.9rem);
+          line-height: 1;
           letter-spacing: 0;
         }
 
@@ -1365,7 +1365,7 @@ export default function Home() {
           }
 
           h1 {
-            font-size: clamp(2.75rem, 13vw, 3.95rem);
+            font-size: clamp(2.35rem, 10.5vw, 3.25rem);
           }
 
           .section-band {
