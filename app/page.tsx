@@ -7,29 +7,42 @@ const loginUrl = "https://app.kivoedu.ai/login";
 const features = [
   {
     k: "01",
-    title: "Understand tough topics step by step",
-    desc: "Students get guided explanations that help them work through difficult concepts without jumping straight to the final answer.",
-    marker: "Explain",
+    title: "Answers from your actual syllabus",
+    desc: "Ask questions and get help that stays connected to supported board, grade, subject, and chapter coverage.",
+    marker: "Syllabus",
   },
   {
     k: "02",
-    title: "Practice from your actual chapters",
-    desc: "Create chapter checks, revision prompts, and exam-style practice from the curriculum material students are already studying.",
-    marker: "Practice",
+    title: "Understand exactly how to solve it",
+    desc: "Work through explanations one step at a time so students can follow the method, not just copy the answer.",
+    marker: "Explain",
   },
   {
     k: "03",
-    title: "Revise without leaving your syllabus",
-    desc: "Keep revision focused on supported board, grade, subject, and curriculum content instead of generic internet answers.",
-    marker: "Revise",
+    title: "Practice questions from your chapters",
+    desc: "Generate chapter checks and revision practice from the curriculum material students are already studying.",
+    marker: "Practice",
   },
   {
     k: "04",
-    title: "Learn with curriculum-grounded AI support",
-    desc: "Give students a study companion that stays aligned to maintained curriculum coverage and keeps teachers in the loop.",
-    marker: "Support",
+    title: "Learn without leaving your curriculum",
+    desc: "Keep study focused on maintained curriculum coverage instead of generic answers that may drift off-topic.",
+    marker: "Grounded",
   },
 ];
+
+const comparison = {
+  typical: [
+    "Generic answers",
+    "Can go off-topic",
+    "Hard to trust for schoolwork",
+  ],
+  kivo: [
+    "Answers from your actual curriculum",
+    "Stays within your syllabus",
+    "Built with school input",
+  ],
+};
 
 const availability = [
   {
@@ -111,7 +124,7 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy reveal">
             <p className="eyebrow">Curriculum-grounded AI tutoring</p>
-            <h1>AI tutoring grounded in the curriculum students actually study.</h1>
+            <h1>AI tutoring that actually follows your curriculum.</h1>
             <p className="hero-sub">
               KivoEdu helps students ask questions, practice tough topics, and
               revise with a tutor grounded in the curriculum content they are
@@ -170,16 +183,22 @@ export default function Home() {
                   <p>Grounded response</p>
                 </div>
                 <div className="preview-actions" aria-label="Example tutoring modes">
-                  <span>Hint mode</span>
-                  <span>Practice question</span>
-                  <span>Explain simpler</span>
-                  <span>Check understanding</span>
+                  <span className="active">Explain</span>
+                  <span>Hint</span>
+                  <span>Practice</span>
                 </div>
-                <ol>
-                  <li>Find two numbers that multiply to the constant.</li>
-                  <li>Check they add to the middle coefficient.</li>
-                  <li>Rewrite the expression as two brackets.</li>
-                </ol>
+                <div className="solution-card">
+                  <p className="equation">x² + 5x + 6 = 0</p>
+                  <ol>
+                    <li>Find two numbers that multiply to 6.</li>
+                    <li className="active-step">Choose 2 and 3 because they also add to 5.</li>
+                    <li>Rewrite as (x + 2)(x + 3) = 0.</li>
+                  </ol>
+                  <a href={loginUrl} target="_blank" rel="noopener noreferrer">
+                    Try a similar question
+                  </a>
+                  <span className="focus-cursor" aria-hidden="true" />
+                </div>
               </div>
               <div className="mini-row">
                 <div>
@@ -213,6 +232,36 @@ export default function Home() {
                 <p>{feature.desc}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="difference section-band">
+        <div className="section-inner reveal">
+          <div className="section-heading">
+            <p className="eyebrow">Why Kivo is different</p>
+            <h2>Built for schoolwork, not generic answers.</h2>
+          </div>
+          <div className="comparison-grid" aria-label="Comparison between typical AI tutors and Kivo">
+            <article className="comparison-card comparison-muted glass-card">
+              <span>Typical AI tutors</span>
+              <ul>
+                {comparison.typical.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <div className="comparison-arrow" aria-hidden="true">
+              <span>→</span>
+            </div>
+            <article className="comparison-card comparison-kivo glass-card">
+              <span>Kivo</span>
+              <ul>
+                {comparison.kivo.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           </div>
         </div>
       </section>
@@ -317,10 +366,11 @@ export default function Home() {
         <div className="section-inner final-cta-inner reveal">
           <div>
             <p className="eyebrow">For schools</p>
-            <h2>Bring curriculum-grounded AI tutoring to your school.</h2>
+            <h2>Give students AI support they can actually trust.</h2>
+            <p>Curriculum-grounded AI tutoring built for real classrooms.</p>
           </div>
           <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
-            Contact KivoEdu
+            Bring Kivo to your school
           </a>
         </div>
       </section>
@@ -500,7 +550,7 @@ export default function Home() {
         }
 
         .btn:hover {
-          transform: translateY(-2px);
+          transform: translateY(-2px) scale(1.03);
         }
 
         .btn-nav,
@@ -800,7 +850,7 @@ export default function Home() {
         }
 
         .student-card p,
-        .answer-card li,
+        .solution-card li,
         .guidance-card p,
         .schools-copy p,
         .trust-panel li,
@@ -839,6 +889,13 @@ export default function Home() {
           background: rgba(255, 255, 255, 0.04);
           font-size: 0.78rem;
           font-weight: 700;
+          transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+        }
+
+        .preview-actions span.active {
+          color: var(--accent-ink);
+          border-color: rgba(255, 209, 102, 0.52);
+          background: linear-gradient(135deg, var(--accent), var(--green));
         }
 
         .pulse {
@@ -850,13 +907,96 @@ export default function Home() {
           animation: pulse 2.2s ease-in-out infinite;
         }
 
-        .answer-card ol {
-          margin: 0;
-          padding-left: 22px;
+        .solution-card {
+          position: relative;
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          border-radius: 18px;
+          padding: 16px;
+          background: rgba(5, 8, 18, 0.36);
+          overflow: hidden;
         }
 
-        .answer-card li + li {
-          margin-top: 10px;
+        .equation {
+          margin-bottom: 12px;
+          color: var(--text);
+          font-family: var(--font-geist-mono), ui-monospace, monospace;
+          font-size: 1rem;
+          font-weight: 760;
+        }
+
+        .solution-card ol {
+          margin: 0;
+          padding-left: 0;
+          list-style: none;
+        }
+
+        .solution-card li {
+          position: relative;
+          border-radius: 12px;
+          padding: 9px 10px 9px 34px;
+          font-size: 0.94rem;
+        }
+
+        .solution-card li::before {
+          content: counter(list-item);
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 16px;
+          height: 16px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--accent-ink);
+          background: var(--accent);
+          font-size: 0.68rem;
+          font-weight: 850;
+        }
+
+        .solution-card li + li {
+          margin-top: 5px;
+        }
+
+        .solution-card li.active-step {
+          color: var(--text);
+          background: linear-gradient(90deg, rgba(255, 209, 102, 0.16), rgba(79, 209, 197, 0.08));
+          box-shadow: inset 0 0 0 1px rgba(255, 209, 102, 0.24);
+          animation: stepHighlight 2.8s ease-in-out infinite;
+        }
+
+        .solution-card a {
+          display: inline-flex;
+          align-items: center;
+          min-height: 34px;
+          margin-top: 14px;
+          border: 1px solid rgba(79, 209, 197, 0.24);
+          border-radius: 999px;
+          padding: 0 13px;
+          color: var(--text);
+          background: rgba(79, 209, 197, 0.08);
+          font-size: 0.82rem;
+          font-weight: 760;
+          text-decoration: none;
+          transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+        }
+
+        .solution-card a:hover {
+          transform: translateY(-1px) scale(1.02);
+          border-color: rgba(255, 209, 102, 0.34);
+          box-shadow: 0 12px 28px rgba(79, 209, 197, 0.14);
+        }
+
+        .focus-cursor {
+          position: absolute;
+          top: 108px;
+          right: 22px;
+          width: 11px;
+          height: 11px;
+          border-radius: 999px;
+          background: var(--cyan);
+          box-shadow: 0 0 0 8px rgba(79, 209, 197, 0.12);
+          animation: focusCursor 2.8s ease-in-out infinite;
         }
 
         .mini-row {
@@ -952,9 +1092,9 @@ export default function Home() {
         }
 
         .glass-card:hover {
-          transform: translateY(-5px);
+          transform: translateY(-4px);
           border-color: rgba(255, 209, 102, 0.32);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 30px 86px rgba(0, 0, 0, 0.26);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 90px rgba(0, 0, 0, 0.28);
         }
 
         .availability {
@@ -1094,6 +1234,98 @@ export default function Home() {
 
         .feature-card p {
           font-size: 0.94rem;
+        }
+
+        .difference {
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(79, 209, 197, 0.035));
+        }
+
+        .comparison-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 88px minmax(0, 1fr);
+          gap: 18px;
+          align-items: stretch;
+        }
+
+        .comparison-card {
+          border-radius: 26px;
+          padding: 28px;
+          min-height: 260px;
+        }
+
+        .comparison-card span {
+          display: inline-flex;
+          margin-bottom: 28px;
+          color: var(--accent);
+          font-size: 0.85rem;
+          font-weight: 850;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .comparison-card ul {
+          display: grid;
+          gap: 14px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        .comparison-card li {
+          position: relative;
+          border: 1px solid var(--line);
+          border-radius: 16px;
+          padding: 14px 14px 14px 38px;
+          color: var(--muted);
+          background: rgba(255, 255, 255, 0.035);
+          line-height: 1.45;
+        }
+
+        .comparison-card li::before {
+          content: "";
+          position: absolute;
+          top: 18px;
+          left: 16px;
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          background: var(--soft);
+        }
+
+        .comparison-muted {
+          opacity: 0.82;
+        }
+
+        .comparison-kivo {
+          border-color: rgba(255, 209, 102, 0.26);
+          background:
+            linear-gradient(135deg, rgba(255, 209, 102, 0.08), rgba(79, 209, 197, 0.055)),
+            var(--panel);
+        }
+
+        .comparison-kivo li::before {
+          background: var(--green);
+          box-shadow: 0 0 0 6px rgba(126, 231, 135, 0.08);
+        }
+
+        .comparison-arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .comparison-arrow span {
+          width: 54px;
+          height: 54px;
+          border: 1px solid rgba(255, 209, 102, 0.32);
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--accent);
+          background: rgba(255, 209, 102, 0.08);
+          font-size: 1.4rem;
+          font-weight: 800;
         }
 
         .how-inner,
@@ -1274,20 +1506,22 @@ export default function Home() {
         }
 
         .final-cta {
-          padding: 76px 0;
+          padding: 88px 0;
           background:
-            radial-gradient(circle at 82% 44%, rgba(255, 209, 102, 0.12), transparent 18rem),
+            radial-gradient(circle at 50% 50%, rgba(255, 209, 102, 0.13), transparent 20rem),
+            radial-gradient(circle at 16% 32%, rgba(79, 209, 197, 0.12), transparent 18rem),
             linear-gradient(180deg, rgba(79, 209, 197, 0.055), rgba(255, 255, 255, 0.02));
         }
 
         .final-cta-inner {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) auto;
+          display: flex;
+          flex-direction: column;
           gap: 28px;
+          text-align: center;
           align-items: center;
           border: 1px solid var(--line);
           border-radius: 30px;
-          padding: 34px;
+          padding: 52px 34px;
           background:
             linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.028)),
             rgba(13, 19, 32, 0.72);
@@ -1297,6 +1531,13 @@ export default function Home() {
         .final-cta h2 {
           max-width: 760px;
           font-size: clamp(2rem, 3.6vw, 3.4rem);
+        }
+
+        .final-cta p:not(.eyebrow) {
+          max-width: 620px;
+          margin: 16px auto 0;
+          color: var(--muted);
+          line-height: 1.65;
         }
 
         .footer {
@@ -1367,6 +1608,26 @@ export default function Home() {
           }
         }
 
+        @keyframes stepHighlight {
+          0%, 100% {
+            box-shadow: inset 0 0 0 1px rgba(255, 209, 102, 0.18), 0 0 0 rgba(255, 209, 102, 0);
+          }
+          50% {
+            box-shadow: inset 0 0 0 1px rgba(255, 209, 102, 0.34), 0 0 28px rgba(255, 209, 102, 0.12);
+          }
+        }
+
+        @keyframes focusCursor {
+          0%, 100% {
+            opacity: 0.55;
+            transform: translate3d(0, 0, 0) scale(0.9);
+          }
+          50% {
+            opacity: 1;
+            transform: translate3d(-8px, 18px, 0) scale(1);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           html {
             scroll-behavior: auto;
@@ -1384,6 +1645,7 @@ export default function Home() {
         @media (max-width: 1080px) {
           .hero-grid,
           .availability-inner,
+          .comparison-grid,
           .how-inner,
           .schools-inner {
             grid-template-columns: 1fr;
@@ -1396,6 +1658,10 @@ export default function Home() {
 
           .feature-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .comparison-arrow span {
+            transform: rotate(90deg);
           }
         }
 
@@ -1493,7 +1759,6 @@ export default function Home() {
           }
 
           .final-cta-inner {
-            grid-template-columns: 1fr;
             padding: 24px;
           }
 
