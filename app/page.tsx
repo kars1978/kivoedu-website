@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 const features = [
   {
@@ -21,6 +22,19 @@ const features = [
     k: "04",
     title: "Teacher visibility",
     desc: "Spot common questions, stuck topics, and progress patterns so teachers can support the class with better context.",
+  },
+];
+
+const availability = [
+  {
+    board: "CBSE",
+    grades: "Grades 9 and 10",
+    subjects: "Math and Science",
+  },
+  {
+    board: "Maharashtra State Board",
+    grades: "Grade 9",
+    subjects: "Math and Science",
   },
 ];
 
@@ -62,12 +76,18 @@ export default function Home() {
           </a>
           <div className="nav-links" aria-label="Primary navigation">
             <a href="#features">Features</a>
+            <a href="#availability">Availability</a>
             <a href="#how">How it works</a>
             <a href="#schools">Schools</a>
-            <a href="/blog">Blog</a>
+            <Link href="/blog">Blog</Link>
           </div>
-          <a href="mailto:admin@kivoedu.ai" className="btn btn-nav">
-            Request demo
+          <a
+            href="https://app.kivoedu.ai/login"
+            className="btn btn-nav"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Login
           </a>
         </div>
       </nav>
@@ -81,30 +101,35 @@ export default function Home() {
               <span> for students.</span>
             </h1>
             <p className="hero-sub">
-              KivoEdu helps every student ask questions, practice tough topics,
-              and revise with a tutor grounded in the curriculum your school
-              already trusts.
+              KivoEdu helps students ask questions, practice tough topics, and
+              revise with a tutor grounded in the curriculum content they are
+              actually studying.
             </p>
             <div className="hero-actions">
-              <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
-                Request demo
+              <a
+                href="https://app.kivoedu.ai/login"
+                className="btn btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Login to KivoEdu
               </a>
-              <a href="#features" className="btn btn-secondary">
-                Explore features
+              <a href="#availability" className="btn btn-secondary">
+                View availability
               </a>
             </div>
             <div className="hero-stats" aria-label="Product strengths">
               <div>
+                <strong>CBSE</strong>
+                <span>Grades 9 and 10 Math and Science</span>
+              </div>
+              <div>
+                <strong>MSB</strong>
+                <span>Grade 9 Math and Science</span>
+              </div>
+              <div>
                 <strong>24/7</strong>
-                <span>student support</span>
-              </div>
-              <div>
-                <strong>100%</strong>
-                <span>school-controlled content</span>
-              </div>
-              <div>
-                <strong>DB</strong>
-                <span>verified curriculum coverage</span>
+                <span>guided study support</span>
               </div>
             </div>
           </div>
@@ -148,6 +173,30 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="availability" id="availability">
+        <div className="section-inner availability-inner">
+          <div className="availability-copy">
+            <p className="eyebrow">Current availability</p>
+            <h2>Live curriculum coverage for key Indian boards.</h2>
+            <p>
+              KivoEdu currently supports CBSE Grades 9 and 10 for Math and
+              Science, plus Maharashtra State Board Grade 9 for Math and
+              Science. More boards, grades, and subjects will be added as
+              curriculum coverage expands.
+            </p>
+          </div>
+          <div className="availability-grid" aria-label="Current KivoEdu availability">
+            {availability.map((item) => (
+              <article className="availability-card" key={item.board}>
+                <span>{item.board}</span>
+                <h3>{item.grades}</h3>
+                <p>{item.subjects}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="features" id="features">
         <div className="section-inner">
           <div className="section-heading">
@@ -181,10 +230,8 @@ export default function Home() {
               <div>
                 <strong>Current availability</strong>
                 <p>
-                  KivoEdu currently supports the CBSE board for Grades 9 and 10
-                  in India. We are working to add more boards, expand coverage
-                  to Grades 6 through 12, and bring KivoEdu to more countries
-                  later this year.
+                  KivoEdu currently supports CBSE Grades 9 and 10 Math and
+                  Science, and Maharashtra State Board Grade 9 Math and Science.
                 </p>
               </div>
               <div>
@@ -231,7 +278,7 @@ export default function Home() {
               <li>Keeps student data private and secure</li>
             </ul>
             <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
-              Talk to KivoEdu
+              Contact KivoEdu
             </a>
           </div>
         </div>
@@ -249,7 +296,7 @@ export default function Home() {
             />
           </a>
           <p>© 2026 KivoEdu. All rights reserved.</p>
-          <a href="/blog">Blog</a>
+          <Link href="/blog">Blog</Link>
         </div>
       </footer>
 
@@ -380,9 +427,9 @@ export default function Home() {
 
         .hero-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.78fr);
+          grid-template-columns: minmax(0, 0.95fr) minmax(420px, 0.9fr);
           align-items: center;
-          gap: 60px;
+          gap: 48px;
         }
 
         .hero-copy {
@@ -475,7 +522,7 @@ export default function Home() {
           position: relative;
           border: 1px solid var(--line-strong);
           border-radius: 8px;
-          padding: 18px;
+          padding: 20px;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
             rgba(13, 19, 32, 0.86);
@@ -594,11 +641,73 @@ export default function Home() {
           font-size: 1rem;
         }
 
+        .availability,
         .features,
         .how,
         .schools {
           padding: 92px 0;
           border-top: 1px solid var(--line);
+        }
+
+        .availability {
+          padding-top: 72px;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent);
+        }
+
+        .availability-inner {
+          display: grid;
+          grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1fr);
+          gap: 42px;
+          align-items: center;
+        }
+
+        .availability-copy p:not(.eyebrow) {
+          max-width: 620px;
+          margin: 22px 0 0;
+          color: var(--muted);
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .availability-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .availability-card {
+          min-height: 220px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          padding: 26px;
+          background:
+            linear-gradient(135deg, rgba(126, 231, 135, 0.11), rgba(79, 209, 197, 0.04)),
+            rgba(255, 255, 255, 0.035);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .availability-card span {
+          display: inline-flex;
+          margin-bottom: 42px;
+          color: var(--cyan);
+          font-size: 0.82rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .availability-card h3 {
+          margin-bottom: 10px;
+          color: var(--text);
+          font-size: clamp(1.35rem, 2.4vw, 2rem);
+          line-height: 1.08;
+        }
+
+        .availability-card p {
+          margin-bottom: 0;
+          color: var(--muted);
+          font-size: 1rem;
+          line-height: 1.5;
         }
 
         .section-heading {
@@ -775,6 +884,7 @@ export default function Home() {
 
         @media (max-width: 980px) {
           .hero-grid,
+          .availability-inner,
           .how-inner,
           .schools-inner {
             grid-template-columns: 1fr;
@@ -819,6 +929,7 @@ export default function Home() {
           }
 
           .hero-stats,
+          .availability-grid,
           .feature-grid,
           .mini-row {
             grid-template-columns: 1fr;
