@@ -2,26 +2,32 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+const loginUrl = "https://app.kivoedu.ai/login";
+
 const features = [
   {
     k: "01",
     title: "Curriculum-aware answers",
     desc: "KivoEdu responds from your approved lessons, notes, syllabi, and question banks so students learn the way your school teaches.",
+    marker: "Content",
   },
   {
     k: "02",
     title: "Step-by-step tutoring",
     desc: "Students get guided explanations for math, science, reading, and revision without jumping straight to a final answer.",
+    marker: "Guided",
   },
   {
     k: "03",
-    title: "Practice that adapts",
+    title: "Adaptive practice",
     desc: "Generate quizzes, chapter checks, and exam-style practice from the exact material students are working through.",
+    marker: "Practice",
   },
   {
     k: "04",
     title: "Teacher visibility",
     desc: "Spot common questions, stuck topics, and progress patterns so teachers can support the class with better context.",
+    marker: "Insight",
   },
 ];
 
@@ -53,6 +59,13 @@ const steps = [
   },
 ];
 
+const trustItems = [
+  "Works with supported curriculum in the KivoEdu database",
+  "Coverage is organized by country, board, grade, and subject",
+  "New curriculum coverage is added and updated by KivoEdu",
+  "Keeps student data private and secure",
+];
+
 export const metadata: Metadata = {
   title: "KivoEdu | AI Tutoring Built for Students",
   description:
@@ -62,6 +75,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="root">
+      <div className="site-glow" aria-hidden="true" />
       <nav className="nav">
         <div className="nav-inner">
           <a href="#" className="logo-link" aria-label="KivoEdu home">
@@ -70,7 +84,7 @@ export default function Home() {
               alt="KivoEdu"
               width={138}
               height={52}
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", height: "auto" }}
               priority
             />
           </a>
@@ -82,7 +96,7 @@ export default function Home() {
             <Link href="/blog">Blog</Link>
           </div>
           <a
-            href="https://app.kivoedu.ai/login"
+            href={loginUrl}
             className="btn btn-nav"
             target="_blank"
             rel="noopener noreferrer"
@@ -93,8 +107,9 @@ export default function Home() {
       </nav>
 
       <section className="hero">
+        <div className="hero-pattern" aria-hidden="true" />
         <div className="hero-grid">
-          <div className="hero-copy">
+          <div className="hero-copy reveal">
             <p className="eyebrow">Curriculum-grounded AI tutoring</p>
             <h1>
               AI tutoring built
@@ -107,7 +122,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a
-                href="https://app.kivoedu.ai/login"
+                href={loginUrl}
                 className="btn btn-primary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -118,7 +133,7 @@ export default function Home() {
                 View availability
               </a>
             </div>
-            <div className="hero-stats" aria-label="Product strengths">
+            <div className="hero-stats" aria-label="Current KivoEdu availability">
               <div>
                 <strong>CBSE</strong>
                 <span>Grades 9 and 10 Math and Science</span>
@@ -134,47 +149,60 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="product-shell" aria-label="KivoEdu tutoring preview">
-            <div className="window-bar">
+          <div className="hero-visual reveal" aria-label="KivoEdu tutoring preview">
+            <div className="pathway-orbit" aria-hidden="true">
               <span />
               <span />
               <span />
             </div>
-            <div className="student-card">
-              <p className="card-kicker">Student question</p>
-              <h2>Can you explain quadratic factorization?</h2>
-              <p>
-                Use the method from Chapter 4 and show each step before the
-                final answer.
-              </p>
-            </div>
-            <div className="answer-card">
-              <div className="answer-head">
-                <span className="pulse" />
-                <p>Grounded response</p>
+            <div className="product-shell">
+              <div className="window-bar" aria-hidden="true">
+                <span />
+                <span />
+                <span />
               </div>
-              <ol>
-                <li>Identify two numbers that multiply to the constant.</li>
-                <li>Check they add to the middle coefficient.</li>
-                <li>Rewrite the expression as two brackets.</li>
-              </ol>
-            </div>
-            <div className="mini-row">
-              <div>
-                <span>Quiz ready</span>
-                <strong>8 questions</strong>
+              <div className="learning-map" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
               </div>
-              <div>
-                <span>Source match</span>
-                <strong>Chapter 4</strong>
+              <div className="student-card">
+                <p className="card-kicker">Student question</p>
+                <h2>Can you explain quadratic factorization?</h2>
+                <p>
+                  Use the method from Chapter 4 and show each step before the
+                  final answer.
+                </p>
+              </div>
+              <div className="answer-card">
+                <div className="answer-head">
+                  <span className="pulse" />
+                  <p>Grounded response</p>
+                </div>
+                <ol>
+                  <li>Find two numbers that multiply to the constant.</li>
+                  <li>Check they add to the middle coefficient.</li>
+                  <li>Rewrite the expression as two brackets.</li>
+                </ol>
+              </div>
+              <div className="mini-row">
+                <div>
+                  <span>Quiz ready</span>
+                  <strong>8 questions</strong>
+                </div>
+                <div>
+                  <span>Source match</span>
+                  <strong>Chapter 4</strong>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="availability" id="availability">
-        <div className="section-inner availability-inner">
+      <section className="availability section-band" id="availability">
+        <div className="section-inner availability-inner reveal">
           <div className="availability-copy">
             <p className="eyebrow">Current availability</p>
             <h2>Live curriculum coverage for key Indian boards.</h2>
@@ -187,7 +215,7 @@ export default function Home() {
           </div>
           <div className="availability-grid" aria-label="Current KivoEdu availability">
             {availability.map((item) => (
-              <article className="availability-card" key={item.board}>
+              <article className="availability-card glass-card" key={item.board}>
                 <span>{item.board}</span>
                 <h3>{item.grades}</h3>
                 <p>{item.subjects}</p>
@@ -197,16 +225,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="features" id="features">
-        <div className="section-inner">
+      <section className="features section-band" id="features">
+        <div className="section-inner reveal">
           <div className="section-heading">
             <p className="eyebrow">Why students use it</p>
             <h2>Clear help when they need it, from content teachers approve.</h2>
           </div>
           <div className="feature-grid">
             {features.map((feature) => (
-              <article className="feature-card" key={feature.title}>
-                <span>{feature.k}</span>
+              <article className="feature-card glass-card" key={feature.title}>
+                <div className="feature-top">
+                  <span>{feature.k}</span>
+                  <small>{feature.marker}</small>
+                </div>
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
               </article>
@@ -215,9 +246,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="how" id="how">
-        <div className="section-inner how-inner">
-          <div>
+      <section className="how section-band" id="how">
+        <div className="section-inner how-inner reveal">
+          <div className="how-copy-block">
             <p className="eyebrow">How it works</p>
             <h2>Students learn from the curriculum already supported by KivoEdu.</h2>
             <p className="how-copy">
@@ -226,7 +257,7 @@ export default function Home() {
               exists in our database. KivoEdu maintains that content and keeps
               adding new curriculum coverage over time.
             </p>
-            <div className="availability-note" aria-label="Current availability and AI guidance">
+            <div className="guidance-card glass-card" aria-label="Current availability and AI guidance">
               <div>
                 <strong>Current availability</strong>
                 <p>
@@ -244,42 +275,46 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="steps">
+          <div className="steps" aria-label="How KivoEdu works">
             {steps.map((step, index) => (
-              <div className="step" key={step.title}>
+              <article className="step glass-card" key={step.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.desc}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="schools" id="schools">
-        <div className="section-inner schools-inner">
-          <div>
+      <section className="schools section-band" id="schools">
+        <div className="section-inner schools-inner reveal">
+          <div className="schools-copy">
             <p className="eyebrow">Built with schools in mind</p>
             <h2>Keep teachers in control while giving students more support.</h2>
-          </div>
-          <div className="schools-panel">
             <p>
               KivoEdu does not replace teachers or rewrite your curriculum. It
               extends supported curriculum content from our database into a
               private AI tutor students can rely on after class, during study
               hall, or while preparing for exams.
             </p>
-            <ul>
-              <li>Works with supported curriculum in the KivoEdu database</li>
-              <li>Coverage is organized by country, board, grade, and subject</li>
-              <li>New curriculum coverage is added and updated by KivoEdu</li>
-              <li>Keeps student data private and secure</li>
-            </ul>
             <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
               Contact KivoEdu
             </a>
+          </div>
+          <div className="trust-panel glass-card">
+            <div className="trust-map" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <ul>
+              {trustItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -292,10 +327,10 @@ export default function Home() {
               alt="KivoEdu"
               width={92}
               height={34}
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", height: "auto" }}
             />
           </a>
-          <p>© 2026 KivoEdu. All rights reserved.</p>
+          <p>&copy; 2026 KivoEdu. All rights reserved.</p>
           <Link href="/blog">Blog</Link>
         </div>
       </footer>
@@ -307,18 +342,22 @@ export default function Home() {
 
         :root {
           --bg: #070a12;
-          --panel: #0d1320;
-          --panel-2: #111b2c;
-          --line: rgba(196, 217, 255, 0.12);
-          --line-strong: rgba(196, 217, 255, 0.22);
+          --bg-deep: #050812;
+          --panel: rgba(13, 19, 32, 0.78);
+          --panel-strong: rgba(17, 27, 44, 0.86);
+          --line: rgba(196, 217, 255, 0.13);
+          --line-strong: rgba(196, 217, 255, 0.25);
           --text: #f4f7fb;
-          --muted: #a8b3c6;
-          --soft: #707d94;
+          --muted: #afbad0;
+          --soft: #78859b;
           --cyan: #4fd1c5;
           --blue: #79a7ff;
           --green: #7ee787;
           --orange: #ffb86b;
-          --max: 1160px;
+          --accent: #ffd166;
+          --accent-ink: #171101;
+          --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+          --max: 1180px;
         }
 
         html {
@@ -330,14 +369,51 @@ export default function Home() {
         }
 
         .root {
+          position: relative;
           min-height: 100vh;
           color: var(--text);
           background:
-            radial-gradient(circle at 12% 8%, rgba(79, 209, 197, 0.18), transparent 30rem),
-            radial-gradient(circle at 88% 0%, rgba(121, 167, 255, 0.2), transparent 28rem),
-            linear-gradient(180deg, #070a12 0%, #0a0f1b 52%, #070a12 100%);
+            radial-gradient(circle at 12% 8%, rgba(79, 209, 197, 0.22), transparent 30rem),
+            radial-gradient(circle at 88% 0%, rgba(121, 167, 255, 0.22), transparent 28rem),
+            radial-gradient(circle at 50% 35%, rgba(255, 209, 102, 0.08), transparent 34rem),
+            linear-gradient(180deg, var(--bg) 0%, #09101d 48%, var(--bg-deep) 100%);
           font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
           overflow-x: hidden;
+        }
+
+        .root::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          opacity: 0.34;
+          background-image:
+            linear-gradient(rgba(196, 217, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(196, 217, 255, 0.045) 1px, transparent 1px);
+          background-size: 72px 72px;
+          mask-image: linear-gradient(to bottom, black, transparent 78%);
+        }
+
+        .site-glow {
+          position: fixed;
+          inset: -20% -10% auto;
+          z-index: 0;
+          height: 60vh;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 18% 38%, rgba(126, 231, 135, 0.16), transparent 18rem),
+            radial-gradient(circle at 74% 22%, rgba(79, 209, 197, 0.22), transparent 22rem);
+          filter: blur(18px);
+          animation: ambientShift 13s ease-in-out infinite alternate;
+        }
+
+        .nav,
+        .hero,
+        .section-band,
+        .footer {
+          position: relative;
+          z-index: 1;
         }
 
         .nav {
@@ -347,7 +423,7 @@ export default function Home() {
           right: 0;
           z-index: 20;
           border-bottom: 1px solid var(--line);
-          background: rgba(7, 10, 18, 0.78);
+          background: rgba(7, 10, 18, 0.74);
           backdrop-filter: blur(18px);
         }
 
@@ -355,7 +431,7 @@ export default function Home() {
         .section-inner,
         .hero-grid,
         .footer-inner {
-          width: min(var(--max), calc(100% - 40px));
+          width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
         }
 
@@ -379,70 +455,121 @@ export default function Home() {
           gap: 26px;
         }
 
-        .nav-links a {
+        .nav-links a,
+        .footer a {
           color: var(--muted);
           font-size: 0.88rem;
           text-decoration: none;
+          transition: color 160ms ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .footer a:hover {
           color: var(--text);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+          outline: 3px solid rgba(255, 209, 102, 0.78);
+          outline-offset: 4px;
+          border-radius: 10px;
         }
 
         .btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-height: 42px;
-          border-radius: 8px;
-          padding: 0 18px;
-          font-weight: 650;
+          min-height: 44px;
+          border-radius: 999px;
+          padding: 0 20px;
+          font-weight: 760;
           font-size: 0.92rem;
           text-decoration: none;
-          transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+          transition:
+            transform 180ms ease,
+            border-color 180ms ease,
+            background 180ms ease,
+            box-shadow 180ms ease;
           white-space: nowrap;
         }
 
         .btn:hover {
-          transform: translateY(-1px);
+          transform: translateY(-2px);
         }
 
         .btn-nav,
         .btn-secondary {
           color: var(--text);
           border: 1px solid var(--line-strong);
-          background: rgba(255, 255, 255, 0.04);
+          background: rgba(255, 255, 255, 0.055);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .btn-secondary:hover,
+        .btn-nav:hover {
+          border-color: rgba(255, 209, 102, 0.42);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
         }
 
         .btn-primary {
-          color: #061018;
-          border: 1px solid rgba(126, 231, 135, 0.35);
-          background: linear-gradient(135deg, var(--green), var(--cyan));
-          box-shadow: 0 18px 44px rgba(79, 209, 197, 0.2);
+          color: var(--accent-ink);
+          border: 1px solid rgba(255, 209, 102, 0.58);
+          background: linear-gradient(135deg, var(--accent), var(--green) 54%, var(--cyan));
+          box-shadow: 0 20px 50px rgba(79, 209, 197, 0.24), 0 0 0 6px rgba(255, 209, 102, 0.06);
+        }
+
+        .btn-primary:hover {
+          box-shadow: 0 24px 66px rgba(79, 209, 197, 0.32), 0 0 0 8px rgba(255, 209, 102, 0.1);
         }
 
         .hero {
-          padding: 160px 0 88px;
+          min-height: 100svh;
+          display: flex;
+          align-items: center;
+          padding: 142px 0 92px;
+        }
+
+        .hero-pattern {
+          position: absolute;
+          inset: 76px 0 auto;
+          height: 78%;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 76% 32%, rgba(255, 184, 107, 0.18), transparent 15rem),
+            linear-gradient(130deg, transparent 0 28%, rgba(79, 209, 197, 0.1) 28% 29%, transparent 29% 50%, rgba(121, 167, 255, 0.1) 50% 51%, transparent 51%);
+          opacity: 0.9;
+          animation: patternDrift 16s ease-in-out infinite alternate;
         }
 
         .hero-grid {
           display: grid;
-          grid-template-columns: minmax(0, 0.95fr) minmax(420px, 0.9fr);
+          grid-template-columns: minmax(0, 0.94fr) minmax(430px, 0.96fr);
           align-items: center;
-          gap: 48px;
+          gap: 58px;
         }
 
         .hero-copy {
-          max-width: 710px;
+          max-width: 760px;
         }
 
         .eyebrow {
-          margin: 0 0 16px;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0 0 18px;
           color: var(--cyan);
           font-size: 0.76rem;
-          font-weight: 750;
+          font-weight: 800;
           letter-spacing: 0.12em;
           text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+          content: "";
+          width: 32px;
+          height: 1px;
+          background: linear-gradient(90deg, var(--accent), var(--cyan));
         }
 
         h1,
@@ -453,17 +580,17 @@ export default function Home() {
         }
 
         h1 {
-          margin-bottom: 24px;
-          max-width: 760px;
-          font-size: clamp(3.5rem, 8vw, 6.8rem);
-          line-height: 0.94;
+          margin-bottom: 26px;
+          max-width: 820px;
+          font-size: clamp(3.3rem, 6.8vw, 6.1rem);
+          line-height: 0.96;
           letter-spacing: 0;
         }
 
         h1 span {
           display: block;
           color: transparent;
-          background: linear-gradient(135deg, #f4f7fb 10%, var(--cyan) 48%, var(--blue) 92%);
+          background: linear-gradient(135deg, #f4f7fb 8%, var(--cyan) 46%, var(--blue) 72%, var(--accent) 100%);
           background-clip: text;
           -webkit-background-clip: text;
         }
@@ -471,7 +598,7 @@ export default function Home() {
         .hero-sub {
           max-width: 650px;
           color: var(--muted);
-          font-size: 1.16rem;
+          font-size: clamp(1.05rem, 1.6vw, 1.22rem);
           line-height: 1.72;
         }
 
@@ -479,54 +606,61 @@ export default function Home() {
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
-          margin: 34px 0 42px;
+          margin: 34px 0 38px;
         }
 
         .hero-stats {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 12px;
-          max-width: 680px;
-        }
-
-        .hero-stats div,
-        .mini-row div,
-        .feature-card,
-        .availability-note,
-        .schools-panel {
-          border: 1px solid var(--line);
-          background: rgba(255, 255, 255, 0.045);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          max-width: 700px;
         }
 
         .hero-stats div {
-          min-height: 104px;
-          border-radius: 8px;
+          min-height: 106px;
+          border-radius: 18px;
           padding: 18px;
+          border: 1px solid var(--line);
+          background: rgba(255, 255, 255, 0.045);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          transition: transform 180ms ease, border-color 180ms ease;
+        }
+
+        .hero-stats div:hover {
+          transform: translateY(-3px);
+          border-color: rgba(255, 209, 102, 0.35);
         }
 
         .hero-stats strong {
           display: block;
           margin-bottom: 8px;
           color: var(--text);
-          font-size: 1.48rem;
+          font-size: 1.5rem;
         }
 
         .hero-stats span {
           color: var(--soft);
           font-size: 0.9rem;
-          line-height: 1.4;
+          line-height: 1.42;
+        }
+
+        .hero-visual {
+          position: relative;
+          min-height: 620px;
         }
 
         .product-shell {
           position: relative;
+          z-index: 2;
           border: 1px solid var(--line-strong);
-          border-radius: 8px;
-          padding: 20px;
+          border-radius: 28px;
+          padding: 22px;
           background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
-            rgba(13, 19, 32, 0.86);
-          box-shadow: 0 36px 100px rgba(0, 0, 0, 0.35);
+            linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
+            rgba(13, 19, 32, 0.88);
+          box-shadow: var(--shadow);
+          backdrop-filter: blur(18px);
+          overflow: hidden;
         }
 
         .product-shell::before {
@@ -534,32 +668,102 @@ export default function Home() {
           position: absolute;
           inset: -1px;
           z-index: -1;
-          border-radius: 8px;
-          background: linear-gradient(135deg, rgba(79, 209, 197, 0.36), rgba(255, 184, 107, 0.12), rgba(121, 167, 255, 0.24));
+          border-radius: 28px;
+          background: linear-gradient(135deg, rgba(79, 209, 197, 0.38), rgba(255, 209, 102, 0.18), rgba(121, 167, 255, 0.28));
+        }
+
+        .product-shell::after {
+          content: "";
+          position: absolute;
+          inset: auto -20% -28% 20%;
+          height: 230px;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.24), transparent 64%);
+          pointer-events: none;
         }
 
         .window-bar {
           display: flex;
           gap: 8px;
-          margin-bottom: 18px;
+          margin-bottom: 22px;
         }
 
         .window-bar span {
           width: 10px;
           height: 10px;
-          border-radius: 99px;
+          border-radius: 999px;
           background: var(--line-strong);
+        }
+
+        .window-bar span:nth-child(1) {
+          background: var(--orange);
+        }
+
+        .window-bar span:nth-child(2) {
+          background: var(--accent);
+        }
+
+        .window-bar span:nth-child(3) {
+          background: var(--green);
+        }
+
+        .learning-map {
+          position: absolute;
+          top: 56px;
+          right: 28px;
+          width: 132px;
+          height: 84px;
+          opacity: 0.74;
+          background:
+            linear-gradient(90deg, transparent 18px, rgba(79, 209, 197, 0.36) 18px 20px, transparent 20px 62px, rgba(255, 209, 102, 0.32) 62px 64px, transparent 64px),
+            linear-gradient(18deg, transparent 0 46%, rgba(121, 167, 255, 0.34) 46% 48%, transparent 48%);
+        }
+
+        .learning-map span,
+        .pathway-orbit span,
+        .trust-map span {
+          position: absolute;
+          width: 13px;
+          height: 13px;
+          border-radius: 999px;
+          background: var(--accent);
+          box-shadow: 0 0 0 7px rgba(255, 209, 102, 0.1);
+        }
+
+        .learning-map span:nth-child(1) {
+          top: 4px;
+          left: 11px;
+        }
+
+        .learning-map span:nth-child(2) {
+          top: 34px;
+          left: 58px;
+          background: var(--cyan);
+        }
+
+        .learning-map span:nth-child(3) {
+          top: 18px;
+          right: 12px;
+          background: var(--blue);
+        }
+
+        .learning-map span:nth-child(4) {
+          bottom: 2px;
+          right: 42px;
+          background: var(--green);
         }
 
         .student-card,
         .answer-card {
-          border-radius: 8px;
-          padding: 22px;
+          position: relative;
+          z-index: 1;
+          border-radius: 22px;
+          padding: 24px;
         }
 
         .student-card {
-          background: linear-gradient(135deg, rgba(121, 167, 255, 0.22), rgba(79, 209, 197, 0.08));
-          border: 1px solid rgba(121, 167, 255, 0.2);
+          margin-right: 36px;
+          border: 1px solid rgba(121, 167, 255, 0.25);
+          background: linear-gradient(135deg, rgba(121, 167, 255, 0.24), rgba(79, 209, 197, 0.1));
         }
 
         .card-kicker,
@@ -567,31 +771,32 @@ export default function Home() {
           margin-bottom: 10px;
           color: var(--cyan);
           font-size: 0.76rem;
-          font-weight: 700;
+          font-weight: 780;
           text-transform: uppercase;
           letter-spacing: 0.08em;
         }
 
         .student-card h2 {
           margin-bottom: 12px;
-          font-size: clamp(1.4rem, 3vw, 2.1rem);
+          max-width: 420px;
+          font-size: clamp(1.45rem, 3vw, 2.18rem);
           line-height: 1.08;
         }
 
         .student-card p,
         .answer-card li,
-        .availability-note p,
-        .schools-panel p,
-        .schools-panel li,
+        .guidance-card p,
+        .schools-copy p,
+        .trust-panel li,
         .feature-card p {
           color: var(--muted);
           line-height: 1.65;
         }
 
         .answer-card {
-          margin-top: 14px;
-          background: rgba(7, 10, 18, 0.58);
+          margin: 16px 0 0 34px;
           border: 1px solid var(--line);
+          background: rgba(7, 10, 18, 0.62);
         }
 
         .answer-head {
@@ -606,6 +811,7 @@ export default function Home() {
           border-radius: 50%;
           background: var(--green);
           box-shadow: 0 0 0 8px rgba(126, 231, 135, 0.1);
+          animation: pulse 2.2s ease-in-out infinite;
         }
 
         .answer-card ol {
@@ -618,15 +824,19 @@ export default function Home() {
         }
 
         .mini-row {
+          position: relative;
+          z-index: 1;
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 12px;
-          margin-top: 14px;
+          margin-top: 16px;
         }
 
         .mini-row div {
-          border-radius: 8px;
-          padding: 16px;
+          border-radius: 18px;
+          padding: 17px;
+          border: 1px solid var(--line);
+          background: rgba(255, 255, 255, 0.045);
         }
 
         .mini-row span {
@@ -637,70 +847,141 @@ export default function Home() {
         }
 
         .mini-row strong {
-          color: var(--orange);
+          color: var(--accent);
           font-size: 1rem;
         }
 
-        .availability,
-        .features,
-        .how,
-        .schools {
-          padding: 92px 0;
+        .pathway-orbit {
+          position: absolute;
+          inset: 18px -14px -18px 38px;
+          border: 1px solid rgba(79, 209, 197, 0.18);
+          border-radius: 42px;
+          transform: rotate(-4deg);
+        }
+
+        .pathway-orbit::before {
+          content: "";
+          position: absolute;
+          inset: 50px 38px 60px 28px;
+          border: 1px dashed rgba(255, 209, 102, 0.28);
+          border-radius: 36px;
+        }
+
+        .pathway-orbit span:nth-child(1) {
+          top: 42px;
+          left: 24px;
+        }
+
+        .pathway-orbit span:nth-child(2) {
+          right: 46px;
+          top: 144px;
+          background: var(--cyan);
+        }
+
+        .pathway-orbit span:nth-child(3) {
+          left: 122px;
+          bottom: 34px;
+          background: var(--blue);
+        }
+
+        .section-band {
+          padding: 104px 0;
           border-top: 1px solid var(--line);
         }
 
+        .section-inner {
+          position: relative;
+        }
+
+        .section-heading {
+          max-width: 810px;
+          margin-bottom: 42px;
+        }
+
+        h2 {
+          margin-bottom: 0;
+          font-size: clamp(2.1rem, 4.3vw, 4rem);
+          line-height: 1.02;
+          letter-spacing: 0;
+        }
+
+        .glass-card {
+          border: 1px solid var(--line);
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
+            var(--panel);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 24px 70px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(14px);
+          transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .glass-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(255, 209, 102, 0.32);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 30px 86px rgba(0, 0, 0, 0.26);
+        }
+
         .availability {
-          padding-top: 72px;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent);
         }
 
         .availability-inner {
           display: grid;
           grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1fr);
-          gap: 42px;
+          gap: 44px;
           align-items: center;
         }
 
-        .availability-copy p:not(.eyebrow) {
+        .availability-copy p:not(.eyebrow),
+        .how-copy {
           max-width: 620px;
           margin: 22px 0 0;
           color: var(--muted);
           font-size: 1rem;
-          line-height: 1.7;
+          line-height: 1.72;
         }
 
         .availability-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
+          gap: 16px;
         }
 
         .availability-card {
-          min-height: 220px;
-          border: 1px solid var(--line);
-          border-radius: 8px;
-          padding: 26px;
-          background:
-            linear-gradient(135deg, rgba(126, 231, 135, 0.11), rgba(79, 209, 197, 0.04)),
-            rgba(255, 255, 255, 0.035);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          position: relative;
+          min-height: 184px;
+          border-radius: 24px;
+          padding: 28px 30px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .availability-card::before {
+          content: "";
+          position: absolute;
+          inset: auto 28px 32px;
+          height: 2px;
+          background: linear-gradient(90deg, var(--accent), var(--cyan), transparent);
         }
 
         .availability-card span {
           display: inline-flex;
-          margin-bottom: 42px;
+          margin-bottom: 28px;
           color: var(--cyan);
           font-size: 0.82rem;
-          font-weight: 800;
+          font-weight: 820;
           letter-spacing: 0.08em;
           text-transform: uppercase;
         }
 
         .availability-card h3 {
+          max-width: 280px;
           margin-bottom: 10px;
           color: var(--text);
-          font-size: clamp(1.35rem, 2.4vw, 2rem);
-          line-height: 1.08;
+          font-size: clamp(1.35rem, 1.9vw, 1.72rem);
+          line-height: 1.12;
         }
 
         .availability-card p {
@@ -710,42 +991,70 @@ export default function Home() {
           line-height: 1.5;
         }
 
-        .section-heading {
-          max-width: 780px;
-          margin-bottom: 36px;
-        }
-
-        h2 {
-          margin-bottom: 0;
-          font-size: clamp(2rem, 4vw, 3.7rem);
-          line-height: 1.03;
-          letter-spacing: 0;
-        }
-
         .feature-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 14px;
+          gap: 16px;
         }
 
         .feature-card {
-          min-height: 292px;
-          border-radius: 8px;
+          position: relative;
+          min-height: 286px;
+          border-radius: 24px;
           padding: 24px;
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+          overflow: hidden;
         }
 
-        .feature-card span {
-          display: inline-flex;
-          margin-bottom: 34px;
-          color: var(--cyan);
-          font-weight: 800;
+        .feature-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background:
+            linear-gradient(145deg, rgba(79, 209, 197, 0.13), transparent 34%),
+            radial-gradient(circle at 82% 20%, rgba(255, 209, 102, 0.12), transparent 7rem);
+          opacity: 0;
+          transition: opacity 180ms ease;
+        }
+
+        .feature-card:hover::after {
+          opacity: 1;
+        }
+
+        .feature-top {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 38px;
+        }
+
+        .feature-top span {
+          color: var(--accent);
+          font-weight: 860;
+        }
+
+        .feature-top small {
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          padding: 6px 10px;
+          color: var(--soft);
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+
+        .feature-card h3,
+        .feature-card p {
+          position: relative;
+          z-index: 1;
         }
 
         .feature-card h3 {
           margin-bottom: 14px;
-          font-size: 1.1rem;
-          line-height: 1.25;
+          font-size: 1.16rem;
+          line-height: 1.24;
         }
 
         .feature-card p {
@@ -756,65 +1065,80 @@ export default function Home() {
         .schools-inner {
           display: grid;
           grid-template-columns: 0.9fr 1.1fr;
-          gap: 56px;
+          gap: 64px;
           align-items: start;
         }
 
-        .steps {
-          display: grid;
-          gap: 14px;
-        }
-
-        .step {
-          display: grid;
-          grid-template-columns: 72px 1fr;
-          align-items: start;
-          min-height: 132px;
-          border: 1px solid var(--line);
-          border-radius: 8px;
-          padding: 22px;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
-        }
-
-        .step span {
-          color: var(--cyan);
-          font-weight: 800;
-        }
-
-        .how-copy {
-          max-width: 520px;
-          margin-top: 22px;
-          color: var(--muted);
-          font-size: 1rem;
-          line-height: 1.7;
-        }
-
-        .availability-note {
+        .guidance-card {
           display: grid;
           gap: 18px;
-          max-width: 560px;
-          margin-top: 28px;
-          border-radius: 8px;
-          padding: 22px;
-          background: linear-gradient(135deg, rgba(126, 231, 135, 0.09), rgba(79, 209, 197, 0.04));
+          max-width: 600px;
+          margin-top: 30px;
+          border-radius: 24px;
+          padding: 24px;
         }
 
-        .availability-note strong {
+        .guidance-card strong {
           display: block;
           margin-bottom: 8px;
           color: var(--text);
-          font-size: 0.96rem;
+          font-size: 0.97rem;
         }
 
-        .availability-note p {
+        .guidance-card p {
           margin-bottom: 0;
           font-size: 0.94rem;
+        }
+
+        .steps {
+          position: relative;
+          display: grid;
+          gap: 18px;
+          padding-left: 34px;
+        }
+
+        .steps::before {
+          content: "";
+          position: absolute;
+          top: 34px;
+          bottom: 34px;
+          left: 12px;
+          width: 2px;
+          background: linear-gradient(180deg, var(--accent), var(--cyan), var(--blue));
+          opacity: 0.7;
+        }
+
+        .step {
+          position: relative;
+          display: grid;
+          grid-template-columns: 76px 1fr;
+          align-items: start;
+          min-height: 144px;
+          border-radius: 24px;
+          padding: 24px;
+        }
+
+        .step::before {
+          content: "";
+          position: absolute;
+          top: 32px;
+          left: -29px;
+          width: 16px;
+          height: 16px;
+          border-radius: 999px;
+          background: var(--accent);
+          box-shadow: 0 0 0 8px rgba(255, 209, 102, 0.1);
+        }
+
+        .step span {
+          color: var(--accent);
+          font-weight: 860;
         }
 
         .step h3 {
           margin-bottom: 10px;
           color: var(--text);
-          font-size: 1.16rem;
+          font-size: 1.18rem;
           line-height: 1.25;
         }
 
@@ -825,38 +1149,99 @@ export default function Home() {
           line-height: 1.62;
         }
 
-        .schools-panel {
-          border-radius: 8px;
-          padding: 30px;
+        .schools {
+          padding-bottom: 116px;
         }
 
-        .schools-panel ul {
+        .schools-copy p {
+          max-width: 560px;
+          margin: 24px 0 30px;
+        }
+
+        .trust-panel {
+          position: relative;
+          min-height: 410px;
+          border-radius: 28px;
+          padding: 30px;
+          overflow: hidden;
+        }
+
+        .trust-panel::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(circle at 16% 16%, rgba(255, 209, 102, 0.16), transparent 9rem),
+            radial-gradient(circle at 88% 22%, rgba(79, 209, 197, 0.14), transparent 11rem);
+          pointer-events: none;
+        }
+
+        .trust-panel ul {
+          position: relative;
+          z-index: 1;
           display: grid;
-          gap: 12px;
-          margin: 26px 0 30px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+          margin: 0;
           padding: 0;
           list-style: none;
         }
 
-        .schools-panel li {
+        .trust-panel li {
+          min-height: 142px;
+          border: 1px solid var(--line);
+          border-radius: 22px;
+          padding: 48px 18px 18px;
+          background: rgba(7, 10, 18, 0.38);
           position: relative;
-          padding-left: 24px;
         }
 
-        .schools-panel li::before {
+        .trust-panel li::before {
           content: "";
           position: absolute;
-          top: 0.72em;
-          left: 0;
-          width: 9px;
-          height: 9px;
-          border-radius: 50%;
-          background: var(--green);
+          top: 18px;
+          left: 18px;
+          width: 18px;
+          height: 18px;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle at 50% 50%, var(--accent) 0 4px, transparent 5px),
+            rgba(79, 209, 197, 0.14);
+          border: 1px solid rgba(255, 209, 102, 0.24);
+        }
+
+        .trust-map {
+          position: absolute;
+          inset: 48px 46px auto auto;
+          width: 164px;
+          height: 118px;
+          opacity: 0.42;
+          border-top: 1px dashed rgba(79, 209, 197, 0.5);
+          border-right: 1px dashed rgba(255, 209, 102, 0.42);
+          border-radius: 0 42px 0 0;
+        }
+
+        .trust-map span:nth-child(1) {
+          top: -7px;
+          left: 4px;
+        }
+
+        .trust-map span:nth-child(2) {
+          right: -7px;
+          top: 36px;
+          background: var(--cyan);
+        }
+
+        .trust-map span:nth-child(3) {
+          right: 42px;
+          bottom: -4px;
+          background: var(--blue);
         }
 
         .footer {
           border-top: 1px solid var(--line);
           padding: 34px 0;
+          background: rgba(5, 8, 18, 0.55);
         }
 
         .footer-inner {
@@ -872,17 +1257,70 @@ export default function Home() {
           font-size: 0.88rem;
         }
 
-        .footer a {
-          color: var(--muted);
-          font-size: 0.88rem;
-          text-decoration: none;
+        .reveal {
+          animation: revealUp 700ms ease both;
         }
 
-        .footer a:hover {
-          color: var(--text);
+        @supports (animation-timeline: view()) {
+          .reveal {
+            animation-timeline: view();
+            animation-range: entry 8% cover 28%;
+          }
         }
 
-        @media (max-width: 980px) {
+        @keyframes revealUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes ambientShift {
+          from {
+            transform: translate3d(-1%, 0, 0) scale(1);
+          }
+          to {
+            transform: translate3d(2%, 4%, 0) scale(1.06);
+          }
+        }
+
+        @keyframes patternDrift {
+          from {
+            transform: translateY(0);
+          }
+          to {
+            transform: translateY(18px);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            box-shadow: 0 0 0 8px rgba(126, 231, 135, 0.1);
+          }
+          50% {
+            box-shadow: 0 0 0 13px rgba(126, 231, 135, 0.04);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          html {
+            scroll-behavior: auto;
+          }
+
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+          }
+        }
+
+        @media (max-width: 1080px) {
           .hero-grid,
           .availability-inner,
           .how-inner,
@@ -890,16 +1328,17 @@ export default function Home() {
             grid-template-columns: 1fr;
           }
 
+          .hero-visual {
+            min-height: auto;
+            max-width: 680px;
+          }
+
           .feature-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
-
-          .product-shell {
-            max-width: 620px;
-          }
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 760px) {
           .nav-inner,
           .section-inner,
           .hero-grid,
@@ -917,30 +1356,89 @@ export default function Home() {
 
           .btn-nav {
             margin-left: auto;
-            padding: 0 13px;
+            padding: 0 16px;
           }
 
           .hero {
-            padding-top: 120px;
+            min-height: auto;
+            padding: 118px 0 74px;
           }
 
           h1 {
-            font-size: clamp(3rem, 17vw, 4.5rem);
+            font-size: clamp(2.75rem, 13vw, 3.95rem);
           }
 
+          .section-band {
+            padding: 78px 0;
+          }
+
+          .hero-actions,
           .hero-stats,
           .availability-grid,
           .feature-grid,
-          .mini-row {
+          .mini-row,
+          .trust-panel ul {
             grid-template-columns: 1fr;
+          }
+
+          .hero-actions {
+            display: grid;
+          }
+
+          .hero-actions .btn {
+            width: 100%;
+          }
+
+          .product-shell {
+            border-radius: 22px;
+            padding: 16px;
+          }
+
+          .student-card,
+          .answer-card {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 20px;
+          }
+
+          .pathway-orbit,
+          .learning-map {
+            display: none;
           }
 
           .feature-card {
             min-height: auto;
           }
 
+          .steps {
+            padding-left: 24px;
+          }
+
           .step {
             grid-template-columns: 52px 1fr;
+            padding: 22px;
+          }
+
+          .trust-panel {
+            min-height: auto;
+            padding: 18px;
+          }
+
+          .trust-panel li {
+            min-height: auto;
+          }
+
+          .availability-card {
+            min-height: 164px;
+            padding: 24px;
+          }
+
+          .availability-card span {
+            margin-bottom: 22px;
+          }
+
+          .availability-card h3 {
+            max-width: none;
           }
 
           .footer-inner {
