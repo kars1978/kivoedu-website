@@ -7,27 +7,27 @@ const loginUrl = "https://app.kivoedu.ai/login";
 const features = [
   {
     k: "01",
-    title: "Curriculum-aware answers",
-    desc: "KivoEdu responds from your approved lessons, notes, syllabi, and question banks so students learn the way your school teaches.",
-    marker: "Content",
+    title: "Understand tough topics step by step",
+    desc: "Students get guided explanations that help them work through difficult concepts without jumping straight to the final answer.",
+    marker: "Explain",
   },
   {
     k: "02",
-    title: "Step-by-step tutoring",
-    desc: "Students get guided explanations for math, science, reading, and revision without jumping straight to a final answer.",
-    marker: "Guided",
-  },
-  {
-    k: "03",
-    title: "Adaptive practice",
-    desc: "Generate quizzes, chapter checks, and exam-style practice from the exact material students are working through.",
+    title: "Practice from your actual chapters",
+    desc: "Create chapter checks, revision prompts, and exam-style practice from the curriculum material students are already studying.",
     marker: "Practice",
   },
   {
+    k: "03",
+    title: "Revise without leaving your syllabus",
+    desc: "Keep revision focused on supported board, grade, subject, and curriculum content instead of generic internet answers.",
+    marker: "Revise",
+  },
+  {
     k: "04",
-    title: "Teacher visibility",
-    desc: "Spot common questions, stuck topics, and progress patterns so teachers can support the class with better context.",
-    marker: "Insight",
+    title: "Learn with curriculum-grounded AI support",
+    desc: "Give students a study companion that stays aligned to maintained curriculum coverage and keeps teachers in the loop.",
+    marker: "Support",
   },
 ];
 
@@ -60,10 +60,10 @@ const steps = [
 ];
 
 const trustItems = [
-  "Works with supported curriculum in the KivoEdu database",
-  "Coverage is organized by country, board, grade, and subject",
-  "New curriculum coverage is added and updated by KivoEdu",
-  "Keeps student data private and secure",
+  "Teacher control over how curriculum-grounded support is introduced",
+  "Curriculum alignment by country, board, grade, and subject",
+  "Privacy-conscious student support for study and revision workflows",
+  "Maintained coverage that can expand as new curriculum content is added",
 ];
 
 export const metadata: Metadata = {
@@ -111,10 +111,7 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy reveal">
             <p className="eyebrow">Curriculum-grounded AI tutoring</p>
-            <h1>
-              AI tutoring built
-              <span> for students.</span>
-            </h1>
+            <h1>AI tutoring grounded in the curriculum students actually study.</h1>
             <p className="hero-sub">
               KivoEdu helps students ask questions, practice tough topics, and
               revise with a tutor grounded in the curriculum content they are
@@ -127,25 +124,17 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Login to KivoEdu
+                Try KivoEdu
               </a>
               <a href="#availability" className="btn btn-secondary">
                 View availability
               </a>
             </div>
-            <div className="hero-stats" aria-label="Current KivoEdu availability">
-              <div>
-                <strong>CBSE</strong>
-                <span>Grades 9 and 10 Math and Science</span>
-              </div>
-              <div>
-                <strong>MSB</strong>
-                <span>Grade 9 Math and Science</span>
-              </div>
-              <div>
-                <strong>24/7</strong>
-                <span>guided study support</span>
-              </div>
+            <div className="support-strip" aria-label="Currently supported curriculum coverage">
+              <span>Currently supports</span>
+              <strong>CBSE</strong>
+              <strong>Maharashtra State Board</strong>
+              <em>More curriculum coverage expanding over time</em>
             </div>
           </div>
 
@@ -180,6 +169,12 @@ export default function Home() {
                   <span className="pulse" />
                   <p>Grounded response</p>
                 </div>
+                <div className="preview-actions" aria-label="Example tutoring modes">
+                  <span>Hint mode</span>
+                  <span>Practice question</span>
+                  <span>Explain simpler</span>
+                  <span>Check understanding</span>
+                </div>
                 <ol>
                   <li>Find two numbers that multiply to the constant.</li>
                   <li>Check they add to the middle coefficient.</li>
@@ -201,30 +196,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="availability section-band" id="availability">
-        <div className="section-inner availability-inner reveal">
-          <div className="availability-copy">
-            <p className="eyebrow">Current availability</p>
-            <h2>Live curriculum coverage for key Indian boards.</h2>
-            <p>
-              KivoEdu currently supports CBSE Grades 9 and 10 for Math and
-              Science, plus Maharashtra State Board Grade 9 for Math and
-              Science. More boards, grades, and subjects will be added as
-              curriculum coverage expands.
-            </p>
-          </div>
-          <div className="availability-grid" aria-label="Current KivoEdu availability">
-            {availability.map((item) => (
-              <article className="availability-card glass-card" key={item.board}>
-                <span>{item.board}</span>
-                <h3>{item.grades}</h3>
-                <p>{item.subjects}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="features section-band" id="features">
         <div className="section-inner reveal">
           <div className="section-heading">
@@ -240,6 +211,29 @@ export default function Home() {
                 </div>
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="availability section-band" id="availability">
+        <div className="section-inner availability-inner reveal">
+          <div className="availability-copy">
+            <p className="eyebrow">Current availability</p>
+            <h2>Curriculum coverage students can study from today.</h2>
+            <p>
+              KivoEdu currently supports CBSE Grades 9 and 10 for Math and
+              Science, plus Maharashtra State Board Grade 9 for Math and
+              Science. Additional curriculum coverage is expanding over time.
+            </p>
+          </div>
+          <div className="availability-grid" aria-label="Current KivoEdu availability">
+            {availability.map((item) => (
+              <article className="availability-card glass-card" key={item.board}>
+                <span>{item.board}</span>
+                <h3>{item.grades}</h3>
+                <p>{item.subjects}</p>
               </article>
             ))}
           </div>
@@ -297,8 +291,8 @@ export default function Home() {
             <p>
               KivoEdu does not replace teachers or rewrite your curriculum. It
               extends supported curriculum content from our database into a
-              private AI tutor students can rely on after class, during study
-              hall, or while preparing for exams.
+              privacy-conscious AI tutor students can use after class, during
+              study hall, or while preparing for exams.
             </p>
             <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
               Contact KivoEdu
@@ -316,6 +310,18 @@ export default function Home() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="final-cta section-band">
+        <div className="section-inner final-cta-inner reveal">
+          <div>
+            <p className="eyebrow">For schools</p>
+            <h2>Bring curriculum-grounded AI tutoring to your school.</h2>
+          </div>
+          <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
+            Contact KivoEdu
+          </a>
         </div>
       </section>
 
@@ -581,8 +587,8 @@ export default function Home() {
 
         h1 {
           margin-bottom: 26px;
-          max-width: 820px;
-          font-size: clamp(2.8rem, 5.4vw, 4.9rem);
+          max-width: 900px;
+          font-size: clamp(2.55rem, 4.8vw, 4.35rem);
           line-height: 1;
           letter-spacing: 0;
         }
@@ -609,39 +615,49 @@ export default function Home() {
           margin: 34px 0 38px;
         }
 
-        .hero-stats {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 12px;
-          max-width: 700px;
-        }
-
-        .hero-stats div {
-          min-height: 106px;
-          border-radius: 18px;
-          padding: 18px;
+        .support-strip {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 9px;
+          max-width: 760px;
+          margin-top: 2px;
           border: 1px solid var(--line);
+          border-radius: 22px;
+          padding: 12px;
           background: rgba(255, 255, 255, 0.045);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-          transition: transform 180ms ease, border-color 180ms ease;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
         }
 
-        .hero-stats div:hover {
-          transform: translateY(-3px);
-          border-color: rgba(255, 209, 102, 0.35);
+        .support-strip span,
+        .support-strip strong,
+        .support-strip em {
+          display: inline-flex;
+          align-items: center;
+          min-height: 30px;
+          border-radius: 999px;
+          padding: 0 11px;
+          font-size: 0.82rem;
+          line-height: 1;
         }
 
-        .hero-stats strong {
-          display: block;
-          margin-bottom: 8px;
+        .support-strip span {
+          color: var(--accent);
+          font-weight: 820;
+          background: rgba(255, 209, 102, 0.1);
+        }
+
+        .support-strip strong {
           color: var(--text);
-          font-size: 1.5rem;
+          font-weight: 760;
+          background: rgba(79, 209, 197, 0.09);
+          border: 1px solid rgba(79, 209, 197, 0.16);
         }
 
-        .hero-stats span {
+        .support-strip em {
           color: var(--soft);
-          font-size: 0.9rem;
-          line-height: 1.42;
+          font-style: normal;
+          background: rgba(255, 255, 255, 0.04);
         }
 
         .hero-visual {
@@ -805,6 +821,26 @@ export default function Home() {
           gap: 10px;
         }
 
+        .preview-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin: 0 0 18px;
+        }
+
+        .preview-actions span {
+          display: inline-flex;
+          align-items: center;
+          min-height: 30px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 999px;
+          padding: 0 10px;
+          color: var(--muted);
+          background: rgba(255, 255, 255, 0.04);
+          font-size: 0.78rem;
+          font-weight: 700;
+        }
+
         .pulse {
           width: 10px;
           height: 10px;
@@ -927,9 +963,8 @@ export default function Home() {
 
         .availability-inner {
           display: grid;
-          grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1fr);
-          gap: 44px;
-          align-items: center;
+          gap: 34px;
+          align-items: start;
         }
 
         .availability-copy p:not(.eyebrow),
@@ -977,10 +1012,10 @@ export default function Home() {
         }
 
         .availability-card h3 {
-          max-width: 280px;
+          max-width: 290px;
           margin-bottom: 10px;
           color: var(--text);
-          font-size: clamp(1.35rem, 1.9vw, 1.72rem);
+          font-size: clamp(1.18rem, 1.65vw, 1.55rem);
           line-height: 1.12;
         }
 
@@ -1150,7 +1185,7 @@ export default function Home() {
         }
 
         .schools {
-          padding-bottom: 116px;
+          padding-bottom: 96px;
         }
 
         .schools-copy p {
@@ -1236,6 +1271,32 @@ export default function Home() {
           right: 42px;
           bottom: -4px;
           background: var(--blue);
+        }
+
+        .final-cta {
+          padding: 76px 0;
+          background:
+            radial-gradient(circle at 82% 44%, rgba(255, 209, 102, 0.12), transparent 18rem),
+            linear-gradient(180deg, rgba(79, 209, 197, 0.055), rgba(255, 255, 255, 0.02));
+        }
+
+        .final-cta-inner {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 28px;
+          align-items: center;
+          border: 1px solid var(--line);
+          border-radius: 30px;
+          padding: 34px;
+          background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.028)),
+            rgba(13, 19, 32, 0.72);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 26px 80px rgba(0, 0, 0, 0.22);
+        }
+
+        .final-cta h2 {
+          max-width: 760px;
+          font-size: clamp(2rem, 3.6vw, 3.4rem);
         }
 
         .footer {
@@ -1365,7 +1426,7 @@ export default function Home() {
           }
 
           h1 {
-            font-size: clamp(2.35rem, 10.5vw, 3.25rem);
+            font-size: clamp(2.2rem, 9.2vw, 3.05rem);
           }
 
           .section-band {
@@ -1373,7 +1434,6 @@ export default function Home() {
           }
 
           .hero-actions,
-          .hero-stats,
           .availability-grid,
           .feature-grid,
           .mini-row,
@@ -1387,6 +1447,10 @@ export default function Home() {
 
           .hero-actions .btn {
             width: 100%;
+          }
+
+          .support-strip {
+            border-radius: 18px;
           }
 
           .product-shell {
@@ -1426,6 +1490,15 @@ export default function Home() {
 
           .trust-panel li {
             min-height: auto;
+          }
+
+          .final-cta-inner {
+            grid-template-columns: 1fr;
+            padding: 24px;
+          }
+
+          .final-cta-inner .btn {
+            width: 100%;
           }
 
           .availability-card {
