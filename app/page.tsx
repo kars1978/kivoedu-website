@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
 
 const loginUrl = "https://app.kivoedu.ai/login";
+const publicFaqs = getFaqsForSurface("public");
+const publicFaqCategories = getFaqCategories(publicFaqs);
 
 const features = [
   {
@@ -85,6 +88,10 @@ export const metadata: Metadata = {
     "KivoEdu is a curriculum-grounded AI tutor that helps students ask questions, practice, and revise with content approved by their school.",
 };
 
+function slug(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 export default function Home() {
   return (
     <main className="root">
@@ -106,6 +113,7 @@ export default function Home() {
             <a href="#availability">Availability</a>
             <a href="#how">How it works</a>
             <a href="#schools">Schools</a>
+            <a href="#faq">FAQ</a>
             <Link href="/blog">Blog</Link>
           </div>
           <a
@@ -358,6 +366,53 @@ export default function Home() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq section-band" id="faq">
+        <div className="section-inner faq-inner reveal">
+          <div className="section-heading faq-heading">
+            <p className="eyebrow">FAQ</p>
+            <h2>Questions parents, students, and schools usually ask.</h2>
+            <p>
+              These answers stay synced with the in-app Help & Support content,
+              with public wording for people evaluating KivoEdu before they log in.
+            </p>
+          </div>
+          <div className="faq-layout">
+            <aside className="faq-topics glass-card" aria-label="FAQ topics">
+              <span>Topics</span>
+              {publicFaqCategories.map((category) => (
+                <a href={`#faq-${slug(category)}`} key={category}>
+                  {category}
+                </a>
+              ))}
+            </aside>
+            <div className="faq-list">
+              {publicFaqCategories.map((category) => (
+                <section
+                  className="faq-group glass-card"
+                  id={`faq-${slug(category)}`}
+                  key={category}
+                >
+                  <div className="faq-group-head">
+                    <h3>{category}</h3>
+                    <span>
+                      {publicFaqs.filter((faq) => faq.cat === category).length}
+                    </span>
+                  </div>
+                  {publicFaqs
+                    .filter((faq) => faq.cat === category)
+                    .map((faq) => (
+                      <details className="faq-item" key={faq.q}>
+                        <summary>{faq.q}</summary>
+                        <p>{faq.a}</p>
+                      </details>
+                    ))}
+                </section>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1505,6 +1560,154 @@ export default function Home() {
           background: var(--blue);
         }
 
+        .faq {
+          background:
+            radial-gradient(circle at 18% 12%, rgba(255, 209, 102, 0.1), transparent 17rem),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(79, 209, 197, 0.035));
+        }
+
+        .faq-heading p:not(.eyebrow) {
+          max-width: 720px;
+          margin: 22px 0 0;
+          color: var(--muted);
+          font-size: 1rem;
+          line-height: 1.72;
+        }
+
+        .faq-layout {
+          display: grid;
+          grid-template-columns: 260px minmax(0, 1fr);
+          gap: 22px;
+          align-items: start;
+        }
+
+        .faq-topics {
+          position: sticky;
+          top: 104px;
+          display: grid;
+          gap: 10px;
+          border-radius: 22px;
+          padding: 18px;
+        }
+
+        .faq-topics span {
+          color: var(--accent);
+          font-size: 0.78rem;
+          font-weight: 850;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .faq-topics a {
+          display: flex;
+          min-height: 42px;
+          align-items: center;
+          border: 1px solid var(--line);
+          border-radius: 14px;
+          padding: 0 13px;
+          color: var(--muted);
+          background: rgba(255, 255, 255, 0.035);
+          font-size: 0.9rem;
+          font-weight: 720;
+          text-decoration: none;
+          transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+        }
+
+        .faq-topics a:hover {
+          border-color: rgba(255, 209, 102, 0.34);
+          color: var(--text);
+          background: rgba(255, 255, 255, 0.06);
+        }
+
+        .faq-list {
+          display: grid;
+          gap: 18px;
+          min-width: 0;
+        }
+
+        .faq-group {
+          scroll-margin-top: 104px;
+          border-radius: 24px;
+          padding: 24px;
+        }
+
+        .faq-group-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+
+        .faq-group-head h3 {
+          margin: 0;
+          color: var(--text);
+          font-size: 1.18rem;
+          line-height: 1.25;
+        }
+
+        .faq-group-head span {
+          display: inline-flex;
+          min-width: 30px;
+          height: 30px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(255, 209, 102, 0.24);
+          border-radius: 999px;
+          color: var(--accent);
+          background: rgba(255, 209, 102, 0.08);
+          font-size: 0.82rem;
+          font-weight: 850;
+        }
+
+        .faq-item {
+          border-top: 1px solid var(--line);
+        }
+
+        .faq-item summary {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 28px;
+          gap: 18px;
+          align-items: center;
+          min-height: 64px;
+          color: var(--text);
+          cursor: pointer;
+          font-weight: 760;
+          line-height: 1.42;
+          list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .faq-item summary::after {
+          content: "+";
+          display: inline-flex;
+          width: 28px;
+          height: 28px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--line);
+          border-radius: 10px;
+          color: var(--accent);
+          background: rgba(255, 255, 255, 0.04);
+          font-size: 1.05rem;
+          line-height: 1;
+        }
+
+        .faq-item[open] summary::after {
+          content: "-";
+        }
+
+        .faq-item p {
+          max-width: 780px;
+          margin: -2px 46px 20px 0;
+          color: var(--muted);
+          font-size: 0.96rem;
+          line-height: 1.68;
+        }
+
         .final-cta {
           padding: 88px 0;
           background:
@@ -1651,6 +1854,19 @@ export default function Home() {
             grid-template-columns: 1fr;
           }
 
+          .faq-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .faq-topics {
+            position: static;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .faq-topics span {
+            grid-column: 1 / -1;
+          }
+
           .hero-visual {
             min-height: auto;
             max-width: 680px;
@@ -1756,6 +1972,26 @@ export default function Home() {
 
           .trust-panel li {
             min-height: auto;
+          }
+
+          .faq-topics,
+          .faq-group {
+            border-radius: 20px;
+            padding: 18px;
+          }
+
+          .faq-topics {
+            grid-template-columns: 1fr;
+          }
+
+          .faq-item summary {
+            min-height: 58px;
+            font-size: 0.95rem;
+          }
+
+          .faq-item p {
+            margin-right: 0;
+            font-size: 0.92rem;
           }
 
           .final-cta-inner {

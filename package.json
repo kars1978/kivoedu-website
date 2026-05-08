@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync:faq": "node scripts/sync-faq.mjs",
+    "predev": "npm run sync:faq",
     "dev": "next dev",
+    "prebuild": "npm run sync:faq",
     "build": "next build",
     "start": "next start",
+    "prelint": "npm run sync:faq",
     "lint": "eslint"
   },
   "dependencies": {
