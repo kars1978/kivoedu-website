@@ -73,7 +73,7 @@ export const FAQS: KivoFaq[] = [
   {
     cat: 'Reader',
     q: 'How do I use chapter practice?',
-    a: 'Use Chapter Quiz from the Reader when you want to check understanding for the current chapter. It focuses practice around the material you are reading.',
+    a: 'Use Chapter Quiz from the Reader when you want a fast check on the chapter you are reading. It opens inside the Reader, uses multiple-choice questions from the current chapter, can show hints before you answer, and gives a score with strengths, mistakes, and retry options.',
     surfaces: ['app'],
   },
   {
@@ -125,8 +125,32 @@ export const FAQS: KivoFaq[] = [
   {
     cat: 'Quiz',
     q: 'How does Quiz work?',
-    a: 'Start a quiz to answer one question at a time. After submitting, you can compare your response with the expected answer and review your score.',
+    a: 'Kivo has two quiz flows. Quick Quiz is a configurable practice tool where you choose a chapter, number of questions, difficulty, and question types. Chapter Quiz is a shorter Reader check for the chapter currently open, focused on MCQs with hints, instant feedback, scoring, and retrying missed questions.',
     surfaces: ['app'],
+  },
+  {
+    cat: 'Quiz',
+    q: 'What is Quick Quiz?',
+    a: 'Quick Quiz is the flexible practice quiz. Open it from Practice or a subject, choose a chapter, pick 5, 10, or 15 questions, select easy, medium, or hard difficulty, and choose question types such as multiple choice, very short answer, short answer, long answer, or case-based questions. MCQs are scored automatically, and written answers can be reviewed by Kivo before the final score.',
+    surfaces: ['app', 'public'],
+    publicQ: 'What is Quick Quiz?',
+    publicA: 'Quick Quiz lets students create a chapter-focused quiz in seconds by choosing the chapter, question count, difficulty, and question types. It is designed for flexible revision and concept checks.',
+  },
+  {
+    cat: 'Quiz',
+    q: 'What is Chapter Quiz?',
+    a: 'Chapter Quiz is the quick practice check inside Reader. It uses the chapter you are currently reading, asks multiple-choice questions, lets you reveal hints before answering, shows whether each answer is correct, and summarizes your score, strengths, missed concepts, and retry options.',
+    surfaces: ['app', 'public'],
+    publicQ: 'What is Chapter Quiz?',
+    publicA: 'Chapter Quiz is a short Reader-based check for the chapter a student is studying. It focuses on multiple-choice questions, hints, quick feedback, and retrying missed questions.',
+  },
+  {
+    cat: 'Quiz',
+    q: 'How are Quick Quiz and Chapter Quiz different?',
+    a: 'Use Quick Quiz when you want control over the setup: chapter, length, difficulty, and question types. Use Chapter Quiz when you are already reading and want a fast MCQ checkpoint on that exact chapter without configuring a full practice session.',
+    surfaces: ['app', 'public'],
+    publicQ: 'How are Quick Quiz and Chapter Quiz different?',
+    publicA: 'Quick Quiz is configurable and better for planned revision. Chapter Quiz is a fast checkpoint inside Reader for the chapter currently being studied.',
   },
   {
     cat: 'Practice paper',

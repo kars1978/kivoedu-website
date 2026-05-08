@@ -76,3 +76,6 @@ Creating turbopack project { dir: 'C:\\Dev\\Projects\\kivoedu-website', testMode
 ✓ Compiled in 29ms
 ✓ Compiled in 25ms
 ✓ Compiled in 24ms
+ GET / 200 in 936ms (next.js: 156ms, application-code: 780ms)
+[browser] Image with src "/kivo_logo_transparent_bg_1.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET / 200 in 183ms (next.js: 80ms, application-code: 103ms)
