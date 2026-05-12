@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, GraduationCap, Building2 } from "lucide-react";
+import { LOGO_SRC } from "../constants";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,19 +22,41 @@ export default function ContactPage() {
   return (
     <main className="cr">
       <nav className="cn" aria-label="Primary navigation">
-        <Link href="/" className="cn-brand" aria-label="KivoEdu home">
-          <Image
-            src="/kivo_logo_transparent_bg_1.png"
-            alt="KivoEdu"
-            width={110}
-            height={42}
-            style={{ objectFit: "contain", height: "auto" }}
-            priority
-          />
-        </Link>
-        <div className="cn-links">
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
+        <div className="cn-inner">
+          <Link href="/" className="cn-brand" aria-label="KivoEdu home">
+            <Image
+              src={LOGO_SRC}
+              alt="KivoEdu"
+              width={138}
+              height={52}
+              style={{ objectFit: "contain", height: "auto" }}
+              priority
+            />
+          </Link>
+          <div className="cn-links">
+            <Link href="/#pricing">Pricing</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+          <span className="cn-sep" aria-hidden="true" />
+          <div className="cn-auth">
+            <a
+              href="https://app.kivoedu.ai/login"
+              className="cn-login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Log in
+            </a>
+            <a
+              href="https://app.kivoedu.ai/login"
+              className="cn-cta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try Kivo
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -64,7 +87,7 @@ export default function ContactPage() {
           <p className="ec-note">We usually respond as soon as possible.</p>
           <a
             href="mailto:admin@kivoedu.ai"
-            className="ec-btn"
+            className="btn-kivo"
           >
             Send an email
           </a>
@@ -142,16 +165,23 @@ export default function ContactPage() {
 
         /* ── Nav ──────────────────────────────────────────────────── */
         .cn {
-          position: relative;
-          z-index: 10;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 20;
+          border-bottom: 1px solid rgba(196, 217, 255, 0.13);
+          background: rgba(7, 10, 18, 0.74);
+          backdrop-filter: blur(18px);
+        }
+
+        .cn-inner {
           width: min(1180px, calc(100% - 48px));
           margin: 0 auto;
-          min-height: 76px;
+          height: 76px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: 24px;
-          border-bottom: 1px solid rgba(196, 217, 255, 0.1);
+          gap: 20px;
         }
 
         .cn-brand {
@@ -162,13 +192,14 @@ export default function ContactPage() {
         }
 
         .cn-links {
+          margin-left: auto;
           display: flex;
           align-items: center;
           gap: 4px;
         }
 
         .cn-links a {
-          padding: 5px 12px;
+          padding: 5px 10px;
           border-radius: 999px;
           color: #afbad0;
           font-size: 0.88rem;
@@ -181,13 +212,65 @@ export default function ContactPage() {
           background: rgba(255, 255, 255, 0.07);
         }
 
+        .cn-sep {
+          width: 1px;
+          height: 18px;
+          background: rgba(196, 217, 255, 0.25);
+          flex-shrink: 0;
+        }
+
+        .cn-auth {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .cn-login {
+          padding: 5px 10px;
+          border-radius: 999px;
+          color: #afbad0;
+          font-size: 0.88rem;
+          text-decoration: none;
+          transition: color 160ms ease, background 160ms ease;
+        }
+
+        .cn-login:hover {
+          color: #f4f7fb;
+          background: rgba(255, 255, 255, 0.07);
+        }
+
+        .cn-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 34px;
+          border-radius: 999px;
+          padding: 0 14px;
+          color: #f4f7fb;
+          border: 1px solid rgba(196, 217, 255, 0.25);
+          background: rgba(255, 255, 255, 0.055);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+          font-weight: 760;
+          font-size: 0.81rem;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .cn-cta:hover {
+          transform: translateY(-2px) scale(1.03);
+          border-color: rgba(255, 209, 102, 0.42);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
+        }
+
         /* ── Hero ─────────────────────────────────────────────────── */
         .ch {
           position: relative;
           z-index: 1;
           width: min(1180px, calc(100% - 48px));
           margin: 0 auto;
-          padding: 96px 0 72px;
+          padding: 118px 0 72px;
           text-align: center;
         }
 
@@ -206,7 +289,7 @@ export default function ContactPage() {
 
         h1 {
           margin-bottom: 22px;
-          font-size: clamp(3.2rem, 7vw, 5.8rem);
+          font-size: clamp(2.4rem, 4vw, 3.6rem);
           line-height: 0.96;
           letter-spacing: -0.025em;
           color: #f4f7fb;
@@ -311,7 +394,7 @@ export default function ContactPage() {
           line-height: 1.6;
         }
 
-        .ec-btn {
+        .btn-kivo {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -322,16 +405,17 @@ export default function ContactPage() {
           font-size: 0.93rem;
           text-decoration: none;
           white-space: nowrap;
-          color: #171101;
-          border: 1px solid rgba(255, 209, 102, 0.55);
-          background: linear-gradient(135deg, #ffd166, #7ee787 54%, #4fd1c5);
-          box-shadow: 0 16px 44px rgba(79, 209, 197, 0.22), 0 0 0 5px rgba(255, 209, 102, 0.06);
+          cursor: pointer;
+          color: #ffffff;
+          border: 1px solid rgba(99, 102, 241, 0.55);
+          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #818cf8);
+          box-shadow: 0 16px 44px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
           transition: transform 180ms ease, box-shadow 180ms ease;
         }
 
-        .ec-btn:hover {
+        .btn-kivo:hover {
           transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 22px 60px rgba(79, 209, 197, 0.3), 0 0 0 7px rgba(255, 209, 102, 0.1);
+          box-shadow: 0 22px 60px rgba(99, 102, 241, 0.42), 0 0 0 7px rgba(99, 102, 241, 0.12);
         }
 
         /* ── Secondary cards ──────────────────────────────────────── */
@@ -447,7 +531,7 @@ export default function ContactPage() {
 
         /* ── Mobile ───────────────────────────────────────────────── */
         @media (max-width: 760px) {
-          .cn,
+          .cn-inner,
           .ch,
           .cf-inner {
             width: min(1180px, calc(100% - 28px));
@@ -458,12 +542,16 @@ export default function ContactPage() {
             padding: 0 0 80px;
           }
 
-          .cn {
-            min-height: 68px;
+          .cn-inner {
+            height: 68px;
+          }
+
+          .cn-links {
+            display: none;
           }
 
           .ch {
-            padding: 72px 0 52px;
+            padding: 100px 0 52px;
           }
 
           .ec {

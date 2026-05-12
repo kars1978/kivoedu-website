@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, CirclePlus, FlaskConical, GraduationCap, Lock, ShieldCheck, Sigma, TrendingUp } from "lucide-react";
 import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
+import { LOGO_SRC } from "./constants";
 import HeroDemo from "./HeroDemo";
 import HomeworkSection from "./HomeworkSection";
 import PracticeSection from "./PracticeSection";
@@ -34,7 +35,7 @@ export default function Home() {
         <div className="nav-inner">
           <a href="/" className="logo-link" aria-label="KivoEdu home">
             <Image
-              src="/kivo_logo_transparent_bg_1.png"
+              src={LOGO_SRC}
               alt="KivoEdu"
               width={138}
               height={52}
@@ -201,7 +202,7 @@ export default function Home() {
         <div className="footer-inner">
           <a href="#" className="logo-link" aria-label="KivoEdu home">
             <Image
-              src="/kivo_logo_transparent_bg_1.png"
+              src={LOGO_SRC}
               alt="KivoEdu"
               width={92}
               height={34}
