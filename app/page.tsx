@@ -9,6 +9,7 @@ import PracticeSection from "./PracticeSection";
 import CurriculumSection from "./CurriculumSection";
 import StudyToolkitSection from "./StudyToolkitSection";
 import FinalCTASection from "./FinalCTASection";
+import PricingSection from "./PricingSection";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 const publicFaqs = getFaqsForSurface("public");
@@ -31,7 +32,7 @@ export default function Home() {
       <div className="site-glow" aria-hidden="true" />
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#" className="logo-link" aria-label="KivoEdu home">
+          <a href="/" className="logo-link" aria-label="KivoEdu home">
             <Image
               src="/kivo_logo_transparent_bg_1.png"
               alt="KivoEdu"
@@ -42,27 +43,29 @@ export default function Home() {
             />
           </a>
           <div className="nav-links" aria-label="Primary navigation">
-            <a href="#">Home</a>
-            <a href="#faq">FAQ</a>
+            <a href="#pricing">Pricing</a>
             <Link href="/blog">Blog</Link>
+            <Link href="/contact">Contact</Link>
           </div>
           <span className="nav-sep" aria-hidden="true" />
-          <a
-            href={loginUrl}
-            className="btn btn-nav"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try Kivo
-          </a>
-          <a
-            href={loginUrl}
-            className="nav-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Log in
-          </a>
+          <div className="nav-auth">
+            <a
+              href={loginUrl}
+              className="nav-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Log in
+            </a>
+            <a
+              href={loginUrl}
+              className="btn btn-nav"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try Kivo
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -146,6 +149,7 @@ export default function Home() {
       <CurriculumSection />
       <StudyToolkitSection />
       <FinalCTASection />
+      <PricingSection />
       <section className="faq section-band" id="faq">
         <div className="section-inner faq-inner reveal">
           <div className="section-heading faq-heading">
@@ -312,7 +316,13 @@ export default function Home() {
           height: 76px;
           display: flex;
           align-items: center;
-          gap: 28px;
+          gap: 20px;
+        }
+
+        .nav-auth {
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .logo-link {
@@ -325,7 +335,7 @@ export default function Home() {
           margin-left: auto;
           display: flex;
           align-items: center;
-          gap: 26px;
+          gap: 4px;
         }
 
         .nav-sep {
