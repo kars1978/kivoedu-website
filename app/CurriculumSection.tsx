@@ -438,7 +438,7 @@ const D: Record<string, CSSProperties> = {
     fontSize: 10, fontWeight: 600, color: P.soft,
     transition: 'all 350ms ease',
     cursor: 'default',
-    border: '1px solid transparent',
+    borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent',
   },
   tabActive: { background: P.amberBg, color: P.amber, borderColor: P.amberBd },
 
@@ -450,14 +450,15 @@ const D: Record<string, CSSProperties> = {
   nodeCard: {
     flex: 1, minWidth: 0,
     background: P.panel,
-    border: `1px solid ${P.border}`,
+    borderWidth: '1px', borderStyle: 'solid', borderColor: P.border,
     borderRadius: 12,
     padding: '12px 14px',
   },
   nodeTop: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 7 },
   statusChip: {
     fontSize: 9, fontWeight: 800, letterSpacing: '0.06em',
-    borderRadius: 99, padding: '2px 7px', border: '1px solid',
+    borderRadius: 99, padding: '2px 7px',
+    borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent',
   },
   nodeMastery: { fontSize: 10, fontWeight: 700, color: P.muted },
   nodeTitle: { fontSize: 11, fontWeight: 600, color: P.text, lineHeight: 1.35, marginBottom: 8, minHeight: 30 },
@@ -493,7 +494,7 @@ const D: Record<string, CSSProperties> = {
     display: 'flex', alignItems: 'center', gap: 10,
     flex: '1 1 180px',
     padding: '10px 12px', borderRadius: 10,
-    border: '1px solid',
+    borderWidth: '1px', borderStyle: 'solid', borderColor: 'transparent',
   },
   insightIcon: {
     width: 26, height: 26, borderRadius: '50%',

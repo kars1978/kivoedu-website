@@ -652,7 +652,8 @@ const D: Record<string, CSSProperties> = {
     boxShadow: 'inset 3px 0 28px rgba(230,180,74,0.05)',
   },
   aiHead: {
-    padding: '12px 14px', borderBottom: `1px solid ${C.border}`, flexShrink: 0,
+    padding: '12px 14px', flexShrink: 0,
+    borderBottomWidth: '1px', borderBottomStyle: 'solid', borderBottomColor: C.border,
     transition: 'background 400ms ease, border-color 400ms ease',
   },
   aiHeadHL: {
