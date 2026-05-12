@@ -1,86 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BookOpen, CirclePlus, FlaskConical, GraduationCap, Lock, ShieldCheck, Sigma, TrendingUp } from "lucide-react";
 import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
+import HeroDemo from "./HeroDemo";
+import HomeworkSection from "./HomeworkSection";
+import PracticeSection from "./PracticeSection";
+import CurriculumSection from "./CurriculumSection";
+import StudyToolkitSection from "./StudyToolkitSection";
+import FinalCTASection from "./FinalCTASection";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 const publicFaqs = getFaqsForSurface("public");
 const publicFaqCategories = getFaqCategories(publicFaqs);
 
-const features = [
-  {
-    k: "01",
-    title: "Answers from your actual syllabus",
-    desc: "Ask questions and get help that stays connected to supported board, grade, subject, and chapter coverage.",
-    marker: "Syllabus",
-  },
-  {
-    k: "02",
-    title: "Understand exactly how to solve it",
-    desc: "Work through explanations one step at a time so students can follow the method, not just copy the answer.",
-    marker: "Explain",
-  },
-  {
-    k: "03",
-    title: "Practice questions from your chapters",
-    desc: "Generate chapter checks and revision practice from the curriculum material students are already studying.",
-    marker: "Practice",
-  },
-  {
-    k: "04",
-    title: "Learn without leaving your curriculum",
-    desc: "Keep study focused on maintained curriculum coverage instead of generic answers that may drift off-topic.",
-    marker: "Grounded",
-  },
-];
-
-const comparison = {
-  typical: [
-    "Generic answers",
-    "Can go off-topic",
-    "Hard to trust for schoolwork",
-  ],
-  kivo: [
-    "Answers from your actual curriculum",
-    "Stays within your syllabus",
-    "Built with school input",
-  ],
-};
-
-const availability = [
-  {
-    board: "CBSE",
-    grades: "Grades 9 and 10",
-    subjects: "Math and Science",
-  },
-  {
-    board: "Maharashtra State Board",
-    grades: "Grade 9",
-    subjects: "Math and Science",
-  },
-];
-
-const steps = [
-  {
-    title: "Choose a supported curriculum",
-    desc: "Students learn from the country, board, grade, subject, and curriculum content already available in the KivoEdu database.",
-  },
-  {
-    title: "Tutor stays inside verified content",
-    desc: "Answers, explanations, examples, and practice are grounded only in the curriculum data we support and maintain.",
-  },
-  {
-    title: "Coverage expands over time",
-    desc: "The KivoEdu team updates existing material and adds new countries, boards, subjects, and curriculum versions as coverage grows.",
-  },
-];
-
-const trustItems = [
-  "Teacher control over how curriculum-grounded support is introduced",
-  "Curriculum alignment by country, board, grade, and subject",
-  "Privacy-conscious student support for study and revision workflows",
-  "Maintained coverage that can expand as new curriculum content is added",
-];
 
 export const metadata: Metadata = {
   title: "KivoEdu | AI Tutoring Built for Students",
@@ -109,267 +42,108 @@ export default function Home() {
             />
           </a>
           <div className="nav-links" aria-label="Primary navigation">
-            <a href="#features">Features</a>
-            <a href="#availability">Availability</a>
-            <a href="#how">How it works</a>
-            <a href="#schools">Schools</a>
+            <a href="#">Home</a>
             <a href="#faq">FAQ</a>
             <Link href="/blog">Blog</Link>
           </div>
+          <span className="nav-sep" aria-hidden="true" />
           <a
             href={loginUrl}
             className="btn btn-nav"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Login
+            Try Kivo
+          </a>
+          <a
+            href={loginUrl}
+            className="nav-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Log in
           </a>
         </div>
       </nav>
 
       <section className="hero">
         <div className="hero-pattern" aria-hidden="true" />
-        <div className="hero-grid">
-          <div className="hero-copy reveal">
-            <p className="eyebrow">Curriculum-grounded AI tutoring</p>
-            <h1>AI tutoring that actually follows your curriculum.</h1>
-            <p className="hero-sub">
-              KivoEdu helps students ask questions, practice tough topics, and
-              revise with a tutor grounded in the curriculum content they are
-              actually studying.
-            </p>
-            <div className="hero-actions">
-              <a
-                href={loginUrl}
-                className="btn btn-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try KivoEdu
-              </a>
-              <a href="#availability" className="btn btn-secondary">
-                View availability
-              </a>
-            </div>
-            <div className="support-strip" aria-label="Currently supported curriculum coverage">
-              <span>Currently supports</span>
-              <strong>CBSE</strong>
-              <strong>Maharashtra State Board</strong>
-              <em>More curriculum coverage expanding over time</em>
-            </div>
+        <div className="hero-centered reveal">
+          <p className="hero-label">AI Learning Platform</p>
+          <h1>Your curriculum, mastered with AI.</h1>
+          <p className="hero-sub">
+            Kivo helps CBSE &amp; Maharashtra Board students understand chapters, solve homework, and practice concepts with AI grounded in their textbooks.
+          </p>
+          <p className="hero-trust">
+            Built around real school textbooks — not random internet answers.
+          </p>
+          <div className="trust-pills" role="list">
+            <span className="trust-pill" role="listitem">
+              <BookOpen size={14} aria-hidden="true" strokeWidth={1.5} />
+              Curriculum aligned
+            </span>
+            <span className="trust-pill" role="listitem">
+              <TrendingUp size={14} aria-hidden="true" strokeWidth={1.5} />
+              Step-by-step learning
+            </span>
+            <span className="trust-pill" role="listitem">
+              <ShieldCheck size={14} aria-hidden="true" strokeWidth={1.5} />
+              CBSE &amp; Maharashtra Board
+            </span>
+            <span className="trust-pill" role="listitem">
+              <Lock size={14} aria-hidden="true" strokeWidth={1.5} />
+              Safer than generic AI
+            </span>
           </div>
-
-          <div className="hero-visual reveal" aria-label="KivoEdu tutoring preview">
-            <div className="pathway-orbit" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="product-shell">
-              <div className="window-bar" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="learning-map" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="student-card">
-                <p className="card-kicker">Student question</p>
-                <h2>Can you explain quadratic factorization?</h2>
-                <p>
-                  Use the method from Chapter 4 and show each step before the
-                  final answer.
-                </p>
-              </div>
-              <div className="answer-card">
-                <div className="answer-head">
-                  <span className="pulse" />
-                  <p>Grounded response</p>
+          <div className="avail-today">
+            <p className="avail-title">Available today</p>
+            <div className="avail-cards">
+              <div className="avail-card avail-card--cbse">
+                <div className="avail-card-head">
+                  <span className="avail-icon avail-icon--cbse" aria-hidden="true">
+                    <CirclePlus size={16} strokeWidth={1.5} />
+                  </span>
+                  <span className="avail-board">CBSE</span>
                 </div>
-                <div className="preview-actions" aria-label="Example tutoring modes">
-                  <span className="active">Explain</span>
-                  <span>Hint</span>
-                  <span>Practice</span>
+                <div className="avail-row">
+                  <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <span>Math &amp; Science</span>
                 </div>
-                <div className="solution-card">
-                  <p className="equation">x² + 5x + 6 = 0</p>
-                  <ol>
-                    <li>Find two numbers that multiply to 6.</li>
-                    <li className="active-step">Choose 2 and 3 because they also add to 5.</li>
-                    <li>Rewrite as (x + 2)(x + 3) = 0.</li>
-                  </ol>
-                  <a href={loginUrl} target="_blank" rel="noopener noreferrer">
-                    Try a similar question
-                  </a>
-                  <span className="focus-cursor" aria-hidden="true" />
+                <div className="avail-row">
+                  <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <span>Grades 9–10</span>
                 </div>
               </div>
-              <div className="mini-row">
-                <div>
-                  <span>Quiz ready</span>
-                  <strong>8 questions</strong>
+              <div className="avail-card avail-card--mh">
+                <div className="avail-card-head">
+                  <span className="avail-icon avail-icon--mh" aria-hidden="true">
+                    <BookOpen size={16} strokeWidth={1.5} />
+                  </span>
+                  <span className="avail-board">Maharashtra Board</span>
                 </div>
-                <div>
-                  <span>Source match</span>
-                  <strong>Chapter 4</strong>
+                <div className="avail-row">
+                  <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <span>Math &amp; Science</span>
+                </div>
+                <div className="avail-row">
+                  <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
+                  <span>Grade 9</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="features section-band" id="features">
-        <div className="section-inner reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Why students use it</p>
-            <h2>Clear help when they need it, from content teachers approve.</h2>
-          </div>
-          <div className="feature-grid">
-            {features.map((feature) => (
-              <article className="feature-card glass-card" key={feature.title}>
-                <div className="feature-top">
-                  <span>{feature.k}</span>
-                  <small>{feature.marker}</small>
-                </div>
-                <h3>{feature.title}</h3>
-                <p>{feature.desc}</p>
-              </article>
-            ))}
-          </div>
+        <div className="demo-wrapper reveal">
+          <HeroDemo />
         </div>
       </section>
-
-      <section className="difference section-band">
-        <div className="section-inner reveal">
-          <div className="section-heading">
-            <p className="eyebrow">Why Kivo is different</p>
-            <h2>Built for schoolwork, not generic answers.</h2>
-          </div>
-          <div className="comparison-grid" aria-label="Comparison between typical AI tutors and Kivo">
-            <article className="comparison-card comparison-muted glass-card">
-              <span>Typical AI tutors</span>
-              <ul>
-                {comparison.typical.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-            <div className="comparison-arrow" aria-hidden="true">
-              <span>→</span>
-            </div>
-            <article className="comparison-card comparison-kivo glass-card">
-              <span>Kivo</span>
-              <ul>
-                {comparison.kivo.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="availability section-band" id="availability">
-        <div className="section-inner availability-inner reveal">
-          <div className="availability-copy">
-            <p className="eyebrow">Current availability</p>
-            <h2>Curriculum coverage students can study from today.</h2>
-            <p>
-              KivoEdu currently supports CBSE Grades 9 and 10 for Math and
-              Science, plus Maharashtra State Board Grade 9 for Math and
-              Science. Additional curriculum coverage is expanding over time.
-            </p>
-          </div>
-          <div className="availability-grid" aria-label="Current KivoEdu availability">
-            {availability.map((item) => (
-              <article className="availability-card glass-card" key={item.board}>
-                <span>{item.board}</span>
-                <h3>{item.grades}</h3>
-                <p>{item.subjects}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="how section-band" id="how">
-        <div className="section-inner how-inner reveal">
-          <div className="how-copy-block">
-            <p className="eyebrow">How it works</p>
-            <h2>Students learn from the curriculum already supported by KivoEdu.</h2>
-            <p className="how-copy">
-              Students do not upload materials. The tutor works from
-              curriculum, board, country, grade, and subject data that already
-              exists in our database. KivoEdu maintains that content and keeps
-              adding new curriculum coverage over time.
-            </p>
-            <div className="guidance-card glass-card" aria-label="Current availability and AI guidance">
-              <div>
-                <strong>Current availability</strong>
-                <p>
-                  KivoEdu currently supports CBSE Grades 9 and 10 Math and
-                  Science, and Maharashtra State Board Grade 9 Math and Science.
-                </p>
-              </div>
-              <div>
-                <strong>Teacher-first guidance</strong>
-                <p>
-                  KivoEdu uses AI to generate content and responses, so it may
-                  make mistakes. Always trust your human teacher, tutor, and
-                  textbooks as the final source of truth.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="steps" aria-label="How KivoEdu works">
-            {steps.map((step, index) => (
-              <article className="step glass-card" key={step.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="schools section-band" id="schools">
-        <div className="section-inner schools-inner reveal">
-          <div className="schools-copy">
-            <p className="eyebrow">Built with schools in mind</p>
-            <h2>Keep teachers in control while giving students more support.</h2>
-            <p>
-              KivoEdu does not replace teachers or rewrite your curriculum. It
-              extends supported curriculum content from our database into a
-              privacy-conscious AI tutor students can use after class, during
-              study hall, or while preparing for exams.
-            </p>
-            <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
-              Contact KivoEdu
-            </a>
-          </div>
-          <div className="trust-panel glass-card">
-            <div className="trust-map" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-            <ul>
-              {trustItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
+      <HomeworkSection />
+      <PracticeSection />
+      <CurriculumSection />
+      <StudyToolkitSection />
+      <FinalCTASection />
       <section className="faq section-band" id="faq">
         <div className="section-inner faq-inner reveal">
           <div className="section-heading faq-heading">
@@ -414,19 +188,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="final-cta section-band">
-        <div className="section-inner final-cta-inner reveal">
-          <div>
-            <p className="eyebrow">For schools</p>
-            <h2>Give students AI support they can actually trust.</h2>
-            <p>Curriculum-grounded AI tutoring built for real classrooms.</p>
-          </div>
-          <a href="mailto:admin@kivoedu.ai" className="btn btn-primary">
-            Bring Kivo to your school
-          </a>
         </div>
       </section>
 
@@ -540,7 +301,6 @@ export default function Home() {
 
         .nav-inner,
         .section-inner,
-        .hero-grid,
         .footer-inner {
           width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
@@ -566,6 +326,13 @@ export default function Home() {
           gap: 26px;
         }
 
+        .nav-sep {
+          width: 1px;
+          height: 18px;
+          background: var(--line-strong);
+          flex-shrink: 0;
+        }
+
         .nav-links a,
         .footer a {
           color: var(--muted);
@@ -574,9 +341,28 @@ export default function Home() {
           transition: color 160ms ease;
         }
 
+        .nav-links a,
+        .nav-link {
+          padding: 5px 10px;
+          border-radius: 999px;
+          transition: color 160ms ease, background 160ms ease;
+        }
+
+        .nav-link {
+          color: var(--muted);
+          font-size: 0.88rem;
+          text-decoration: none;
+        }
+
         .nav-links a:hover,
         .footer a:hover {
           color: var(--text);
+        }
+
+        .nav-links a:hover,
+        .nav-link:hover {
+          color: var(--text);
+          background: rgba(255, 255, 255, 0.07);
         }
 
         a:focus-visible,
@@ -616,6 +402,12 @@ export default function Home() {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
 
+        .btn-nav {
+          min-height: 34px;
+          padding: 0 14px;
+          font-size: 0.81rem;
+        }
+
         .btn-secondary:hover,
         .btn-nav:hover {
           border-color: rgba(255, 209, 102, 0.42);
@@ -637,8 +429,10 @@ export default function Home() {
         .hero {
           min-height: 100svh;
           display: flex;
+          flex-direction: column;
           align-items: center;
           padding: 142px 0 92px;
+          gap: 0;
         }
 
         .hero-pattern {
@@ -653,34 +447,203 @@ export default function Home() {
           animation: patternDrift 16s ease-in-out infinite alternate;
         }
 
-        .hero-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 0.94fr) minmax(430px, 0.96fr);
+        .hero-centered {
+          display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 58px;
+          text-align: center;
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .demo-wrapper {
+          width: min(1160px, calc(100% - 48px));
+          margin: 52px auto 0;
+        }
+
+        .demo-placeholder {
+          height: 580px;
+          background: rgba(11,15,26,0.8);
+          border-radius: 14px;
+          border: 1px solid rgba(255,255,255,0.07);
         }
 
         .hero-copy {
           max-width: 760px;
         }
 
-        .eyebrow {
+        .hero-centered h1 {
+          max-width: 820px;
+          font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+          white-space: nowrap;
+        }
+
+        .hero-centered .hero-sub {
+          max-width: 640px;
+          font-size: clamp(0.92rem, 1.25vw, 1.06rem);
+        }
+
+        .hero-label {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
-          margin: 0 0 18px;
-          color: var(--cyan);
-          font-size: 0.76rem;
-          font-weight: 800;
-          letter-spacing: 0.12em;
+          margin: 0 0 22px;
+          padding: 5px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--line-strong);
+          background: rgba(255, 255, 255, 0.05);
+          color: var(--muted);
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.09em;
           text-transform: uppercase;
         }
 
-        .eyebrow::before {
-          content: "";
-          width: 32px;
-          height: 1px;
-          background: linear-gradient(90deg, var(--accent), var(--cyan));
+        .hero-trust {
+          margin: 16px 0 0;
+          color: var(--soft);
+          font-size: 0.87rem;
+          font-style: italic;
+        }
+
+        .trust-pills {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+          margin: 30px 0 0;
+        }
+
+        .trust-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 7px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--line-strong);
+          background: rgba(255, 255, 255, 0.04);
+          color: var(--muted);
+          font-size: 0.81rem;
+        }
+
+        .trust-pill svg {
+          color: var(--cyan);
+          flex-shrink: 0;
+          opacity: 0.85;
+        }
+
+        @media (max-width: 760px) {
+          .trust-pills {
+            gap: 8px;
+          }
+          .trust-pill {
+            font-size: 0.77rem;
+            padding: 6px 12px;
+          }
+        }
+
+        .avail-today {
+          margin: 40px 0 0;
+          width: 100%;
+        }
+
+        .avail-title {
+          margin: 0 0 14px;
+          color: var(--soft);
+          font-size: 0.73rem;
+          font-weight: 700;
+          letter-spacing: 0.09em;
+          text-transform: uppercase;
+        }
+
+        .avail-cards {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+          max-width: 620px;
+          margin: 0 auto;
+        }
+
+        .avail-card {
+          display: flex;
+          flex-direction: column;
+          gap: 9px;
+          padding: 18px 20px;
+          border-radius: 18px;
+          border: 1px solid var(--line);
+          background:
+            linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.024)),
+            rgba(13, 19, 32, 0.72);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 28px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(10px);
+          text-align: left;
+        }
+
+        .avail-card-head {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 4px;
+        }
+
+        .avail-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 9px;
+          flex-shrink: 0;
+        }
+
+        .avail-icon--cbse {
+          color: var(--green);
+          background: rgba(126, 231, 135, 0.1);
+          border: 1px solid rgba(126, 231, 135, 0.2);
+        }
+
+        .avail-icon--mh {
+          color: #b78ef0;
+          background: rgba(183, 142, 240, 0.1);
+          border: 1px solid rgba(183, 142, 240, 0.2);
+        }
+
+        .avail-board {
+          font-size: 0.9rem;
+          font-weight: 760;
+        }
+
+        .avail-card--cbse .avail-board { color: var(--green); }
+        .avail-card--mh .avail-board { color: #b78ef0; }
+
+        .avail-row {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--muted);
+          font-size: 0.83rem;
+        }
+
+        .avail-row svg {
+          opacity: 0.5;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+          .avail-cards {
+            grid-template-columns: 1fr;
+            max-width: 320px;
+          }
+        }
+
+        .eyebrow {
+          display: inline-flex;
+          align-items: center;
+          margin: 0 0 18px;
+          color: var(--accent);
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
         }
 
         h1,
@@ -840,8 +803,7 @@ export default function Home() {
         }
 
         .learning-map span,
-        .pathway-orbit span,
-        .trust-map span {
+        .pathway-orbit span {
           position: absolute;
           width: 13px;
           height: 13px;
@@ -905,11 +867,7 @@ export default function Home() {
         }
 
         .student-card p,
-        .solution-card li,
-        .guidance-card p,
-        .schools-copy p,
-        .trust-panel li,
-        .feature-card p {
+        .solution-card li {
           color: var(--muted);
           line-height: 1.65;
         }
@@ -1116,7 +1074,7 @@ export default function Home() {
         }
 
         .section-band {
-          padding: 104px 0;
+          padding: 112px 0 128px;
           border-top: 1px solid var(--line);
         }
 
@@ -1126,7 +1084,8 @@ export default function Home() {
 
         .section-heading {
           max-width: 810px;
-          margin-bottom: 42px;
+          text-align: center;
+          margin: 0 auto 52px;
         }
 
         h2 {
@@ -1152,413 +1111,6 @@ export default function Home() {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 90px rgba(0, 0, 0, 0.28);
         }
 
-        .availability {
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent);
-        }
-
-        .availability-inner {
-          display: grid;
-          gap: 34px;
-          align-items: start;
-        }
-
-        .availability-copy p:not(.eyebrow),
-        .how-copy {
-          max-width: 620px;
-          margin: 22px 0 0;
-          color: var(--muted);
-          font-size: 1rem;
-          line-height: 1.72;
-        }
-
-        .availability-grid {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        .availability-card {
-          position: relative;
-          min-height: 184px;
-          border-radius: 24px;
-          padding: 28px 30px;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .availability-card::before {
-          content: "";
-          position: absolute;
-          inset: auto 28px 32px;
-          height: 2px;
-          background: linear-gradient(90deg, var(--accent), var(--cyan), transparent);
-        }
-
-        .availability-card span {
-          display: inline-flex;
-          margin-bottom: 28px;
-          color: var(--cyan);
-          font-size: 0.82rem;
-          font-weight: 820;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
-
-        .availability-card h3 {
-          max-width: 290px;
-          margin-bottom: 10px;
-          color: var(--text);
-          font-size: clamp(1.18rem, 1.65vw, 1.55rem);
-          line-height: 1.12;
-        }
-
-        .availability-card p {
-          margin-bottom: 0;
-          color: var(--muted);
-          font-size: 1rem;
-          line-height: 1.5;
-        }
-
-        .feature-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        .feature-card {
-          position: relative;
-          min-height: 286px;
-          border-radius: 24px;
-          padding: 24px;
-          overflow: hidden;
-        }
-
-        .feature-card::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background:
-            linear-gradient(145deg, rgba(79, 209, 197, 0.13), transparent 34%),
-            radial-gradient(circle at 82% 20%, rgba(255, 209, 102, 0.12), transparent 7rem);
-          opacity: 0;
-          transition: opacity 180ms ease;
-        }
-
-        .feature-card:hover::after {
-          opacity: 1;
-        }
-
-        .feature-top {
-          position: relative;
-          z-index: 1;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          margin-bottom: 38px;
-        }
-
-        .feature-top span {
-          color: var(--accent);
-          font-weight: 860;
-        }
-
-        .feature-top small {
-          border: 1px solid var(--line);
-          border-radius: 999px;
-          padding: 6px 10px;
-          color: var(--soft);
-          font-size: 0.75rem;
-          font-weight: 700;
-        }
-
-        .feature-card h3,
-        .feature-card p {
-          position: relative;
-          z-index: 1;
-        }
-
-        .feature-card h3 {
-          margin-bottom: 14px;
-          font-size: 1.16rem;
-          line-height: 1.24;
-        }
-
-        .feature-card p {
-          font-size: 0.94rem;
-        }
-
-        .difference {
-          background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(79, 209, 197, 0.035));
-        }
-
-        .comparison-grid {
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) 88px minmax(0, 1fr);
-          gap: 18px;
-          align-items: stretch;
-        }
-
-        .comparison-card {
-          border-radius: 26px;
-          padding: 28px;
-          min-height: 260px;
-        }
-
-        .comparison-card span {
-          display: inline-flex;
-          margin-bottom: 28px;
-          color: var(--accent);
-          font-size: 0.85rem;
-          font-weight: 850;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
-
-        .comparison-card ul {
-          display: grid;
-          gap: 14px;
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-
-        .comparison-card li {
-          position: relative;
-          border: 1px solid var(--line);
-          border-radius: 16px;
-          padding: 14px 14px 14px 38px;
-          color: var(--muted);
-          background: rgba(255, 255, 255, 0.035);
-          line-height: 1.45;
-        }
-
-        .comparison-card li::before {
-          content: "";
-          position: absolute;
-          top: 18px;
-          left: 16px;
-          width: 10px;
-          height: 10px;
-          border-radius: 999px;
-          background: var(--soft);
-        }
-
-        .comparison-muted {
-          opacity: 0.82;
-        }
-
-        .comparison-kivo {
-          border-color: rgba(255, 209, 102, 0.26);
-          background:
-            linear-gradient(135deg, rgba(255, 209, 102, 0.08), rgba(79, 209, 197, 0.055)),
-            var(--panel);
-        }
-
-        .comparison-kivo li::before {
-          background: var(--green);
-          box-shadow: 0 0 0 6px rgba(126, 231, 135, 0.08);
-        }
-
-        .comparison-arrow {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .comparison-arrow span {
-          width: 54px;
-          height: 54px;
-          border: 1px solid rgba(255, 209, 102, 0.32);
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--accent);
-          background: rgba(255, 209, 102, 0.08);
-          font-size: 1.4rem;
-          font-weight: 800;
-        }
-
-        .how-inner,
-        .schools-inner {
-          display: grid;
-          grid-template-columns: 0.9fr 1.1fr;
-          gap: 64px;
-          align-items: start;
-        }
-
-        .guidance-card {
-          display: grid;
-          gap: 18px;
-          max-width: 600px;
-          margin-top: 30px;
-          border-radius: 24px;
-          padding: 24px;
-        }
-
-        .guidance-card strong {
-          display: block;
-          margin-bottom: 8px;
-          color: var(--text);
-          font-size: 0.97rem;
-        }
-
-        .guidance-card p {
-          margin-bottom: 0;
-          font-size: 0.94rem;
-        }
-
-        .steps {
-          position: relative;
-          display: grid;
-          gap: 18px;
-          padding-left: 34px;
-        }
-
-        .steps::before {
-          content: "";
-          position: absolute;
-          top: 34px;
-          bottom: 34px;
-          left: 12px;
-          width: 2px;
-          background: linear-gradient(180deg, var(--accent), var(--cyan), var(--blue));
-          opacity: 0.7;
-        }
-
-        .step {
-          position: relative;
-          display: grid;
-          grid-template-columns: 76px 1fr;
-          align-items: start;
-          min-height: 144px;
-          border-radius: 24px;
-          padding: 24px;
-        }
-
-        .step::before {
-          content: "";
-          position: absolute;
-          top: 32px;
-          left: -29px;
-          width: 16px;
-          height: 16px;
-          border-radius: 999px;
-          background: var(--accent);
-          box-shadow: 0 0 0 8px rgba(255, 209, 102, 0.1);
-        }
-
-        .step span {
-          color: var(--accent);
-          font-weight: 860;
-        }
-
-        .step h3 {
-          margin-bottom: 10px;
-          color: var(--text);
-          font-size: 1.18rem;
-          line-height: 1.25;
-        }
-
-        .step p {
-          margin-bottom: 0;
-          color: var(--muted);
-          font-size: 0.96rem;
-          line-height: 1.62;
-        }
-
-        .schools {
-          padding-bottom: 96px;
-        }
-
-        .schools-copy p {
-          max-width: 560px;
-          margin: 24px 0 30px;
-        }
-
-        .trust-panel {
-          position: relative;
-          min-height: 410px;
-          border-radius: 28px;
-          padding: 30px;
-          overflow: hidden;
-        }
-
-        .trust-panel::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(circle at 16% 16%, rgba(255, 209, 102, 0.16), transparent 9rem),
-            radial-gradient(circle at 88% 22%, rgba(79, 209, 197, 0.14), transparent 11rem);
-          pointer-events: none;
-        }
-
-        .trust-panel ul {
-          position: relative;
-          z-index: 1;
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-
-        .trust-panel li {
-          min-height: 142px;
-          border: 1px solid var(--line);
-          border-radius: 22px;
-          padding: 48px 18px 18px;
-          background: rgba(7, 10, 18, 0.38);
-          position: relative;
-        }
-
-        .trust-panel li::before {
-          content: "";
-          position: absolute;
-          top: 18px;
-          left: 18px;
-          width: 18px;
-          height: 18px;
-          border-radius: 999px;
-          background:
-            radial-gradient(circle at 50% 50%, var(--accent) 0 4px, transparent 5px),
-            rgba(79, 209, 197, 0.14);
-          border: 1px solid rgba(255, 209, 102, 0.24);
-        }
-
-        .trust-map {
-          position: absolute;
-          inset: 48px 46px auto auto;
-          width: 164px;
-          height: 118px;
-          opacity: 0.42;
-          border-top: 1px dashed rgba(79, 209, 197, 0.5);
-          border-right: 1px dashed rgba(255, 209, 102, 0.42);
-          border-radius: 0 42px 0 0;
-        }
-
-        .trust-map span:nth-child(1) {
-          top: -7px;
-          left: 4px;
-        }
-
-        .trust-map span:nth-child(2) {
-          right: -7px;
-          top: 36px;
-          background: var(--cyan);
-        }
-
-        .trust-map span:nth-child(3) {
-          right: 42px;
-          bottom: -4px;
-          background: var(--blue);
-        }
 
         .faq {
           background:
@@ -1566,12 +1118,20 @@ export default function Home() {
             linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(79, 209, 197, 0.035));
         }
 
+        .faq-heading h2 {
+          letter-spacing: -0.02em;
+        }
+
         .faq-heading p:not(.eyebrow) {
-          max-width: 720px;
-          margin: 22px 0 0;
+          max-width: 680px;
+          margin: 22px auto 0;
           color: var(--muted);
           font-size: 1rem;
           line-height: 1.72;
+        }
+
+        .faq-group:hover {
+          transform: none;
         }
 
         .faq-layout {
@@ -1846,7 +1406,10 @@ export default function Home() {
         }
 
         @media (max-width: 1080px) {
-          .hero-grid,
+          .demo-wrapper {
+            display: none;
+          }
+
           .availability-inner,
           .comparison-grid,
           .how-inner,
@@ -1918,7 +1481,6 @@ export default function Home() {
           .hero-actions,
           .availability-grid,
           .feature-grid,
-          .mini-row,
           .trust-panel ul {
             grid-template-columns: 1fr;
           }
