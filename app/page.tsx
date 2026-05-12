@@ -67,7 +67,9 @@ export default function Home() {
       </nav>
 
       <section className="hero">
-        <div className="hero-pattern" aria-hidden="true" />
+        <div className="hero-bg" aria-hidden="true">
+          <div className="hero-bg-glow" />
+        </div>
         <div className="hero-centered reveal">
           <p className="hero-label">AI Learning Platform</p>
           <h1>Your curriculum, mastered with AI.</h1>
@@ -433,21 +435,29 @@ export default function Home() {
           align-items: center;
           padding: 142px 0 92px;
           gap: 0;
+          overflow: hidden;
         }
 
-        .hero-pattern {
+        .hero-bg {
           position: absolute;
-          inset: 76px 0 auto;
-          height: 78%;
+          inset: 0;
           pointer-events: none;
-          background:
-            radial-gradient(circle at 76% 32%, rgba(255, 184, 107, 0.18), transparent 15rem),
-            linear-gradient(130deg, transparent 0 28%, rgba(79, 209, 197, 0.1) 28% 29%, transparent 29% 50%, rgba(121, 167, 255, 0.1) 50% 51%, transparent 51%);
-          opacity: 0.9;
-          animation: patternDrift 16s ease-in-out infinite alternate;
+          z-index: 0;
         }
 
-        .hero-centered {
+        .hero-bg-glow {
+          position: absolute;
+          inset: -20% 0 0;
+          background:
+            radial-gradient(ellipse 65% 55% at 14% 28%, rgba(99, 102, 241, 0.13), transparent),
+            radial-gradient(ellipse 55% 65% at 84% 22%, rgba(79, 209, 197, 0.1), transparent),
+            radial-gradient(ellipse 45% 45% at 52% 64%, rgba(139, 92, 246, 0.07), transparent);
+          animation: heroGlowDrift 20s ease-in-out infinite alternate;
+        }
+
+.hero-centered {
+          position: relative;
+          z-index: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -457,6 +467,8 @@ export default function Home() {
         }
 
         .demo-wrapper {
+          position: relative;
+          z-index: 1;
           width: min(1160px, calc(100% - 48px));
           margin: 52px auto 0;
         }
@@ -1353,13 +1365,9 @@ export default function Home() {
           }
         }
 
-        @keyframes patternDrift {
-          from {
-            transform: translateY(0);
-          }
-          to {
-            transform: translateY(18px);
-          }
+        @keyframes heroGlowDrift {
+          from { transform: translate3d(0, 0, 0) scale(1); }
+          to   { transform: translate3d(2%, 4%, 0) scale(1.05); }
         }
 
         @keyframes pulse {
