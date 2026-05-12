@@ -189,52 +189,54 @@ export default function PricingSection() {
           color: var(--accent);
         }
 
+        /* layout shell shared by both buttons */
         .pricing-cta {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          width: 100%;
           min-height: 48px;
           border-radius: 999px;
           padding: 0 24px;
           font-weight: 760;
           font-size: 0.93rem;
           text-decoration: none;
+          white-space: nowrap;
           transition:
             transform 180ms ease,
             box-shadow 180ms ease,
             border-color 180ms ease,
             background 180ms ease;
-          white-space: nowrap;
-          width: 100%;
         }
 
-        .pricing-cta:hover {
+        /* primary — indigo gradient */
+        .pricing-cta.btn-kivo {
+          color: #ffffff;
+          border: 1px solid rgba(99, 102, 241, 0.55);
+          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #818cf8);
+          box-shadow: 0 16px 44px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
+        }
+
+        .pricing-cta.btn-kivo:hover {
           transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 22px 60px rgba(99, 102, 241, 0.42), 0 0 0 7px rgba(99, 102, 241, 0.12);
         }
 
-        .pricing-cta--free {
-          color: var(--text);
-          border: 1px solid rgba(196, 217, 255, 0.22);
-          background: rgba(255, 255, 255, 0.055);
+        /* ghost — indigo tint */
+        .pricing-cta.btn-kivo-ghost {
+          color: #f4f7fb;
+          border: 1px solid rgba(99, 102, 241, 0.28);
+          background: rgba(99, 102, 241, 0.08);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
         }
 
-        .pricing-cta--free:hover {
-          border-color: rgba(255, 209, 102, 0.34);
-          background: rgba(255, 255, 255, 0.085);
-          box-shadow: 0 12px 30px rgba(79, 209, 197, 0.1);
+        .pricing-cta.btn-kivo-ghost:hover {
+          transform: translateY(-2px) scale(1.02);
+          border-color: rgba(99, 102, 241, 0.48);
+          background: rgba(99, 102, 241, 0.14);
+          box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
         }
 
-        .pricing-cta--paid {
-          color: var(--accent-ink);
-          border: 1px solid rgba(255, 209, 102, 0.55);
-          background: linear-gradient(135deg, var(--accent), var(--green) 54%, var(--cyan));
-          box-shadow: 0 16px 44px rgba(79, 209, 197, 0.22), 0 0 0 5px rgba(255, 209, 102, 0.06);
-        }
-
-        .pricing-cta--paid:hover {
-          box-shadow: 0 22px 60px rgba(79, 209, 197, 0.3), 0 0 0 7px rgba(255, 209, 102, 0.1);
-        }
 
         .pricing-footnote {
           margin: 16px 0 0;
@@ -289,7 +291,7 @@ export default function PricingSection() {
             </ul>
             <a
               href={loginUrl}
-              className="pricing-cta pricing-cta--free"
+              className="pricing-cta btn-kivo-ghost"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -320,11 +322,11 @@ export default function PricingSection() {
             </ul>
             <a
               href={loginUrl}
-              className="pricing-cta pricing-cta--paid"
+              className="pricing-cta btn-kivo"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Get Kivo Complete
+              Get Kivo Unlimited
             </a>
             <p className="pricing-footnote">
               *Subject to fair usage limits and provider availability.

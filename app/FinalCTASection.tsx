@@ -177,7 +177,7 @@ export default function FinalCTASection() {
               href="https://app.kivoedu.ai/login"
               target="_blank"
               rel="noopener noreferrer"
-              style={s.btnPrimary}
+              className="btn-kivo"
             >
               Start Learning
             </a>
@@ -253,6 +253,28 @@ const KEYFRAMES = `
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   }
+  .btn-kivo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 999px;
+    padding: 0 26px;
+    font-size: 0.93rem;
+    font-weight: 760;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #ffffff;
+    border: 1px solid rgba(99, 102, 241, 0.55);
+    background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #818cf8);
+    box-shadow: 0 16px 44px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+  .btn-kivo:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 22px 60px rgba(99, 102, 241, 0.42), 0 0 0 7px rgba(99, 102, 241, 0.12);
+  }
 `
 
 // ─── Section styles ───────────────────────────────────────────────────────────
@@ -302,17 +324,6 @@ const s: Record<string, CSSProperties> = {
   },
 
   ctaRow: { display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 36 },
-  btnPrimary: {
-    display: 'inline-flex', alignItems: 'center',
-    minHeight: 48, padding: '0 26px', borderRadius: 999,
-    fontSize: '0.96rem', fontWeight: 760,
-    color: '#171101',
-    background: 'linear-gradient(135deg, #e6b44a, #7ee787 54%, #4fd1c5)',
-    border: '1px solid rgba(255,209,102,0.58)',
-    boxShadow: '0 20px 50px rgba(79,209,197,0.22)',
-    textDecoration: 'none',
-    transition: 'transform 180ms ease, box-shadow 180ms ease',
-  },
   btnSecondary: {
     display: 'inline-flex', alignItems: 'center',
     minHeight: 48, padding: '0 22px', borderRadius: 999,
