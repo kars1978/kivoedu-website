@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, CirclePlus, FlaskConical, GraduationCap, Lock, ShieldCheck, Sigma, TrendingUp } from "lucide-react";
@@ -15,6 +16,14 @@ import PricingSection from "./PricingSection";
 const loginUrl = "https://app.kivoedu.ai/login";
 const publicFaqs = getFaqsForSurface("public");
 const publicFaqCategories = getFaqCategories(publicFaqs);
+const heroTrustPhrases = [
+  "No random internet answers.",
+  "Grounded in real school textbooks.",
+  "Built for homework and revision.",
+  "Curriculum-aware explanations.",
+  "Structured chapter-by-chapter learning.",
+  "Safer than generic AI tools.",
+];
 
 
 export const metadata: Metadata = {
@@ -80,9 +89,17 @@ export default function Home() {
           <p className="hero-sub">
             Kivo helps CBSE &amp; Maharashtra Board students understand chapters, solve homework, and practice concepts with AI grounded in their textbooks.
           </p>
-          <p className="hero-trust">
-            Built around real school textbooks — not random internet answers.
-          </p>
+          <div className="hero-trust-rotator" aria-live="off">
+            {heroTrustPhrases.map((phrase, index) => (
+              <span
+                className="hero-trust-phrase"
+                style={{ "--phrase-index": index } as CSSProperties}
+                key={phrase}
+              >
+                {phrase}
+              </span>
+            ))}
+          </div>
           <div className="trust-pills" role="list">
             <span className="trust-pill" role="listitem">
               <BookOpen size={14} aria-hidden="true" strokeWidth={1.5} />
@@ -521,11 +538,27 @@ export default function Home() {
           text-transform: uppercase;
         }
 
-        .hero-trust {
+        .hero-trust-rotator {
+          position: relative;
+          width: min(100%, 520px);
+          height: 1.45rem;
           margin: 16px 0 0;
+          overflow: hidden;
+        }
+
+        .hero-trust-phrase {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: var(--soft);
           font-size: 0.87rem;
-          font-style: italic;
+          line-height: 1.45;
+          opacity: 0;
+          transform: translateY(0.4rem);
+          animation: trustPhraseRotate 18s ease-in-out infinite;
+          animation-delay: calc(var(--phrase-index) * 3s);
         }
 
         .trust-pills {
@@ -1410,6 +1443,23 @@ export default function Home() {
           }
         }
 
+        @keyframes trustPhraseRotate {
+          0% {
+            opacity: 0;
+            transform: translateY(0.4rem);
+          }
+          3%,
+          14% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          17%,
+          100% {
+            opacity: 0;
+            transform: translateY(-0.35rem);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           html {
             scroll-behavior: auto;
@@ -1421,6 +1471,16 @@ export default function Home() {
             animation-duration: 0.001ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.001ms !important;
+          }
+
+          .hero-trust-phrase {
+            animation: none !important;
+            opacity: 0;
+            transform: none;
+          }
+
+          .hero-trust-phrase:first-child {
+            opacity: 1;
           }
         }
 
