@@ -77,7 +77,7 @@ export const FAQS: KivoFaq[] = [
     surfaces: ['app'],
   },
   {
-    cat: 'Ask Kivo AI',
+    cat: 'Kivo AI',
     q: 'What should I ask Kivo AI?',
     a: 'Ask questions about the selected textbook, chapter, section, or topic. In the Reader, the Kivo AI panel is aware of the current section, so you can ask for a simpler explanation, examples, comparisons, key ideas, or a quick quiz.',
     surfaces: ['app', 'public'],
@@ -85,7 +85,7 @@ export const FAQS: KivoFaq[] = [
     publicA: 'Students can ask for explanations, examples, comparisons, key ideas, homework guidance, and practice around supported textbook and chapter content.',
   },
   {
-    cat: 'Ask Kivo AI',
+    cat: 'Kivo AI',
     q: 'Why is the answer focused on my textbook?',
     a: 'Kivo is designed to stay close to your learning material so answers match your syllabus instead of drifting into unrelated web content.',
     surfaces: ['app', 'public'],
@@ -93,7 +93,7 @@ export const FAQS: KivoFaq[] = [
     publicA: 'Kivo is designed to stay close to supported curriculum material, so help is aligned to the student\'s board, grade, subject, and chapter instead of drifting into unrelated web content.',
   },
   {
-    cat: 'Ask Kivo AI',
+    cat: 'Kivo AI',
     q: 'Can Kivo AI make mistakes?',
     a: 'Yes. Kivo AI is a study helper, but it can sometimes misunderstand a question or generate an incorrect answer. For important or exam-related information, check your textbook or ask your teacher/tutor.',
     surfaces: ['app', 'public'],
@@ -222,7 +222,7 @@ export const FAQS: KivoFaq[] = [
 
 export const QUICK_HELP = [
   { title: 'Find a textbook', text: 'Go to Library and select a subject card for your board and grade.' },
-  { title: 'Ask a doubt', text: 'Open a subject, then use Ask Kivo AI for textbook-grounded help.' },
+  { title: 'Ask a doubt', text: 'Open a subject, then use Kivo AI for textbook-grounded help.' },
   { title: 'Focus reading', text: 'Turn on Reading Focus in Reader Options to collapse side panels and the header.' },
   { title: 'Solve homework', text: 'Use Homework Help for guided steps, checking, and better reasoning.' },
   { title: 'Track progress', text: 'Open My Progress or Parent Dashboard to review learning activity.' },
