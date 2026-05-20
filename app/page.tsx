@@ -42,7 +42,7 @@ export default function Home() {
       <div className="site-glow" aria-hidden="true" />
       <nav className="nav">
         <div className="nav-inner">
-          <a href="/" className="logo-link" aria-label="KivoEdu home">
+          <Link href="/" className="logo-link" aria-label="KivoEdu home">
             <Image
               src={LOGO_SRC}
               alt="KivoEdu"
@@ -51,7 +51,7 @@ export default function Home() {
               style={{ objectFit: "contain", height: "auto" }}
               priority
             />
-          </a>
+          </Link>
           <div className="nav-links" aria-label="Primary navigation">
             <a href="#pricing">Pricing</a>
             <Link href="/blog">Blog</Link>

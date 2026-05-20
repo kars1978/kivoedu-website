@@ -82,7 +82,11 @@ function reduce(s: S, a: A): S {
     case 'conn':    return { ...s, connLine: a.v }
     case 'card': {
       const next = new Set(s.cards)
-      a.show ? next.add(a.id) : next.delete(a.id)
+      if (a.show) {
+        next.add(a.id)
+      } else {
+        next.delete(a.id)
+      }
       return { ...s, cards: next }
     }
     case 'reset': return { ...INIT }
@@ -94,11 +98,12 @@ function reduce(s: S, a: A): S {
 export default function CurriculumSection() {
   const [s, d]  = useReducer(reduce, INIT)
   const timers  = useRef<ReturnType<typeof setTimeout>[]>([])
+  const runRef = useRef<() => void>(() => {})
 
-  const clear = () => { timers.current.forEach(clearTimeout); timers.current = [] }
-  const at    = (ms: number, fn: () => void) => { timers.current.push(setTimeout(fn, ms)) }
+  const clear = useCallback(() => { timers.current.forEach(clearTimeout); timers.current = [] }, [])
+  const at = useCallback((ms: number, fn: () => void) => { timers.current.push(setTimeout(fn, ms)) }, [])
 
-  const switchSubject = (sub: SubjectId, t: number) => {
+  const switchSubject = useCallback((sub: SubjectId, t: number) => {
     at(t, () => {
       d({ t: 'transit', v: true })
       d({ t: 'pulse',   v: -1 })
@@ -108,7 +113,7 @@ export default function CurriculumSection() {
       at(t, () => d({ t: 'card', id, show: false }))
     )
     at(t + 360, () => { d({ t: 'subject', v: sub }); d({ t: 'transit', v: false }) })
-  }
+  }, [at])
 
   const run = useCallback(() => {
     clear()
@@ -137,10 +142,11 @@ export default function CurriculumSection() {
       d({ t: 'transit', v: true })
       d({ t: 'pulse', v: -1 })
     })
-    at(t + 360, () => { d({ t: 'reset' }); at(400, run) })
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    at(t + 360, () => { d({ t: 'reset' }); at(400, () => runRef.current()) })
+  }, [at, clear, switchSubject])
 
-  useEffect(() => { run(); return clear }, [run])
+  useEffect(() => { runRef.current = run }, [run])
+  useEffect(() => { run(); return clear }, [clear, run])
 
   const chapters = CHAPTERS[s.subject]
 

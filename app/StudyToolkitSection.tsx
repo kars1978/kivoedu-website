@@ -53,8 +53,8 @@ export default function StudyToolkitSection() {
   // Keep ref in sync so the interval closure can read current tab
   useEffect(() => { activeTabRef.current = s.activeTab }, [s.activeTab])
 
-  const clearTimers = () => { timers.current.forEach(clearTimeout); timers.current = [] }
-  const at = (ms: number, fn: () => void) => { timers.current.push(setTimeout(fn, ms)) }
+  const clearTimers = useCallback(() => { timers.current.forEach(clearTimeout); timers.current = [] }, [])
+  const at = useCallback((ms: number, fn: () => void) => { timers.current.push(setTimeout(fn, ms)) }, [])
 
   // Per-tab animation sequences
   const runDocs = useCallback(() => {
@@ -64,11 +64,11 @@ export default function StudyToolkitSection() {
     at(1700, () => d({ t: 'docs', v: 4 }))  // suggestion card 1
     at(2300, () => d({ t: 'docs', v: 5 }))  // suggestion card 2
     at(3000, () => d({ t: 'docs', v: 6 }))  // source chip
-  }, [])
+  }, [at])
 
   const runCards = useCallback(() => {
     at(1900, () => d({ t: 'flip' }))
-  }, [])
+  }, [at])
 
   const runDrills = useCallback(() => {
     at(700,  () => d({ t: 'drill', hint: true }))
@@ -78,7 +78,7 @@ export default function StudyToolkitSection() {
         at((v - 63) * 80, () => d({ t: 'drill', mastery: v }))
       }
     })
-  }, [])
+  }, [at])
 
   // Run per-tab sequence when tab changes
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function StudyToolkitSection() {
     if (s.activeTab === 'cards')  runCards()
     if (s.activeTab === 'drills') runDrills()
     return clearTimers
-  }, [s.cycleKey, s.activeTab])
+  }, [clearTimers, runCards, runDocs, runDrills, s.cycleKey, s.activeTab])
 
   // Auto-rotate
   useEffect(() => {

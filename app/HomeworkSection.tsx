@@ -125,7 +125,7 @@ export default function HomeworkSection() {
 
     // Pause then loop
     t += 3200; at(t, () => { d({ t: 'spot', v: false }); at(500, run) })
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => { run(); return clear }, [run])
 

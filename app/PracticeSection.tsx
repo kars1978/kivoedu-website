@@ -118,7 +118,7 @@ export default function PracticeSection() {
 
     // Pause then loop
     t += 3200; at(t, () => at(600, run))
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => { run(); return clear }, [run])
 

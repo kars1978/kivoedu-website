@@ -172,7 +172,7 @@ export default function HeroDemo() {
     // Quiz glow → reset loop
     t += 1200; at(t, () => d({ t: 'quiz', v: true }))
     t += 2200; at(t, () => { d({ t: 'quiz', v: false }); at(600, run) })
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => { run(); return clear }, [run])
 
