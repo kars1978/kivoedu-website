@@ -86,10 +86,10 @@ export default function Home() {
         <div className="nav-inner">
           <HomeLogoLink />
           <div className="nav-links" aria-label="Primary navigation">
-            <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
-            <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
             <SmoothScrollLink href="#learning">Learning</SmoothScrollLink>
+            <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
             <Link href="/blog">Blog</Link>
+            <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
             <Link href="/contact">Contact</Link>
           </div>
           <span className="nav-sep" aria-hidden="true" />
