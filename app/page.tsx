@@ -2170,41 +2170,6 @@ export default function Home() {
           line-height: 1.68;
         }
 
-        .final-cta {
-          padding: 88px 0;
-          background:
-            radial-gradient(circle at 50% 50%, rgba(255, 209, 102, 0.13), transparent 20rem),
-            radial-gradient(circle at 16% 32%, rgba(79, 209, 197, 0.12), transparent 18rem),
-            linear-gradient(180deg, rgba(79, 209, 197, 0.055), rgba(255, 255, 255, 0.02));
-        }
-
-        .final-cta-inner {
-          display: flex;
-          flex-direction: column;
-          gap: 28px;
-          text-align: center;
-          align-items: center;
-          border: 1px solid var(--line);
-          border-radius: 30px;
-          padding: 52px 34px;
-          background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.028)),
-            rgba(13, 19, 32, 0.72);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 26px 80px rgba(0, 0, 0, 0.22);
-        }
-
-        .final-cta h2 {
-          max-width: 760px;
-          font-size: clamp(2rem, 3.6vw, 3.4rem);
-        }
-
-        .final-cta p:not(.eyebrow) {
-          max-width: 620px;
-          margin: 16px auto 0;
-          color: var(--muted);
-          line-height: 1.65;
-        }
-
         .footer {
           border-top: 1px solid var(--line);
           padding: 34px 0;
@@ -2696,14 +2661,6 @@ export default function Home() {
           .faq-item p {
             margin-right: 0;
             font-size: 0.92rem;
-          }
-
-          .final-cta-inner {
-            padding: 24px;
-          }
-
-          .final-cta-inner .btn {
-            width: 100%;
           }
 
           .availability-card {
