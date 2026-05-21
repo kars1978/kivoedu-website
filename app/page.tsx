@@ -1,52 +1,24 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpen,
-  CirclePlus,
+  Calculator,
   FlaskConical,
-  GraduationCap,
   TrendingUp,
   NotebookPen,
-  Lightbulb,
-  Lock,
-  Route,
-  ShieldCheck,
-  Sigma,
 } from "lucide-react";
-import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
-import HeroDemo from "./HeroDemo";
-import HomeworkSection from "./HomeworkSection";
-import PracticeSection from "./PracticeSection";
-import CurriculumSection from "./CurriculumSection";
-import StudyToolkitSection from "./StudyToolkitSection";
-import FinalCTASection from "./FinalCTASection";
 import PricingSection from "./PricingSection";
 
 const loginUrl = "https://app.kivoedu.ai/login";
-const publicFaqs = getFaqsForSurface("public");
-const publicFaqCategories = getFaqCategories(publicFaqs);
-const heroTrustPhrases = [
-  "No random internet answers.",
-  "Grounded in real school textbooks.",
-  "Built for homework and revision.",
-  "Curriculum-aware explanations.",
-  "Structured chapter-by-chapter learning.",
-  "Safer than generic AI tools.",
-];
 
 export const metadata: Metadata = {
   title: "KivoEdu | AI Tutoring Built for Students",
   description:
     "KivoEdu is a curriculum-grounded AI tutor that helps students ask questions, practice, and revise with content approved by their school.",
 };
-
-function slug(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
 
 export default function Home() {
   return (
@@ -66,6 +38,7 @@ export default function Home() {
           </Link>
           <div className="nav-links" aria-label="Primary navigation">
             <a href="#pricing">Pricing</a>
+            <a href="#platform-overview">Experience</a>
             <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
           </div>
@@ -110,8 +83,8 @@ export default function Home() {
               >
                 Start Learning
               </a>
-              <a href="#platform-overview" className="btn btn-secondary">
-                Learn what Kivo can do
+              <a href="#why-kivo" className="btn btn-secondary">
+                Why Kivo Works
               </a>
             </div>
           </div>
@@ -127,7 +100,7 @@ export default function Home() {
           </figure>
         </div>
       </section>
-      <section className="why-kivo" aria-labelledby="why-kivo-title">
+      <section className="why-kivo" id="why-kivo" aria-labelledby="why-kivo-title">
         <div className="why-kivo-inner reveal">
           <div className="why-kivo-heading">
             <h2 id="why-kivo-title">Why Kivo Works</h2>
@@ -167,142 +140,141 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="platform-overview" id="platform-overview">
-        <div className="platform-centered reveal">
-          <p className="platform-label">AI Learning Platform</p>
-          <h2>Your curriculum, mastered with AI.</h2>
-          <p className="platform-sub">
-            Kivo helps CBSE &amp; Maharashtra Board students understand chapters,
-            solve homework, and practice concepts with AI grounded in their
-            textbooks.
-          </p>
-          <div className="platform-trust-rotator" aria-live="off">
-            {heroTrustPhrases.map((phrase, index) => (
-              <span
-                className="platform-trust-phrase"
-                style={{ "--phrase-index": index } as CSSProperties}
-                key={phrase}
-              >
-                {phrase}
-              </span>
-            ))}
-          </div>
-          <div className="platform-trust-pills" role="list">
-            <span className="platform-trust-pill" role="listitem">
-              <BookOpen size={14} aria-hidden="true" strokeWidth={1.5} />
-              Curriculum aligned
-            </span>
-            <span className="platform-trust-pill" role="listitem">
-              <TrendingUp size={14} aria-hidden="true" strokeWidth={1.5} />
-              Step-by-step learning
-            </span>
-            <span className="platform-trust-pill" role="listitem">
-              <ShieldCheck size={14} aria-hidden="true" strokeWidth={1.5} />
-              CBSE &amp; Maharashtra Board
-            </span>
-            <span className="platform-trust-pill" role="listitem">
-              <Lock size={14} aria-hidden="true" strokeWidth={1.5} />
-              Safer than generic AI
-            </span>
-          </div>
-          <div className="platform-available">
-            <p className="platform-available-title">Available today</p>
-            <div className="platform-available-cards">
-              <div className="platform-available-card platform-available-card--cbse">
-                <div className="platform-available-head">
-                  <span className="platform-available-icon platform-available-icon--cbse" aria-hidden="true">
-                    <CirclePlus size={16} strokeWidth={1.5} />
-                  </span>
-                  <span className="platform-board">CBSE</span>
-                </div>
-                <div className="platform-available-row">
-                  <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <span>Math &amp; Science</span>
-                </div>
-                <div className="platform-available-row">
-                  <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <span>Grades 9-10</span>
-                </div>
-              </div>
-              <div className="platform-available-card platform-available-card--mh">
-                <div className="platform-available-head">
-                  <span className="platform-available-icon platform-available-icon--mh" aria-hidden="true">
-                    <BookOpen size={16} strokeWidth={1.5} />
-                  </span>
-                  <span className="platform-board">Maharashtra Board</span>
-                </div>
-                <div className="platform-available-row">
-                  <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <span>Math &amp; Science</span>
-                </div>
-                <div className="platform-available-row">
-                  <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <span>Grade 9</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="platform-demo-wrapper reveal">
-          <HeroDemo />
-        </div>
-      </section>
-      <HomeworkSection />
-      <PracticeSection />
-      <div id="subjects">
-        <CurriculumSection />
-      </div>
-      <StudyToolkitSection />
-      <FinalCTASection />
-      <PricingSection />
-      <section className="faq section-band" id="faq">
-        <div className="section-inner faq-inner reveal">
-          <div className="section-heading faq-heading">
-            <p className="eyebrow">FAQ</p>
-            <h2>Questions parents, students, and schools usually ask.</h2>
+      <section className="product-experience" id="platform-overview">
+        <div className="product-inner reveal">
+          <div className="product-heading">
+            <h2>Built for everyday learning</h2>
             <p>
-              These answers stay synced with the in-app Help & Support content,
-              with public wording for people evaluating KivoEdu before they log in.
+              Kivo supports students through understanding, practice, and steady
+              progress.
             </p>
           </div>
-          <div className="faq-layout">
-            <aside className="faq-topics glass-card" aria-label="FAQ topics">
-              <span>Topics</span>
-              {publicFaqCategories.map((category) => (
-                <a href={`#faq-${slug(category)}`} key={category}>
-                  {category}
-                </a>
-              ))}
-            </aside>
-            <div className="faq-list">
-              {publicFaqCategories.map((category) => (
-                <section
-                  className="faq-group glass-card"
-                  id={`faq-${slug(category)}`}
-                  key={category}
-                >
-                  <div className="faq-group-head">
-                    <h3>{category}</h3>
-                    <span>
-                      {publicFaqs.filter((faq) => faq.cat === category).length}
-                    </span>
+
+          <div className="support-strip-compact" aria-label="Kivo currently supports">
+            <span className="support-label">Supports</span>
+            <span>CBSE</span>
+            <span>Maharashtra State Board</span>
+            <span>Grades 9-10</span>
+            <span className="support-subject">
+              <Calculator size={14} aria-hidden="true" strokeWidth={1.6} />
+              Math
+            </span>
+            <span className="support-subject">
+              <FlaskConical size={14} aria-hidden="true" strokeWidth={1.6} />
+              Science
+            </span>
+          </div>
+
+          <div className="experience-flow">
+            <article className="experience-row">
+              <div className="experience-copy">
+                <span className="experience-kicker">Understand</span>
+                <h3>Get unstuck. Learn the why.</h3>
+                <p>
+                  Students get clear, AI-assisted explanations connected to their textbooks, helping each step feel easier to understand and follow.
+                </p>
+              </div>
+              <div className="experience-visual experience-visual--explain" aria-hidden="true">
+                <div className="ui-window">
+                  <div className="ui-window-top">
+                    <span />
+                    <span />
+                    <span />
+                    <strong>Chapter help</strong>
                   </div>
-                  {publicFaqs
-                    .filter((faq) => faq.cat === category)
-                    .map((faq) => (
-                      <details className="faq-item" key={faq.q}>
-                        <summary>{faq.q}</summary>
-                        <p>{faq.a}</p>
-                      </details>
-                    ))}
-                </section>
-              ))}
-            </div>
+                  <div className="explain-layout">
+                    <div className="reader-pane">
+                      <div className="ui-tag">Textbook</div>
+                      <h4>Chemical Reactions</h4>
+                      <p>Magnesium reacts with oxygen to form magnesium oxide.</p>
+                      <div className="highlight-line" />
+                      <div className="soft-line short" />
+                    </div>
+                    <div className="answer-pane">
+                      <div className="ui-tag">Kivo explanation</div>
+                      <p>
+                        Start with what changes: magnesium combines with oxygen.
+                      </p>
+                      <ul>
+                        <li>Identify the reactants</li>
+                        <li>Connect it to combination reactions</li>
+                        <li>Check the final product</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className="experience-row experience-row--reverse">
+              <div className="experience-copy">
+                <span className="experience-kicker">Practice</span>
+                <h3>Practice until concepts click.</h3>
+                <p>
+                  Quizzes and guided practice help students retry, reinforce,
+                  and build confidence without turning learning into pressure.
+                </p>
+              </div>
+              <div className="experience-visual experience-visual--practice" aria-hidden="true">
+                <div className="quiz-card-mini">
+                  <div className="quiz-meta">
+                    <span>Chapter quiz</span>
+                    <span>Q1 of 5</span>
+                  </div>
+                  <h4>Which reaction forms one product from two reactants?</h4>
+                  <div className="option">A. Decomposition reaction</div>
+                  <div className="option option-correct">B. Combination reaction</div>
+                  <div className="feedback-mini">Correct. The reactants join to form a new substance.</div>
+                </div>
+                <div className="mastery-mini">
+                  <span>Chapter mastery</span>
+                  <strong>84%</strong>
+                  <div className="progress-track">
+                    <div />
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className="experience-row">
+              <div className="experience-copy">
+                <span className="experience-kicker">Progress</span>
+                <h3>Keep learning forward.</h3>
+                <p>
+                  Revision tools, chapter tracking, and progress cues help
+                  students know what to review next and keep a steady rhythm.
+                </p>
+              </div>
+              <div className="experience-visual experience-visual--progress" aria-hidden="true">
+                <div className="progress-board">
+                  <div className="progress-head">
+                    <span>Science · Grade 10</span>
+                    <strong>This week</strong>
+                  </div>
+                  {[
+                    ["Chemical Reactions", "91%", "mastered"],
+                    ["Acids, Bases and Salts", "64%", "review"],
+                    ["Electricity", "38%", "next"],
+                  ].map(([chapter, score, state]) => (
+                    <div className="chapter-row" key={chapter}>
+                      <div>
+                        <strong>{chapter}</strong>
+                        <span>{state}</span>
+                      </div>
+                      <em>{score}</em>
+                    </div>
+                  ))}
+                </div>
+                <div className="revision-card-mini">
+                  <BookOpen size={17} aria-hidden="true" strokeWidth={1.6} />
+                  <span>Review weak concepts before the next quiz</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
+      <PricingSection />
 
       <footer className="footer">
         <div className="footer-inner">
@@ -395,6 +367,7 @@ export default function Home() {
 
         .nav,
         .hero,
+        .product-experience,
         .section-band,
         .footer {
           position: relative;
@@ -817,208 +790,441 @@ export default function Home() {
           line-height: 1.74;
         }
 
-        .platform-overview {
+        .product-experience {
           position: relative;
           z-index: 1;
-          padding: 112px 0 104px;
+          padding: 108px 0 112px;
           overflow: hidden;
-          border-top: 1px solid rgba(196, 217, 255, 0.13);
-        }
-
-        .platform-overview::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          z-index: -1;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
           background:
-            radial-gradient(ellipse 65% 55% at 14% 20%, rgba(99, 102, 241, 0.13), transparent),
-            radial-gradient(ellipse 55% 65% at 84% 18%, rgba(79, 209, 197, 0.1), transparent),
-            linear-gradient(180deg, rgba(7, 10, 18, 0.72), rgba(9, 16, 29, 0.82));
+            radial-gradient(ellipse 58% 48% at 16% 8%, rgba(121, 167, 255, 0.12), transparent),
+            radial-gradient(ellipse 52% 50% at 84% 22%, rgba(79, 209, 197, 0.08), transparent),
+            linear-gradient(180deg, rgba(7, 11, 22, 0.96), rgba(8, 14, 26, 0.88) 45%, rgba(5, 8, 18, 0.96));
         }
 
-        .platform-centered {
-          position: relative;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+        .product-inner {
           width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
         }
 
-        .platform-centered h2 {
-          max-width: 820px;
+        .product-heading {
+          max-width: 720px;
+          margin: 0 auto 26px;
+          text-align: center;
+        }
+
+        .product-heading h2 {
           margin: 0;
-          font-size: clamp(1.9rem, 2.8vw, 2.6rem);
-          line-height: 1.08;
-          white-space: nowrap;
+          color: var(--text);
+          font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+          line-height: 1.05;
+          letter-spacing: 0;
         }
 
-        .platform-label {
-          display: inline-flex;
-          align-items: center;
-          margin: 0 0 22px;
-          padding: 5px 14px;
-          border-radius: 999px;
-          border: 1px solid var(--line-strong);
-          background: rgba(255, 255, 255, 0.05);
+        .product-heading p {
+          max-width: 620px;
+          margin: 18px auto 0;
           color: var(--muted);
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.09em;
-          text-transform: uppercase;
-        }
-
-        .platform-sub {
-          max-width: 640px;
-          margin: 22px auto 0;
-          color: var(--muted);
-          font-size: clamp(0.92rem, 1.25vw, 1.06rem);
+          font-size: clamp(1rem, 1.25vw, 1.14rem);
           line-height: 1.72;
         }
 
-        .platform-trust-rotator {
-          position: relative;
-          width: min(100%, 520px);
-          height: 1.45rem;
-          margin: 16px 0 0;
-          overflow: hidden;
-        }
-
-        .platform-trust-phrase {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--soft);
-          font-size: 0.87rem;
-          line-height: 1.45;
-          opacity: 0;
-          transform: translateY(0.4rem);
-          animation: trustPhraseRotate 18s ease-in-out infinite;
-          animation-delay: calc(var(--phrase-index) * 3s);
-        }
-
-        .platform-trust-pills {
+        .support-strip-compact {
           display: flex;
           flex-wrap: wrap;
+          align-items: center;
           justify-content: center;
-          gap: 10px;
-          margin: 30px 0 0;
+          gap: 9px;
+          width: fit-content;
+          max-width: 100%;
+          margin: 0 auto 72px;
+          padding: 10px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(12px);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        .platform-trust-pill {
+        .support-strip-compact span {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          padding: 7px 14px;
+          min-height: 30px;
+          gap: 6px;
+          padding: 0 11px;
           border-radius: 999px;
-          border: 1px solid var(--line-strong);
-          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          background: rgba(255, 255, 255, 0.045);
           color: var(--muted);
-          font-size: 0.81rem;
+          font-size: 0.8rem;
+          font-weight: 700;
         }
 
-        .platform-trust-pill svg {
-          color: var(--cyan);
-          flex-shrink: 0;
+        .support-strip-compact .support-label {
+          border-color: transparent;
+          background: transparent;
+          color: var(--soft);
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .support-subject svg {
+          color: #9fbaff;
           opacity: 0.85;
         }
 
-        .platform-available {
-          margin: 40px 0 0;
-          width: 100%;
+        .experience-flow {
+          position: relative;
+          display: grid;
+          gap: 34px;
         }
 
-        .platform-available-title {
-          margin: 0 0 14px;
+        .experience-flow::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 18px;
+          bottom: 18px;
+          width: 1px;
+          background: linear-gradient(180deg, transparent, rgba(196, 217, 255, 0.14), transparent);
+          transform: translateX(-50%);
+          opacity: 0.55;
+        }
+
+        .experience-row {
+          position: relative;
+          display: grid;
+          grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+          align-items: center;
+          gap: clamp(34px, 5vw, 74px);
+          padding: clamp(22px, 4vw, 34px);
+          border: 1px solid rgba(196, 217, 255, 0.1);
+          border-radius: 28px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.022)),
+            rgba(13, 19, 32, 0.48);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 54px rgba(0, 0, 0, 0.16);
+          backdrop-filter: blur(12px);
+        }
+
+        .experience-row--reverse {
+          grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+        }
+
+        .experience-row--reverse .experience-copy {
+          order: 2;
+        }
+
+        .experience-copy {
+          max-width: 420px;
+        }
+
+        .experience-kicker {
+          display: inline-flex;
+          margin-bottom: 16px;
+          color: #9fbaff;
+          font-size: 0.72rem;
+          font-weight: 820;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+
+        .experience-copy h3 {
+          margin: 0 0 16px;
+          color: var(--text);
+          font-size: clamp(1.65rem, 2.7vw, 2.55rem);
+          line-height: 1.08;
+          letter-spacing: 0;
+        }
+
+        .experience-copy p {
+          margin: 0;
+          color: var(--muted);
+          font-size: clamp(0.96rem, 1.18vw, 1.08rem);
+          line-height: 1.76;
+        }
+
+        .experience-visual {
+          position: relative;
+          min-height: 350px;
+          border-radius: 24px;
+          overflow: hidden;
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          background:
+            radial-gradient(circle at 12% 10%, rgba(121, 167, 255, 0.12), transparent 16rem),
+            linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.022)),
+            rgba(6, 10, 20, 0.74);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .ui-window,
+        .quiz-card-mini,
+        .progress-board {
+          position: absolute;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          background: rgba(13, 19, 32, 0.86);
+          box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+          backdrop-filter: blur(10px);
+        }
+
+        .ui-window {
+          inset: 28px;
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
+        .ui-window-top {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          height: 42px;
+          padding: 0 14px;
+          border-bottom: 1px solid rgba(196, 217, 255, 0.1);
           color: var(--soft);
-          font-size: 0.73rem;
-          font-weight: 700;
+          font-size: 0.72rem;
+          font-weight: 800;
+        }
+
+        .ui-window-top span {
+          width: 8px;
+          height: 8px;
+          border-radius: 999px;
+          background: rgba(196, 217, 255, 0.28);
+        }
+
+        .ui-window-top strong {
+          margin-left: 8px;
+          color: var(--muted);
+        }
+
+        .explain-layout {
+          display: grid;
+          grid-template-columns: 0.86fr 1.14fr;
+          gap: 14px;
+          padding: 16px;
+        }
+
+        .reader-pane,
+        .answer-pane,
+        .quiz-card-mini,
+        .mastery-mini,
+        .progress-board,
+        .revision-card-mini {
+          border: 1px solid rgba(196, 217, 255, 0.1);
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.045);
+        }
+
+        .reader-pane,
+        .answer-pane {
+          min-height: 230px;
+          padding: 18px;
+        }
+
+        .ui-tag,
+        .quiz-meta,
+        .progress-head {
+          color: var(--soft);
+          font-size: 0.7rem;
+          font-weight: 800;
           letter-spacing: 0.09em;
           text-transform: uppercase;
         }
 
-        .platform-available-cards {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px;
-          max-width: 620px;
-          margin: 0 auto;
+        .reader-pane h4,
+        .quiz-card-mini h4 {
+          margin: 14px 0 12px;
+          color: var(--text);
+          font-size: 1rem;
+          line-height: 1.35;
         }
 
-        .platform-available-card {
-          display: flex;
-          flex-direction: column;
-          gap: 9px;
-          padding: 18px 20px;
-          border-radius: 18px;
-          border: 1px solid var(--line);
-          background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.024)),
-            rgba(13, 19, 32, 0.72);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 28px rgba(0, 0, 0, 0.2);
-          backdrop-filter: blur(10px);
-          text-align: left;
-        }
-
-        .platform-available-head {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 4px;
-        }
-
-        .platform-available-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 30px;
-          height: 30px;
-          border-radius: 9px;
-          flex-shrink: 0;
-        }
-
-        .platform-available-icon--cbse {
-          color: var(--green);
-          background: rgba(126, 231, 135, 0.1);
-          border: 1px solid rgba(126, 231, 135, 0.2);
-        }
-
-        .platform-available-icon--mh {
-          color: #b78ef0;
-          background: rgba(183, 142, 240, 0.1);
-          border: 1px solid rgba(183, 142, 240, 0.2);
-        }
-
-        .platform-board {
+        .reader-pane p,
+        .answer-pane p {
+          margin: 0;
+          color: var(--muted);
           font-size: 0.9rem;
-          font-weight: 760;
+          line-height: 1.6;
         }
 
-        .platform-available-card--cbse .platform-board { color: var(--green); }
-        .platform-available-card--mh .platform-board { color: #b78ef0; }
+        .answer-pane ul {
+          display: grid;
+          gap: 9px;
+          margin: 18px 0 0;
+          padding: 0;
+          list-style: none;
+        }
 
-        .platform-available-row {
-          display: flex;
-          align-items: center;
-          gap: 6px;
+        .answer-pane li {
           color: var(--muted);
           font-size: 0.83rem;
         }
 
-        .platform-available-row svg {
-          opacity: 0.5;
-          flex-shrink: 0;
+        .answer-pane li::before {
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          margin-right: 8px;
+          border-radius: 999px;
+          background: var(--cyan);
         }
 
-        .platform-demo-wrapper {
-          position: relative;
-          z-index: 1;
-          width: min(1160px, calc(100% - 48px));
-          margin: 52px auto 0;
+        .highlight-line,
+        .soft-line {
+          height: 9px;
+          margin-top: 18px;
+          border-radius: 999px;
+          background: rgba(255, 209, 102, 0.24);
+        }
+
+        .soft-line {
+          width: 72%;
+          background: rgba(196, 217, 255, 0.13);
+        }
+
+        .quiz-card-mini {
+          left: 32px;
+          right: 90px;
+          top: 34px;
+          padding: 22px;
+          border-radius: 20px;
+        }
+
+        .quiz-meta,
+        .progress-head {
+          display: flex;
+          justify-content: space-between;
+          gap: 14px;
+        }
+
+        .option {
+          min-height: 38px;
+          margin-top: 9px;
+          padding: 10px 12px;
+          border: 1px solid rgba(196, 217, 255, 0.11);
+          border-radius: 12px;
+          color: var(--muted);
+          background: rgba(255, 255, 255, 0.035);
+          font-size: 0.86rem;
+        }
+
+        .option-correct {
+          color: var(--green);
+          border-color: rgba(126, 231, 135, 0.22);
+          background: rgba(126, 231, 135, 0.08);
+        }
+
+        .feedback-mini {
+          margin-top: 14px;
+          color: var(--muted);
+          font-size: 0.84rem;
+          line-height: 1.5;
+        }
+
+        .mastery-mini {
+          position: absolute;
+          right: 30px;
+          bottom: 30px;
+          width: 188px;
+          padding: 18px;
+          box-shadow: 0 16px 42px rgba(0, 0, 0, 0.25);
+        }
+
+        .mastery-mini span {
+          color: var(--soft);
+          font-size: 0.68rem;
+          font-weight: 800;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+
+        .mastery-mini strong {
+          display: block;
+          margin: 8px 0;
+          color: var(--green);
+          font-size: 2rem;
+          line-height: 1;
+        }
+
+        .progress-track {
+          height: 6px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.08);
+          overflow: hidden;
+        }
+
+        .progress-track div {
+          width: 84%;
+          height: 100%;
+          border-radius: inherit;
+          background: linear-gradient(90deg, var(--accent), var(--green));
+        }
+
+        .progress-board {
+          left: 34px;
+          right: 34px;
+          top: 30px;
+          padding: 20px;
+          border-radius: 20px;
+        }
+
+        .progress-head {
+          margin-bottom: 16px;
+        }
+
+        .progress-head strong {
+          color: var(--cyan);
+        }
+
+        .chapter-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 13px 0;
+          border-top: 1px solid rgba(196, 217, 255, 0.09);
+        }
+
+        .chapter-row strong {
+          display: block;
+          color: var(--text);
+          font-size: 0.92rem;
+          line-height: 1.35;
+        }
+
+        .chapter-row span {
+          display: block;
+          margin-top: 3px;
+          color: var(--soft);
+          font-size: 0.75rem;
+          text-transform: capitalize;
+        }
+
+        .chapter-row em {
+          color: var(--muted);
+          font-style: normal;
+          font-weight: 800;
+        }
+
+        .revision-card-mini {
+          position: absolute;
+          right: 34px;
+          bottom: 30px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          max-width: 270px;
+          padding: 14px 16px;
+          color: var(--muted);
+          font-size: 0.86rem;
+          line-height: 1.4;
+          box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+        }
+
+        .revision-card-mini svg {
+          color: var(--accent);
+          flex-shrink: 0;
         }
 
         .eyebrow {
@@ -1773,23 +1979,6 @@ export default function Home() {
           }
         }
 
-        @keyframes trustPhraseRotate {
-          0% {
-            opacity: 0;
-            transform: translateY(0.4rem);
-          }
-          3%,
-          14% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          17%,
-          100% {
-            opacity: 0;
-            transform: translateY(-0.35rem);
-          }
-        }
-
         @media (prefers-reduced-motion: reduce) {
           html {
             scroll-behavior: auto;
@@ -1802,24 +1991,10 @@ export default function Home() {
             animation-iteration-count: 1 !important;
             transition-duration: 0.001ms !important;
           }
-
-          .platform-trust-phrase {
-            animation: none !important;
-            opacity: 0;
-            transform: none;
-          }
-
-          .platform-trust-phrase:first-child {
-            opacity: 1;
-          }
         }
 
         @media (max-width: 1080px) {
           .demo-wrapper {
-            display: none;
-          }
-
-          .platform-demo-wrapper {
             display: none;
           }
 
@@ -1859,6 +2034,19 @@ export default function Home() {
 
           .why-kivo-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .experience-row,
+          .experience-row--reverse {
+            grid-template-columns: 1fr;
+          }
+
+          .experience-row--reverse .experience-copy {
+            order: 0;
+          }
+
+          .experience-copy {
+            max-width: 640px;
           }
 
           .comparison-arrow span {
@@ -1954,7 +2142,7 @@ export default function Home() {
             border-radius: 20px;
           }
 
-          .platform-overview {
+          .product-experience {
             padding: 78px 0;
           }
 
@@ -1962,8 +2150,7 @@ export default function Home() {
             padding: 78px 0;
           }
 
-          .platform-centered,
-          .platform-demo-wrapper,
+          .product-inner,
           .why-kivo-inner {
             width: min(var(--max), calc(100% - 28px));
           }
@@ -1986,23 +2173,84 @@ export default function Home() {
             margin-bottom: 22px;
           }
 
-          .platform-centered h2 {
-            white-space: normal;
-            font-size: clamp(1.85rem, 8vw, 2.7rem);
+          .product-heading {
+            margin-bottom: 22px;
           }
 
-          .platform-trust-pills {
-            gap: 8px;
+          .support-strip-compact {
+            width: 100%;
+            justify-content: flex-start;
+            border-radius: 20px;
+            margin-bottom: 38px;
           }
 
-          .platform-trust-pill {
-            font-size: 0.77rem;
-            padding: 6px 12px;
+          .support-strip-compact .support-label {
+            width: 100%;
+            min-height: 20px;
           }
 
-          .platform-available-cards {
+          .experience-flow {
+            gap: 18px;
+          }
+
+          .experience-flow::before {
+            display: none;
+          }
+
+          .experience-row {
+            padding: 22px;
+            border-radius: 22px;
+            gap: 22px;
+          }
+
+          .experience-visual {
+            min-height: 330px;
+            border-radius: 18px;
+          }
+
+          .ui-window {
+            inset: 14px;
+          }
+
+          .explain-layout {
             grid-template-columns: 1fr;
-            max-width: 320px;
+          }
+
+          .reader-pane,
+          .answer-pane {
+            min-height: auto;
+            padding: 14px;
+          }
+
+          .answer-pane {
+            display: none;
+          }
+
+          .quiz-card-mini {
+            left: 14px;
+            right: 14px;
+            top: 16px;
+            padding: 16px;
+          }
+
+          .mastery-mini {
+            right: 14px;
+            bottom: 14px;
+            width: 170px;
+          }
+
+          .progress-board {
+            left: 14px;
+            right: 14px;
+            top: 16px;
+            padding: 16px;
+          }
+
+          .revision-card-mini {
+            right: 14px;
+            left: 14px;
+            bottom: 14px;
+            max-width: none;
           }
 
           .support-strip {
