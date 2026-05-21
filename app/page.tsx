@@ -10,6 +10,7 @@ import {
   FileText,
   FlaskConical,
   HelpingHand,
+  Monitor,
   TrendingUp,
   NotebookPen,
   PenSquare,
@@ -138,6 +139,10 @@ export default function Home() {
                 Why Kivo Works
               </SmoothScrollLink>
             </div>
+            <p className="hero-availability">
+              <Monitor size={17} strokeWidth={1.7} aria-hidden="true" />
+              <span>Currently available on desktop &amp; laptop only</span>
+            </p>
           </div>
           <figure className="hero-image-frame">
             <Image
@@ -739,6 +744,27 @@ export default function Home() {
           flex-wrap: wrap;
           gap: 12px;
           margin: 34px 0 22px;
+        }
+
+        .hero-availability {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin: 0;
+          border: 1px solid rgba(255, 209, 102, 0.22);
+          border-radius: 999px;
+          padding: 9px 13px;
+          color: var(--soft);
+          background: rgba(255, 209, 102, 0.075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+          font-size: 0.94rem;
+          font-weight: 650;
+          line-height: 1.35;
+        }
+
+        .hero-availability svg {
+          flex: 0 0 auto;
+          color: var(--accent);
         }
 
         .hero-reassurance {
@@ -1556,7 +1582,7 @@ export default function Home() {
           display: flex;
           flex-wrap: wrap;
           gap: 12px;
-          margin: 34px 0 38px;
+          margin: 34px 0 14px;
         }
 
         .support-strip {
@@ -2371,22 +2397,66 @@ export default function Home() {
             width: min(var(--max), calc(100% - 28px));
           }
 
+          .nav-inner {
+            height: auto;
+            min-height: 106px;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 8px;
+            padding: 10px 0 8px;
+          }
+
+          .logo-link img {
+            width: 112px;
+          }
+
           .nav-links {
+            order: 3;
+            display: flex;
+            width: 100%;
+            margin-left: 0;
+            gap: 6px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            padding: 2px 0 4px;
+            scrollbar-width: none;
+          }
+
+          .nav-links::-webkit-scrollbar {
             display: none;
           }
 
-          .nav-inner {
-            height: 68px;
+          .nav-links a {
+            flex: 0 0 auto;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.045);
+            padding: 7px 11px;
+            font-size: 0.82rem;
+          }
+
+          .nav-sep {
+            display: none;
+          }
+
+          .nav-auth {
+            margin-left: auto;
+            gap: 4px;
+          }
+
+          .nav-link {
+            padding: 5px 7px;
+            font-size: 0.82rem;
           }
 
           .btn-nav {
-            margin-left: auto;
-            padding: 0 16px;
+            min-height: 38px;
+            padding: 0 12px;
+            font-size: 0.84rem;
           }
 
           .hero {
             min-height: auto;
-            padding: 112px 0 68px;
+            padding: 154px 0 68px;
           }
 
           .hero-copy h1 {
