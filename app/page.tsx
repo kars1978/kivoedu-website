@@ -5,6 +5,7 @@ import Link from "next/link";
 import { BookOpen, CirclePlus, FlaskConical, GraduationCap, Lock, ShieldCheck, Sigma, TrendingUp } from "lucide-react";
 import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
 import { LOGO_SRC } from "./constants";
+import heroCard01 from "./public/hero_card_01.png";
 import HeroDemo from "./HeroDemo";
 import HomeworkSection from "./HomeworkSection";
 import PracticeSection from "./PracticeSection";
@@ -24,7 +25,6 @@ const heroTrustPhrases = [
   "Structured chapter-by-chapter learning.",
   "Safer than generic AI tools.",
 ];
-
 
 export const metadata: Metadata = {
   title: "KivoEdu | AI Tutoring Built for Students",
@@ -83,16 +83,51 @@ export default function Home() {
         <div className="hero-bg" aria-hidden="true">
           <div className="hero-bg-glow" />
         </div>
-        <div className="hero-centered reveal">
-          <p className="hero-label">AI Learning Platform</p>
-          <h1>Your curriculum, mastered with AI.</h1>
-          <p className="hero-sub">
-            Kivo helps CBSE &amp; Maharashtra Board students understand chapters, solve homework, and practice concepts with AI grounded in their textbooks.
+        <div className="hero-grid reveal">
+          <div className="hero-copy">
+            <h1>Learning, the way it should feel.</h1>
+            <p className="hero-sub">
+              Kivo is a learning companion designed to make studying feel clearer, calmer, and more confidence-building.
+            </p>
+            <div className="hero-actions">
+              <a
+                href={loginUrl}
+                className="btn-kivo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start Learning
+              </a>
+              <a href="#platform-overview" className="btn btn-secondary">
+                Learn what Kivo can do
+              </a>
+            </div>
+          </div>
+          <figure className="hero-image-frame">
+            <Image
+              src={heroCard01}
+              alt="A student studying calmly with supportive learning guidance"
+              className="hero-image"
+              priority
+              sizes="(max-width: 900px) 100vw, 58vw"
+              placeholder="blur"
+            />
+          </figure>
+        </div>
+      </section>
+      <section className="platform-overview" id="platform-overview">
+        <div className="platform-centered reveal">
+          <p className="platform-label">AI Learning Platform</p>
+          <h2>Your curriculum, mastered with AI.</h2>
+          <p className="platform-sub">
+            Kivo helps CBSE &amp; Maharashtra Board students understand chapters,
+            solve homework, and practice concepts with AI grounded in their
+            textbooks.
           </p>
-          <div className="hero-trust-rotator" aria-live="off">
+          <div className="platform-trust-rotator" aria-live="off">
             {heroTrustPhrases.map((phrase, index) => (
               <span
-                className="hero-trust-phrase"
+                className="platform-trust-phrase"
                 style={{ "--phrase-index": index } as CSSProperties}
                 key={phrase}
               >
@@ -100,57 +135,57 @@ export default function Home() {
               </span>
             ))}
           </div>
-          <div className="trust-pills" role="list">
-            <span className="trust-pill" role="listitem">
+          <div className="platform-trust-pills" role="list">
+            <span className="platform-trust-pill" role="listitem">
               <BookOpen size={14} aria-hidden="true" strokeWidth={1.5} />
               Curriculum aligned
             </span>
-            <span className="trust-pill" role="listitem">
+            <span className="platform-trust-pill" role="listitem">
               <TrendingUp size={14} aria-hidden="true" strokeWidth={1.5} />
               Step-by-step learning
             </span>
-            <span className="trust-pill" role="listitem">
+            <span className="platform-trust-pill" role="listitem">
               <ShieldCheck size={14} aria-hidden="true" strokeWidth={1.5} />
               CBSE &amp; Maharashtra Board
             </span>
-            <span className="trust-pill" role="listitem">
+            <span className="platform-trust-pill" role="listitem">
               <Lock size={14} aria-hidden="true" strokeWidth={1.5} />
               Safer than generic AI
             </span>
           </div>
-          <div className="avail-today">
-            <p className="avail-title">Available today</p>
-            <div className="avail-cards">
-              <div className="avail-card avail-card--cbse">
-                <div className="avail-card-head">
-                  <span className="avail-icon avail-icon--cbse" aria-hidden="true">
+          <div className="platform-available">
+            <p className="platform-available-title">Available today</p>
+            <div className="platform-available-cards">
+              <div className="platform-available-card platform-available-card--cbse">
+                <div className="platform-available-head">
+                  <span className="platform-available-icon platform-available-icon--cbse" aria-hidden="true">
                     <CirclePlus size={16} strokeWidth={1.5} />
                   </span>
-                  <span className="avail-board">CBSE</span>
+                  <span className="platform-board">CBSE</span>
                 </div>
-                <div className="avail-row">
+                <div className="platform-available-row">
                   <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
                   <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
                   <span>Math &amp; Science</span>
                 </div>
-                <div className="avail-row">
+                <div className="platform-available-row">
                   <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
-                  <span>Grades 9–10</span>
+                  <span>Grades 9-10</span>
                 </div>
               </div>
-              <div className="avail-card avail-card--mh">
-                <div className="avail-card-head">
-                  <span className="avail-icon avail-icon--mh" aria-hidden="true">
+              <div className="platform-available-card platform-available-card--mh">
+                <div className="platform-available-head">
+                  <span className="platform-available-icon platform-available-icon--mh" aria-hidden="true">
                     <BookOpen size={16} strokeWidth={1.5} />
                   </span>
-                  <span className="avail-board">Maharashtra Board</span>
+                  <span className="platform-board">Maharashtra Board</span>
                 </div>
-                <div className="avail-row">
+                <div className="platform-available-row">
                   <Sigma size={18} aria-hidden="true" strokeWidth={1.5} />
                   <FlaskConical size={18} aria-hidden="true" strokeWidth={1.5} />
                   <span>Math &amp; Science</span>
                 </div>
-                <div className="avail-row">
+                <div className="platform-available-row">
                   <GraduationCap size={18} aria-hidden="true" strokeWidth={1.5} />
                   <span>Grade 9</span>
                 </div>
@@ -158,13 +193,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="demo-wrapper reveal">
+        <div className="platform-demo-wrapper reveal">
           <HeroDemo />
         </div>
       </section>
       <HomeworkSection />
       <PracticeSection />
-      <CurriculumSection />
+      <div id="subjects">
+        <CurriculumSection />
+      </div>
       <StudyToolkitSection />
       <FinalCTASection />
       <PricingSection />
@@ -283,7 +320,7 @@ export default function Home() {
           inset: 0;
           z-index: 0;
           pointer-events: none;
-          opacity: 0.34;
+          opacity: 0.14;
           background-image:
             linear-gradient(rgba(196, 217, 255, 0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(196, 217, 255, 0.045) 1px, transparent 1px);
@@ -459,11 +496,39 @@ export default function Home() {
         .hero {
           min-height: 100svh;
           display: flex;
-          flex-direction: column;
           align-items: center;
-          padding: 142px 0 92px;
-          gap: 0;
+          padding: 136px 0 86px;
           overflow: hidden;
+          color: var(--text);
+          background:
+            radial-gradient(circle at 12% 18%, rgba(79, 209, 197, 0.18), transparent 28rem),
+            radial-gradient(circle at 86% 16%, rgba(121, 167, 255, 0.18), transparent 30rem),
+            radial-gradient(circle at 48% 70%, rgba(255, 209, 102, 0.07), transparent 34rem),
+            linear-gradient(180deg, var(--bg) 0%, #09101d 58%, var(--bg-deep) 100%);
+        }
+
+        .hero .btn-primary {
+          color: var(--accent-ink);
+          border-color: rgba(255, 209, 102, 0.58);
+          background: linear-gradient(135deg, var(--accent), var(--green) 54%, var(--cyan));
+          box-shadow: 0 20px 50px rgba(79, 209, 197, 0.24), 0 0 0 6px rgba(255, 209, 102, 0.06);
+        }
+
+        .hero .btn-primary:hover {
+          box-shadow: 0 24px 66px rgba(79, 209, 197, 0.32), 0 0 0 8px rgba(255, 209, 102, 0.1);
+        }
+
+        .hero .btn-secondary {
+          color: var(--text);
+          border-color: var(--line-strong);
+          background: rgba(255, 255, 255, 0.055);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .hero .btn-secondary:hover {
+          border-color: rgba(255, 209, 102, 0.42);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
         }
 
         .hero-bg {
@@ -483,22 +548,22 @@ export default function Home() {
           animation: heroGlowDrift 20s ease-in-out infinite alternate;
         }
 
-.hero-centered {
+        .hero-grid {
           position: relative;
           z-index: 1;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: minmax(0, 0.98fr) minmax(0, 1fr);
           align-items: center;
-          text-align: center;
+          gap: clamp(36px, 5vw, 72px);
           width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
         }
 
-        .demo-wrapper {
+        .demo-wrapper,
+        .hero-centered {
           position: relative;
           z-index: 1;
-          width: min(1160px, calc(100% - 48px));
-          margin: 52px auto 0;
+          display: none;
         }
 
         .demo-placeholder {
@@ -509,21 +574,118 @@ export default function Home() {
         }
 
         .hero-copy {
-          max-width: 760px;
-        }
-
-        .hero-centered h1 {
-          max-width: 820px;
-          font-size: clamp(1.9rem, 2.8vw, 2.6rem);
-          white-space: nowrap;
-        }
-
-        .hero-centered .hero-sub {
           max-width: 640px;
-          font-size: clamp(0.92rem, 1.25vw, 1.06rem);
         }
 
         .hero-label {
+          display: inline-flex;
+          align-items: center;
+          max-width: 100%;
+          margin: 0 0 24px;
+          padding: 8px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--line-strong);
+          background: rgba(255, 255, 255, 0.05);
+          color: var(--muted);
+          font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+          font-weight: 760;
+          line-height: 1.3;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+        }
+
+        .hero-copy h1 {
+          max-width: 620px;
+          margin-bottom: 24px;
+          color: var(--text);
+          font-size: clamp(3rem, 5.1vw, 4.75rem);
+          line-height: 1;
+          letter-spacing: 0;
+        }
+
+        .hero-sub {
+          max-width: 500px;
+          color: var(--muted);
+          font-size: clamp(1.05rem, 1.55vw, 1.24rem);
+          line-height: 1.68;
+        }
+
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin: 34px 0 22px;
+        }
+
+        .hero-reassurance {
+          margin: 0;
+          color: var(--soft);
+          font-size: 0.94rem;
+          font-weight: 650;
+        }
+
+        .hero-image-frame {
+          position: relative;
+          min-height: clamp(420px, 56vw, 650px);
+          margin: 0;
+          border-radius: 30px;
+          overflow: hidden;
+          border: 1px solid rgba(196, 217, 255, 0.16);
+          background: rgba(13, 19, 32, 0.72);
+          box-shadow:
+            0 34px 90px rgba(0, 0, 0, 0.34),
+            0 0 0 1px rgba(255, 255, 255, 0.04),
+            0 0 46px rgba(79, 209, 197, 0.1);
+        }
+
+        .hero-image {
+          position: absolute;
+          inset: -18px 0 0;
+          width: 100%;
+          height: calc(100% + 18px);
+          display: block;
+          object-fit: cover;
+          object-position: 60% center;
+        }
+
+        .platform-overview {
+          position: relative;
+          z-index: 1;
+          padding: 112px 0 104px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.13);
+        }
+
+        .platform-overview::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          background:
+            radial-gradient(ellipse 65% 55% at 14% 20%, rgba(99, 102, 241, 0.13), transparent),
+            radial-gradient(ellipse 55% 65% at 84% 18%, rgba(79, 209, 197, 0.1), transparent),
+            linear-gradient(180deg, rgba(7, 10, 18, 0.72), rgba(9, 16, 29, 0.82));
+        }
+
+        .platform-centered {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .platform-centered h2 {
+          max-width: 820px;
+          margin: 0;
+          font-size: clamp(1.9rem, 2.8vw, 2.6rem);
+          line-height: 1.08;
+          white-space: nowrap;
+        }
+
+        .platform-label {
           display: inline-flex;
           align-items: center;
           margin: 0 0 22px;
@@ -538,7 +700,15 @@ export default function Home() {
           text-transform: uppercase;
         }
 
-        .hero-trust-rotator {
+        .platform-sub {
+          max-width: 640px;
+          margin: 22px auto 0;
+          color: var(--muted);
+          font-size: clamp(0.92rem, 1.25vw, 1.06rem);
+          line-height: 1.72;
+        }
+
+        .platform-trust-rotator {
           position: relative;
           width: min(100%, 520px);
           height: 1.45rem;
@@ -546,7 +716,7 @@ export default function Home() {
           overflow: hidden;
         }
 
-        .hero-trust-phrase {
+        .platform-trust-phrase {
           position: absolute;
           inset: 0;
           display: flex;
@@ -561,7 +731,7 @@ export default function Home() {
           animation-delay: calc(var(--phrase-index) * 3s);
         }
 
-        .trust-pills {
+        .platform-trust-pills {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
@@ -569,7 +739,7 @@ export default function Home() {
           margin: 30px 0 0;
         }
 
-        .trust-pill {
+        .platform-trust-pill {
           display: inline-flex;
           align-items: center;
           gap: 7px;
@@ -581,28 +751,18 @@ export default function Home() {
           font-size: 0.81rem;
         }
 
-        .trust-pill svg {
+        .platform-trust-pill svg {
           color: var(--cyan);
           flex-shrink: 0;
           opacity: 0.85;
         }
 
-        @media (max-width: 760px) {
-          .trust-pills {
-            gap: 8px;
-          }
-          .trust-pill {
-            font-size: 0.77rem;
-            padding: 6px 12px;
-          }
-        }
-
-        .avail-today {
+        .platform-available {
           margin: 40px 0 0;
           width: 100%;
         }
 
-        .avail-title {
+        .platform-available-title {
           margin: 0 0 14px;
           color: var(--soft);
           font-size: 0.73rem;
@@ -611,7 +771,7 @@ export default function Home() {
           text-transform: uppercase;
         }
 
-        .avail-cards {
+        .platform-available-cards {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 14px;
@@ -619,7 +779,7 @@ export default function Home() {
           margin: 0 auto;
         }
 
-        .avail-card {
+        .platform-available-card {
           display: flex;
           flex-direction: column;
           gap: 9px;
@@ -634,14 +794,14 @@ export default function Home() {
           text-align: left;
         }
 
-        .avail-card-head {
+        .platform-available-head {
           display: flex;
           align-items: center;
           gap: 10px;
           margin-bottom: 4px;
         }
 
-        .avail-icon {
+        .platform-available-icon {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -651,27 +811,27 @@ export default function Home() {
           flex-shrink: 0;
         }
 
-        .avail-icon--cbse {
+        .platform-available-icon--cbse {
           color: var(--green);
           background: rgba(126, 231, 135, 0.1);
           border: 1px solid rgba(126, 231, 135, 0.2);
         }
 
-        .avail-icon--mh {
+        .platform-available-icon--mh {
           color: #b78ef0;
           background: rgba(183, 142, 240, 0.1);
           border: 1px solid rgba(183, 142, 240, 0.2);
         }
 
-        .avail-board {
+        .platform-board {
           font-size: 0.9rem;
           font-weight: 760;
         }
 
-        .avail-card--cbse .avail-board { color: var(--green); }
-        .avail-card--mh .avail-board { color: #b78ef0; }
+        .platform-available-card--cbse .platform-board { color: var(--green); }
+        .platform-available-card--mh .platform-board { color: #b78ef0; }
 
-        .avail-row {
+        .platform-available-row {
           display: flex;
           align-items: center;
           gap: 6px;
@@ -679,16 +839,16 @@ export default function Home() {
           font-size: 0.83rem;
         }
 
-        .avail-row svg {
+        .platform-available-row svg {
           opacity: 0.5;
           flex-shrink: 0;
         }
 
-        @media (max-width: 600px) {
-          .avail-cards {
-            grid-template-columns: 1fr;
-            max-width: 320px;
-          }
+        .platform-demo-wrapper {
+          position: relative;
+          z-index: 1;
+          width: min(1160px, calc(100% - 48px));
+          margin: 52px auto 0;
         }
 
         .eyebrow {
@@ -1473,13 +1633,13 @@ export default function Home() {
             transition-duration: 0.001ms !important;
           }
 
-          .hero-trust-phrase {
+          .platform-trust-phrase {
             animation: none !important;
             opacity: 0;
             transform: none;
           }
 
-          .hero-trust-phrase:first-child {
+          .platform-trust-phrase:first-child {
             opacity: 1;
           }
         }
@@ -1487,6 +1647,15 @@ export default function Home() {
         @media (max-width: 1080px) {
           .demo-wrapper {
             display: none;
+          }
+
+          .platform-demo-wrapper {
+            display: none;
+          }
+
+          .hero-grid {
+            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+            gap: 36px;
           }
 
           .availability-inner,
@@ -1523,6 +1692,31 @@ export default function Home() {
           }
         }
 
+        @media (max-width: 900px) {
+          .hero {
+            min-height: auto;
+            padding: 124px 0 76px;
+          }
+
+          .hero-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .hero-copy {
+            max-width: 660px;
+          }
+
+          .hero-copy h1,
+          .hero-sub {
+            max-width: 620px;
+          }
+
+          .hero-image-frame {
+            min-height: clamp(340px, 72vw, 560px);
+            border-radius: 24px;
+          }
+        }
+
         @media (max-width: 760px) {
           .nav-inner,
           .section-inner,
@@ -1546,7 +1740,16 @@ export default function Home() {
 
           .hero {
             min-height: auto;
-            padding: 118px 0 74px;
+            padding: 112px 0 68px;
+          }
+
+          .hero-copy h1 {
+            font-size: clamp(2.45rem, 12vw, 3.8rem);
+            line-height: 0.98;
+          }
+
+          .hero-label {
+            white-space: normal;
           }
 
           h1 {
@@ -1570,6 +1773,39 @@ export default function Home() {
 
           .hero-actions .btn {
             width: 100%;
+          }
+
+          .hero-image-frame {
+            min-height: clamp(300px, 82vw, 440px);
+            border-radius: 20px;
+          }
+
+          .platform-overview {
+            padding: 78px 0;
+          }
+
+          .platform-centered,
+          .platform-demo-wrapper {
+            width: min(var(--max), calc(100% - 28px));
+          }
+
+          .platform-centered h2 {
+            white-space: normal;
+            font-size: clamp(1.85rem, 8vw, 2.7rem);
+          }
+
+          .platform-trust-pills {
+            gap: 8px;
+          }
+
+          .platform-trust-pill {
+            font-size: 0.77rem;
+            padding: 6px 12px;
+          }
+
+          .platform-available-cards {
+            grid-template-columns: 1fr;
+            max-width: 320px;
           }
 
           .support-strip {
