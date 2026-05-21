@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpen,
+  Brain,
   Calculator,
+  ClipboardCheck,
+  FileText,
   FlaskConical,
+  HelpingHand,
   TrendingUp,
   NotebookPen,
+  PenSquare,
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -15,6 +21,56 @@ import PricingSection from "./PricingSection";
 import SmoothScrollLink from "./SmoothScrollLink";
 
 const loginUrl = "https://app.kivoedu.ai/login";
+
+const aiLearningFeatures = [
+  {
+    title: "AI Tutor",
+    description:
+      "Step-by-step explanations connected to your textbooks and curriculum.",
+    icon: Brain,
+    tint: "#7C83FF",
+    featured: true,
+  },
+  {
+    title: "Homework Companion",
+    description:
+      "Guided help that encourages understanding instead of giving away answers.",
+    icon: HelpingHand,
+    tint: "#5FA8A1",
+    featured: true,
+  },
+  {
+    title: "Interactive Quizzes",
+    description:
+      "Automatically graded quizzes with hints, review, and practice support.",
+    icon: ClipboardCheck,
+    tint: "#D6A756",
+    featured: true,
+  },
+  {
+    title: "Practice Papers",
+    description: "Generate full-length practice papers with scoring and feedback.",
+    icon: FileText,
+    tint: "#6C8EF5",
+    featured: false,
+  },
+  {
+    title: "Interactive Reader",
+    description:
+      "Explore textbooks with instant explanations, definitions, and deeper context.",
+    icon: BookOpen,
+    tint: "#5DAE8B",
+    featured: false,
+  },
+  {
+    title: "Kivo Docs",
+    description:
+      "AI-assisted writing support for assignments, revision, and structured responses.",
+    icon: PenSquare,
+    tint: "#D98880",
+    featured: false,
+  },
+];
 
 export const metadata: Metadata = {
   title: "KivoEdu | AI Tutoring Built for Students",
@@ -32,6 +88,7 @@ export default function Home() {
           <div className="nav-links" aria-label="Primary navigation">
             <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
             <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
+            <SmoothScrollLink href="#learning">Learning</SmoothScrollLink>
             <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
           </div>
@@ -268,7 +325,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="ai-philosophy" aria-labelledby="ai-philosophy-title">
+      <section className="ai-philosophy" id="learning" aria-labelledby="ai-philosophy-title">
         <div className="ai-philosophy-inner reveal">
           <span className="ai-philosophy-kicker">AI with a learning purpose</span>
           <h2 id="ai-philosophy-title">Thoughtfully powered by AI</h2>
@@ -280,6 +337,23 @@ export default function Home() {
           <p className="ai-philosophy-note">
             Designed to support understanding, not replace learning.
           </p>
+          <div className="ai-feature-grid" aria-label="Kivo AI learning features">
+            {aiLearningFeatures.map(({ title, description, icon: Icon, tint, featured }) => (
+              <article
+                className={`ai-feature-card${featured ? " ai-feature-card--featured" : ""}`}
+                key={title}
+                style={{ "--feature-tint": tint } as CSSProperties}
+              >
+                <span className="ai-feature-icon" aria-hidden="true">
+                  <Icon size={19} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
       <PricingSection />
@@ -1282,7 +1356,7 @@ export default function Home() {
         }
 
         .ai-philosophy-inner {
-          width: min(820px, calc(100% - 48px));
+          width: min(960px, calc(100% - 48px));
           margin: 0 auto;
           padding: clamp(28px, 5vw, 46px);
           border: 1px solid rgba(196, 217, 255, 0.12);
@@ -1328,6 +1402,113 @@ export default function Home() {
           color: var(--soft);
           font-size: 0.92rem;
           font-weight: 700;
+        }
+
+        .ai-feature-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+          margin-top: 30px;
+          text-align: left;
+        }
+
+        .ai-feature-card {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          gap: 13px;
+          min-height: 116px;
+          padding: 16px;
+          border: 1px solid rgba(196, 217, 255, 0.095);
+          border-radius: 16px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.044), rgba(255, 255, 255, 0.016)),
+            rgba(11, 17, 30, 0.44);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.036);
+          transition:
+            transform 180ms ease,
+            border-color 180ms ease,
+            background 180ms ease,
+            box-shadow 180ms ease;
+        }
+
+        .ai-feature-card:hover {
+          transform: translateY(-3px);
+          border-color: color-mix(in srgb, var(--feature-tint) 26%, rgba(196, 217, 255, 0.12));
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.056), rgba(255, 255, 255, 0.02)),
+            rgba(12, 19, 34, 0.5);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.045),
+            0 10px 24px rgba(0, 0, 0, 0.13);
+        }
+
+        .ai-feature-card--featured {
+          border-color: color-mix(in srgb, var(--feature-tint) 18%, rgba(196, 217, 255, 0.11));
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.018)),
+            rgba(13, 19, 32, 0.5);
+        }
+
+        .ai-feature-card--featured:hover {
+          border-color: color-mix(in srgb, var(--feature-tint) 32%, rgba(196, 217, 255, 0.14));
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .ai-feature-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border: 1px solid color-mix(in srgb, var(--feature-tint) 22%, rgba(255, 255, 255, 0.08));
+          border-radius: 12px;
+          color: color-mix(in srgb, var(--feature-tint) 68%, #ffffff);
+          background:
+            linear-gradient(
+              145deg,
+              color-mix(in srgb, var(--feature-tint) 13%, transparent),
+              color-mix(in srgb, var(--feature-tint) 6%, transparent)
+            ),
+            rgba(255, 255, 255, 0.035);
+          flex-shrink: 0;
+        }
+
+        .ai-feature-card--featured .ai-feature-icon {
+          color: color-mix(in srgb, var(--feature-tint) 76%, #ffffff);
+          border-color: color-mix(in srgb, var(--feature-tint) 30%, rgba(255, 255, 255, 0.1));
+          background:
+            linear-gradient(
+              145deg,
+              color-mix(in srgb, var(--feature-tint) 16%, transparent),
+              color-mix(in srgb, var(--feature-tint) 8%, transparent)
+            ),
+            rgba(255, 255, 255, 0.045);
+        }
+
+        .ai-feature-card h3 {
+          margin: 0;
+          color: var(--text);
+          font-size: 0.98rem;
+          line-height: 1.25;
+          letter-spacing: 0;
+        }
+
+        .ai-feature-card--featured h3 {
+          font-size: 1.03rem;
+        }
+
+        .ai-feature-card p {
+          max-width: none;
+          margin: 7px 0 0;
+          color: var(--muted);
+          font-size: 0.88rem;
+          line-height: 1.52;
+        }
+
+        .ai-feature-card:not(.ai-feature-card--featured) p {
+          color: var(--soft);
         }
 
         .eyebrow {
@@ -2256,6 +2437,17 @@ export default function Home() {
           .ai-philosophy-inner {
             width: min(var(--max), calc(100% - 28px));
             border-radius: 22px;
+          }
+
+          .ai-feature-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 28px;
+          }
+
+          .ai-feature-card {
+            min-height: auto;
+            padding: 16px;
           }
 
           .why-kivo {
