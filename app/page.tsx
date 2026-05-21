@@ -87,6 +87,7 @@ export default function Home() {
                 Why Kivo Works
               </a>
             </div>
+            <p className="hero-ai-badge">AI-assisted learning • Built around real textbooks</p>
           </div>
           <figure className="hero-image-frame">
             <Image
@@ -274,6 +275,20 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="ai-philosophy" aria-labelledby="ai-philosophy-title">
+        <div className="ai-philosophy-inner reveal">
+          <span className="ai-philosophy-kicker">AI with a learning purpose</span>
+          <h2 id="ai-philosophy-title">Thoughtfully powered by AI</h2>
+          <p>
+            Kivo combines AI-assisted learning with real textbooks, guided
+            practice, and curriculum-connected support to help students learn
+            with more clarity and confidence.
+          </p>
+          <p className="ai-philosophy-note">
+            Designed to support understanding, not replace learning.
+          </p>
+        </div>
+      </section>
       <PricingSection />
 
       <footer className="footer">
@@ -368,6 +383,7 @@ export default function Home() {
         .nav,
         .hero,
         .product-experience,
+        .ai-philosophy,
         .section-band,
         .footer {
           position: relative;
@@ -600,6 +616,23 @@ export default function Home() {
 
         .hero-copy {
           max-width: 640px;
+        }
+
+        .hero-ai-badge {
+          display: inline-flex;
+          align-items: center;
+          max-width: 100%;
+          min-height: 34px;
+          margin: 0 0 22px;
+          padding: 0 13px;
+          border-radius: 999px;
+          border: 1px solid rgba(121, 167, 255, 0.2);
+          background: rgba(121, 167, 255, 0.075);
+          color: #c4d2ff;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+          font-size: clamp(0.74rem, 1.3vw, 0.84rem);
+          font-weight: 740;
+          line-height: 1.3;
         }
 
         .hero-label {
@@ -1244,6 +1277,64 @@ export default function Home() {
         .revision-card-mini svg {
           color: var(--accent);
           flex-shrink: 0;
+        }
+
+        .ai-philosophy {
+          padding: 82px 0 88px;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
+          overflow: hidden;
+          background:
+            radial-gradient(ellipse 46% 42% at 50% 0%, rgba(121, 167, 255, 0.11), transparent),
+            linear-gradient(180deg, rgba(5, 8, 18, 0.96), rgba(8, 14, 26, 0.9));
+        }
+
+        .ai-philosophy-inner {
+          width: min(820px, calc(100% - 48px));
+          margin: 0 auto;
+          padding: clamp(28px, 5vw, 46px);
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          border-radius: 28px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.024)),
+            rgba(13, 19, 32, 0.5);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 20px 56px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(12px);
+          text-align: center;
+        }
+
+        .ai-philosophy-kicker {
+          display: inline-flex;
+          margin-bottom: 16px;
+          color: #9fbaff;
+          font-size: 0.72rem;
+          font-weight: 820;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+
+        .ai-philosophy h2 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(1.95rem, 3vw, 3rem);
+          line-height: 1.08;
+          letter-spacing: 0;
+        }
+
+        .ai-philosophy p {
+          max-width: 650px;
+          margin: 18px auto 0;
+          color: var(--muted);
+          font-size: clamp(0.98rem, 1.18vw, 1.08rem);
+          line-height: 1.76;
+        }
+
+        .ai-philosophy .ai-philosophy-note {
+          margin-top: 14px;
+          color: var(--soft);
+          font-size: 0.92rem;
+          font-weight: 700;
         }
 
         .eyebrow {
@@ -2163,6 +2254,15 @@ export default function Home() {
 
           .product-experience {
             padding: 78px 0;
+          }
+
+          .ai-philosophy {
+            padding: 64px 0 70px;
+          }
+
+          .ai-philosophy-inner {
+            width: min(var(--max), calc(100% - 28px));
+            border-radius: 22px;
           }
 
           .why-kivo {
