@@ -2,7 +2,19 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BookOpen, CirclePlus, FlaskConical, GraduationCap, Lock, ShieldCheck, Sigma, TrendingUp } from "lucide-react";
+import {
+  BookOpen,
+  CirclePlus,
+  FlaskConical,
+  GraduationCap,
+  TrendingUp,
+  NotebookPen,
+  Lightbulb,
+  Lock,
+  Route,
+  ShieldCheck,
+  Sigma,
+} from "lucide-react";
 import { getFaqCategories, getFaqsForSurface } from "./content/kivoFaq";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -113,6 +125,46 @@ export default function Home() {
               placeholder="blur"
             />
           </figure>
+        </div>
+      </section>
+      <section className="why-kivo" aria-labelledby="why-kivo-title">
+        <div className="why-kivo-inner reveal">
+          <div className="why-kivo-heading">
+            <h2 id="why-kivo-title">Why Kivo Works</h2>
+            <p>
+              Thoughtfully designed to help students learn with more clarity,
+              confidence, and consistency.
+            </p>
+          </div>
+          <div className="why-kivo-grid">
+            <article className="why-kivo-card">
+              <span className="why-kivo-icon why-kivo-icon--clear" aria-hidden="true">
+                <BookOpen size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Built around your curriculum</h3>
+              <p>
+                Kivo’s learning content is designed around the curriculum students already follow in school, making studying feel more familiar and connected.
+              </p>
+            </article>
+            <article className="why-kivo-card">
+              <span className="why-kivo-icon why-kivo-icon--support" aria-hidden="true">
+                <NotebookPen size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Answers connected to your textbooks</h3>
+              <p>
+                Kivo uses the student’s textbooks and learning material to provide explanations that stay relevant, accurate, and easy to follow.
+              </p>
+            </article>
+            <article className="why-kivo-card">
+              <span className="why-kivo-icon why-kivo-icon--journey" aria-hidden="true">
+                <TrendingUp size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Learning that feels supportive</h3>
+              <p>
+                From reading and revision to quizzes and progress tracking, Kivo helps students build confidence one chapter at a time.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
       <section className="platform-overview" id="platform-overview">
@@ -645,6 +697,124 @@ export default function Home() {
           display: block;
           object-fit: cover;
           object-position: 60% center;
+        }
+
+        .why-kivo {
+          position: relative;
+          z-index: 1;
+          padding: 108px 0 112px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
+          background:
+            radial-gradient(ellipse 58% 54% at 18% 18%, rgba(121, 167, 255, 0.12), transparent),
+            radial-gradient(ellipse 50% 58% at 82% 28%, rgba(79, 209, 197, 0.09), transparent),
+            linear-gradient(180deg, rgba(5, 8, 18, 0.96), rgba(7, 12, 23, 0.9));
+        }
+
+        .why-kivo-inner {
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .why-kivo-heading {
+          max-width: 740px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .why-kivo-heading h2 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(2.25rem, 4vw, 3.75rem);
+          line-height: 1.04;
+          letter-spacing: 0;
+        }
+
+        .why-kivo-heading p {
+          max-width: 660px;
+          margin: 20px auto 0;
+          color: var(--muted);
+          font-size: clamp(1rem, 1.3vw, 1.14rem);
+          line-height: 1.72;
+        }
+
+        .why-kivo-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 22px;
+          margin-top: 58px;
+        }
+
+        .why-kivo-card {
+          min-height: 292px;
+          padding: 30px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          border-radius: 18px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.66);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(12px);
+          transition:
+            transform 180ms ease,
+            border-color 180ms ease,
+            background 180ms ease,
+            box-shadow 180ms ease;
+        }
+
+        .why-kivo-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(196, 217, 255, 0.22);
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.032)),
+            rgba(13, 19, 32, 0.72);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.065),
+            0 18px 44px rgba(0, 0, 0, 0.22);
+        }
+
+        .why-kivo-icon {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 58px;
+          height: 58px;
+          margin-bottom: 28px;
+          border-radius: 999px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .why-kivo-icon--clear {
+          color: #9fbaff;
+          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
+        }
+
+        .why-kivo-icon--support {
+          color: #89e7d9;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
+        }
+
+        .why-kivo-icon--journey {
+          color: #ffe09a;
+          background: radial-gradient(circle, rgba(255, 209, 102, 0.22), rgba(255, 209, 102, 0.08));
+        }
+
+        .why-kivo-card h3 {
+          margin: 0 0 14px;
+          color: var(--text);
+          font-size: clamp(1.08rem, 1.4vw, 1.22rem);
+          line-height: 1.25;
+        }
+
+        .why-kivo-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.74;
         }
 
         .platform-overview {
@@ -1687,6 +1857,10 @@ export default function Home() {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
+          .why-kivo-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
           .comparison-arrow span {
             transform: rotate(90deg);
           }
@@ -1784,9 +1958,32 @@ export default function Home() {
             padding: 78px 0;
           }
 
+          .why-kivo {
+            padding: 78px 0;
+          }
+
           .platform-centered,
-          .platform-demo-wrapper {
+          .platform-demo-wrapper,
+          .why-kivo-inner {
             width: min(var(--max), calc(100% - 28px));
+          }
+
+          .why-kivo-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 40px;
+          }
+
+          .why-kivo-card {
+            min-height: auto;
+            padding: 24px;
+            border-radius: 16px;
+          }
+
+          .why-kivo-icon {
+            width: 52px;
+            height: 52px;
+            margin-bottom: 22px;
           }
 
           .platform-centered h2 {
