@@ -10,7 +10,9 @@ import {
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
+import HomeLogoLink from "./HomeLogoLink";
 import PricingSection from "./PricingSection";
+import SmoothScrollLink from "./SmoothScrollLink";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 
@@ -26,19 +28,10 @@ export default function Home() {
       <div className="site-glow" aria-hidden="true" />
       <nav className="nav">
         <div className="nav-inner">
-          <Link href="/" className="logo-link" aria-label="KivoEdu home">
-            <Image
-              src={LOGO_SRC}
-              alt="KivoEdu"
-              width={138}
-              height={52}
-              style={{ objectFit: "contain", height: "auto" }}
-              priority
-            />
-          </Link>
+          <HomeLogoLink />
           <div className="nav-links" aria-label="Primary navigation">
-            <a href="#pricing">Pricing</a>
-            <a href="#platform-overview">Experience</a>
+            <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
+            <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
             <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
           </div>
@@ -70,6 +63,7 @@ export default function Home() {
         </div>
         <div className="hero-grid reveal">
           <div className="hero-copy">
+            <p className="hero-ai-badge">AI-assisted learning • Built around real textbooks</p>
             <h1>Learning, the way it should feel.</h1>
             <p className="hero-sub">
               Kivo helps students understand concepts clearly, practice with confidence, and make steady progress every day.
@@ -83,11 +77,10 @@ export default function Home() {
               >
                 Start Learning
               </a>
-              <a href="#why-kivo" className="btn btn-secondary">
+              <SmoothScrollLink href="#why-kivo" className="btn btn-secondary">
                 Why Kivo Works
-              </a>
+              </SmoothScrollLink>
             </div>
-            <p className="hero-ai-badge">AI-assisted learning • Built around real textbooks</p>
           </div>
           <figure className="hero-image-frame">
             <Image
