@@ -152,14 +152,14 @@ export default function Home() {
 
           <div className="support-strip-compact" aria-label="Kivo currently supports">
             <span className="support-label">Supports</span>
-            <span>CBSE</span>
-            <span>Maharashtra State Board</span>
-            <span>Grades 9-10</span>
-            <span className="support-subject">
+            <span className="support-chip-board">CBSE</span>
+            <span className="support-chip-board">Maharashtra State Board</span>
+            <span className="support-chip-grade">Grades 9-10</span>
+            <span className="support-subject support-chip-subject">
               <Calculator size={14} aria-hidden="true" strokeWidth={1.6} />
               Math
             </span>
-            <span className="support-subject">
+            <span className="support-subject support-chip-subject">
               <FlaskConical size={14} aria-hidden="true" strokeWidth={1.6} />
               Science
             </span>
@@ -834,11 +834,11 @@ export default function Home() {
           flex-wrap: wrap;
           align-items: center;
           justify-content: center;
-          gap: 9px;
+          gap: 12px;
           width: fit-content;
           max-width: 100%;
           margin: 0 auto 72px;
-          padding: 10px;
+          padding: 14px;
           border: 1px solid rgba(196, 217, 255, 0.13);
           border-radius: 999px;
           background: rgba(255, 255, 255, 0.04);
@@ -849,15 +849,15 @@ export default function Home() {
         .support-strip-compact span {
           display: inline-flex;
           align-items: center;
-          min-height: 30px;
-          gap: 6px;
-          padding: 0 11px;
+          min-height: 42px;
+          gap: 8px;
+          padding: 0 17px;
           border-radius: 999px;
           border: 1px solid rgba(196, 217, 255, 0.12);
           background: rgba(255, 255, 255, 0.045);
           color: var(--muted);
-          font-size: 0.8rem;
-          font-weight: 700;
+          font-size: 0.98rem;
+          font-weight: 740;
         }
 
         .support-strip-compact .support-label {
@@ -865,11 +865,30 @@ export default function Home() {
           background: transparent;
           color: var(--soft);
           letter-spacing: 0.1em;
+          font-size: 0.82rem;
           text-transform: uppercase;
         }
 
+        .support-strip-compact .support-chip-board {
+          color: #b8c7ff;
+          border-color: rgba(121, 167, 255, 0.22);
+          background: rgba(121, 167, 255, 0.08);
+        }
+
+        .support-strip-compact .support-chip-grade {
+          color: #f5d88a;
+          border-color: rgba(255, 209, 102, 0.24);
+          background: rgba(255, 209, 102, 0.09);
+        }
+
+        .support-strip-compact .support-chip-subject {
+          color: #9ee8dc;
+          border-color: rgba(79, 209, 197, 0.22);
+          background: rgba(79, 209, 197, 0.08);
+        }
+
         .support-subject svg {
-          color: #9fbaff;
+          color: currentColor;
           opacity: 0.85;
         }
 
@@ -2182,11 +2201,19 @@ export default function Home() {
             justify-content: flex-start;
             border-radius: 20px;
             margin-bottom: 38px;
+            padding: 12px;
+            gap: 9px;
           }
 
           .support-strip-compact .support-label {
             width: 100%;
-            min-height: 20px;
+            min-height: 22px;
+          }
+
+          .support-strip-compact span {
+            min-height: 36px;
+            padding: 0 13px;
+            font-size: 0.88rem;
           }
 
           .experience-flow {
