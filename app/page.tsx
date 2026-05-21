@@ -87,7 +87,7 @@ export default function Home() {
           <div className="hero-copy">
             <h1>Learning, the way it should feel.</h1>
             <p className="hero-sub">
-              Kivo is a learning companion designed to make studying feel clearer, calmer, and more confidence-building.
+              Kivo helps students understand concepts clearly, practice with confidence, and make steady progress every day.
             </p>
             <div className="hero-actions">
               <a
