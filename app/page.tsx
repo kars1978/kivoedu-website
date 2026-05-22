@@ -133,7 +133,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Try Kivo for free
+                Try Kivo for Free!
               </a>
               <SmoothScrollLink href="#why-kivo" className="btn btn-secondary">
                 Why Kivo Works
