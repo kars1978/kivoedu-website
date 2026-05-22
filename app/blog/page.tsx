@@ -139,8 +139,8 @@ export default function BlogPage() {
         h1 {
           max-width: 850px;
           margin-bottom: 22px;
-          font-size: clamp(3rem, 7vw, 6rem);
-          line-height: 0.96;
+          font-size: clamp(2.45rem, 5.4vw, 4.75rem);
+          line-height: 1;
           letter-spacing: 0;
         }
 
@@ -179,8 +179,8 @@ export default function BlogPage() {
 
         .post-card h2 {
           margin-bottom: 12px;
-          font-size: clamp(1.45rem, 3vw, 2.4rem);
-          line-height: 1.1;
+          font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+          line-height: 1.18;
           letter-spacing: 0;
         }
 

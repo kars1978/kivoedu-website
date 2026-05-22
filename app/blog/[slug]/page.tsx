@@ -214,8 +214,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         h1 {
           margin-bottom: 22px;
-          font-size: clamp(3rem, 7vw, 5.8rem);
-          line-height: 0.98;
+          font-size: clamp(2.35rem, 5.2vw, 4.4rem);
+          line-height: 1.02;
           letter-spacing: 0;
         }
 
@@ -292,8 +292,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           max-width: 22ch;
           margin-bottom: 16px;
           color: #76f6e6;
-          font-size: clamp(1.55rem, 3vw, 2.25rem);
-          line-height: 1.1;
+          font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+          line-height: 1.16;
           letter-spacing: 0;
         }
 
