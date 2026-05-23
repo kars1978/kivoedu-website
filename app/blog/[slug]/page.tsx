@@ -1,7 +1,73 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  BookOpen,
+  Bot,
+  Brain,
+  ClipboardCheck,
+  HelpingHand,
+  NotebookPen,
+  UserRound,
+} from "lucide-react";
+import type { BlogGridItem, BlogPost } from "../types";
 import { blogPosts, getBlogPost } from "../posts";
+
+const gridIcons = {
+  book: BookOpen,
+  notebook: NotebookPen,
+  check: ClipboardCheck,
+  help: HelpingHand,
+  brain: Brain,
+  bot: Bot,
+  user: UserRound,
+};
+
+function renderParagraph(paragraph: string) {
+  return paragraph.trim().startsWith("- ") ? (
+    <p className="section-bullet" key={paragraph}>
+      {paragraph.replace(/^- /, "")}
+    </p>
+  ) : (
+    <p key={paragraph}>{paragraph}</p>
+  );
+}
+
+function renderGrid(items: BlogGridItem[]) {
+  return (
+    <div className="article-card-grid">
+      {items.map((item) => {
+        const Icon = gridIcons[item.icon];
+
+        return (
+          <article className="article-info-card" key={item.title}>
+            <span
+              className={`article-card-icon article-card-icon--${item.tone}`}
+              aria-hidden="true"
+            >
+              <Icon size={24} strokeWidth={1.6} />
+            </span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+function getSectionBlocks(section: BlogPost["sections"][number]) {
+  if (section.blocks) {
+    return section.blocks;
+  }
+
+  return [
+    ...(section.image ? [{ type: "image" as const, image: section.image }] : []),
+    ...(section.grid ? [{ type: "grid" as const, items: section.grid }] : []),
+    ...(section.body ? [{ type: "body" as const, items: section.body }] : []),
+  ];
+}
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -117,15 +183,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {post.sections.map((section) => (
             <section className="content-block" key={section.heading}>
               <h2>{section.heading}</h2>
-              {section.body.map((paragraph) =>
-                paragraph.trim().startsWith("- ") ? (
-                  <p className="section-bullet" key={paragraph}>
-                    {paragraph.replace(/^- /, "")}
-                  </p>
-                ) : (
-                  <p key={paragraph}>{paragraph}</p>
-                ),
-              )}
+              {getSectionBlocks(section).map((block, index) => {
+                if (block.type === "image") {
+                  return (
+                    <figure className="section-image" key={`image-${index}`}>
+                      <Image
+                        src={block.image.src}
+                        alt={block.image.alt}
+                        width={960}
+                        height={540}
+                      />
+                      {block.image.caption ? (
+                        <figcaption>{block.image.caption}</figcaption>
+                      ) : null}
+                    </figure>
+                  );
+                }
+
+                if (block.type === "grid") {
+                  return <div key={`grid-${index}`}>{renderGrid(block.items)}</div>;
+                }
+
+                return block.items.map(renderParagraph);
+              })}
             </section>
           ))}
         </div>
@@ -289,7 +369,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         }
 
         h2 {
-          max-width: 22ch;
+          max-width: 100%;
           margin-bottom: 16px;
           color: #76f6e6;
           font-size: clamp(1.35rem, 2.4vw, 1.9rem);
@@ -306,6 +386,90 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         .content-block p:last-child {
           margin-bottom: 0;
+        }
+
+        .section-image {
+          margin: 0 0 22px;
+        }
+
+        .section-image img {
+          display: block;
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+
+        .section-image figcaption {
+          margin-top: 10px;
+          color: #a8b3c6;
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .article-card-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+          gap: 14px;
+          margin: 0 0 24px;
+        }
+
+        .article-info-card {
+          min-height: 252px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          border-radius: 16px;
+          padding: 22px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.024)),
+            rgba(13, 19, 32, 0.62);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 16px 34px rgba(0, 0, 0, 0.16);
+        }
+
+        .article-card-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 52px;
+          height: 52px;
+          margin-bottom: 22px;
+          border-radius: 999px;
+        }
+
+        .article-card-icon--clear {
+          color: #9fbaff;
+          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
+        }
+
+        .article-card-icon--support {
+          color: #89e7d9;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
+        }
+
+        .article-card-icon--journey {
+          color: #ffe09a;
+          background: radial-gradient(circle, rgba(255, 209, 102, 0.22), rgba(255, 209, 102, 0.08));
+        }
+
+        .article-card-icon--interactive {
+          color: #aee8c6;
+          background: radial-gradient(circle, rgba(126, 231, 135, 0.2), rgba(126, 231, 135, 0.075));
+        }
+
+        .article-info-card h3 {
+          margin: 0 0 12px;
+          color: #f4f7fb;
+          font-size: 1.02rem;
+          line-height: 1.25;
+          letter-spacing: 0;
+        }
+
+        .article-info-card p {
+          margin: 0;
+          color: #a8b3c6;
+          font-size: 0.95rem;
+          line-height: 1.64;
         }
 
         .content-block p + p {
@@ -345,6 +509,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           .content-block {
             border-radius: 16px;
             padding: 20px;
+          }
+
+          .article-card-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .article-info-card {
+            min-height: auto;
           }
         }
       `}</style>
