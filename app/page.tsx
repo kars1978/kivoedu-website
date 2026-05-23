@@ -122,16 +122,13 @@ export default function Home() {
         </div>
         <div className="hero-grid reveal">
           <div className="hero-copy">
-            <p className="hero-ai-badge flex items-center gap-2">
-              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
-            </p>
+
             <h1>
               <span>Your textbook, turned into</span>
-              <span>your personal 1-on-1 tutor.</span>
+              <span>your personal 1-on-1 AI tutor.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school syllabus. Scan a page, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
+              Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
             </p>
             <div className="hero-actions">
               <a
@@ -143,6 +140,10 @@ export default function Home() {
                 Start Learning Free
               </a>
             </div>
+                        <p className="hero-ai-badge flex items-center gap-2">
+              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
+              <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
+            </p>
             <p className="hero-availability">
               <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
               <span>Instant browser access on mobile, tablet, or desktop. No app installation required.</span>
