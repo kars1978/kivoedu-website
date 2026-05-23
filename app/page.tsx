@@ -122,13 +122,16 @@ export default function Home() {
         </div>
         <div className="hero-grid reveal">
           <div className="hero-copy">
-            <p className="hero-ai-badge">Built Exactly for Your Textbooks</p>
+            <p className="hero-ai-badge flex items-center gap-2">
+              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
+              <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
+            </p>
             <h1>
               <span>Your textbook, turned into</span>
               <span>your personal 1-on-1 tutor.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school curriculum. Scan a page, ask any question, and get instant, stress-free explanations and step-by-step practice problems tailored to your syllabus.
+              Kivo grounds your learning entirely in your specific school syllabus. Scan a page, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
             </p>
             <div className="hero-actions">
               <a
@@ -734,8 +737,8 @@ export default function Home() {
           background: rgba(121, 167, 255, 0.075);
           color: #c4d2ff;
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
-          font-size: clamp(0.74rem, 1.3vw, 0.84rem);
-          font-weight: 740;
+          font-size: clamp(0.8rem, 1.3vw, 0.84rem);
+          font-weight: 650;
           line-height: 1.3;
         }
 
