@@ -14,6 +14,7 @@ import {
   MonitorSmartphone,
   NotebookPen,
   PenSquare,
+  Globe
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -121,10 +122,13 @@ export default function Home() {
         </div>
         <div className="hero-grid reveal">
           <div className="hero-copy">
-            <p className="hero-ai-badge">AI-assisted learning • Built around real textbooks</p>
-            <h1>Learning, the way it should feel.</h1>
+            <p className="hero-ai-badge">Built Exactly for Your Textbooks</p>
+            <h1>
+              <span>Your textbook, turned into</span>
+              <span>your personal 1-on-1 tutor.</span>
+            </h1>
             <p className="hero-sub">
-              Kivo helps students understand concepts clearly, practice with confidence, and make steady progress every day.
+              Kivo grounds your learning entirely in your specific school curriculum. Scan a page, ask any question, and get instant, stress-free explanations and step-by-step practice problems tailored to your syllabus.
             </p>
             <div className="hero-actions">
               <a
@@ -133,15 +137,12 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Try Kivo for Free!
+                Start Learning Free
               </a>
-              <SmoothScrollLink href="#why-kivo" className="btn btn-secondary">
-                Why Kivo Works
-              </SmoothScrollLink>
             </div>
             <p className="hero-availability">
-              <MonitorSmartphone size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Works on mobile, tablet, and desktop — best on a laptop or desktop.</span>
+              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
+              <span>Instant browser access on mobile, tablet, or desktop. No app installation required.</span>
             </p>
           </div>
           <figure className="hero-image-frame">
@@ -696,7 +697,7 @@ export default function Home() {
           position: relative;
           z-index: 1;
           display: grid;
-          grid-template-columns: minmax(0, 0.98fr) minmax(0, 1fr);
+          grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.9fr);
           align-items: center;
           gap: clamp(36px, 5vw, 72px);
           width: min(var(--max), calc(100% - 48px));
@@ -718,7 +719,7 @@ export default function Home() {
         }
 
         .hero-copy {
-          max-width: 640px;
+          max-width: 760px;
         }
 
         .hero-ai-badge {
@@ -755,12 +756,21 @@ export default function Home() {
         }
 
         .hero-copy h1 {
-          max-width: 620px;
+          max-width: 780px;
           margin-bottom: 24px;
           color: var(--text);
-          font-size: clamp(3rem, 5.1vw, 4.75rem);
-          line-height: 1;
+          font-size: clamp(2.6rem, 3.05vw, 3rem);
+          line-height: 1.08;
           letter-spacing: 0;
+        }
+
+        .hero-copy h1 span {
+          display: block;
+          color: var(--text);
+          background: none;
+          background-clip: initial;
+          -webkit-background-clip: initial;
+          white-space: nowrap;
         }
 
         .hero-sub {
@@ -807,8 +817,9 @@ export default function Home() {
 
         .hero-image-frame {
           position: relative;
-          min-height: clamp(420px, 56vw, 650px);
-          margin: 0;
+          width: min(100%, 520px);
+          min-height: clamp(390px, 48vw, 590px);
+          margin: 0 0 0 auto;
           border-radius: 30px;
           overflow: hidden;
           border: 1px solid rgba(196, 217, 255, 0.16);
@@ -2376,8 +2387,18 @@ export default function Home() {
           }
 
           .hero-grid {
-            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
-            gap: 36px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+            gap: 28px;
+          }
+
+          .hero-copy h1 {
+            max-width: 660px;
+            font-size: clamp(2.25rem, 3.6vw, 2.55rem);
+          }
+
+          .hero-image-frame {
+            width: min(100%, 320px);
+            min-height: clamp(360px, 54vw, 520px);
           }
 
           .availability-inner,
@@ -2460,7 +2481,9 @@ export default function Home() {
           }
 
           .hero-image-frame {
+            width: min(100%, 640px);
             min-height: clamp(340px, 72vw, 560px);
+            margin: 0;
             border-radius: 24px;
           }
         }
@@ -2536,8 +2559,12 @@ export default function Home() {
           }
 
           .hero-copy h1 {
-            font-size: clamp(2.45rem, 12vw, 3.8rem);
-            line-height: 0.98;
+            font-size: clamp(1.8rem, 6vw, 2.35rem);
+            line-height: 1.08;
+          }
+
+          .hero-copy h1 span {
+            white-space: normal;
           }
 
           .hero-label {
