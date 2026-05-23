@@ -11,7 +11,7 @@ import {
   FileText,
   FlaskConical,
   HelpingHand,
-  Monitor,
+  MonitorSmartphone,
   NotebookPen,
   PenSquare,
 } from "lucide-react";
@@ -140,8 +140,8 @@ export default function Home() {
               </SmoothScrollLink>
             </div>
             <p className="hero-availability">
-              <Monitor size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Currently available on desktop &amp; laptop only</span>
+              <MonitorSmartphone size={17} strokeWidth={1.7} aria-hidden="true" />
+              <span>Works on mobile, tablet, and desktop — best on a laptop or desktop.</span>
             </p>
           </div>
           <figure className="hero-image-frame">
