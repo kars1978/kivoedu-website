@@ -23,6 +23,7 @@ import PricingSection from "./PricingSection";
 import SmoothScrollLink from "./SmoothScrollLink";
 
 const loginUrl = "https://app.kivoedu.ai/login";
+const demoUrl = "https://app.kivoedu.ai/demo";
 
 const aiLearningFeatures = [
   {
@@ -105,7 +106,7 @@ export default function Home() {
               Log in
             </a>
             <a
-              href={loginUrl}
+              href={demoUrl}
               className="btn btn-nav"
               target="_blank"
               rel="noopener noreferrer"
@@ -138,6 +139,14 @@ export default function Home() {
                 rel="noopener noreferrer"
               >
                 Start Learning Free
+              </a>
+              <a
+                href={demoUrl}
+                className="btn-kivo-ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Try Demo
               </a>
             </div>
                         <p className="hero-ai-badge flex items-center gap-2">
