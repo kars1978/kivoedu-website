@@ -26,7 +26,6 @@ import heroCard01 from "./public/hero_card_01.png";
 import SiteNav from "./SiteNav";
 import PricingSection from "./PricingSection";
 
-const loginUrl = "https://app.kivoedu.ai/login";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
 const parentBenefits = [
@@ -144,21 +143,57 @@ export default function Home() {
           <div className="hero-copy">
 
             <h1>
-              <span>Your textbook, turned into</span>
-              <span>your personal 1-on-1 AI tutor.</span>
+              <span>Your textbook,</span>
+              <span>turned into your</span>
+              <span className="hero-title-accent">personal 1-on-1 AI tutor.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems. Kivo is built for students. Designed to give parents peace of mind.
+              Kivo grounds your learning entirely in your specific school syllabus.
+              Study, ask any question, and get instant, stress-free explanations
+              and step-by-step practice problems.
             </p>
-            
-            <p className="hero-ai-badge flex items-center gap-2">
-              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
-            </p>
-            <p className="hero-availability">
-              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Instant browser access on mobile, tablet, or desktop. No app installation required.</span>
-            </p>
+
+            <div className="hero-feature-row" aria-label="Kivo learning benefits">
+              <span>
+                <BookOpenCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Syllabus-aligned
+              </span>
+              <span>
+                <Brain size={18} strokeWidth={1.8} aria-hidden="true" />
+                Instant explanations
+              </span>
+              <span>
+                <ClipboardCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Step-by-step practice
+              </span>
+              <span>
+                <ShieldCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Safe &amp; student-first
+              </span>
+            </div>
+
+            <div className="hero-info-card" aria-label="Kivo availability">
+              <div className="hero-info-main">
+                <span className="hero-info-icon" aria-hidden="true">
+                  <BookOpen size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>CBSE & Maharashtra Board</strong>
+                  <span>Grades 9-10</span>
+                  <span>Math &amp; Science</span>
+                </div>
+              </div>
+              <div className="hero-info-access">
+                <p>
+                  No app.<br />
+                  No installation.<br />
+                  <strong>Just open and learn.</strong>
+                </p>
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <Globe size={20} strokeWidth={1.7} />
+                </span>
+              </div>
+            </div>
           </div>
           <figure className="hero-image-frame">
             <Image
@@ -661,10 +696,10 @@ export default function Home() {
 
         .hero-copy h1 {
           max-width: 780px;
-          margin-bottom: 24px;
+          margin-bottom: 26px;
           color: var(--text);
-          font-size: clamp(2.6rem, 3.05vw, 3rem);
-          line-height: 1.08;
+          font-size: clamp(2.45rem, 3vw, 3.28rem);
+          line-height: 1.06;
           letter-spacing: 0;
         }
 
@@ -678,10 +713,128 @@ export default function Home() {
         }
 
         .hero-sub {
-          max-width: 500px;
+          max-width: 680px;
           color: var(--muted);
-          font-size: clamp(1.05rem, 1.55vw, 1.24rem);
-          line-height: 1.68;
+          font-size: clamp(1.06rem, 1.45vw, 1.26rem);
+          line-height: 1.72;
+        }
+
+        .hero-feature-row {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+          max-width: 760px;
+          margin: 34px 0 32px;
+        }
+
+        .hero-feature-row span {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-width: 0;
+          color: rgba(244, 247, 251, 0.86);
+          font-size: 0.95rem;
+          font-weight: 500;
+          line-height: 1.28;
+        }
+
+        .hero-feature-row svg {
+          flex: 0 0 auto;
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          padding: 10px;
+          color: rgba(244, 247, 251, 0.9);
+          background: rgba(255, 255, 255, 0.075);
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+        }
+
+        .hero-info-card {
+          display: grid;
+          grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.86fr);
+          align-items: center;
+          gap: 26px;
+          max-width: 760px;
+          min-height: 116px;
+          border-radius: 18px;
+          border: 1px solid rgba(59, 130, 246, 0.48);
+          padding: 20px 22px;
+          background:
+            radial-gradient(circle at 10% 50%, rgba(59, 130, 246, 0.16), transparent 34%),
+            linear-gradient(135deg, rgba(10, 22, 43, 0.82), rgba(9, 16, 29, 0.68));
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 0 34px rgba(59, 130, 246, 0.14),
+            0 20px 60px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(18px);
+        }
+
+        .hero-info-main,
+        .hero-info-access {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          min-width: 0;
+        }
+
+        .hero-info-main {
+          padding-right: 26px;
+          border-right: 1px solid rgba(59, 130, 246, 0.42);
+        }
+
+        .hero-info-main strong {
+          display: block;
+          margin-bottom: 7px;
+          color: var(--text);
+          font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+          line-height: 1.2;
+        }
+
+        .hero-info-main span:not(.hero-info-icon) {
+          display: block;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.35;
+        }
+
+        .hero-info-access {
+          justify-content: space-between;
+          gap: 18px;
+        }
+
+        .hero-info-access p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.38;
+        }
+
+        .hero-info-access strong {
+          color: var(--text);
+        }
+
+        .hero-info-icon {
+          flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          color: #f4f7fb;
+          background:
+            radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.28), transparent 26%),
+            linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(30, 64, 175, 0.76));
+          box-shadow: 0 14px 30px rgba(59, 130, 246, 0.26);
+        }
+
+        .hero-info-icon--secondary {
+          width: 50px;
+          height: 50px;
+          background:
+            radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.22), transparent 26%),
+            linear-gradient(135deg, rgba(30, 64, 175, 0.92), rgba(15, 50, 120, 0.82));
         }
 
         .hero-actions {
@@ -1730,6 +1883,31 @@ export default function Home() {
           -webkit-background-clip: text;
         }
 
+        .hero-copy h1 {
+          max-width: 780px;
+          margin-bottom: 26px;
+          color: var(--text);
+          font-size: clamp(2.45rem, 3vw, 3.28rem);
+          line-height: 1.06;
+          letter-spacing: 0;
+        }
+
+        .hero-copy h1 span:not(.hero-title-accent) {
+          color: var(--text);
+          background: none;
+          background-clip: initial;
+          -webkit-background-clip: initial;
+        }
+
+        .hero-copy h1 .hero-title-accent {
+          color: transparent;
+          background: linear-gradient(135deg, #79a7ff 0%, #4f8cff 42%, #2f6fe9 76%, #6aa8ff 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          text-shadow: 0 0 34px rgba(59, 130, 246, 0.2);
+          white-space: nowrap;
+        }
+
         .hero-sub {
           max-width: 650px;
           color: var(--muted);
@@ -2439,7 +2617,17 @@ export default function Home() {
 
           .hero-copy h1 {
             max-width: 660px;
-            font-size: clamp(2.25rem, 3.6vw, 2.55rem);
+            font-size: clamp(2.65rem, 5vw, 3.6rem);
+          }
+
+          .hero-feature-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 18px;
+            max-width: 620px;
+          }
+
+          .hero-info-card {
+            max-width: 620px;
           }
 
           .hero-image-frame {
@@ -2535,6 +2723,11 @@ export default function Home() {
             max-width: 620px;
           }
 
+          .hero-feature-row,
+          .hero-info-card {
+            max-width: 620px;
+          }
+
           .hero-image-frame {
             width: min(100%, 640px);
             min-height: clamp(340px, 72vw, 560px);
@@ -2556,7 +2749,7 @@ export default function Home() {
           }
 
           .hero-copy h1 {
-            font-size: clamp(1.8rem, 6vw, 2.35rem);
+            font-size: clamp(2.35rem, 10.5vw, 3.35rem);
             line-height: 1.08;
           }
 
@@ -2581,6 +2774,40 @@ export default function Home() {
           .feature-grid,
           .trust-panel ul {
             grid-template-columns: 1fr;
+          }
+
+          .hero-feature-row {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 28px 0 26px;
+          }
+
+          .hero-feature-row span {
+            font-size: 0.95rem;
+          }
+
+          .hero-feature-row svg {
+            width: 40px;
+            height: 40px;
+          }
+
+          .hero-info-card {
+            grid-template-columns: 1fr;
+            gap: 18px;
+            min-height: 0;
+            padding: 18px;
+            border-radius: 16px;
+          }
+
+          .hero-info-main {
+            padding-right: 0;
+            padding-bottom: 18px;
+            border-right: none;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.36);
+          }
+
+          .hero-info-access {
+            align-items: center;
           }
 
           .hero-actions {
