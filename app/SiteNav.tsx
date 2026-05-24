@@ -140,7 +140,7 @@ export default function SiteNav() {
         @media (max-width: 760px) {
           .sn-inner {
             height: auto;
-            min-height: 106px;
+            min-height: 120px;
             display: flex;
             flex-wrap: wrap;
             align-content: center;
