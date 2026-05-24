@@ -34,14 +34,22 @@ export default function ContactPage() {
             />
           </Link>
           <div className="cn-links">
+            <Link href="/#platform-overview">Features</Link>
+            <Link href="/#parents">Parents</Link>
+            <Link href="/guide">How it Works</Link>
             <Link href="/#pricing">Pricing</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/contact">Contact</Link>
+            <details className="cn-more">
+              <summary>More</summary>
+              <div className="cn-more-menu">
+                <Link href="/blog">Blog</Link>
+                <Link href="/contact">Contact</Link>
+              </div>
+            </details>
           </div>
           <span className="cn-sep" aria-hidden="true" />
           <div className="cn-auth">
             <a
-              href="https://app.kivoedu.ai/login"
+              href="https://app.kivoedu.ai/demo"
               className="cn-login"
               target="_blank"
               rel="noopener noreferrer"
@@ -54,7 +62,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Try Kivo
+              Try Free
             </a>
           </div>
         </div>
@@ -181,7 +189,7 @@ export default function ContactPage() {
           height: 76px;
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 24px;
         }
 
         .cn-brand {
@@ -195,20 +203,90 @@ export default function ContactPage() {
           margin-left: auto;
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 22px;
         }
 
-        .cn-links a {
-          padding: 5px 10px;
-          border-radius: 999px;
+        .cn-links a,
+        .cn-more summary {
+          position: relative;
+          padding: 7px 0;
           color: #afbad0;
-          font-size: 0.88rem;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0;
           text-decoration: none;
-          transition: color 160ms ease, background 160ms ease;
+          opacity: 0.76;
+          transition: color 160ms ease, opacity 160ms ease;
         }
 
-        .cn-links a:hover {
+        .cn-links a:hover,
+        .cn-more summary:hover {
           color: #f4f7fb;
+          opacity: 1;
+        }
+
+        .cn-links > a::after,
+        .cn-more summary::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 1px;
+          height: 2px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
+          opacity: 0;
+          transform: scaleX(0.55);
+          transition: opacity 160ms ease, transform 160ms ease;
+        }
+
+        .cn-links > a:hover::after,
+        .cn-more summary:hover::after,
+        .cn-more[open] summary::after {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+        .cn-more {
+          position: relative;
+        }
+
+        .cn-more summary {
+          list-style: none;
+          cursor: pointer;
+          outline: none;
+        }
+
+        .cn-more summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .cn-more-menu {
+          position: absolute;
+          top: calc(100% + 14px);
+          right: 0;
+          min-width: 176px;
+          display: grid;
+          gap: 4px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 14px;
+          padding: 8px;
+          background: rgba(9, 14, 25, 0.96);
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(18px);
+        }
+
+        .cn-more-menu a {
+          padding: 10px 12px;
+          border-radius: 10px;
+          font-size: 15px;
+        }
+
+        .cn-more-menu a::after {
+          display: none;
+        }
+
+        .cn-more-menu a:hover {
           background: rgba(255, 255, 255, 0.07);
         }
 
@@ -222,36 +300,38 @@ export default function ContactPage() {
         .cn-auth {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 14px;
         }
 
         .cn-login {
-          padding: 5px 10px;
-          border-radius: 999px;
+          padding: 7px 0;
           color: #afbad0;
-          font-size: 0.88rem;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0;
           text-decoration: none;
-          transition: color 160ms ease, background 160ms ease;
+          opacity: 0.76;
+          transition: color 160ms ease, opacity 160ms ease;
         }
 
         .cn-login:hover {
           color: #f4f7fb;
-          background: rgba(255, 255, 255, 0.07);
+          opacity: 1;
         }
 
         .cn-cta {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-height: 34px;
+          min-height: 42px;
           border-radius: 999px;
-          padding: 0 14px;
-          color: #f4f7fb;
-          border: 1px solid rgba(196, 217, 255, 0.25);
-          background: rgba(255, 255, 255, 0.055);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-          font-weight: 760;
-          font-size: 0.81rem;
+          padding: 0 22px;
+          color: #ffffff;
+          border: 1px solid rgba(99, 102, 241, 0.56);
+          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #79a7ff);
+          box-shadow: 0 14px 38px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
+          font-weight: 700;
+          font-size: 15.5px;
           text-decoration: none;
           white-space: nowrap;
           transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
@@ -543,15 +623,63 @@ export default function ContactPage() {
           }
 
           .cn-inner {
-            height: 68px;
+            height: auto;
+            min-height: 112px;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 8px 14px;
+            padding: 10px 0 8px;
           }
 
           .cn-links {
+            order: 3;
+            display: flex;
+            width: 100%;
+            margin-left: 0;
+            gap: 14px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            padding: 2px 0 4px;
+            scrollbar-width: none;
+          }
+
+          .cn-links::-webkit-scrollbar {
             display: none;
           }
 
+          .cn-links a,
+          .cn-more summary {
+            flex: 0 0 auto;
+            font-size: 15px;
+          }
+
+          .cn-more-menu {
+            position: fixed;
+            top: 112px;
+            right: 14px;
+          }
+
+          .cn-sep {
+            display: none;
+          }
+
+          .cn-auth {
+            margin-left: auto;
+            gap: 12px;
+          }
+
+          .cn-login {
+            font-size: 15px;
+          }
+
+          .cn-cta {
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 15px;
+          }
+
           .ch {
-            padding: 100px 0 52px;
+            padding: 144px 0 52px;
           }
 
           .ec {

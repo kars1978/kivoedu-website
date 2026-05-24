@@ -139,11 +139,17 @@ export default function Home() {
         <div className="nav-inner">
           <HomeLogoLink />
           <div className="nav-links" aria-label="Primary navigation">
+            <SmoothScrollLink href="#platform-overview">Features</SmoothScrollLink>
             <SmoothScrollLink href="#parents">Parents</SmoothScrollLink>
-            <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
-            <Link href="/blog">Blog</Link>
+            <Link href="/guide">How it Works</Link>
             <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
-            <Link href="/contact">Contact</Link>
+            <details className="nav-more">
+              <summary>More</summary>
+              <div className="nav-more-menu">
+                <Link href="/blog">Blog</Link>
+                <Link href="/contact">Contact</Link>
+              </div>
+            </details>
           </div>
           <span className="nav-sep" aria-hidden="true" />
           <div className="nav-auth">
@@ -161,7 +167,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Try Kivo
+              Try Free
             </a>
           </div>
         </div>
@@ -332,6 +338,9 @@ export default function Home() {
             >
               Try KIVO Free
             </a>
+            <Link href="/guide" className="btn-kivo-ghost parents-cta-button">
+              See how Kivo works
+            </Link>
           </div>
         </div>
       </section>
@@ -624,13 +633,13 @@ export default function Home() {
           height: 76px;
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 24px;
         }
 
         .nav-auth {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 14px;
         }
 
         .logo-link {
@@ -643,7 +652,7 @@ export default function Home() {
           margin-left: auto;
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 22px;
         }
 
         .nav-sep {
@@ -654,34 +663,114 @@ export default function Home() {
         }
 
         .nav-links a,
+        .nav-more summary,
         .footer a {
           color: var(--muted);
-          font-size: 0.88rem;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0;
           text-decoration: none;
-          transition: color 160ms ease;
+          opacity: 0.76;
+          transition: color 160ms ease, opacity 160ms ease;
         }
 
         .nav-links a,
+        .nav-more summary,
         .nav-link {
-          padding: 5px 10px;
-          border-radius: 999px;
-          transition: color 160ms ease, background 160ms ease;
+          position: relative;
+          padding: 7px 0;
         }
 
         .nav-link {
           color: var(--muted);
-          font-size: 0.88rem;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0;
           text-decoration: none;
+          opacity: 0.76;
+          transition: color 160ms ease, opacity 160ms ease;
         }
 
         .nav-links a:hover,
+        .nav-more summary:hover,
         .footer a:hover {
           color: var(--text);
+          opacity: 1;
         }
 
-        .nav-links a:hover,
+        .footer a {
+          font-size: 0.88rem;
+          font-weight: 500;
+          opacity: 1;
+        }
+
+        .nav-links > a::after,
+        .nav-more summary::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 1px;
+          height: 2px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
+          opacity: 0;
+          transform: scaleX(0.55);
+          transition: opacity 160ms ease, transform 160ms ease;
+        }
+
+        .nav-links > a:hover::after,
+        .nav-more summary:hover::after,
+        .nav-more[open] summary::after {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
         .nav-link:hover {
           color: var(--text);
+          opacity: 1;
+        }
+
+        .nav-more {
+          position: relative;
+        }
+
+        .nav-more summary {
+          list-style: none;
+          cursor: pointer;
+          outline: none;
+        }
+
+        .nav-more summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .nav-more-menu {
+          position: absolute;
+          top: calc(100% + 14px);
+          right: 0;
+          min-width: 176px;
+          display: grid;
+          gap: 4px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 14px;
+          padding: 8px;
+          background: rgba(9, 14, 25, 0.96);
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(18px);
+        }
+
+        .nav-more-menu a {
+          padding: 10px 12px;
+          border-radius: 10px;
+          font-size: 15px;
+        }
+
+        .nav-more-menu a::after {
+          display: none;
+        }
+
+        .nav-more-menu a:hover {
           background: rgba(255, 255, 255, 0.07);
         }
 
@@ -723,9 +812,14 @@ export default function Home() {
         }
 
         .btn-nav {
-          min-height: 34px;
-          padding: 0 14px;
-          font-size: 0.81rem;
+          min-height: 42px;
+          padding: 0 22px;
+          font-size: 15.5px;
+          font-weight: 700;
+          color: #ffffff;
+          border-color: rgba(99, 102, 241, 0.56);
+          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #79a7ff);
+          box-shadow: 0 14px 38px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
         }
 
         .btn-secondary:hover,
@@ -2773,7 +2867,7 @@ export default function Home() {
             display: flex;
             width: 100%;
             margin-left: 0;
-            gap: 6px;
+            gap: 14px;
             overflow-x: auto;
             overscroll-behavior-x: contain;
             padding: 2px 0 4px;
@@ -2784,12 +2878,16 @@ export default function Home() {
             display: none;
           }
 
-          .nav-links a {
+          .nav-links a,
+          .nav-more summary {
             flex: 0 0 auto;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.045);
-            padding: 7px 11px;
-            font-size: 0.82rem;
+            font-size: 15px;
+          }
+
+          .nav-more-menu {
+            position: fixed;
+            top: 104px;
+            right: 14px;
           }
 
           .nav-sep {
@@ -2803,13 +2901,13 @@ export default function Home() {
 
           .nav-link {
             padding: 5px 7px;
-            font-size: 0.82rem;
+            font-size: 15px;
           }
 
           .btn-nav {
-            min-height: 38px;
-            padding: 0 12px;
-            font-size: 0.84rem;
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 15px;
           }
 
           .hero {

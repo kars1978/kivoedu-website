@@ -11,8 +11,12 @@ import {
   NotebookPen,
   UserRound,
 } from "lucide-react";
+import { LOGO_SRC } from "../../constants";
 import type { BlogGridItem, BlogPost } from "../types";
 import { blogPosts, getBlogPost } from "../posts";
+
+const loginUrl = "https://app.kivoedu.ai/login";
+const demoUrl = "https://app.kivoedu.ai/demo";
 
 const gridIcons = {
   book: BookOpen,
@@ -143,12 +147,37 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <nav className="article-nav">
-        <Link href="/" className="brand">
-          KivoEdu
+        <Link href="/" className="brand" aria-label="KivoEdu home">
+          <Image
+            src={LOGO_SRC}
+            alt="KivoEdu"
+            width={138}
+            height={52}
+            style={{ objectFit: "contain", height: "auto" }}
+            priority
+          />
         </Link>
-        <div>
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
+        <div className="article-nav-links">
+          <Link href="/#platform-overview">Features</Link>
+          <Link href="/#parents">Parents</Link>
+          <Link href="/guide">How it Works</Link>
+          <Link href="/#pricing">Pricing</Link>
+          <details className="article-more">
+            <summary>More</summary>
+            <div className="article-more-menu">
+              <Link href="/blog">Blog</Link>
+              <Link href="/contact">Contact</Link>
+            </div>
+          </details>
+        </div>
+        <span className="article-nav-sep" aria-hidden="true" />
+        <div className="article-nav-auth">
+          <a href={loginUrl} className="article-login" target="_blank" rel="noopener noreferrer">
+            Log in
+          </a>
+          <a href={demoUrl} className="article-cta" target="_blank" rel="noopener noreferrer">
+            Try Free
+          </a>
         </div>
       </nav>
 
@@ -236,29 +265,153 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           min-height: 76px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
           gap: 24px;
+          border-bottom: 1px solid rgba(196, 217, 255, 0.13);
+          background: rgba(7, 10, 18, 0.34);
+          backdrop-filter: blur(18px);
         }
 
-        .article-nav div {
+        .brand {
+          display: inline-flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        .article-nav-links {
+          margin-left: auto;
           display: flex;
+          align-items: center;
           gap: 22px;
         }
 
-        .article-nav a,
+        .article-nav-links a,
+        .article-more summary,
+        .article-login,
         .back-link {
           color: #a8b3c6;
           text-decoration: none;
         }
 
-        .article-nav a:hover,
-        .back-link:hover {
-          color: #f4f7fb;
+        .article-nav-links a,
+        .article-more summary,
+        .article-login {
+          position: relative;
+          padding: 7px 0;
+          font-size: 16px;
+          font-weight: 500;
+          letter-spacing: 0;
+          opacity: 0.76;
+          transition: color 160ms ease, opacity 160ms ease;
         }
 
-        .brand {
-          color: #f4f7fb !important;
-          font-weight: 800;
+        .article-nav-links a:hover,
+        .article-more summary:hover,
+        .article-login:hover,
+        .back-link:hover {
+          color: #f4f7fb;
+          opacity: 1;
+        }
+
+        .article-nav-links > a::after,
+        .article-more summary::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 1px;
+          height: 2px;
+          border-radius: 999px;
+          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
+          opacity: 0;
+          transform: scaleX(0.55);
+          transition: opacity 160ms ease, transform 160ms ease;
+        }
+
+        .article-nav-links > a:hover::after,
+        .article-more summary:hover::after,
+        .article-more[open] summary::after {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+
+        .article-more {
+          position: relative;
+        }
+
+        .article-more summary {
+          list-style: none;
+          cursor: pointer;
+          outline: none;
+        }
+
+        .article-more summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .article-more-menu {
+          position: absolute;
+          top: calc(100% + 14px);
+          right: 0;
+          min-width: 176px;
+          display: grid;
+          gap: 4px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 14px;
+          padding: 8px;
+          background: rgba(9, 14, 25, 0.96);
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(18px);
+          z-index: 5;
+        }
+
+        .article-more-menu a {
+          padding: 10px 12px;
+          border-radius: 10px;
+          font-size: 15px;
+        }
+
+        .article-more-menu a::after {
+          display: none;
+        }
+
+        .article-more-menu a:hover {
+          background: rgba(255, 255, 255, 0.07);
+        }
+
+        .article-nav-sep {
+          width: 1px;
+          height: 18px;
+          background: rgba(196, 217, 255, 0.25);
+          flex-shrink: 0;
+        }
+
+        .article-nav-auth {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .article-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 42px;
+          border-radius: 999px;
+          padding: 0 22px;
+          color: #ffffff;
+          border: 1px solid rgba(99, 102, 241, 0.56);
+          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #79a7ff);
+          box-shadow: 0 14px 38px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
+          font-weight: 700;
+          font-size: 15.5px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .article-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 22px 60px rgba(99, 102, 241, 0.38);
         }
 
         .article {
@@ -501,8 +654,66 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             width: min(1032px, calc(100% - 28px));
           }
 
+          .article-nav {
+            min-height: 112px;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 8px 14px;
+            padding: 10px 0 8px;
+          }
+
+          .brand img {
+            width: 112px;
+          }
+
+          .article-nav-links {
+            order: 3;
+            width: 100%;
+            margin-left: 0;
+            gap: 14px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            padding: 2px 0 4px;
+            scrollbar-width: none;
+          }
+
+          .article-nav-links::-webkit-scrollbar {
+            display: none;
+          }
+
+          .article-nav-links a,
+          .article-more summary {
+            flex: 0 0 auto;
+            font-size: 15px;
+          }
+
+          .article-more-menu {
+            position: fixed;
+            top: 112px;
+            right: 14px;
+          }
+
+          .article-nav-sep {
+            display: none;
+          }
+
+          .article-nav-auth {
+            margin-left: auto;
+            gap: 12px;
+          }
+
+          .article-login {
+            font-size: 15px;
+          }
+
+          .article-cta {
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 15px;
+          }
+
           .article {
-            padding-top: 54px;
+            padding-top: 72px;
           }
 
           .intro-block,
