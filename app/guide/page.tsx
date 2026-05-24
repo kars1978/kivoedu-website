@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -20,7 +19,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { LOGO_SRC } from "../constants";
+import SiteNav from "../SiteNav";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 const demoUrl = "https://app.kivoedu.ai/demo";
@@ -152,47 +151,6 @@ const faqs = [
 ];
 
 type VisualKind = typeof parentSteps[number]["visual"] | typeof studentSteps[number]["visual"];
-
-function TopNav() {
-  return (
-    <nav className="guide-nav" aria-label="Primary navigation">
-      <div className="guide-nav-inner">
-        <Link href="/" className="guide-brand" aria-label="KivoEdu home">
-          <Image
-            src={LOGO_SRC}
-            alt="KivoEdu"
-            width={138}
-            height={52}
-            style={{ objectFit: "contain", height: "auto" }}
-            priority
-          />
-        </Link>
-        <div className="guide-nav-links">
-          <Link href="/#platform-overview">Features</Link>
-          <Link href="/#parents">Parents</Link>
-          <Link href="/guide">How it Works</Link>
-          <Link href="/#pricing">Pricing</Link>
-          <details className="guide-nav-more">
-            <summary>More</summary>
-            <div className="guide-nav-more-menu">
-              <Link href="/blog">Blog</Link>
-              <Link href="/contact">Contact</Link>
-            </div>
-          </details>
-        </div>
-        <span className="guide-nav-sep" aria-hidden="true" />
-        <div className="guide-nav-auth">
-          <a href={loginUrl} className="guide-login" target="_blank" rel="noopener noreferrer">
-            Log in
-          </a>
-          <a href={demoUrl} className="guide-try" target="_blank" rel="noopener noreferrer">
-            Try Free
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-}
 
 function StepCard({
   index,
@@ -434,7 +392,7 @@ function Bar({ label, width }: { label: string; width: string }) {
 export default function GuidePage() {
   return (
     <main className="guide-root">
-      <TopNav />
+      <SiteNav />
 
       <section className="guide-hero">
         <div className="guide-hero-copy">
@@ -593,155 +551,6 @@ export default function GuidePage() {
           mask-image: linear-gradient(to bottom, black, transparent 74%);
         }
 
-        .guide-nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 20;
-          border-bottom: 1px solid rgba(196, 217, 255, 0.13);
-          background: rgba(7, 10, 18, 0.74);
-          backdrop-filter: blur(18px);
-        }
-
-        .guide-nav-inner {
-          width: min(1180px, calc(100% - 48px));
-          min-height: 76px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          gap: 24px;
-        }
-
-        .guide-brand {
-          display: inline-flex;
-          align-items: center;
-          flex-shrink: 0;
-        }
-
-        .guide-nav-links {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 22px;
-        }
-
-        .guide-nav-links a,
-        .guide-nav-more summary,
-        .guide-login,
-        .guide-footer a {
-          color: #afbad0;
-          text-decoration: none;
-          font-size: 16px;
-          font-weight: 500;
-          letter-spacing: 0;
-          opacity: 0.76;
-          transition: color 160ms ease, opacity 160ms ease;
-        }
-
-        .guide-nav-links a,
-        .guide-nav-more summary,
-        .guide-login {
-          position: relative;
-          padding: 7px 0;
-        }
-
-        .guide-nav-links a:hover,
-        .guide-nav-more summary:hover,
-        .guide-login:hover,
-        .guide-footer a:hover {
-          color: #f4f7fb;
-          opacity: 1;
-        }
-
-        .guide-nav-links > a::after,
-        .guide-nav-more summary::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 1px;
-          height: 2px;
-          border-radius: 999px;
-          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
-          opacity: 0;
-          transform: scaleX(0.55);
-          transition: opacity 160ms ease, transform 160ms ease;
-        }
-
-        .guide-nav-links > a:hover::after,
-        .guide-nav-more summary:hover::after,
-        .guide-nav-more[open] summary::after {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .guide-login:hover {
-          opacity: 1;
-        }
-
-        .guide-nav-more {
-          position: relative;
-        }
-
-        .guide-nav-more summary {
-          list-style: none;
-          cursor: pointer;
-          outline: none;
-        }
-
-        .guide-nav-more summary::-webkit-details-marker {
-          display: none;
-        }
-
-        .guide-nav-more-menu {
-          position: absolute;
-          top: calc(100% + 14px);
-          right: 0;
-          min-width: 176px;
-          display: grid;
-          gap: 4px;
-          border: 1px solid rgba(196, 217, 255, 0.14);
-          border-radius: 14px;
-          padding: 8px;
-          background: rgba(9, 14, 25, 0.96);
-          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-          backdrop-filter: blur(18px);
-        }
-
-        .guide-nav-more-menu a {
-          padding: 10px 12px;
-          border-radius: 10px;
-          font-size: 15px;
-        }
-
-        .guide-nav-more-menu a::after {
-          display: none;
-        }
-
-        .guide-nav-more-menu a:hover {
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        .guide-footer a {
-          font-size: 0.88rem;
-          opacity: 1;
-        }
-
-        .guide-nav-sep {
-          width: 1px;
-          height: 18px;
-          background: rgba(196, 217, 255, 0.25);
-          flex-shrink: 0;
-        }
-
-        .guide-nav-auth {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .guide-try,
         .guide-btn {
           display: inline-flex;
           align-items: center;
@@ -759,15 +568,7 @@ export default function GuidePage() {
           transition: transform 180ms ease, box-shadow 180ms ease;
         }
 
-        .guide-try {
-          min-height: 42px;
-          padding: 0 22px;
-          font-size: 15.5px;
-          font-weight: 700;
-        }
-
-        .guide-btn:hover,
-        .guide-try:hover {
+        .guide-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 22px 60px rgba(99, 102, 241, 0.36);
         }
@@ -1441,51 +1242,6 @@ export default function GuidePage() {
         }
 
         @media (max-width: 980px) {
-          .guide-nav-inner {
-            flex-wrap: wrap;
-            height: auto;
-            padding: 12px 0;
-            gap: 10px 14px;
-          }
-
-          .guide-brand {
-            order: 1;
-          }
-
-          .guide-nav-auth {
-            order: 2;
-            margin-left: auto;
-          }
-
-          .guide-nav-sep {
-            display: none;
-          }
-
-          .guide-nav-links {
-            order: 3;
-            width: 100%;
-            margin-left: 0;
-            gap: 14px;
-            overflow-x: auto;
-            scrollbar-width: none;
-          }
-
-          .guide-nav-links::-webkit-scrollbar {
-            display: none;
-          }
-
-          .guide-nav-links a,
-          .guide-nav-more summary {
-            flex: 0 0 auto;
-            font-size: 15px;
-          }
-
-          .guide-nav-more-menu {
-            position: fixed;
-            top: 116px;
-            right: 14px;
-          }
-
           .guide-hero {
             grid-template-columns: 1fr;
             min-height: 0;
@@ -1517,24 +1273,12 @@ export default function GuidePage() {
         }
 
         @media (max-width: 640px) {
-          .guide-nav-inner,
           .guide-hero,
           .guide-section,
           .trust-band,
           .final-cta,
           .guide-footer {
             width: min(1180px, calc(100% - 28px));
-          }
-
-          .guide-nav-auth {
-            width: 100%;
-            justify-content: space-between;
-          }
-
-          .guide-login,
-          .guide-try {
-            flex: 1;
-            font-size: 15px;
           }
 
           .guide-hero {

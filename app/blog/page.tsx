@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { LOGO_SRC } from "../constants";
 import { blogPosts } from "./posts";
-
-const loginUrl = "https://app.kivoedu.ai/login";
-const demoUrl = "https://app.kivoedu.ai/demo";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -26,40 +22,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="blog-root">
-      <nav className="blog-nav">
-        <Link href="/" className="brand" aria-label="KivoEdu home">
-          <Image
-            src={LOGO_SRC}
-            alt="KivoEdu"
-            width={138}
-            height={52}
-            style={{ objectFit: "contain", height: "auto" }}
-            priority
-          />
-        </Link>
-        <div className="blog-nav-links">
-          <Link href="/#platform-overview">Features</Link>
-          <Link href="/#parents">Parents</Link>
-          <Link href="/guide">How it Works</Link>
-          <Link href="/#pricing">Pricing</Link>
-          <details className="blog-more">
-            <summary>More</summary>
-            <div className="blog-more-menu">
-              <Link href="/blog">Blog</Link>
-              <Link href="/contact">Contact</Link>
-            </div>
-          </details>
-        </div>
-        <span className="blog-nav-sep" aria-hidden="true" />
-        <div className="blog-nav-auth">
-          <a href={loginUrl} className="blog-login" target="_blank" rel="noopener noreferrer">
-            Log in
-          </a>
-          <a href={demoUrl} className="blog-cta" target="_blank" rel="noopener noreferrer">
-            Try Free
-          </a>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="blog-hero">
         <p className="eyebrow">KivoEdu Blog</p>
@@ -109,165 +72,21 @@ export default function BlogPage() {
           font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
         }
 
-        .blog-nav,
         .blog-hero,
         .post-list {
           width: min(1060px, calc(100% - 40px));
           margin: 0 auto;
         }
 
-        .blog-nav {
-          min-height: 76px;
-          display: flex;
-          align-items: center;
-          gap: 24px;
-          border-bottom: 1px solid rgba(196, 217, 255, 0.13);
-          background: rgba(7, 10, 18, 0.34);
-          backdrop-filter: blur(18px);
-        }
-
-        .brand {
-          display: inline-flex;
-          align-items: center;
-          flex-shrink: 0;
-        }
-
-        .blog-nav-links {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 22px;
-        }
-
-        .blog-nav-links a,
-        .blog-more summary,
-        .blog-login,
         .read-link {
           color: #a8b3c6;
           text-decoration: none;
         }
 
-        .blog-nav-links a,
-        .blog-more summary,
-        .blog-login {
-          position: relative;
-          padding: 7px 0;
-          font-size: 16px;
-          font-weight: 500;
-          letter-spacing: 0;
-          opacity: 0.76;
-          transition: color 160ms ease, opacity 160ms ease;
-        }
-
-        .blog-nav-links a:hover,
-        .blog-more summary:hover,
-        .blog-login:hover,
         .read-link:hover,
         .post-card h2 a:hover {
           color: #f4f7fb;
           opacity: 1;
-        }
-
-        .blog-nav-links > a::after,
-        .blog-more summary::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 1px;
-          height: 2px;
-          border-radius: 999px;
-          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
-          opacity: 0;
-          transform: scaleX(0.55);
-          transition: opacity 160ms ease, transform 160ms ease;
-        }
-
-        .blog-nav-links > a:hover::after,
-        .blog-more summary:hover::after,
-        .blog-more[open] summary::after {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .blog-more {
-          position: relative;
-        }
-
-        .blog-more summary {
-          list-style: none;
-          cursor: pointer;
-          outline: none;
-        }
-
-        .blog-more summary::-webkit-details-marker {
-          display: none;
-        }
-
-        .blog-more-menu {
-          position: absolute;
-          top: calc(100% + 14px);
-          right: 0;
-          min-width: 176px;
-          display: grid;
-          gap: 4px;
-          border: 1px solid rgba(196, 217, 255, 0.14);
-          border-radius: 14px;
-          padding: 8px;
-          background: rgba(9, 14, 25, 0.96);
-          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-          backdrop-filter: blur(18px);
-          z-index: 5;
-        }
-
-        .blog-more-menu a {
-          padding: 10px 12px;
-          border-radius: 10px;
-          font-size: 15px;
-        }
-
-        .blog-more-menu a::after {
-          display: none;
-        }
-
-        .blog-more-menu a:hover {
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        .blog-nav-sep {
-          width: 1px;
-          height: 18px;
-          background: rgba(196, 217, 255, 0.25);
-          flex-shrink: 0;
-        }
-
-        .blog-nav-auth {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .blog-cta {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 42px;
-          border-radius: 999px;
-          padding: 0 22px;
-          color: #ffffff;
-          border: 1px solid rgba(99, 102, 241, 0.56);
-          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #79a7ff);
-          box-shadow: 0 14px 38px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
-          font-weight: 700;
-          font-size: 15.5px;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: transform 180ms ease, box-shadow 180ms ease;
-        }
-
-        .blog-cta:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 22px 60px rgba(99, 102, 241, 0.38);
         }
 
         .blog-hero {

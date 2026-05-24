@@ -3,6 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* ── Site-wide design tokens ─────────────────────────────────────────── */
+  --bg: #070a12;
+  --bg-deep: #050812;
+  --panel: rgba(13, 19, 32, 0.78);
+  --panel-strong: rgba(17, 27, 44, 0.86);
+  --line: rgba(196, 217, 255, 0.13);
+  --line-strong: rgba(196, 217, 255, 0.25);
+  --text: #f4f7fb;
+  --muted: #afbad0;
+  --soft: #78859b;
+  --cyan: #4fd1c5;
+  --blue: #79a7ff;
+  --green: #7ee787;
+  --orange: #ffb86b;
+  --accent: #ffd166;
+  --accent-ink: #171101;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+  --max: 1180px;
 }
 
 @theme inline {
@@ -83,3 +102,4 @@ body {
     transition: none;
   }
 }
+

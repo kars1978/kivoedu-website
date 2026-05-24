@@ -19,13 +19,12 @@ import {
   Globe,
   ShieldCheck,
   Clock,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
-import HomeLogoLink from "./HomeLogoLink";
+import SiteNav from "./SiteNav";
 import PricingSection from "./PricingSection";
-import SmoothScrollLink from "./SmoothScrollLink";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 const demoUrl = "https://app.kivoedu.ai/demo";
@@ -135,43 +134,7 @@ export default function Home() {
   return (
     <main className="root">
       <div className="site-glow" aria-hidden="true" />
-      <nav className="nav">
-        <div className="nav-inner">
-          <HomeLogoLink />
-          <div className="nav-links" aria-label="Primary navigation">
-            <SmoothScrollLink href="#platform-overview">Features</SmoothScrollLink>
-            <SmoothScrollLink href="#parents">Parents</SmoothScrollLink>
-            <Link href="/guide">How it Works</Link>
-            <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
-            <details className="nav-more">
-              <summary>More</summary>
-              <div className="nav-more-menu">
-                <Link href="/blog">Blog</Link>
-                <Link href="/contact">Contact</Link>
-              </div>
-            </details>
-          </div>
-          <span className="nav-sep" aria-hidden="true" />
-          <div className="nav-auth">
-            <a
-              href={loginUrl}
-              className="nav-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Log in
-            </a>
-            <a
-              href={demoUrl}
-              className="btn btn-nav"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try Free
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="hero">
         <div className="hero-bg" aria-hidden="true">
@@ -185,30 +148,10 @@ export default function Home() {
               <span>your personal 1-on-1 AI tutor.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
+              Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems. Kivo is built for students. Designed to give parents peace of mind.
             </p>
-            <p className="hero-reassurance">
-              Built for students. Designed to give parents peace of mind.
-            </p>
-            <div className="hero-actions">
-              <a
-                href={loginUrl}
-                className="btn-kivo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Start Learning Free
-              </a>
-              <a
-                href={demoUrl}
-                className="btn-kivo-ghost"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try Demo
-              </a>
-            </div>
-                        <p className="hero-ai-badge flex items-center gap-2">
+            
+            <p className="hero-ai-badge flex items-center gap-2">
               <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
               <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
             </p>
@@ -532,34 +475,6 @@ export default function Home() {
           box-sizing: border-box;
         }
 
-        :root {
-          --bg: #070a12;
-          --bg-deep: #050812;
-          --panel: rgba(13, 19, 32, 0.78);
-          --panel-strong: rgba(17, 27, 44, 0.86);
-          --line: rgba(196, 217, 255, 0.13);
-          --line-strong: rgba(196, 217, 255, 0.25);
-          --text: #f4f7fb;
-          --muted: #afbad0;
-          --soft: #78859b;
-          --cyan: #4fd1c5;
-          --blue: #79a7ff;
-          --green: #7ee787;
-          --orange: #ffb86b;
-          --accent: #ffd166;
-          --accent-ink: #171101;
-          --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-          --max: 1180px;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        body {
-          margin: 0;
-        }
-
         .root {
           position: relative;
           min-height: 100vh;
@@ -600,7 +515,6 @@ export default function Home() {
           animation: ambientShift 13s ease-in-out infinite alternate;
         }
 
-        .nav,
         .hero,
         .parents-section,
         .product-experience,
@@ -611,222 +525,10 @@ export default function Home() {
           z-index: 1;
         }
 
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 20;
-          border-bottom: 1px solid var(--line);
-          background: rgba(7, 10, 18, 0.74);
-          backdrop-filter: blur(18px);
-        }
-
-        .nav-inner,
         .section-inner,
         .footer-inner {
           width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
-        }
-
-        .nav-inner {
-          height: 76px;
-          display: flex;
-          align-items: center;
-          gap: 24px;
-        }
-
-        .nav-auth {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .logo-link {
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-        }
-
-        .nav-links {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 22px;
-        }
-
-        .nav-sep {
-          width: 1px;
-          height: 18px;
-          background: var(--line-strong);
-          flex-shrink: 0;
-        }
-
-        .nav-links a,
-        .nav-more summary,
-        .footer a {
-          color: var(--muted);
-          font-size: 16px;
-          font-weight: 500;
-          letter-spacing: 0;
-          text-decoration: none;
-          opacity: 0.76;
-          transition: color 160ms ease, opacity 160ms ease;
-        }
-
-        .nav-links a,
-        .nav-more summary,
-        .nav-link {
-          position: relative;
-          padding: 7px 0;
-        }
-
-        .nav-link {
-          color: var(--muted);
-          font-size: 16px;
-          font-weight: 500;
-          letter-spacing: 0;
-          text-decoration: none;
-          opacity: 0.76;
-          transition: color 160ms ease, opacity 160ms ease;
-        }
-
-        .nav-links a:hover,
-        .nav-more summary:hover,
-        .footer a:hover {
-          color: var(--text);
-          opacity: 1;
-        }
-
-        .footer a {
-          font-size: 0.88rem;
-          font-weight: 500;
-          opacity: 1;
-        }
-
-        .nav-links > a::after,
-        .nav-more summary::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 1px;
-          height: 2px;
-          border-radius: 999px;
-          background: linear-gradient(90deg, rgba(79, 209, 197, 0.8), rgba(255, 209, 102, 0.72));
-          opacity: 0;
-          transform: scaleX(0.55);
-          transition: opacity 160ms ease, transform 160ms ease;
-        }
-
-        .nav-links > a:hover::after,
-        .nav-more summary:hover::after,
-        .nav-more[open] summary::after {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-
-        .nav-link:hover {
-          color: var(--text);
-          opacity: 1;
-        }
-
-        .nav-more {
-          position: relative;
-        }
-
-        .nav-more summary {
-          list-style: none;
-          cursor: pointer;
-          outline: none;
-        }
-
-        .nav-more summary::-webkit-details-marker {
-          display: none;
-        }
-
-        .nav-more-menu {
-          position: absolute;
-          top: calc(100% + 14px);
-          right: 0;
-          min-width: 176px;
-          display: grid;
-          gap: 4px;
-          border: 1px solid rgba(196, 217, 255, 0.14);
-          border-radius: 14px;
-          padding: 8px;
-          background: rgba(9, 14, 25, 0.96);
-          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-          backdrop-filter: blur(18px);
-        }
-
-        .nav-more-menu a {
-          padding: 10px 12px;
-          border-radius: 10px;
-          font-size: 15px;
-        }
-
-        .nav-more-menu a::after {
-          display: none;
-        }
-
-        .nav-more-menu a:hover {
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-          outline: 3px solid rgba(255, 209, 102, 0.78);
-          outline-offset: 4px;
-          border-radius: 10px;
-        }
-
-        .btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 44px;
-          border-radius: 999px;
-          padding: 0 20px;
-          font-weight: 760;
-          font-size: 0.92rem;
-          text-decoration: none;
-          transition:
-            transform 180ms ease,
-            border-color 180ms ease,
-            background 180ms ease,
-            box-shadow 180ms ease;
-          white-space: nowrap;
-        }
-
-        .btn:hover {
-          transform: translateY(-2px) scale(1.03);
-        }
-
-        .btn-nav,
-        .btn-secondary {
-          color: var(--text);
-          border: 1px solid var(--line-strong);
-          background: rgba(255, 255, 255, 0.055);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
-
-        .btn-nav {
-          min-height: 42px;
-          padding: 0 22px;
-          font-size: 15.5px;
-          font-weight: 700;
-          color: #ffffff;
-          border-color: rgba(99, 102, 241, 0.56);
-          background: linear-gradient(135deg, #4f46e5, #6366f1 52%, #79a7ff);
-          box-shadow: 0 14px 38px rgba(99, 102, 241, 0.28), 0 0 0 5px rgba(99, 102, 241, 0.07);
-        }
-
-        .btn-secondary:hover,
-        .btn-nav:hover {
-          border-color: rgba(255, 209, 102, 0.42);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
         }
 
         .btn-primary {
@@ -2842,72 +2544,10 @@ export default function Home() {
         }
 
         @media (max-width: 760px) {
-          .nav-inner,
           .section-inner,
           .hero-grid,
           .footer-inner {
             width: min(var(--max), calc(100% - 28px));
-          }
-
-          .nav-inner {
-            height: auto;
-            min-height: 106px;
-            flex-wrap: wrap;
-            align-content: center;
-            gap: 8px;
-            padding: 10px 0 8px;
-          }
-
-          .logo-link img {
-            width: 112px;
-          }
-
-          .nav-links {
-            order: 3;
-            display: flex;
-            width: 100%;
-            margin-left: 0;
-            gap: 14px;
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-            padding: 2px 0 4px;
-            scrollbar-width: none;
-          }
-
-          .nav-links::-webkit-scrollbar {
-            display: none;
-          }
-
-          .nav-links a,
-          .nav-more summary {
-            flex: 0 0 auto;
-            font-size: 15px;
-          }
-
-          .nav-more-menu {
-            position: fixed;
-            top: 104px;
-            right: 14px;
-          }
-
-          .nav-sep {
-            display: none;
-          }
-
-          .nav-auth {
-            margin-left: auto;
-            gap: 4px;
-          }
-
-          .nav-link {
-            padding: 5px 7px;
-            font-size: 15px;
-          }
-
-          .btn-nav {
-            min-height: 40px;
-            padding: 0 18px;
-            font-size: 15px;
           }
 
           .hero {
