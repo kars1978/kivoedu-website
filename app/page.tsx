@@ -20,6 +20,8 @@ import {
   ShieldCheck,
   Clock,
   TrendingUp,
+  GraduationCap,
+  CalculatorIcon,
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -173,25 +175,41 @@ export default function Home() {
             </div>
 
             <div className="hero-info-card" aria-label="Kivo availability">
-              <div className="hero-info-main">
+              <div className="hero-info-item">
                 <span className="hero-info-icon" aria-hidden="true">
                   <BookOpen size={20} strokeWidth={1.7} />
                 </span>
                 <div>
-                  <strong>CBSE & Maharashtra Board</strong>
-                  <span>Grades 9-10</span>
-                  <span>Math &amp; Science</span>
+                  <strong className="hero-info-compact-title">CBSE &amp; Maharashtra Board</strong>
+                  <span>Fully syllabus aligned curriculum</span>
                 </div>
               </div>
-              <div className="hero-info-access">
-                <p>
-                  No app.<br />
-                  No installation.<br />
-                  <strong>Just open and learn.</strong>
-                </p>
+              <div className="hero-info-item">
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <GraduationCap size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>Grades 9-10</strong>
+                  <span>Focused learning for key years</span>
+                </div>
+              </div>
+              <div className="hero-info-item">
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <CalculatorIcon size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>Math &amp; Science</strong>
+                  <span>In-depth, concept focused content</span>
+                </div>
+              </div>
+              <div className="hero-info-item">
                 <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
                   <Globe size={20} strokeWidth={1.7} />
                 </span>
+                <div>
+                  <strong>No app needed</strong>
+                  <span>Just open and learn</span>
+                </div>
               </div>
             </div>
           </div>
@@ -760,66 +778,52 @@ export default function Home() {
 
         .hero-info-card {
           display: grid;
-          grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.86fr);
-          align-items: center;
-          gap: 26px;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          align-items: stretch;
+          gap: 10px;
           max-width: 760px;
-          min-height: 116px;
-          border-radius: 18px;
-          border: 1px solid rgba(59, 130, 246, 0.48);
-          padding: 20px 22px;
-          background:
-            radial-gradient(circle at 10% 50%, rgba(59, 130, 246, 0.16), transparent 34%),
-            linear-gradient(135deg, rgba(10, 22, 43, 0.82), rgba(9, 16, 29, 0.68));
-          box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.06),
-            0 0 34px rgba(59, 130, 246, 0.14),
-            0 20px 60px rgba(0, 0, 0, 0.2);
-          backdrop-filter: blur(18px);
+          min-height: 112px;
         }
 
-        .hero-info-main,
-        .hero-info-access {
+        .hero-info-item {
           display: flex;
-          align-items: center;
-          gap: 16px;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 9px;
           min-width: 0;
+          min-height: 112px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 16px;
+          padding: 14px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.66);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(12px);
         }
 
-        .hero-info-main {
-          padding-right: 26px;
-          border-right: 1px solid rgba(59, 130, 246, 0.42);
-        }
-
-        .hero-info-main strong {
+        .hero-info-item strong {
           display: block;
-          margin-bottom: 7px;
+          margin-bottom: 5px;
           color: var(--text);
-          font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+          font-size: clamp(0.86rem, 1vw, 0.98rem);
           line-height: 1.2;
+          overflow-wrap: normal;
         }
 
-        .hero-info-main span:not(.hero-info-icon) {
+        .hero-info-item .hero-info-compact-title {
+          font-size: clamp(0.78rem, 0.86vw, 0.86rem);
+          line-height: 1.22;
+        }
+
+        .hero-info-item span:not(.hero-info-icon) {
           display: block;
           color: var(--muted);
-          font-size: 0.98rem;
-          line-height: 1.35;
-        }
-
-        .hero-info-access {
-          justify-content: space-between;
-          gap: 18px;
-        }
-
-        .hero-info-access p {
-          margin: 0;
-          color: var(--muted);
-          font-size: 0.98rem;
+          font-size: 0.78rem;
           line-height: 1.38;
-        }
-
-        .hero-info-access strong {
-          color: var(--text);
         }
 
         .hero-info-icon {
@@ -827,22 +831,30 @@ export default function Home() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 54px;
-          height: 54px;
+          width: 38px;
+          height: 38px;
           border-radius: 50%;
-          color: #f4f7fb;
-          background:
-            radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.28), transparent 26%),
-            linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(30, 64, 175, 0.76));
-          box-shadow: 0 14px 30px rgba(59, 130, 246, 0.26);
+          color: #9fbaff;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
         }
 
         .hero-info-icon--secondary {
-          width: 50px;
-          height: 50px;
-          background:
-            radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.22), transparent 26%),
-            linear-gradient(135deg, rgba(30, 64, 175, 0.92), rgba(15, 50, 120, 0.82));
+          width: 38px;
+          height: 38px;
+          color: #89e7d9;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
+        }
+
+        .hero-info-item:nth-child(3) .hero-info-icon {
+          color: #ffe09a;
+          background: radial-gradient(circle, rgba(255, 209, 102, 0.22), rgba(255, 209, 102, 0.08));
+        }
+
+        .hero-info-item:nth-child(4) .hero-info-icon {
+          color: #aee8c6;
+          background: radial-gradient(circle, rgba(126, 231, 135, 0.2), rgba(126, 231, 135, 0.075));
         }
 
         .hero-actions {
@@ -2636,6 +2648,8 @@ export default function Home() {
 
           .hero-info-card {
             max-width: 620px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
           }
 
           .hero-image-frame {
@@ -2815,35 +2829,27 @@ export default function Home() {
             border-radius: 16px;
           }
 
-          .hero-info-main {
-            align-items: flex-start;
-            padding-right: 0;
-            padding-bottom: 14px;
-            border-right: none;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.36);
+          .hero-info-item {
+            min-height: 0;
+            padding: 14px;
           }
 
-          .hero-info-access {
-            align-items: center;
-          }
-
-          .hero-info-main strong {
+          .hero-info-item strong {
             font-size: 1rem;
           }
 
-          .hero-info-main span:not(.hero-info-icon),
-          .hero-info-access p {
+          .hero-info-item span:not(.hero-info-icon) {
             font-size: 0.94rem;
           }
 
           .hero-info-icon {
-            width: 46px;
-            height: 46px;
+            width: 42px;
+            height: 42px;
           }
 
           .hero-info-icon--secondary {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
           }
 
           .hero-actions {
