@@ -5,16 +5,21 @@ import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
+  BookOpenCheck,
   Brain,
   Calculator,
   ClipboardCheck,
   FileText,
   FlaskConical,
   HelpingHand,
-  MonitorSmartphone,
+  HeartHandshake,
+  IndianRupee,
   NotebookPen,
   PenSquare,
-  Globe
+  Globe,
+  ShieldCheck,
+  Clock,
+  TrendingUp
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -24,6 +29,51 @@ import SmoothScrollLink from "./SmoothScrollLink";
 
 const loginUrl = "https://app.kivoedu.ai/login";
 const demoUrl = "https://app.kivoedu.ai/demo";
+
+const parentBenefits = [
+  {
+    title: "Trusted learning material",
+    description:
+      "Answers stay connected to the textbook and syllabus your child is already studying, instead of random internet explanations.",
+    icon: BookOpenCheck,
+    tint: "#79A7FF",
+  },
+  {
+    title: "Homework feels calmer",
+    description:
+      "When your child gets stuck, KIVO guides them step by step so they can understand the method, not just copy the answer.",
+    icon: HeartHandshake,
+    tint: "#7EE787",
+  },
+  {
+    title: "Confidence between classes",
+    description:
+      "KIVO gives students a place to revise, ask questions, practice, and recover from weak chapters at their own pace.",
+    icon: ShieldCheck,
+    tint: "#FFD166",
+  },
+  {
+    title: "Progress you can understand",
+    description:
+      "Parents can see where their child is spending time, what they are practicing, and which areas may need more attention.",
+    icon: TrendingUp,
+    tint: "#5FA8A1",
+  },
+  {
+    title: "Support without pressure",
+    description:
+      "KIVO is available when your child needs help, without adding another fixed class, commute, or stressful schedule.",
+    icon: Clock,
+    tint: "#D98880",
+  },
+  {
+    title: "Affordable daily help",
+    description:
+      "Designed as everyday learning support for Math and Science, at a fraction of traditional one-on-one tutoring.",
+    icon: IndianRupee,
+    tint: "#D6A756",
+  },
+];
 
 const aiLearningFeatures = [
   {
@@ -89,7 +139,7 @@ export default function Home() {
         <div className="nav-inner">
           <HomeLogoLink />
           <div className="nav-links" aria-label="Primary navigation">
-            <SmoothScrollLink href="#learning">Learning</SmoothScrollLink>
+            <SmoothScrollLink href="#parents">Parents</SmoothScrollLink>
             <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
             <Link href="/blog">Blog</Link>
             <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
@@ -130,6 +180,9 @@ export default function Home() {
             </h1>
             <p className="hero-sub">
               Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
+            </p>
+            <p className="hero-reassurance">
+              Built for students. Designed to give parents peace of mind.
             </p>
             <div className="hero-actions">
               <a
@@ -239,6 +292,47 @@ export default function Home() {
             </Link>
             .
           </p>
+        </div>
+      </section>
+      <section className="parents-section" id="parents" aria-labelledby="parents-title">
+        <div className="parents-inner reveal">
+          <div className="why-kivo-heading">
+            <h2 id="parents-title">Built for Parents Too</h2>
+            <p>
+              KIVO helps your child learn from trusted textbook content, get step-by-step support, and build confidence &mdash; while giving you a clearer sense of how they&apos;re doing.
+            </p>
+          </div>
+          
+          <div className="parents-grid" aria-label="How KIVO supports parents and students">
+            {parentBenefits.map(({ title, description, icon: Icon, tint }) => (
+              <article
+                className="parent-card"
+                key={title}
+                style={{ "--parent-tint": tint } as CSSProperties}
+              >
+                <span className="parent-card-icon" aria-hidden="true">
+                  <Icon size={21} strokeWidth={1.7} />
+                </span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="parents-cta">
+            <div>
+              <h3>Give your child support they can actually use every day.</h3>
+              <p>No pressure. Let your child explore and see if it helps.</p>
+            </div>
+            <a
+              href={demoUrl}
+              className="btn-kivo parents-cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try KIVO Free
+            </a>
+          </div>
         </div>
       </section>
       <section className="product-experience" id="platform-overview">
@@ -499,6 +593,7 @@ export default function Home() {
 
         .nav,
         .hero,
+        .parents-section,
         .product-experience,
         .ai-philosophy,
         .section-band,
@@ -1040,6 +1135,148 @@ export default function Home() {
         .why-kivo-read-more a:hover {
           color: var(--accent);
           text-decoration-color: rgba(255, 209, 102, 0.9);
+        }
+
+        .parents-section {
+          position: relative;
+          z-index: 1;
+          padding: 104px 0 112px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
+          background:
+            radial-gradient(ellipse 54% 42% at 14% 10%, rgba(126, 231, 135, 0.1), transparent),
+            radial-gradient(ellipse 48% 46% at 88% 18%, rgba(255, 209, 102, 0.08), transparent),
+            linear-gradient(180deg, rgba(7, 12, 23, 0.94), rgba(8, 14, 26, 0.9));
+        }
+
+        .parents-inner {
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .parents-heading {
+          display: grid;
+          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+          align-items: end;
+          gap: clamp(28px, 5vw, 72px);
+          margin-bottom: 34px;
+        }
+
+        .parents-kicker {
+          display: inline-flex;
+          width: fit-content;
+          margin-bottom: 16px;
+          color: #9ee8dc;
+          font-size: 0.76rem;
+          font-weight: 820;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .parents-heading h2 {
+          max-width: 640px;
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(2.05rem, 3.7vw, 3.45rem);
+          line-height: 1.06;
+          letter-spacing: 0;
+        }
+
+        .parents-heading p {
+          margin: 0;
+          color: var(--muted);
+          font-size: clamp(1rem, 1.22vw, 1.12rem);
+          line-height: 1.76;
+        }
+
+        .parents-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .parent-card {
+          min-height: 246px;
+          padding: 24px;
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          border-radius: 18px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.62);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.16);
+          backdrop-filter: blur(12px);
+          transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .parent-card:hover {
+          transform: translateY(-4px);
+          border-color: color-mix(in srgb, var(--parent-tint) 34%, rgba(196, 217, 255, 0.18));
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.03)),
+            rgba(13, 19, 32, 0.7);
+        }
+
+        .parent-card-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 46px;
+          height: 46px;
+          margin-bottom: 22px;
+          border: 1px solid color-mix(in srgb, var(--parent-tint) 28%, rgba(196, 217, 255, 0.12));
+          border-radius: 14px;
+          color: var(--parent-tint);
+          background: color-mix(in srgb, var(--parent-tint) 12%, rgba(255, 255, 255, 0.035));
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.075);
+        }
+
+        .parent-card h3 {
+          margin: 0 0 12px;
+          color: var(--text);
+          font-size: clamp(1rem, 1.28vw, 1.14rem);
+          line-height: 1.3;
+        }
+
+        .parent-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.96rem;
+          line-height: 1.7;
+        }
+
+        .parents-cta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          margin-top: 18px;
+          padding: clamp(22px, 3vw, 30px);
+          border: 1px solid rgba(255, 209, 102, 0.16);
+          border-radius: 22px;
+          background:
+            linear-gradient(135deg, rgba(255, 209, 102, 0.11), rgba(79, 209, 197, 0.07)),
+            rgba(255, 255, 255, 0.04);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .parents-cta h3 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(1.25rem, 2vw, 1.8rem);
+          line-height: 1.2;
+        }
+
+        .parents-cta p {
+          margin: 9px 0 0;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.6;
+        }
+
+        .parents-cta-button {
+          flex: 0 0 auto;
         }
 
         .product-experience {
@@ -2452,6 +2689,15 @@ export default function Home() {
             max-width: 640px;
           }
 
+          .parents-heading {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
+
+          .parents-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
           .why-kivo-flow li:nth-child(2) .why-kivo-flow-arrow {
             display: none;
           }
@@ -2614,6 +2860,39 @@ export default function Home() {
 
           .product-experience {
             padding: 78px 0;
+          }
+
+          .parents-section {
+            padding: 78px 0;
+          }
+
+          .parents-inner {
+            width: min(var(--max), calc(100% - 28px));
+          }
+
+          .parents-heading {
+            margin-bottom: 28px;
+          }
+
+          .parents-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .parent-card {
+            min-height: auto;
+            padding: 22px;
+            border-radius: 16px;
+          }
+
+          .parents-cta {
+            display: grid;
+            margin-top: 14px;
+            border-radius: 18px;
+          }
+
+          .parents-cta-button {
+            width: 100%;
           }
 
           .ai-philosophy {
