@@ -45,6 +45,17 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Script id="webkit-bridge-polyfill" strategy="beforeInteractive">
+          {`
+            try {
+              if (typeof window !== 'undefined' && !window.webkit) {
+                window.webkit = { messageHandlers: {} };
+              } else if (window.webkit && !window.webkit.messageHandlers) {
+                window.webkit.messageHandlers = {};
+              }
+            } catch(e) {}
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-78XWQ9YB0L"
           strategy="afterInteractive"
