@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  BarChart2,
   BookOpen,
   Brain,
   Calculator,
@@ -14,7 +15,9 @@ import {
   MonitorSmartphone,
   NotebookPen,
   PenSquare,
-  Globe
+  Globe,
+  ShieldCheck,
+  UserPlus,
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
@@ -92,6 +95,7 @@ export default function Home() {
             <SmoothScrollLink href="#learning">Learning</SmoothScrollLink>
             <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
             <Link href="/blog">Blog</Link>
+            <SmoothScrollLink href="#for-parents">For Parents</SmoothScrollLink>
             <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
             <Link href="/contact">Contact</Link>
           </div>
@@ -406,6 +410,64 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="for-parents" id="for-parents" aria-labelledby="for-parents-title">
+        <div className="for-parents-inner reveal">
+          <div className="for-parents-heading">
+            <span className="for-parents-kicker">For Parents</span>
+            <h2 id="for-parents-title">Stay informed. Stay in control.</h2>
+            <p>
+              Kivo gives parents a clear window into their child&apos;s learning — without getting
+              in the way. Set up once, monitor ongoing progress, and manage access all from a single
+              dashboard.
+            </p>
+          </div>
+          <div className="for-parents-grid">
+            <article className="for-parents-card">
+              <span className="for-parents-icon for-parents-icon--link" aria-hidden="true">
+                <UserPlus size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Link your child in minutes</h3>
+              <p>
+                Create a parent account, enter your child&apos;s email, and they receive an
+                invitation to join. No extra apps or device setup required — just an immediate
+                learning connection.
+              </p>
+            </article>
+            <article className="for-parents-card">
+              <span className="for-parents-icon for-parents-icon--progress" aria-hidden="true">
+                <BarChart2 size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Monitor progress at a glance</h3>
+              <p>
+                See which chapters your child has studied, quiz results, and activity over time —
+                all from your parent dashboard. No chasing your child for updates.
+              </p>
+            </article>
+            <article className="for-parents-card">
+              <span className="for-parents-icon for-parents-icon--payment" aria-hidden="true">
+                <ShieldCheck size={24} strokeWidth={1.6} />
+              </span>
+              <h3>Pay once, access instantly</h3>
+              <p>
+                Subscribe on your child&apos;s behalf and they unlock full access immediately. You
+                control the subscription — students focus on learning.
+              </p>
+            </article>
+          </div>
+          <div className="for-parents-cta">
+            <a
+              href={loginUrl}
+              className="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Create a parent account
+            </a>
+          </div>
+        </div>
+      </section>
+
       <PricingSection />
 
       <footer className="footer">
@@ -2323,6 +2385,168 @@ export default function Home() {
           .reveal {
             animation-timeline: view();
             animation-range: entry 8% cover 28%;
+          }
+        }
+
+        .for-parents {
+          position: relative;
+          z-index: 1;
+          padding: 108px 0 112px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
+          background:
+            radial-gradient(ellipse 52% 46% at 78% 14%, rgba(126, 231, 135, 0.09), transparent),
+            radial-gradient(ellipse 44% 52% at 18% 28%, rgba(79, 209, 197, 0.09), transparent),
+            linear-gradient(180deg, rgba(7, 11, 22, 0.96), rgba(5, 9, 18, 0.92));
+        }
+
+        .for-parents-inner {
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .for-parents-heading {
+          max-width: 740px;
+          margin: 0 auto 48px;
+          text-align: center;
+        }
+
+        .for-parents-kicker {
+          display: inline-flex;
+          margin-bottom: 16px;
+          color: #9ee8dc;
+          font-size: 0.72rem;
+          font-weight: 820;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+
+        .for-parents-heading h2 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(2.25rem, 4vw, 3.75rem);
+          line-height: 1.04;
+        }
+
+        .for-parents-heading p {
+          max-width: 660px;
+          margin: 20px auto 0;
+          color: var(--muted);
+          font-size: clamp(1rem, 1.3vw, 1.14rem);
+          line-height: 1.72;
+        }
+
+        .for-parents-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+        }
+
+        .for-parents-card {
+          padding: 28px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          border-radius: 18px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.66);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(12px);
+          transition:
+            transform 180ms ease,
+            border-color 180ms ease,
+            background 180ms ease,
+            box-shadow 180ms ease;
+        }
+
+        .for-parents-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(196, 217, 255, 0.22);
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.032)),
+            rgba(13, 19, 32, 0.72);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.065),
+            0 18px 44px rgba(0, 0, 0, 0.22);
+        }
+
+        .for-parents-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 58px;
+          height: 58px;
+          margin-bottom: 28px;
+          border-radius: 999px;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .for-parents-icon--link {
+          color: #9fbaff;
+          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
+        }
+
+        .for-parents-icon--progress {
+          color: #89e7d9;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
+        }
+
+        .for-parents-icon--payment {
+          color: #aee8c6;
+          background: radial-gradient(circle, rgba(126, 231, 135, 0.2), rgba(126, 231, 135, 0.075));
+        }
+
+        .for-parents-card h3 {
+          margin: 0 0 14px;
+          color: var(--text);
+          font-size: clamp(1.08rem, 1.4vw, 1.22rem);
+          line-height: 1.25;
+        }
+
+        .for-parents-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.74;
+        }
+
+        .for-parents-cta {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+        }
+
+        @media (max-width: 1080px) {
+          .for-parents-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 760px) {
+          .for-parents {
+            padding: 78px 0;
+          }
+
+          .for-parents-inner {
+            width: min(var(--max), calc(100% - 28px));
+          }
+
+          .for-parents-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .for-parents-card {
+            padding: 24px;
+            border-radius: 16px;
+          }
+
+          .for-parents-icon {
+            width: 52px;
+            height: 52px;
+            margin-bottom: 22px;
           }
         }
 
