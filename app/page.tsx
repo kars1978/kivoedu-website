@@ -505,6 +505,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <PricingSection />
 
       <footer className="footer">
