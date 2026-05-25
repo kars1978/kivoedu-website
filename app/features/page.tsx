@@ -7,6 +7,7 @@ import {
   BotMessageSquare,
   Brain,
   ClipboardCheck,
+  FileQuestionMark,
   FlaskConical,
   HelpCircle,
   NotebookPen,
@@ -60,6 +61,15 @@ const featureGroups = [
       "Short practice loops help students retry, review, and build confidence without waiting for the next class or tuition session.",
     icon: ClipboardCheck,
     points: ["Quick quizzes", "Flashcards", "Concept drills"],
+  },
+  {
+    eyebrow: "Coming soon",
+    title: "Mock exams",
+    body:
+      "Practice papers based on patterns from past exams are planned, so students can prepare with more exam-like question sets.",
+    icon: FileQuestionMark,
+    status: "Coming soon",
+    points: ["Past-exam style questions", "Full practice papers", "Exam readiness review"],
   },
   {
     eyebrow: "Homework",
@@ -284,7 +294,7 @@ export default function FeaturesPage() {
           <h2 id="features-title">Everything works together for daily learning.</h2>
         </div>
         <div className="feature-detail-grid">
-          {featureGroups.map(({ eyebrow, title, body, icon: Icon, points }) => (
+          {featureGroups.map(({ eyebrow, title, body, icon: Icon, status, points }) => (
             <article className="feature-detail-card" key={title}>
               <div className="feature-detail-head">
                 <span className="feature-detail-icon" aria-hidden="true">
@@ -292,7 +302,10 @@ export default function FeaturesPage() {
                 </span>
                 <div>
                   <p>{eyebrow}</p>
-                  <h3>{title}</h3>
+                  <h3>
+                    {title}
+                    {status && <span>{status}</span>}
+                  </h3>
                 </div>
               </div>
               <p>{body}</p>
@@ -954,6 +967,23 @@ export default function FeaturesPage() {
           margin-bottom: 0;
           color: #f4f7fb;
           font-size: 1.05rem;
+        }
+
+        .feature-detail-head h3 span {
+          display: inline-flex;
+          align-items: center;
+          min-height: 22px;
+          margin-left: 9px;
+          padding: 0 8px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 209, 102, 0.24);
+          background: rgba(255, 209, 102, 0.08);
+          color: #ffd166;
+          font-size: 0.62rem;
+          font-weight: 820;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          vertical-align: middle;
         }
 
         .feature-detail-card ul {
