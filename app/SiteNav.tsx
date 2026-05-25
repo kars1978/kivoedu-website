@@ -12,10 +12,10 @@ export default function SiteNav() {
         <div className="sn-inner">
           <HomeLogoLink />
           <div className="sn-links" aria-label="Primary navigation">
-            <Link href="/#platform-overview">Features</Link>
+            <Link href="/features">Features</Link>
             <Link href="/#parents">Parents</Link>
             <Link href="/guide">How it Works</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/features#pricing">Pricing</Link>
             <Link href="/blog" className="sn-mobile-only">Blog</Link>
             <Link href="/contact" className="sn-mobile-only">Contact</Link>
           </div>
