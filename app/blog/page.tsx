@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "./posts";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -21,15 +22,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="blog-root">
-      <nav className="blog-nav">
-        <Link href="/" className="brand">
-          KivoEdu
-        </Link>
-        <div>
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="blog-hero">
         <p className="eyebrow">KivoEdu Blog</p>
@@ -79,41 +72,21 @@ export default function BlogPage() {
           font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
         }
 
-        .blog-nav,
         .blog-hero,
         .post-list {
           width: min(1060px, calc(100% - 40px));
           margin: 0 auto;
         }
 
-        .blog-nav {
-          min-height: 76px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 24px;
-        }
-
-        .blog-nav div {
-          display: flex;
-          gap: 22px;
-        }
-
-        .blog-nav a,
         .read-link {
           color: #a8b3c6;
           text-decoration: none;
         }
 
-        .blog-nav a:hover,
         .read-link:hover,
         .post-card h2 a:hover {
           color: #f4f7fb;
-        }
-
-        .brand {
-          color: #f4f7fb !important;
-          font-weight: 800;
+          opacity: 1;
         }
 
         .blog-hero {
@@ -213,8 +186,66 @@ export default function BlogPage() {
             width: min(1060px, calc(100% - 28px));
           }
 
+          .blog-nav {
+            min-height: 112px;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 8px 14px;
+            padding: 10px 0 8px;
+          }
+
+          .brand img {
+            width: 112px;
+          }
+
+          .blog-nav-links {
+            order: 3;
+            width: 100%;
+            margin-left: 0;
+            gap: 14px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            padding: 2px 0 4px;
+            scrollbar-width: none;
+          }
+
+          .blog-nav-links::-webkit-scrollbar {
+            display: none;
+          }
+
+          .blog-nav-links a,
+          .blog-more summary {
+            flex: 0 0 auto;
+            font-size: 15px;
+          }
+
+          .blog-more-menu {
+            position: fixed;
+            top: 112px;
+            right: 14px;
+          }
+
+          .blog-nav-sep {
+            display: none;
+          }
+
+          .blog-nav-auth {
+            margin-left: auto;
+            gap: 12px;
+          }
+
+          .blog-login {
+            font-size: 15px;
+          }
+
+          .blog-cta {
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 15px;
+          }
+
           .blog-hero {
-            padding-top: 58px;
+            padding-top: 72px;
           }
 
           .post-card {

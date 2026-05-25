@@ -11,6 +11,7 @@ import {
   NotebookPen,
   UserRound,
 } from "lucide-react";
+import SiteNav from "../../SiteNav";
 import type { BlogGridItem, BlogPost } from "../types";
 import { blogPosts, getBlogPost } from "../posts";
 
@@ -142,15 +143,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <nav className="article-nav">
-        <Link href="/" className="brand">
-          KivoEdu
-        </Link>
-        <div>
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
-        </div>
-      </nav>
+      <SiteNav />
 
       <article className="article">
         <Link href="/blog" className="back-link">
@@ -226,39 +219,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           font-family: var(--font-geist-sans), Inter, system-ui, sans-serif;
         }
 
-        .article-nav,
         .article {
           width: min(1032px, calc(100% - 48px));
           margin: 0 auto;
         }
 
-        .article-nav {
-          min-height: 76px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 24px;
-        }
-
-        .article-nav div {
-          display: flex;
-          gap: 22px;
-        }
-
-        .article-nav a,
         .back-link {
           color: #a8b3c6;
           text-decoration: none;
         }
 
-        .article-nav a:hover,
         .back-link:hover {
           color: #f4f7fb;
-        }
-
-        .brand {
-          color: #f4f7fb !important;
-          font-weight: 800;
+          opacity: 1;
         }
 
         .article {
@@ -496,13 +469,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         }
 
         @media (max-width: 720px) {
-          .article-nav,
           .article {
             width: min(1032px, calc(100% - 28px));
-          }
-
-          .article {
-            padding-top: 54px;
+            padding-top: 72px;
           }
 
           .intro-block,

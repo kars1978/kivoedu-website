@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, GraduationCap, Building2 } from "lucide-react";
-import { LOGO_SRC } from "../constants";
+import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,44 +20,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="cr">
-      <nav className="cn" aria-label="Primary navigation">
-        <div className="cn-inner">
-          <Link href="/" className="cn-brand" aria-label="KivoEdu home">
-            <Image
-              src={LOGO_SRC}
-              alt="KivoEdu"
-              width={138}
-              height={52}
-              style={{ objectFit: "contain", height: "auto" }}
-              priority
-            />
-          </Link>
-          <div className="cn-links">
-            <Link href="/#pricing">Pricing</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-          <span className="cn-sep" aria-hidden="true" />
-          <div className="cn-auth">
-            <a
-              href="https://app.kivoedu.ai/login"
-              className="cn-login"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Log in
-            </a>
-            <a
-              href="https://app.kivoedu.ai/login"
-              className="cn-cta"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try Kivo
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="ch" aria-labelledby="contact-heading">
         <p className="eyebrow">Contact</p>
@@ -161,107 +123,6 @@ export default function ContactPage() {
             linear-gradient(90deg, rgba(196, 217, 255, 0.045) 1px, transparent 1px);
           background-size: 72px 72px;
           mask-image: linear-gradient(to bottom, black, transparent 72%);
-        }
-
-        /* ── Nav ──────────────────────────────────────────────────── */
-        .cn {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 20;
-          border-bottom: 1px solid rgba(196, 217, 255, 0.13);
-          background: rgba(7, 10, 18, 0.74);
-          backdrop-filter: blur(18px);
-        }
-
-        .cn-inner {
-          width: min(1180px, calc(100% - 48px));
-          margin: 0 auto;
-          height: 76px;
-          display: flex;
-          align-items: center;
-          gap: 20px;
-        }
-
-        .cn-brand {
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-          flex-shrink: 0;
-        }
-
-        .cn-links {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-
-        .cn-links a {
-          padding: 5px 10px;
-          border-radius: 999px;
-          color: #afbad0;
-          font-size: 0.88rem;
-          text-decoration: none;
-          transition: color 160ms ease, background 160ms ease;
-        }
-
-        .cn-links a:hover {
-          color: #f4f7fb;
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        .cn-sep {
-          width: 1px;
-          height: 18px;
-          background: rgba(196, 217, 255, 0.25);
-          flex-shrink: 0;
-        }
-
-        .cn-auth {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .cn-login {
-          padding: 5px 10px;
-          border-radius: 999px;
-          color: #afbad0;
-          font-size: 0.88rem;
-          text-decoration: none;
-          transition: color 160ms ease, background 160ms ease;
-        }
-
-        .cn-login:hover {
-          color: #f4f7fb;
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        .cn-cta {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 34px;
-          border-radius: 999px;
-          padding: 0 14px;
-          color: #f4f7fb;
-          border: 1px solid rgba(196, 217, 255, 0.25);
-          background: rgba(255, 255, 255, 0.055);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-          font-weight: 760;
-          font-size: 0.81rem;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
-        }
-
-        .cn-cta:hover {
-          transform: translateY(-2px) scale(1.03);
-          border-color: rgba(255, 209, 102, 0.42);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
         }
 
         /* ── Hero ─────────────────────────────────────────────────── */
@@ -543,15 +404,63 @@ export default function ContactPage() {
           }
 
           .cn-inner {
-            height: 68px;
+            height: auto;
+            min-height: 112px;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 8px 14px;
+            padding: 10px 0 8px;
           }
 
           .cn-links {
+            order: 3;
+            display: flex;
+            width: 100%;
+            margin-left: 0;
+            gap: 14px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            padding: 2px 0 4px;
+            scrollbar-width: none;
+          }
+
+          .cn-links::-webkit-scrollbar {
             display: none;
           }
 
+          .cn-links a,
+          .cn-more summary {
+            flex: 0 0 auto;
+            font-size: 15px;
+          }
+
+          .cn-more-menu {
+            position: fixed;
+            top: 112px;
+            right: 14px;
+          }
+
+          .cn-sep {
+            display: none;
+          }
+
+          .cn-auth {
+            margin-left: auto;
+            gap: 12px;
+          }
+
+          .cn-login {
+            font-size: 15px;
+          }
+
+          .cn-cta {
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 15px;
+          }
+
           .ch {
-            padding: 100px 0 52px;
+            padding: 144px 0 52px;
           }
 
           .ec {

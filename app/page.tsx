@@ -4,29 +4,76 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BarChart2,
   BookOpen,
+  BookOpenCheck,
   Brain,
   Calculator,
   ClipboardCheck,
   FileText,
   FlaskConical,
   HelpingHand,
-  MonitorSmartphone,
+  HeartHandshake,
+  IndianRupee,
   NotebookPen,
   PenSquare,
   Globe,
   ShieldCheck,
-  UserPlus,
+  Clock,
+  TrendingUp,
+  GraduationCap,
+  CalculatorIcon,
 } from "lucide-react";
 import { LOGO_SRC } from "./constants";
 import heroCard01 from "./public/hero_card_01.png";
-import HomeLogoLink from "./HomeLogoLink";
+import SiteNav from "./SiteNav";
 import PricingSection from "./PricingSection";
-import SmoothScrollLink from "./SmoothScrollLink";
 
-const loginUrl = "https://app.kivoedu.ai/login";
 const demoUrl = "https://app.kivoedu.ai/demo";
+
+const parentBenefits = [
+  {
+    title: "Trusted learning material",
+    description:
+      "Answers stay connected to the textbook and syllabus your child is already studying, instead of random internet explanations.",
+    icon: BookOpenCheck,
+    tint: "#79A7FF",
+  },
+  {
+    title: "Homework feels calmer",
+    description:
+      "When your child gets stuck, KIVO guides them step by step so they can understand the method, not just copy the answer.",
+    icon: HeartHandshake,
+    tint: "#7EE787",
+  },
+  {
+    title: "Confidence between classes",
+    description:
+      "KIVO gives students a place to revise, ask questions, practice, and recover from weak chapters at their own pace.",
+    icon: ShieldCheck,
+    tint: "#FFD166",
+  },
+  {
+    title: "Progress you can understand",
+    description:
+      "Parents can see where their child is spending time, what they are practicing, and which areas may need more attention.",
+    icon: TrendingUp,
+    tint: "#5FA8A1",
+  },
+  {
+    title: "Support without pressure",
+    description:
+      "KIVO is available when your child needs help, without adding another fixed class, commute, or stressful schedule.",
+    icon: Clock,
+    tint: "#D98880",
+  },
+  {
+    title: "Affordable daily help",
+    description:
+      "Designed as everyday learning support for Math and Science, at a fraction of traditional one-on-one tutoring.",
+    icon: IndianRupee,
+    tint: "#D6A756",
+  },
+];
 
 const aiLearningFeatures = [
   {
@@ -88,38 +135,7 @@ export default function Home() {
   return (
     <main className="root">
       <div className="site-glow" aria-hidden="true" />
-      <nav className="nav">
-        <div className="nav-inner">
-          <HomeLogoLink />
-          <div className="nav-links" aria-label="Primary navigation">
-            <SmoothScrollLink href="#learning">Learning</SmoothScrollLink>
-            <SmoothScrollLink href="#platform-overview">Experience</SmoothScrollLink>
-            <Link href="/blog">Blog</Link>
-            <SmoothScrollLink href="#for-parents">For Parents</SmoothScrollLink>
-            <SmoothScrollLink href="#pricing">Pricing</SmoothScrollLink>
-            <Link href="/contact">Contact</Link>
-          </div>
-          <span className="nav-sep" aria-hidden="true" />
-          <div className="nav-auth">
-            <a
-              href={loginUrl}
-              className="nav-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Log in
-            </a>
-            <a
-              href={demoUrl}
-              className="btn btn-nav"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Try Kivo
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="hero">
         <div className="hero-bg" aria-hidden="true">
@@ -129,38 +145,73 @@ export default function Home() {
           <div className="hero-copy">
 
             <h1>
-              <span>Your textbook, turned into</span>
-              <span>your personal 1-on-1 AI tutor.</span>
+              <span>Your textbook,</span>
+              <span>turned into your</span>
+              <span className="hero-title-accent">personal 1-on-1 AI tutor.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school syllabus. Study, ask any question, and get instant, stress-free explanations and step-by-step practice problems.
+              Kivo grounds your learning entirely in your specific school syllabus.
+              Study, ask any question, and get instant, stress-free explanations
+              and step-by-step practice problems.
             </p>
-            <div className="hero-actions">
-              <a
-                href={loginUrl}
-                className="btn-kivo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Start Learning Free
-              </a>
-              <a
-                href={demoUrl}
-                className="btn-kivo-ghost"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try Demo
-              </a>
+
+            <div className="hero-feature-row" aria-label="Kivo learning benefits">
+              <span>
+                <BookOpenCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Syllabus-aligned
+              </span>
+              <span>
+                <Brain size={18} strokeWidth={1.8} aria-hidden="true" />
+                Instant explanations
+              </span>
+              <span>
+                <ClipboardCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Step-by-step practice
+              </span>
+              <span>
+                <ShieldCheck size={18} strokeWidth={1.8} aria-hidden="true" />
+                Safe &amp; student-first
+              </span>
             </div>
-                        <p className="hero-ai-badge flex items-center gap-2">
-              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Now Live: Class 9 & 10 Math & Science for CBSE & Maharashtra Board.</span>
-            </p>
-            <p className="hero-availability">
-              <Globe size={17} strokeWidth={1.7} aria-hidden="true" />
-              <span>Instant browser access on mobile, tablet, or desktop. No app installation required.</span>
-            </p>
+
+            <div className="hero-info-card" aria-label="Kivo availability">
+              <div className="hero-info-item">
+                <span className="hero-info-icon" aria-hidden="true">
+                  <BookOpen size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong className="hero-info-compact-title">CBSE &amp; Maharashtra Board</strong>
+                  <span>Fully syllabus aligned curriculum</span>
+                </div>
+              </div>
+              <div className="hero-info-item">
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <GraduationCap size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>Grades 9-10</strong>
+                  <span>Focused learning for key years</span>
+                </div>
+              </div>
+              <div className="hero-info-item">
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <CalculatorIcon size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>Math &amp; Science</strong>
+                  <span>In-depth, concept focused content</span>
+                </div>
+              </div>
+              <div className="hero-info-item">
+                <span className="hero-info-icon hero-info-icon--secondary" aria-hidden="true">
+                  <Globe size={20} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <strong>No app needed</strong>
+                  <span>Just open and learn</span>
+                </div>
+              </div>
+            </div>
           </div>
           <figure className="hero-image-frame">
             <Image
@@ -243,6 +294,50 @@ export default function Home() {
             </Link>
             .
           </p>
+        </div>
+      </section>
+      <section className="parents-section" id="parents" aria-labelledby="parents-title">
+        <div className="parents-inner reveal">
+          <div className="why-kivo-heading">
+            <h2 id="parents-title">Built for Parents Too</h2>
+            <p>
+              KIVO helps your child learn from trusted textbook content, get step-by-step support, and build confidence &mdash; while giving you a clearer sense of how they&apos;re doing.
+            </p>
+          </div>
+          
+          <div className="parents-grid" aria-label="How KIVO supports parents and students">
+            {parentBenefits.map(({ title, description, icon: Icon, tint }) => (
+              <article
+                className="parent-card"
+                key={title}
+                style={{ "--parent-tint": tint } as CSSProperties}
+              >
+                <span className="parent-card-icon" aria-hidden="true">
+                  <Icon size={21} strokeWidth={1.7} />
+                </span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="parents-cta">
+            <div>
+              <h3>Give your child support they can actually use every day.</h3>
+              <p>No pressure. Let your child explore and see if it helps.</p>
+            </div>
+            <a
+              href={demoUrl}
+              className="btn-kivo parents-cta-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Try KIVO Free
+            </a>
+            <Link href="/guide" className="btn-kivo-ghost parents-cta-button">
+              See how Kivo works
+            </Link>
+          </div>
         </div>
       </section>
       <section className="product-experience" id="platform-overview">
@@ -411,63 +506,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="for-parents" id="for-parents" aria-labelledby="for-parents-title">
-        <div className="for-parents-inner reveal">
-          <div className="for-parents-heading">
-            <span className="for-parents-kicker">For Parents</span>
-            <h2 id="for-parents-title">Stay informed. Stay in control.</h2>
-            <p>
-              Kivo gives parents a clear window into their child&apos;s learning — without getting
-              in the way. Set up once, monitor ongoing progress, and manage access all from a single
-              dashboard.
-            </p>
-          </div>
-          <div className="for-parents-grid">
-            <article className="for-parents-card">
-              <span className="for-parents-icon for-parents-icon--link" aria-hidden="true">
-                <UserPlus size={24} strokeWidth={1.6} />
-              </span>
-              <h3>Link your child in minutes</h3>
-              <p>
-                Create a parent account, enter your child&apos;s email, and they receive an
-                invitation to join. No extra apps or device setup required — just an immediate
-                learning connection.
-              </p>
-            </article>
-            <article className="for-parents-card">
-              <span className="for-parents-icon for-parents-icon--progress" aria-hidden="true">
-                <BarChart2 size={24} strokeWidth={1.6} />
-              </span>
-              <h3>Monitor progress at a glance</h3>
-              <p>
-                See which chapters your child has studied, quiz results, and activity over time —
-                all from your parent dashboard. No chasing your child for updates.
-              </p>
-            </article>
-            <article className="for-parents-card">
-              <span className="for-parents-icon for-parents-icon--payment" aria-hidden="true">
-                <ShieldCheck size={24} strokeWidth={1.6} />
-              </span>
-              <h3>Pay once, access instantly</h3>
-              <p>
-                Subscribe on your child&apos;s behalf and they unlock full access immediately. You
-                control the subscription — students focus on learning.
-              </p>
-            </article>
-          </div>
-          <div className="for-parents-cta">
-            <a
-              href={loginUrl}
-              className="btn btn-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Create a parent account
-            </a>
-          </div>
-        </div>
-      </section>
-
       <PricingSection />
 
       <footer className="footer">
@@ -489,34 +527,6 @@ export default function Home() {
       <style>{`
         *, *::before, *::after {
           box-sizing: border-box;
-        }
-
-        :root {
-          --bg: #070a12;
-          --bg-deep: #050812;
-          --panel: rgba(13, 19, 32, 0.78);
-          --panel-strong: rgba(17, 27, 44, 0.86);
-          --line: rgba(196, 217, 255, 0.13);
-          --line-strong: rgba(196, 217, 255, 0.25);
-          --text: #f4f7fb;
-          --muted: #afbad0;
-          --soft: #78859b;
-          --cyan: #4fd1c5;
-          --blue: #79a7ff;
-          --green: #7ee787;
-          --orange: #ffb86b;
-          --accent: #ffd166;
-          --accent-ink: #171101;
-          --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-          --max: 1180px;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        body {
-          margin: 0;
         }
 
         .root {
@@ -559,8 +569,8 @@ export default function Home() {
           animation: ambientShift 13s ease-in-out infinite alternate;
         }
 
-        .nav,
         .hero,
+        .parents-section,
         .product-experience,
         .ai-philosophy,
         .section-band,
@@ -569,137 +579,10 @@ export default function Home() {
           z-index: 1;
         }
 
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 20;
-          border-bottom: 1px solid var(--line);
-          background: rgba(7, 10, 18, 0.74);
-          backdrop-filter: blur(18px);
-        }
-
-        .nav-inner,
         .section-inner,
         .footer-inner {
           width: min(var(--max), calc(100% - 48px));
           margin: 0 auto;
-        }
-
-        .nav-inner {
-          height: 76px;
-          display: flex;
-          align-items: center;
-          gap: 20px;
-        }
-
-        .nav-auth {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .logo-link {
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-        }
-
-        .nav-links {
-          margin-left: auto;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-
-        .nav-sep {
-          width: 1px;
-          height: 18px;
-          background: var(--line-strong);
-          flex-shrink: 0;
-        }
-
-        .nav-links a,
-        .footer a {
-          color: var(--muted);
-          font-size: 0.88rem;
-          text-decoration: none;
-          transition: color 160ms ease;
-        }
-
-        .nav-links a,
-        .nav-link {
-          padding: 5px 10px;
-          border-radius: 999px;
-          transition: color 160ms ease, background 160ms ease;
-        }
-
-        .nav-link {
-          color: var(--muted);
-          font-size: 0.88rem;
-          text-decoration: none;
-        }
-
-        .nav-links a:hover,
-        .footer a:hover {
-          color: var(--text);
-        }
-
-        .nav-links a:hover,
-        .nav-link:hover {
-          color: var(--text);
-          background: rgba(255, 255, 255, 0.07);
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-          outline: 3px solid rgba(255, 209, 102, 0.78);
-          outline-offset: 4px;
-          border-radius: 10px;
-        }
-
-        .btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 44px;
-          border-radius: 999px;
-          padding: 0 20px;
-          font-weight: 760;
-          font-size: 0.92rem;
-          text-decoration: none;
-          transition:
-            transform 180ms ease,
-            border-color 180ms ease,
-            background 180ms ease,
-            box-shadow 180ms ease;
-          white-space: nowrap;
-        }
-
-        .btn:hover {
-          transform: translateY(-2px) scale(1.03);
-        }
-
-        .btn-nav,
-        .btn-secondary {
-          color: var(--text);
-          border: 1px solid var(--line-strong);
-          background: rgba(255, 255, 255, 0.055);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
-
-        .btn-nav {
-          min-height: 34px;
-          padding: 0 14px;
-          font-size: 0.81rem;
-        }
-
-        .btn-secondary:hover,
-        .btn-nav:hover {
-          border-color: rgba(255, 209, 102, 0.42);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 14px 36px rgba(79, 209, 197, 0.12);
         }
 
         .btn-primary {
@@ -779,6 +662,14 @@ export default function Home() {
           margin: 0 auto;
         }
 
+        .hero-grid > *,
+        .hero-copy,
+        .hero-info-card,
+        .hero-feature-row,
+        .hero-image-frame {
+          min-width: 0;
+        }
+
         .demo-wrapper,
         .hero-centered {
           position: relative;
@@ -832,10 +723,10 @@ export default function Home() {
 
         .hero-copy h1 {
           max-width: 780px;
-          margin-bottom: 24px;
+          margin-bottom: 26px;
           color: var(--text);
-          font-size: clamp(2.6rem, 3.05vw, 3rem);
-          line-height: 1.08;
+          font-size: clamp(2.45rem, 3vw, 3.28rem);
+          line-height: 1.06;
           letter-spacing: 0;
         }
 
@@ -849,10 +740,122 @@ export default function Home() {
         }
 
         .hero-sub {
-          max-width: 500px;
+          max-width: 680px;
           color: var(--muted);
-          font-size: clamp(1.05rem, 1.55vw, 1.24rem);
-          line-height: 1.68;
+          font-size: clamp(1.06rem, 1.45vw, 1.26rem);
+          line-height: 1.72;
+        }
+
+        .hero-feature-row {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+          max-width: 760px;
+          margin: 34px 0 32px;
+        }
+
+        .hero-feature-row span {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-width: 0;
+          color: rgba(244, 247, 251, 0.86);
+          font-size: 0.95rem;
+          font-weight: 500;
+          line-height: 1.28;
+        }
+
+        .hero-feature-row svg {
+          flex: 0 0 auto;
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          padding: 10px;
+          color: rgba(244, 247, 251, 0.9);
+          background: rgba(255, 255, 255, 0.075);
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+        }
+
+        .hero-info-card {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          align-items: stretch;
+          gap: 10px;
+          max-width: 760px;
+          min-height: 112px;
+        }
+
+        .hero-info-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 9px;
+          min-width: 0;
+          min-height: 112px;
+          border: 1px solid rgba(196, 217, 255, 0.14);
+          border-radius: 16px;
+          padding: 14px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.66);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(12px);
+        }
+
+        .hero-info-item strong {
+          display: block;
+          margin-bottom: 5px;
+          color: var(--text);
+          font-size: clamp(0.86rem, 1vw, 0.98rem);
+          line-height: 1.2;
+          overflow-wrap: normal;
+        }
+
+        .hero-info-item .hero-info-compact-title {
+          font-size: clamp(0.78rem, 0.86vw, 0.86rem);
+          line-height: 1.22;
+        }
+
+        .hero-info-item span:not(.hero-info-icon) {
+          display: block;
+          color: var(--muted);
+          font-size: 0.78rem;
+          line-height: 1.38;
+        }
+
+        .hero-info-icon {
+          flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          color: #9fbaff;
+          border: 1px solid rgba(196, 217, 255, 0.13);
+          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-info-icon--secondary {
+          width: 38px;
+          height: 38px;
+          color: #89e7d9;
+          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
+        }
+
+        .hero-info-item:nth-child(3) .hero-info-icon {
+          color: #ffe09a;
+          background: radial-gradient(circle, rgba(255, 209, 102, 0.22), rgba(255, 209, 102, 0.08));
+        }
+
+        .hero-info-item:nth-child(4) .hero-info-icon {
+          color: #aee8c6;
+          background: radial-gradient(circle, rgba(126, 231, 135, 0.2), rgba(126, 231, 135, 0.075));
         }
 
         .hero-actions {
@@ -1102,6 +1105,148 @@ export default function Home() {
         .why-kivo-read-more a:hover {
           color: var(--accent);
           text-decoration-color: rgba(255, 209, 102, 0.9);
+        }
+
+        .parents-section {
+          position: relative;
+          z-index: 1;
+          padding: 104px 0 112px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.1);
+          background:
+            radial-gradient(ellipse 54% 42% at 14% 10%, rgba(126, 231, 135, 0.1), transparent),
+            radial-gradient(ellipse 48% 46% at 88% 18%, rgba(255, 209, 102, 0.08), transparent),
+            linear-gradient(180deg, rgba(7, 12, 23, 0.94), rgba(8, 14, 26, 0.9));
+        }
+
+        .parents-inner {
+          width: min(var(--max), calc(100% - 48px));
+          margin: 0 auto;
+        }
+
+        .parents-heading {
+          display: grid;
+          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+          align-items: end;
+          gap: clamp(28px, 5vw, 72px);
+          margin-bottom: 34px;
+        }
+
+        .parents-kicker {
+          display: inline-flex;
+          width: fit-content;
+          margin-bottom: 16px;
+          color: #9ee8dc;
+          font-size: 0.76rem;
+          font-weight: 820;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .parents-heading h2 {
+          max-width: 640px;
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(2.05rem, 3.7vw, 3.45rem);
+          line-height: 1.06;
+          letter-spacing: 0;
+        }
+
+        .parents-heading p {
+          margin: 0;
+          color: var(--muted);
+          font-size: clamp(1rem, 1.22vw, 1.12rem);
+          line-height: 1.76;
+        }
+
+        .parents-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .parent-card {
+          min-height: 246px;
+          padding: 24px;
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          border-radius: 18px;
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.026)),
+            rgba(13, 19, 32, 0.62);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 14px 38px rgba(0, 0, 0, 0.16);
+          backdrop-filter: blur(12px);
+          transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .parent-card:hover {
+          transform: translateY(-4px);
+          border-color: color-mix(in srgb, var(--parent-tint) 34%, rgba(196, 217, 255, 0.18));
+          background:
+            linear-gradient(145deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.03)),
+            rgba(13, 19, 32, 0.7);
+        }
+
+        .parent-card-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 46px;
+          height: 46px;
+          margin-bottom: 22px;
+          border: 1px solid color-mix(in srgb, var(--parent-tint) 28%, rgba(196, 217, 255, 0.12));
+          border-radius: 14px;
+          color: var(--parent-tint);
+          background: color-mix(in srgb, var(--parent-tint) 12%, rgba(255, 255, 255, 0.035));
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.075);
+        }
+
+        .parent-card h3 {
+          margin: 0 0 12px;
+          color: var(--text);
+          font-size: clamp(1rem, 1.28vw, 1.14rem);
+          line-height: 1.3;
+        }
+
+        .parent-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.96rem;
+          line-height: 1.7;
+        }
+
+        .parents-cta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          margin-top: 18px;
+          padding: clamp(22px, 3vw, 30px);
+          border: 1px solid rgba(255, 209, 102, 0.16);
+          border-radius: 22px;
+          background:
+            linear-gradient(135deg, rgba(255, 209, 102, 0.11), rgba(79, 209, 197, 0.07)),
+            rgba(255, 255, 255, 0.04);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .parents-cta h3 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(1.25rem, 2vw, 1.8rem);
+          line-height: 1.2;
+        }
+
+        .parents-cta p {
+          margin: 9px 0 0;
+          color: var(--muted);
+          font-size: 0.98rem;
+          line-height: 1.6;
+        }
+
+        .parents-cta-button {
+          flex: 0 0 auto;
         }
 
         .product-experience {
@@ -1759,6 +1904,31 @@ export default function Home() {
           -webkit-background-clip: text;
         }
 
+        .hero-copy h1 {
+          max-width: 780px;
+          margin-bottom: 26px;
+          color: var(--text);
+          font-size: clamp(2.45rem, 3vw, 3.28rem);
+          line-height: 1.06;
+          letter-spacing: 0;
+        }
+
+        .hero-copy h1 span:not(.hero-title-accent) {
+          color: var(--text);
+          background: none;
+          background-clip: initial;
+          -webkit-background-clip: initial;
+        }
+
+        .hero-copy h1 .hero-title-accent {
+          color: transparent;
+          background: linear-gradient(135deg, #79a7ff 0%, #4f8cff 42%, #2f6fe9 76%, #6aa8ff 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          text-shadow: 0 0 34px rgba(59, 130, 246, 0.2);
+          white-space: nowrap;
+        }
+
         .hero-sub {
           max-width: 650px;
           color: var(--muted);
@@ -2388,168 +2558,6 @@ export default function Home() {
           }
         }
 
-        .for-parents {
-          position: relative;
-          z-index: 1;
-          padding: 108px 0 112px;
-          overflow: hidden;
-          border-top: 1px solid rgba(196, 217, 255, 0.1);
-          background:
-            radial-gradient(ellipse 52% 46% at 78% 14%, rgba(126, 231, 135, 0.09), transparent),
-            radial-gradient(ellipse 44% 52% at 18% 28%, rgba(79, 209, 197, 0.09), transparent),
-            linear-gradient(180deg, rgba(7, 11, 22, 0.96), rgba(5, 9, 18, 0.92));
-        }
-
-        .for-parents-inner {
-          width: min(var(--max), calc(100% - 48px));
-          margin: 0 auto;
-        }
-
-        .for-parents-heading {
-          max-width: 740px;
-          margin: 0 auto 48px;
-          text-align: center;
-        }
-
-        .for-parents-kicker {
-          display: inline-flex;
-          margin-bottom: 16px;
-          color: #9ee8dc;
-          font-size: 0.72rem;
-          font-weight: 820;
-          letter-spacing: 0.13em;
-          text-transform: uppercase;
-        }
-
-        .for-parents-heading h2 {
-          margin: 0;
-          color: var(--text);
-          font-size: clamp(2.25rem, 4vw, 3.75rem);
-          line-height: 1.04;
-        }
-
-        .for-parents-heading p {
-          max-width: 660px;
-          margin: 20px auto 0;
-          color: var(--muted);
-          font-size: clamp(1rem, 1.3vw, 1.14rem);
-          line-height: 1.72;
-        }
-
-        .for-parents-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 18px;
-        }
-
-        .for-parents-card {
-          padding: 28px;
-          border: 1px solid rgba(196, 217, 255, 0.13);
-          border-radius: 18px;
-          background:
-            linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.026)),
-            rgba(13, 19, 32, 0.66);
-          box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.055),
-            0 14px 38px rgba(0, 0, 0, 0.18);
-          backdrop-filter: blur(12px);
-          transition:
-            transform 180ms ease,
-            border-color 180ms ease,
-            background 180ms ease,
-            box-shadow 180ms ease;
-        }
-
-        .for-parents-card:hover {
-          transform: translateY(-5px);
-          border-color: rgba(196, 217, 255, 0.22);
-          background:
-            linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.032)),
-            rgba(13, 19, 32, 0.72);
-          box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.065),
-            0 18px 44px rgba(0, 0, 0, 0.22);
-        }
-
-        .for-parents-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 58px;
-          height: 58px;
-          margin-bottom: 28px;
-          border-radius: 999px;
-          border: 1px solid rgba(196, 217, 255, 0.13);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        }
-
-        .for-parents-icon--link {
-          color: #9fbaff;
-          background: radial-gradient(circle, rgba(121, 167, 255, 0.22), rgba(121, 167, 255, 0.08));
-        }
-
-        .for-parents-icon--progress {
-          color: #89e7d9;
-          background: radial-gradient(circle, rgba(79, 209, 197, 0.22), rgba(79, 209, 197, 0.08));
-        }
-
-        .for-parents-icon--payment {
-          color: #aee8c6;
-          background: radial-gradient(circle, rgba(126, 231, 135, 0.2), rgba(126, 231, 135, 0.075));
-        }
-
-        .for-parents-card h3 {
-          margin: 0 0 14px;
-          color: var(--text);
-          font-size: clamp(1.08rem, 1.4vw, 1.22rem);
-          line-height: 1.25;
-        }
-
-        .for-parents-card p {
-          margin: 0;
-          color: var(--muted);
-          font-size: 0.98rem;
-          line-height: 1.74;
-        }
-
-        .for-parents-cta {
-          display: flex;
-          justify-content: center;
-          margin-top: 40px;
-        }
-
-        @media (max-width: 1080px) {
-          .for-parents-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        @media (max-width: 760px) {
-          .for-parents {
-            padding: 78px 0;
-          }
-
-          .for-parents-inner {
-            width: min(var(--max), calc(100% - 28px));
-          }
-
-          .for-parents-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-          }
-
-          .for-parents-card {
-            padding: 24px;
-            border-radius: 16px;
-          }
-
-          .for-parents-icon {
-            width: 52px;
-            height: 52px;
-            margin-bottom: 22px;
-          }
-        }
-
         @keyframes revealUp {
           from {
             opacity: 0;
@@ -2630,7 +2638,19 @@ export default function Home() {
 
           .hero-copy h1 {
             max-width: 660px;
-            font-size: clamp(2.25rem, 3.6vw, 2.55rem);
+            font-size: clamp(2.2rem, 4.3vw, 3rem);
+          }
+
+          .hero-feature-row {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 18px;
+            max-width: 620px;
+          }
+
+          .hero-info-card {
+            max-width: 620px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
           }
 
           .hero-image-frame {
@@ -2676,6 +2696,15 @@ export default function Home() {
             max-width: 640px;
           }
 
+          .parents-heading {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
+
+          .parents-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
           .why-kivo-flow li:nth-child(2) .why-kivo-flow-arrow {
             display: none;
           }
@@ -2701,7 +2730,7 @@ export default function Home() {
         @media (max-width: 900px) {
           .hero {
             min-height: auto;
-            padding: 124px 0 76px;
+            padding: 122px 0 72px;
           }
 
           .hero-grid {
@@ -2709,12 +2738,17 @@ export default function Home() {
           }
 
           .hero-copy {
-            max-width: 660px;
+            max-width: 100%;
           }
 
           .hero-copy h1,
           .hero-sub {
-            max-width: 620px;
+            max-width: 100%;
+          }
+
+          .hero-feature-row,
+          .hero-info-card {
+            max-width: 100%;
           }
 
           .hero-image-frame {
@@ -2726,82 +2760,32 @@ export default function Home() {
         }
 
         @media (max-width: 760px) {
-          .nav-inner,
           .section-inner,
           .hero-grid,
           .footer-inner {
             width: min(var(--max), calc(100% - 28px));
           }
 
-          .nav-inner {
-            height: auto;
-            min-height: 106px;
-            flex-wrap: wrap;
-            align-content: center;
-            gap: 8px;
-            padding: 10px 0 8px;
-          }
-
-          .logo-link img {
-            width: 112px;
-          }
-
-          .nav-links {
-            order: 3;
-            display: flex;
-            width: 100%;
-            margin-left: 0;
-            gap: 6px;
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-            padding: 2px 0 4px;
-            scrollbar-width: none;
-          }
-
-          .nav-links::-webkit-scrollbar {
-            display: none;
-          }
-
-          .nav-links a {
-            flex: 0 0 auto;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.045);
-            padding: 7px 11px;
-            font-size: 0.82rem;
-          }
-
-          .nav-sep {
-            display: none;
-          }
-
-          .nav-auth {
-            margin-left: auto;
-            gap: 4px;
-          }
-
-          .nav-link {
-            padding: 5px 7px;
-            font-size: 0.82rem;
-          }
-
-          .btn-nav {
-            min-height: 38px;
-            padding: 0 12px;
-            font-size: 0.84rem;
-          }
-
           .hero {
             min-height: auto;
-            padding: 154px 0 68px;
+            padding: 190px 0 56px;
           }
 
           .hero-copy h1 {
-            font-size: clamp(1.8rem, 6vw, 2.35rem);
-            line-height: 1.08;
+            font-size: clamp(2.15rem, 9.2vw, 2.95rem);
+            line-height: 1.07;
+            margin-bottom: 18px;
           }
 
-          .hero-copy h1 span {
+          .hero-copy h1 span,
+          .hero-copy h1 .hero-title-accent {
             white-space: normal;
+            overflow-wrap: normal;
+          }
+
+          .hero-sub {
+            font-size: 1rem;
+            line-height: 1.62;
           }
 
           .hero-label {
@@ -2823,6 +2807,52 @@ export default function Home() {
             grid-template-columns: 1fr;
           }
 
+          .hero-feature-row {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 24px 0 24px;
+          }
+
+          .hero-feature-row span {
+            font-size: 0.95rem;
+          }
+
+          .hero-feature-row svg {
+            width: 40px;
+            height: 40px;
+          }
+
+          .hero-info-card {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            min-height: 0;
+            padding: 16px;
+            border-radius: 16px;
+          }
+
+          .hero-info-item {
+            min-height: 0;
+            padding: 14px;
+          }
+
+          .hero-info-item strong {
+            font-size: 1rem;
+          }
+
+          .hero-info-item span:not(.hero-info-icon) {
+            font-size: 0.94rem;
+          }
+
+          .hero-info-icon {
+            width: 42px;
+            height: 42px;
+          }
+
+          .hero-info-icon--secondary {
+            width: 42px;
+            height: 42px;
+          }
+
           .hero-actions {
             display: grid;
           }
@@ -2832,12 +2862,46 @@ export default function Home() {
           }
 
           .hero-image-frame {
-            min-height: clamp(300px, 82vw, 440px);
+            width: 100%;
+            min-height: clamp(260px, 74vw, 400px);
             border-radius: 20px;
           }
 
           .product-experience {
             padding: 78px 0;
+          }
+
+          .parents-section {
+            padding: 78px 0;
+          }
+
+          .parents-inner {
+            width: min(var(--max), calc(100% - 28px));
+          }
+
+          .parents-heading {
+            margin-bottom: 28px;
+          }
+
+          .parents-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .parent-card {
+            min-height: auto;
+            padding: 22px;
+            border-radius: 16px;
+          }
+
+          .parents-cta {
+            display: grid;
+            margin-top: 14px;
+            border-radius: 18px;
+          }
+
+          .parents-cta-button {
+            width: 100%;
           }
 
           .ai-philosophy {
