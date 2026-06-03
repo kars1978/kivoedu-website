@@ -18,6 +18,7 @@ type LandingPageConfig = {
   from: string;
   eyebrow: string;
   headline: string;
+  headlineHighlight?: string;
   subhead: string;
   proofPoints: ProofPoint[];
   ctaLabel: string;
@@ -98,7 +99,8 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
   "ask-anything": {
     from: "kivo_ai",
     eyebrow: "AI Tutor",
-    headline: "Ask the same question 10 times. Kivo doesn't mind.",
+    headline: "Ask again. And again. Kivo answers every time.",
+    headlineHighlight: "Kivo answers every time.",
     subhead:
       "Every answer comes from your actual CBSE textbook, not a generic internet result. And if the first explanation doesn't click, Kivo tries a different one.",
     proofPoints: [
@@ -107,7 +109,7 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
         body: "Many children stop asking questions because they're afraid of being judged. Kivo never gets impatient. Your child can ask the same question as many times as needed until it finally clicks.",
       },
       {
-        title: "Answers From Their Textbook",
+        title: "Gounded In Their Textbook",
         body: "Every answer is grounded in your child's CBSE chapter and section. No guessing. No random internet answers. Just explanations that match what they're learning in school.",
       },
       {
@@ -138,7 +140,19 @@ export function getLandingMetadata(slug: LandingKey): Metadata {
 
 const itemIcons = [BookOpen, ShieldCheck, MoonStar];
 
-export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React.ReactNode }) {
+function renderHeadline(headline: string, highlight?: string) {
+  if (!highlight) return headline;
+  const idx = headline.indexOf(highlight);
+  if (idx === -1) return headline;
+  return (
+    <>
+      {headline.slice(0, idx)}
+      <span className="lp-hl">{highlight}</span>
+    </>
+  );
+}
+
+export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mockup?: React.ReactNode; afterCta?: React.ReactNode }) {
   const config = landingPages[slug];
 
   return (
@@ -148,7 +162,9 @@ export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React
       <section className="lp-shell" aria-labelledby="landing-title">
         <div className="lp-hero">
           <p className="lp-eyebrow">{config.eyebrow}</p>
-          <h1 id="landing-title">{config.headline}</h1>
+          <h1 id="landing-title" className={config.headlineHighlight ? 'lp-h1-compact' : ''}>
+            {renderHeadline(config.headline, config.headlineHighlight)}
+          </h1>
           <p className="lp-subhead">{config.subhead}</p>
 
         </div>
@@ -183,6 +199,7 @@ export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React
           <p className="lp-pricing-note">
             Free to start. For full pricing, <Link href="/features#pricing">see pricing</Link>.
           </p>
+          {afterCta}
         </div>
       </section>
 
@@ -318,6 +335,14 @@ export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React
         .lp-mockup-slot {
           display: flex;
           justify-content: center;
+        }
+
+        .lp-hl {
+          color: var(--cyan);
+        }
+
+        .lp-h1-compact {
+          font-size: clamp(2rem, 4vw, 3.5rem) !important;
         }
 
         .lp-proof-grid {

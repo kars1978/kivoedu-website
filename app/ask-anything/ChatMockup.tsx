@@ -142,6 +142,7 @@ const css = `
   .cm-frame {
     width: 100%;
     max-width: 358px;
+    height: 520px;
     background: #ffffff;
     border-radius: 20px;
     box-shadow:
@@ -150,8 +151,6 @@ const css = `
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 460px;
-    max-height: 520px;
   }
 
   /* ── Header ── */
