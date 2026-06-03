@@ -20,7 +20,7 @@ import {
 import PricingSection from "../PricingSection";
 import SiteNav from "../SiteNav";
 
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
 export const metadata: Metadata = {
@@ -368,7 +368,7 @@ export default function FeaturesPage() {
           <a href={demoUrl} className="features-btn ghost" target="_blank" rel="noopener noreferrer">
             Try the student demo
           </a>
-          <a href={loginUrl} className="features-btn" target="_blank" rel="noopener noreferrer">
+          <a href={joinUrl} className="features-btn" target="_blank" rel="noopener noreferrer">
             Get Kivo Unlimited
           </a>
         </div>

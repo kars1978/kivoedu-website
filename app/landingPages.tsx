@@ -4,7 +4,7 @@ import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck } from "lucide-react"
 import SiteNav from "./SiteNav";
 
 const demoUrl = "https://app.kivoedu.ai/demo";
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 
 type LandingKey = "exam-ready" | "parent-progress" | "ask-anything";
 
@@ -173,7 +173,7 @@ export function LandingPage({ slug }: { slug: LandingKey }) {
               {config.ctaLabel}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a href={loginUrl} className="lp-btn lp-btn-secondary" target="_blank" rel="noopener noreferrer">
+            <a href={joinUrl} className="lp-btn lp-btn-secondary" target="_blank" rel="noopener noreferrer">
               Create Account
             </a>
           </div>

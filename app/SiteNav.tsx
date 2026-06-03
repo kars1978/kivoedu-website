@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import HomeLogoLink from "./HomeLogoLink";
 
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
 export default function SiteNav() {
@@ -23,7 +23,7 @@ export default function SiteNav() {
             <Link href="/blog" className="sn-link sn-desktop-only">Blog</Link>
             <Link href="/contact" className="sn-link sn-desktop-only">Contact</Link>
             <span className="sn-vsep" aria-hidden="true" />
-            <a href={loginUrl} className="sn-link" target="_blank" rel="noopener noreferrer">
+            <a href={joinUrl} className="sn-link" target="_blank" rel="noopener noreferrer">
               Log in
             </a>
             <a href={demoUrl} className="sn-cta" target="_blank" rel="noopener noreferrer">

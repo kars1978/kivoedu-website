@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const demoUrl = "https://app.kivoedu.ai/demo";
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 
 const proofPoints = [
   {
@@ -92,15 +92,15 @@ export default function ParentProgressPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Set up for my child <ArrowRight size={16} aria-hidden="true" />
+                See it in action <ArrowRight size={16} aria-hidden="true" />
               </a>
               <a
-                href={loginUrl}
+                href={joinUrl}
                 className="pp-btn pp-btn-ghost"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Log in
+                Create Account
               </a>
             </div>
           </div>
@@ -332,14 +332,24 @@ export default function ParentProgressPage() {
       {/* ── Bottom CTA ── */}
       <section className="pp-cta-section">
         <div className="pp-cta-inner">
-          <a
-            href={`${demoUrl}?from=parent_progress`}
-            className="pp-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Set up for my child <ArrowRight size={16} aria-hidden="true" />
-          </a>
+          <div className="pp-actions">
+            <a
+              href={`${demoUrl}?from=parent_progress`}
+              className="pp-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See it in action <ArrowRight size={16} aria-hidden="true" />
+            </a>
+            <a
+              href={joinUrl}
+              className="pp-btn pp-btn-ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Create Account
+            </a>
+          </div>
           <p className="pp-pricing-note">
             Free to start. For full pricing,{" "}
             <Link href="/features#pricing">see pricing</Link>.
