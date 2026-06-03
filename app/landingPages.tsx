@@ -5,7 +5,6 @@ import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck, MoonStar } from "luc
 import SiteNav from "./SiteNav";
 
 const demoUrl = "https://app.kivoedu.ai/demo";
-const joinUrl = "https://app.kivoedu.ai/join";
 
 type LandingKey = "exam-ready" | "parent-progress" | "ask-anything";
 
@@ -117,7 +116,7 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
         body: "Questions don't only happen during class. Whether it's 5 PM, 11 PM, or the night before an exam, Kivo is available whenever your child needs help.",
       },
     ],
-    ctaLabel: "Ask Kivo free",
+    ctaLabel: "Try Kivo free",
     metadata: {
       title: "Ask Kivo AI Tutor",
       description:
@@ -191,9 +190,6 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
             <a href={`${demoUrl}?from=${config.from}`} className="lp-btn" target="_blank" rel="noopener noreferrer">
               {config.ctaLabel}
               <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a href={joinUrl} className="lp-btn lp-btn-secondary" target="_blank" rel="noopener noreferrer">
-              Create Account
             </a>
           </div>
           <p className="lp-pricing-note">
