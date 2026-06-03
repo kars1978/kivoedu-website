@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
 const STARTER_FEATURES = [
@@ -322,7 +322,7 @@ export default function PricingSection() {
               ))}
             </ul>
             <a
-              href={loginUrl}
+              href={joinUrl}
               className="pricing-cta btn-kivo"
               target="_blank"
               rel="noopener noreferrer"

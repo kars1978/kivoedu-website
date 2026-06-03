@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import SiteNav from "../SiteNav";
 
-const loginUrl = "https://app.kivoedu.ai/login";
+const joinUrl = "https://app.kivoedu.ai/join";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
 export const metadata: Metadata = {
@@ -504,7 +504,7 @@ export default function GuidePage() {
           <h2>Start with the path that fits your family.</h2>
         </div>
         <div className="final-actions">
-          <a href={loginUrl} className="guide-btn" target="_blank" rel="noopener noreferrer">
+          <a href={joinUrl} className="guide-btn" target="_blank" rel="noopener noreferrer">
             Set up Kivo for my child
           </a>
           <a href={demoUrl} className="guide-btn ghost" target="_blank" rel="noopener noreferrer">
