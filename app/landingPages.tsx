@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import React from "react";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck } from "lucide-react";
 import SiteNav from "./SiteNav";
@@ -137,7 +138,7 @@ export function getLandingMetadata(slug: LandingKey): Metadata {
 
 const itemIcons = [BookOpen, ShieldCheck, ClipboardCheck];
 
-export function LandingPage({ slug }: { slug: LandingKey }) {
+export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React.ReactNode }) {
   const config = landingPages[slug];
 
   return (
@@ -151,6 +152,8 @@ export function LandingPage({ slug }: { slug: LandingKey }) {
           <p className="lp-subhead">{config.subhead}</p>
 
         </div>
+
+        {mockup && <div className="lp-mockup-slot">{mockup}</div>}
 
         <div className="lp-proof-grid" aria-label={`${config.eyebrow} highlights`}>
           {config.proofPoints.map((point, index) => {
@@ -310,6 +313,11 @@ export function LandingPage({ slug }: { slug: LandingKey }) {
 
         .lp-pricing-note a:hover {
           color: var(--text);
+        }
+
+        .lp-mockup-slot {
+          display: flex;
+          justify-content: center;
         }
 
         .lp-proof-grid {
