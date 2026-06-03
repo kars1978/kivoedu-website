@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
+import React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck, MoonStar } from "lucide-react";
 import SiteNav from "./SiteNav";
 
 const demoUrl = "https://app.kivoedu.ai/demo";
@@ -102,16 +103,16 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
       "Every answer comes from your actual CBSE textbook, not a generic internet result. And if the first explanation doesn't click, Kivo tries a different one.",
     proofPoints: [
       {
-        title: "No judgment, ever",
-        body: "The fear of asking again is the biggest barrier in Indian classrooms. Kivo removes it — ask as many times as you need.",
+        title: "Ask Again. And Again.",
+        body: "Many children stop asking questions because they're afraid of being judged. Kivo never gets impatient. Your child can ask the same question as many times as needed until it finally clicks.",
       },
       {
-        title: "Answers from your textbook",
-        body: "Every response cites the specific CBSE chapter and section it comes from. Not a guess — a grounded answer.",
+        title: "Answers From Their Textbook",
+        body: "Every answer is grounded in your child's CBSE chapter and section. No guessing. No random internet answers. Just explanations that match what they're learning in school.",
       },
       {
-        title: "Available at 11 PM",
-        body: "When your teacher is unavailable and Google gives you 10 links — Kivo gives you one clear answer, grounded in your syllabus.",
+        title: "Help Even After School Ends",
+        body: "Questions don't only happen during class. Whether it's 5 PM, 11 PM, or the night before an exam, Kivo is available whenever your child needs help.",
       },
     ],
     ctaLabel: "Ask Kivo free",
@@ -135,9 +136,9 @@ export function getLandingMetadata(slug: LandingKey): Metadata {
   return landingPages[slug].metadata;
 }
 
-const itemIcons = [BookOpen, ShieldCheck, ClipboardCheck];
+const itemIcons = [BookOpen, ShieldCheck, MoonStar];
 
-export function LandingPage({ slug }: { slug: LandingKey }) {
+export function LandingPage({ slug, mockup }: { slug: LandingKey; mockup?: React.ReactNode }) {
   const config = landingPages[slug];
 
   return (
@@ -151,6 +152,8 @@ export function LandingPage({ slug }: { slug: LandingKey }) {
           <p className="lp-subhead">{config.subhead}</p>
 
         </div>
+
+        {mockup && <div className="lp-mockup-slot">{mockup}</div>}
 
         <div className="lp-proof-grid" aria-label={`${config.eyebrow} highlights`}>
           {config.proofPoints.map((point, index) => {
@@ -310,6 +313,11 @@ export function LandingPage({ slug }: { slug: LandingKey }) {
 
         .lp-pricing-note a:hover {
           color: var(--text);
+        }
+
+        .lp-mockup-slot {
+          display: flex;
+          justify-content: center;
         }
 
         .lp-proof-grid {
