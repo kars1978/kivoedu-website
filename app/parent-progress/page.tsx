@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ShieldCheck, ClipboardCheck } from "lucide-react";
+import { ArrowRight, BookOpen, ShieldCheck, MoonStar } from "lucide-react";
 import SiteNav from "../SiteNav";
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ const proofPoints = [
     body: "Every CBSE-style paper your child attempts is graded and visible to you, with score, per-question feedback, and model answers.",
   },
   {
-    Icon: ClipboardCheck,
+    Icon: MoonStar,
     title: "No tutors to schedule",
     body: "Kivo is available at 11 PM when your child is stuck and you can't be in the room. You see everything in the morning.",
   },
