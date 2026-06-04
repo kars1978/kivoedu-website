@@ -2,6 +2,9 @@
 
 Marketing and landing site for KivoEdu. Next.js 16 + Tailwind CSS 4 + TypeScript.
 
+> **Before making any UI change, read [`docs/ui-design.md`](docs/ui-design.md) first.**
+> All new pages and components must be mobile and tablet friendly — see the mobile checklist in that document.
+
 ---
 
 ## What This Is

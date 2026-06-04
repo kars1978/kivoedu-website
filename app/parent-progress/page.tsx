@@ -94,14 +94,6 @@ export default function ParentProgressPage() {
               >
                 See it in action <ArrowRight size={16} aria-hidden="true" />
               </a>
-              <a
-                href={joinUrl}
-                className="pp-btn pp-btn-ghost"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Create Account
-              </a>
             </div>
           </div>
 
@@ -340,14 +332,6 @@ export default function ParentProgressPage() {
               rel="noopener noreferrer"
             >
               See it in action <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href={joinUrl}
-              className="pp-btn pp-btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Create Account
             </a>
           </div>
           <p className="pp-pricing-note">
@@ -722,8 +706,14 @@ export default function ParentProgressPage() {
           .pp-proof-card { min-height: 0; }
         }
 
+        /* Nav switches to 2-row layout at 760px — becomes ~120px tall */
+        @media (max-width: 760px) {
+          .pp-hero { padding: 144px 0 64px; }
+        }
+
         @media (max-width: 640px) {
-          .pp-hero { padding: 88px 0 52px; }
+          /* hero padding must clear the 120px 2-row mobile nav */
+          .pp-hero { padding: 140px 0 52px; }
           .pp-hero-inner,
           .pp-proof-inner,
           .pp-cta-inner { width: min(1040px, calc(100% - 32px)); }
@@ -732,7 +722,25 @@ export default function ParentProgressPage() {
           .pp-bullets li { font-size: 0.9rem; }
           .pp-actions  { flex-direction: column; }
           .pp-btn      { width: 100%; justify-content: center; }
-          .pp-chrome   { display: none; }
+
+          /* Show the chrome on mobile — resize the viewport window */
+          .pp-chrome   { display: block; max-width: 100%; }
+          .pp-viewport { height: 460px; }
+
+          /* Fix chrome internal layout so nothing overflows */
+          .rp { padding: 10px 10px 12px; gap: 8px; }
+          .rp-header { flex-wrap: wrap; gap: 6px; }
+          .rp-badge  { font-size: 9px; padding: 3px 8px; }
+          /* Donut spans full width; streak + week fill the 2-col row below */
+          .rp-hero-row { grid-template-columns: 1fr 1fr; }
+          .rp-ready    { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 16px; padding: 10px 14px; }
+          .rp-ready .rp-card-label { margin-bottom: 0; }
+          /* Two-column lower → single column */
+          .rp-lower { grid-template-columns: 1fr; }
+          /* Chapter rows: drop the trend label, shrink the bar */
+          .rp-ch-row { grid-template-columns: 1fr 60px 32px; gap: 6px; }
+          .rp-ch-trend { display: none; }
+
           .pp-proof-section { padding: 48px 0 40px; }
           .pp-proof-card { padding: 16px; }
           .pp-cta-section { padding: 40px 0 52px; }
