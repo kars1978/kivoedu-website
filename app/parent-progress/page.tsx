@@ -715,23 +715,29 @@ export default function ParentProgressPage() {
         }
 
         @media (max-width: 960px) {
-          .pp-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+          .pp-hero { padding: 104px 0 72px; }
+          .pp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
           .pp-chrome { max-width: 560px; margin: 0 auto; }
           .pp-proof-inner { grid-template-columns: 1fr; }
           .pp-proof-card { min-height: 0; }
         }
 
         @media (max-width: 640px) {
-          .pp-hero { padding: 112px 0 72px; }
+          .pp-hero { padding: 88px 0 52px; }
           .pp-hero-inner,
           .pp-proof-inner,
           .pp-cta-inner { width: min(1040px, calc(100% - 32px)); }
-          .pp-headline { font-size: clamp(1.9rem, 10vw, 2.6rem); }
-          .pp-subhead  { font-size: 0.95rem; }
+          .pp-headline { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+          .pp-subhead  { font-size: 0.92rem; max-width: 100%; }
+          .pp-bullets li { font-size: 0.9rem; }
           .pp-actions  { flex-direction: column; }
           .pp-btn      { width: 100%; justify-content: center; }
           .pp-chrome   { display: none; }
-          .pp-footer   { width: min(1040px, calc(100% - 32px)); flex-direction: column; align-items: flex-start; }
+          .pp-proof-section { padding: 48px 0 40px; }
+          .pp-proof-card { padding: 16px; }
+          .pp-cta-section { padding: 40px 0 52px; }
+          .pp-footer   { width: min(1040px, calc(100% - 32px)); flex-direction: column; align-items: flex-start; gap: 12px; }
+          .pp-footer div { flex-wrap: wrap; gap: 14px; }
         }
       `}</style>
     </main>
