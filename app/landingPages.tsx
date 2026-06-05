@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ClipboardCheck, ShieldCheck, MoonStar } from "lucide-react";
+import { BookOpen, ClipboardCheck, ShieldCheck, MoonStar } from "lucide-react";
 import SiteNav from "./SiteNav";
+import { LandingPageActions } from "./LandingPageActions";
 
 const demoUrl = "https://app.kivoedu.ai/demo";
 
@@ -19,8 +20,12 @@ type LandingPageConfig = {
   headline: string;
   headlineHighlight?: string;
   subhead: string;
+  heroBullets?: string[];
   proofPoints: ProofPoint[];
   ctaLabel: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+  analyticsPage?: string;
   metadata: Metadata;
 };
 
@@ -97,35 +102,43 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
   },
   "ask-anything": {
     from: "kivo_ai",
-    eyebrow: "AI Tutor",
-    headline: "Ask again. And again. Kivo answers every time.",
-    headlineHighlight: "Kivo answers every time.",
+    eyebrow: "AI Tutor for Grade 9-10",
+    headline: "Ask any Grade 9-10 Math or Science question",
     subhead:
-      "Every answer comes from your actual CBSE textbook, not a generic internet result. And if the first explanation doesn't click, Kivo tries a different one.",
+      "KivoEdu helps CBSE and Maharashtra Board students understand textbook concepts with step-by-step explanations, quick practice, and parent-visible progress.",
+    heroBullets: [
+      "Built for Grade 9-10 Math & Science",
+      "Supports CBSE and Maharashtra Board",
+      "Step-by-step explanations, not just answers",
+      "Practice questions after learning",
+    ],
     proofPoints: [
       {
-        title: "Ask Again. And Again.",
-        body: "Many children stop asking questions because they're afraid of being judged. Kivo never gets impatient. Your child can ask the same question as many times as needed until it finally clicks.",
+        title: "Textbook-based questions",
+        body: "Students can ask from the chapter they are studying and get help in school-friendly language.",
       },
       {
-        title: "Gounded In Their Textbook",
-        body: "Every answer is grounded in your child's CBSE chapter and section. No guessing. No random internet answers. Just explanations that match what they're learning in school.",
+        title: "Clear explanations",
+        body: "Kivo breaks concepts down step by step, so the child understands why the answer works.",
       },
       {
-        title: "Help Even After School Ends",
-        body: "Questions don't only happen during class. Whether it's 5 PM, 11 PM, or the night before an exam, Kivo is available whenever your child needs help.",
+        title: "Practice after learning",
+        body: "Quick questions help students check whether the concept has actually clicked.",
       },
     ],
-    ctaLabel: "Try Kivo free",
+    ctaLabel: "Try Kivo Free",
+    secondaryCtaLabel: "See how it works",
+    secondaryCtaHref: "#how-it-works",
+    analyticsPage: "ask_anything",
     metadata: {
-      title: "Ask Kivo AI Tutor",
+      title: "Ask Grade 9-10 Math & Science Questions | KivoEdu",
       description:
-        "Ask Kivo the same question again and again, with textbook-grounded explanations from supported CBSE chapters.",
+        "KivoEdu is a personal AI tutor for CBSE and Maharashtra Board Grade 9-10 Math and Science with step-by-step explanations, practice, and parent-visible progress.",
       alternates: { canonical: "/ask-anything" },
       openGraph: {
-        title: "Ask Kivo AI Tutor",
+        title: "Ask Grade 9-10 Math & Science Questions | KivoEdu",
         description:
-          "A textbook-grounded AI tutor students can ask repeatedly until the explanation clicks.",
+          "A personal AI tutor for CBSE and Maharashtra Board Grade 9-10 Math and Science.",
         url: "/ask-anything",
         type: "website",
       },
@@ -165,7 +178,25 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
             {renderHeadline(config.headline, config.headlineHighlight)}
           </h1>
           <p className="lp-subhead">{config.subhead}</p>
-
+          {config.heroBullets && (
+            <ul className="lp-hero-bullets">
+              {config.heroBullets.map((bullet) => (
+                <li key={bullet}>
+                  <span aria-hidden="true" />
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="lp-hero-actions">
+            <LandingPageActions
+              primaryHref={`${demoUrl}?from=${config.from}`}
+              primaryLabel={config.ctaLabel}
+              secondaryHref={config.secondaryCtaHref}
+              secondaryLabel={config.secondaryCtaLabel}
+              analyticsPage={config.analyticsPage}
+            />
+          </div>
         </div>
 
         {mockup && <div className="lp-mockup-slot">{mockup}</div>}
@@ -186,12 +217,6 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
         </div>
 
         <div className="lp-conversion">
-          <div className="lp-actions">
-            <a href={`${demoUrl}?from=${config.from}`} className="lp-btn" target="_blank" rel="noopener noreferrer">
-              {config.ctaLabel}
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
-          </div>
           <p className="lp-pricing-note">
             Free to start. For full pricing, <Link href="/features#pricing">see pricing</Link>.
           </p>
@@ -268,6 +293,38 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
           color: var(--muted);
           font-size: 1.04rem;
           line-height: 1.62;
+        }
+
+        .lp-hero-bullets {
+          list-style: none;
+          padding: 0;
+          margin: 24px 0 0;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 11px 16px;
+          max-width: 720px;
+        }
+
+        .lp-hero-bullets li {
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr);
+          gap: 9px;
+          align-items: start;
+          color: var(--muted);
+          font-size: 0.94rem;
+          line-height: 1.45;
+        }
+
+        .lp-hero-bullets span {
+          width: 6px;
+          height: 6px;
+          margin-top: 0.5rem;
+          border-radius: 50%;
+          background: var(--cyan);
+        }
+
+        .lp-hero-actions {
+          margin-top: 26px;
         }
 
         .lp-conversion {
@@ -414,15 +471,18 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
 
         @media (max-width: 920px) {
           .lp-proof-grid { grid-template-columns: 1fr; }
+          .lp-hero-bullets { grid-template-columns: 1fr; }
           .lp-proof-card { min-height: 0; }
         }
 
         @media (max-width: 640px) {
           .lp-shell,
           .lp-footer { width: min(1040px, calc(100% - 32px)); }
-          .lp-shell { padding-top: 176px; padding-bottom: 42px; gap: 24px; }
-          .lp-hero h1 { font-size: clamp(2.25rem, 12vw, 3rem); line-height: 1; }
+          .lp-shell { padding-top: 88px; padding-bottom: 42px; gap: 24px; }
+          .lp-hero h1 { font-size: clamp(2.05rem, 9.8vw, 2.75rem); line-height: 1.04; }
           .lp-subhead { font-size: 0.98rem; line-height: 1.58; }
+          .lp-hero-bullets { margin-top: 20px; gap: 10px; }
+          .lp-hero-actions { margin-top: 22px; }
           .lp-conversion {
           display: grid;
           gap: 12px;
@@ -442,8 +502,8 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
         @media (max-width: 420px) {
           .lp-shell,
           .lp-footer { width: min(1040px, calc(100% - 24px)); }
-          .lp-shell { padding-top: 190px; }
-          .lp-hero h1 { font-size: clamp(2.05rem, 11.8vw, 2.65rem); }
+          .lp-shell { padding-top: 96px; }
+          .lp-hero h1 { font-size: clamp(1.88rem, 9.4vw, 2.35rem); }
           .lp-proof-card p { font-size: 0.85rem; line-height: 1.52; }
         }
       `}</style>
