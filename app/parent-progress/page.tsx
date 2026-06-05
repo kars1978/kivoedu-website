@@ -1,43 +1,73 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, ShieldCheck, MoonStar } from "lucide-react";
+import { BookOpen, ShieldCheck, MoonStar } from "lucide-react";
 import SiteNav from "../SiteNav";
+import { ParentDashboardCta, TryKivoCta } from "./ParentProgressCtas";
 
 export const metadata: Metadata = {
-  title: "Parent Progress Dashboard | KivoEdu",
+  title: "KivoEdu AI Tutor for Grade 9-10 Math & Science",
   description:
-    "KivoEdu gives parents visibility into quiz scores, reading streaks, practice paper grades, and weak chapters.",
+    "KivoEdu helps CBSE and Maharashtra Board students ask questions, understand concepts, practice with quizzes, and gives parents simple progress visibility.",
   alternates: { canonical: "/parent-progress" },
   openGraph: {
-    title: "KivoEdu Parent Progress Dashboard",
+    title: "KivoEdu AI Tutor for Grade 9-10 Math & Science",
     description:
-      "See quiz scores, reading streaks, practice paper grades, and weak chapters without waiting for report cards.",
+      "KivoEdu helps CBSE and Maharashtra Board students ask questions, understand concepts, practice with quizzes, and gives parents simple progress visibility.",
     url: "/parent-progress",
     type: "website",
   },
 };
 
 const demoUrl = "https://app.kivoedu.ai/demo";
-const joinUrl = "https://app.kivoedu.ai/join";
 
 const proofPoints = [
   {
     Icon: BookOpen,
-    title: "Real learning signals",
-    body: "See which chapters your child understands and which ones still need work, updated every session, not just at exam time.",
+    title: "Understand difficult concepts",
+    body: "Get clear, textbook-grounded explanations in simple language.",
   },
   {
     Icon: ShieldCheck,
-    title: "Practice paper scores",
-    body: "Every CBSE-style paper your child attempts is graded and visible to you, with score, per-question feedback, and model answers.",
+    title: "Practice with confidence",
+    body: "Turn lessons into quick quizzes and guided practice.",
   },
   {
     Icon: MoonStar,
-    title: "No tutors to schedule",
-    body: "Kivo is available at 11 PM when your child is stuck and you can't be in the room. You see everything in the morning.",
+    title: "Study independently",
+    body: "Get help whenever stuck, without waiting for tuition or school.",
   },
 ];
 
+const demoSteps = [
+  {
+    title: "Ask a Question",
+    body: "Example: \"Why does magnesium react with oxygen?\"",
+  },
+  {
+    title: "Understand the Answer",
+    body: "Kivo explains the reaction step by step using textbook-friendly language.",
+  },
+  {
+    title: "Practice With a Quiz",
+    body: "Kivo turns the concept into quick practice questions so the child can check understanding.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is this just ChatGPT?",
+    answer:
+      "No. KivoEdu is designed for Grade 9-10 Math and Science learning with syllabus-aware support.",
+  },
+  {
+    question: "Will it do homework for my child?",
+    answer: "No. Kivo focuses on explanation, practice, and understanding.",
+  },
+  {
+    question: "Which boards are supported?",
+    answer: "CBSE and Maharashtra State Board for Grade 9-10 Math and Science.",
+  },
+];
 const chapters = [
   { name: "1. Chemical Reactions and Equations", pct: 88, color: "green", trend: "steady", trendLabel: "→ steady", flagged: false },
   { name: "2. Acids, Bases and Salts",            pct: 82, color: "green", trend: "up",     trendLabel: "↑ improving", flagged: false },
@@ -69,36 +99,26 @@ export default function ParentProgressPage() {
 
           {/* Left: copy + CTA */}
           <div className="pp-copy">
-            <p className="pp-eyebrow">Parent Dashboard</p>
+            <p className="pp-eyebrow">AI Tutor + Parent Progress</p>
             <h1 className="pp-headline">
-              Know where your child
-              <br />
-              <em>actually stands.</em>
+              Your child&apos;s personal AI tutor for Grade 9-10 Math &amp; Science
             </h1>
             <p className="pp-subhead">
-              Kivo gives parents a real-time window into their child&apos;s progress — exam readiness,
-              chapter mastery, and the specific concepts that need attention this week. No guesswork.
+              Built around CBSE and Maharashtra Board textbooks. Students can ask questions, read summarized or detailed chapter explanations, practice with quizzes, and build confidence independently - while parents see what they&apos;re learning.
             </p>
             <ul className="pp-bullets">
-              <li><span className="pp-dot" aria-hidden="true" />Live exam readiness score across all chapters</li>
-              <li><span className="pp-dot" aria-hidden="true" />Pinpoints weak topics before they become exam problems</li>
-              <li><span className="pp-dot" aria-hidden="true" />Specific suggested actions — not generic advice</li>
-              <li><span className="pp-dot" aria-hidden="true" />Study streak and consistency, day by day</li>
+              <li><span className="pp-dot" aria-hidden="true" />Ask Math &amp; Science questions anytime</li>
+              <li><span className="pp-dot" aria-hidden="true" />Read summarized or detailed explanations for every chapter</li>
+              <li><span className="pp-dot" aria-hidden="true" />Get step-by-step answers and quick quizzes after learning</li>
+              <li><span className="pp-dot" aria-hidden="true" />Parents see chapters studied, strengths, and weak areas</li>
             </ul>
             <div className="pp-actions">
-              <a
-                href={`${demoUrl}?from=parent_progress`}
-                className="pp-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                See it in action <ArrowRight size={16} aria-hidden="true" />
-              </a>
+              <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
+              <ParentDashboardCta href="#parent-dashboard" />
             </div>
           </div>
-
           {/* Right: app chrome with bouncy report */}
-          <div className="pp-chrome">
+          <div className="pp-chrome" id="parent-dashboard">
             <div className="pp-chrome-bar">
               <span className="pp-cd cd-red" aria-hidden="true" />
               <span className="pp-cd cd-yellow" aria-hidden="true" />
@@ -307,6 +327,22 @@ export default function ParentProgressPage() {
       </section>
 
       {/* ── Proof cards ── */}
+      {/* See Kivo in action */}
+      <section className="pp-demo-section" id="demo" aria-labelledby="pp-demo-title">
+        <div className="pp-section-heading">
+          <h2 id="pp-demo-title">See Kivo in Action</h2>
+          <p>Here&apos;s what a Grade 9 or 10 student can do before parents even open the dashboard.</p>
+        </div>
+        <div className="pp-demo-grid">
+          {demoSteps.map((step, index) => (
+            <article className="pp-demo-card" key={step.title}>
+              <span className="pp-step-badge" aria-hidden="true">{index + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="pp-proof-section" aria-label="What parents see">
         <div className="pp-proof-inner">
           {proofPoints.map(({ Icon, title, body }) => (
@@ -322,25 +358,31 @@ export default function ParentProgressPage() {
       </section>
 
       {/* ── Bottom CTA ── */}
+      <section className="pp-faq-section" id="faq" aria-labelledby="pp-faq-title">
+        <div className="pp-section-heading">
+          <h2 id="pp-faq-title">Built for Indian Parents and Students</h2>
+        </div>
+        <div className="pp-faq-grid">
+          {faqs.map((faq) => (
+            <article className="pp-faq-card" key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="pp-cta-section">
         <div className="pp-cta-inner">
+          <h2>See Kivo answer a real Grade 10 question</h2>
           <div className="pp-actions">
-            <a
-              href={`${demoUrl}?from=parent_progress`}
-              className="pp-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              See it in action <ArrowRight size={16} aria-hidden="true" />
-            </a>
+            <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
           </div>
           <p className="pp-pricing-note">
-            Free to start. For full pricing,{" "}
+            No credit card required. Free to start. For full pricing,{" "}
             <Link href="/features#pricing">see pricing</Link>.
           </p>
         </div>
       </section>
-
       <footer className="pp-footer">
         <p>© 2026 KivoEdu. All rights reserved.</p>
         <div>
@@ -396,7 +438,7 @@ export default function ParentProgressPage() {
           align-items: center;
         }
 
-        .pp-copy { display: flex; flex-direction: column; }
+        .pp-copy { display: flex; flex-direction: column; min-width: 0; }
 
         .pp-eyebrow {
           margin: 0 0 20px;
@@ -407,8 +449,9 @@ export default function ParentProgressPage() {
         .pp-headline {
           margin: 0 0 18px;
           font-size: clamp(2.2rem, 3.4vw, 3.2rem);
-          font-weight: 800; line-height: 1.07; letter-spacing: -0.022em;
+          font-weight: 800; line-height: 1.07; letter-spacing: 0;
           color: var(--text);
+          overflow-wrap: break-word;
         }
 
         .pp-headline em {
@@ -639,6 +682,85 @@ export default function ParentProgressPage() {
         .rp-ch-flagged .rp-ch-name { color: #dc2626; font-weight: 600; }
 
         /* ── Proof section ───────────────────────────────────────────── */
+        .pp-section-heading {
+          width: min(740px, calc(100% - 48px));
+          margin: 0 auto 28px;
+          text-align: center;
+        }
+        .pp-section-heading h2,
+        .pp-cta-inner h2 {
+          margin: 0;
+          color: var(--text);
+          font-size: clamp(2.1rem, 3.4vw, 3.35rem);
+          font-weight: 800;
+          line-height: 1.06;
+          letter-spacing: 0;
+        }
+        .pp-section-heading p {
+          max-width: 640px;
+          margin: 18px auto 0;
+          color: var(--muted);
+          font-size: 1rem;
+          line-height: 1.72;
+        }
+
+        .pp-demo-section,
+        .pp-faq-section {
+          position: relative;
+          padding: 88px 0 80px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.08);
+          background:
+            radial-gradient(ellipse 50% 44% at 12% 10%, rgba(79, 209, 197, 0.08), transparent 62%),
+            radial-gradient(ellipse 42% 46% at 88% 18%, rgba(255, 209, 102, 0.07), transparent 60%),
+            linear-gradient(180deg, rgba(7, 12, 23, 0.96), rgba(8, 14, 26, 0.88));
+        }
+        .pp-demo-grid,
+        .pp-faq-grid {
+          width: min(1040px, calc(100% - 48px));
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 14px;
+        }
+        .pp-demo-card,
+        .pp-faq-card {
+          min-height: 190px;
+          padding: 22px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          background: linear-gradient(145deg, rgba(255,255,255,0.068), rgba(255,255,255,0.026)), rgba(13, 19, 32, 0.62);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 14px 38px rgba(0,0,0,0.16);
+          backdrop-filter: blur(12px);
+        }
+        .pp-step-badge {
+          width: 38px;
+          height: 38px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 18px;
+          border-radius: 8px;
+          border: 1px solid rgba(79, 209, 197, 0.28);
+          background: rgba(79, 209, 197, 0.1);
+          color: var(--cyan);
+          font-size: 0.9rem;
+          font-weight: 800;
+        }
+        .pp-demo-card h3,
+        .pp-faq-card h3 {
+          margin: 0 0 10px;
+          color: var(--text);
+          font-size: 1.03rem;
+          line-height: 1.32;
+        }
+        .pp-demo-card p,
+        .pp-faq-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.92rem;
+          line-height: 1.62;
+        }
         .pp-proof-section {
           padding: 80px 0 64px;
           border-top: 1px solid rgba(196, 217, 255, 0.08);
@@ -702,22 +824,28 @@ export default function ParentProgressPage() {
           .pp-hero { padding: 104px 0 72px; }
           .pp-hero-inner { grid-template-columns: 1fr; gap: 40px; }
           .pp-chrome { max-width: 560px; margin: 0 auto; }
+          .pp-demo-grid,
+          .pp-faq-grid,
           .pp-proof-inner { grid-template-columns: 1fr; }
+          .pp-demo-card,
+          .pp-faq-card,
           .pp-proof-card { min-height: 0; }
         }
 
         /* Nav switches to 2-row layout at 760px — becomes ~120px tall */
         @media (max-width: 760px) {
-          .pp-hero { padding: 144px 0 64px; }
+          .pp-hero { padding: 120px 0 48px; }
+          .pp-hero-inner,
+          .pp-section-heading,
+          .pp-demo-grid,
+          .pp-faq-grid,
+          .pp-proof-inner,
+          .pp-cta-inner { width: 343px; max-width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; }
+          .pp-copy { width: 100%; max-width: calc(100vw - 32px); }
+          .pp-headline { max-width: 100%; font-size: clamp(1.62rem, 7vw, 2rem); }
         }
 
         @media (max-width: 640px) {
-          /* hero padding must clear the 120px 2-row mobile nav */
-          .pp-hero { padding: 140px 0 52px; }
-          .pp-hero-inner,
-          .pp-proof-inner,
-          .pp-cta-inner { width: min(1040px, calc(100% - 32px)); }
-          .pp-headline { font-size: clamp(1.8rem, 9vw, 2.4rem); }
           .pp-subhead  { font-size: 0.92rem; max-width: 100%; }
           .pp-bullets li { font-size: 0.9rem; }
           .pp-actions  { flex-direction: column; }
@@ -741,10 +869,14 @@ export default function ParentProgressPage() {
           .rp-ch-row { grid-template-columns: 1fr 60px 32px; gap: 6px; }
           .rp-ch-trend { display: none; }
 
+          .pp-demo-section,
+          .pp-faq-section,
           .pp-proof-section { padding: 48px 0 40px; }
+          .pp-demo-card,
+          .pp-faq-card,
           .pp-proof-card { padding: 16px; }
           .pp-cta-section { padding: 40px 0 52px; }
-          .pp-footer   { width: min(1040px, calc(100% - 32px)); flex-direction: column; align-items: flex-start; gap: 12px; }
+          .pp-footer   { width: 343px; max-width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
           .pp-footer div { flex-wrap: wrap; gap: 14px; }
         }
       `}</style>
