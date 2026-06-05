@@ -868,6 +868,12 @@ export default function ParentProgressPage() {
           /* Chapter rows: drop the trend label, shrink the bar */
           .rp-ch-row { grid-template-columns: 1fr 60px 32px; gap: 6px; }
           .rp-ch-trend { display: none; }
+          /* Donut horizontal layout: remove stacking margin */
+          .rp-donut-wrap { margin-bottom: 0; flex-shrink: 0; }
+          /* Week dots: shrink to fit 7 dots in ~130px card width */
+          .rp-week-days { gap: 2px; }
+          .rp-day-dot   { width: 15px; height: 15px; font-size: 7px; }
+          .rp-day-name  { font-size: 6px; }
 
           .pp-demo-section,
           .pp-faq-section,
