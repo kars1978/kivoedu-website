@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, ShieldCheck, MoonStar } from "lucide-react";
+import { BookOpen, ShieldCheck, MoonStar, Brain, BookMarked, Bell } from "lucide-react";
 import SiteNav from "../SiteNav";
 import { ParentDashboardCta, TryKivoCta } from "./ParentProgressCtas";
 
@@ -38,6 +38,46 @@ const proofPoints = [
   },
 ];
 
+const objectionCards = [
+  {
+    Icon: Brain,
+    title: "Kivo explains, not does",
+    body: "It guides your child to understand the answer, not just copy it.",
+  },
+  {
+    Icon: BookMarked,
+    title: "Board-syllabus only",
+    body: "Every explanation is grounded in CBSE and Maharashtra Board textbooks for Grades 9 and 10.",
+  },
+  {
+    Icon: Bell,
+    title: "You stay in the loop",
+    body: "A weekly summary shows chapters studied, strong topics, and what needs attention before the exam.",
+  },
+];
+
+// TODO: Replace placeholder testimonials with real parent quotes before launch
+const testimonials = [
+  {
+    quote: "My son finally stopped dreading Science after using Kivo for two weeks.",
+    name: "Priya S.",
+    location: "Pune",
+    board: "Maharashtra Board",
+  },
+  {
+    quote: "The weekly report tells me more than his school report card does.",
+    name: "Ramesh K.",
+    location: "Mumbai",
+    board: "CBSE",
+  },
+  {
+    quote: "I was worried it would do his homework. It doesn't — it makes him think.",
+    name: "Anita M.",
+    location: "Nagpur",
+    board: "CBSE",
+  },
+];
+
 const demoSteps = [
   {
     title: "Ask a Question",
@@ -55,6 +95,11 @@ const demoSteps = [
 
 const faqs = [
   {
+    question: "Will this actually help with board exams?",
+    answer:
+      "Kivo is built around CBSE and Maharashtra Board syllabi for Grade 9 and 10. Every explanation, quiz, and practice question maps to what appears in board exams.",
+  },
+  {
     question: "Is this just ChatGPT?",
     answer:
       "No. KivoEdu is designed for Grade 9-10 Math and Science learning with syllabus-aware support.",
@@ -68,6 +113,7 @@ const faqs = [
     answer: "CBSE and Maharashtra State Board for Grade 9-10 Math and Science.",
   },
 ];
+
 const chapters = [
   { name: "1. Chemical Reactions and Equations", pct: 88, color: "green", trend: "steady", trendLabel: "→ steady", flagged: false },
   { name: "2. Acids, Bases and Salts",            pct: 82, color: "green", trend: "up",     trendLabel: "↑ improving", flagged: false },
@@ -101,10 +147,10 @@ export default function ParentProgressPage() {
           <div className="pp-copy">
             <p className="pp-eyebrow">AI Tutor + Parent Progress</p>
             <h1 className="pp-headline">
-              Your child&apos;s personal AI tutor for Grade 9-10 Math &amp; Science
+              Board exam season is stressful. Know exactly where your child stands.
             </h1>
             <p className="pp-subhead">
-              Built around CBSE and Maharashtra Board textbooks. Students can ask questions, read summarized or detailed chapter explanations, practice with quizzes, and build confidence independently - while parents see what they&apos;re learning.
+              Kivo is a personal AI tutor for Grade 9–10 Math &amp; Science (CBSE &amp; Maharashtra Board). Students learn independently. Parents see progress weekly.
             </p>
             <ul className="pp-bullets">
               <li><span className="pp-dot" aria-hidden="true" />Ask Math &amp; Science questions anytime</li>
@@ -116,208 +162,215 @@ export default function ParentProgressPage() {
               <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
               <ParentDashboardCta href="#parent-dashboard" />
             </div>
+            <p className="pp-trust-line">Free to try · No credit card · Takes 5 minutes</p>
           </div>
-          {/* Right: app chrome with bouncy report */}
-          <div className="pp-chrome" id="parent-dashboard">
-            <div className="pp-chrome-bar">
-              <span className="pp-cd cd-red" aria-hidden="true" />
-              <span className="pp-cd cd-yellow" aria-hidden="true" />
-              <span className="pp-cd cd-green" aria-hidden="true" />
-              <span className="pp-chrome-url">kivo.app / parent / report</span>
-            </div>
-            <div className="pp-viewport">
-              <div className="pp-scroller" aria-hidden="true">
-                <div className="rp">
 
-                  {/* Mini header */}
-                  <div className="rp-header">
-                    <div className="rp-brand">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/kivo_logo.png" alt="Kivo" className="rp-logo" />
-                      <div>
-                        <div className="rp-student-name">Arjun Mehta</div>
-                        <div className="rp-student-sub">Grade X · CBSE Science · Weekly Report</div>
-                      </div>
-                    </div>
-                    <div className="rp-badge">
-                      <span className="badge-dot" aria-hidden="true" />
-                      Active 7 days in a row
-                    </div>
-                  </div>
+          {/* Right: dashboard caption + app chrome */}
+          <div className="pp-chrome-wrap">
+            <p className="pp-dashboard-caption">
+              Every week, Kivo sends you a summary like this — chapters covered, mastery by topic, and what to focus on next.
+            </p>
+            <div className="pp-chrome" id="parent-dashboard">
+              <div className="pp-chrome-bar">
+                <span className="pp-cd cd-red" aria-hidden="true" />
+                <span className="pp-cd cd-yellow" aria-hidden="true" />
+                <span className="pp-cd cd-green" aria-hidden="true" />
+                <span className="pp-chrome-url">kivo.app / parent / report</span>
+              </div>
+              <div className="pp-viewport">
+                <div className="pp-scroller" aria-hidden="true">
+                  <div className="rp">
 
-                  {/* Hero row: donut + streak + week */}
-                  <div className="rp-hero-row">
-
-                    {/* Exam readiness donut */}
-                    <div className="rp-card rp-ready">
-                      <div className="rp-card-label">Exam Readiness</div>
-                      <div className="rp-donut-wrap">
-                        <svg width="88" height="88" viewBox="0 0 88 88" style={{ transform: "rotate(-90deg)", display: "block" }}>
-                          <circle cx="44" cy="44" r="36" fill="none" stroke="#e2e5ec" strokeWidth="8" />
-                          <circle cx="44" cy="44" r="36" fill="none" stroke="#059669" strokeWidth="8"
-                            strokeDasharray="167.4 58.8" strokeLinecap="round" />
-                        </svg>
-                        <div className="rp-donut-center">
-                          <span className="rp-donut-pct">74<span style={{ fontSize: "11px", fontWeight: 600 }}>%</span></span>
-                          <span className="rp-donut-unit">readiness</span>
+                    {/* Mini header */}
+                    <div className="rp-header">
+                      <div className="rp-brand">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/kivo_logo.png" alt="Kivo" className="rp-logo" />
+                        <div>
+                          <div className="rp-student-name">Arjun Mehta</div>
+                          <div className="rp-student-sub">Grade X · CBSE Science · Weekly Report</div>
                         </div>
                       </div>
-                      <div className="rp-ready-sub">Up <strong>+3%</strong> from last week</div>
+                      <div className="rp-badge">
+                        <span className="badge-dot" aria-hidden="true" />
+                        Active 7 days in a row
+                      </div>
                     </div>
 
-                    {/* Streak */}
-                    <div className="rp-card rp-streak">
-                      <div className="rp-card-label">Study Streak</div>
-                      <div className="rp-streak-num">12</div>
-                      <div className="rp-streak-lbl">days in a row</div>
-                      <div className="rp-stat-row"><span className="rp-stat-k">Total active days</span><span className="rp-stat-v">13 days</span></div>
-                      <div className="rp-stat-row"><span className="rp-stat-k">This week</span><span className="rp-stat-v good">7 / 7</span></div>
-                      <div className="rp-stat-row"><span className="rp-stat-k">Study time</span><span className="rp-stat-v">4 h 00 min</span></div>
-                      <div className="rp-stat-row"><span className="rp-stat-k">Sessions</span><span className="rp-stat-v">18</span></div>
+                    {/* Hero row: donut + streak + week */}
+                    <div className="rp-hero-row">
+
+                      {/* Exam readiness donut */}
+                      <div className="rp-card rp-ready">
+                        <div className="rp-card-label">Exam Readiness</div>
+                        <div className="rp-donut-wrap">
+                          <svg width="88" height="88" viewBox="0 0 88 88" style={{ transform: "rotate(-90deg)", display: "block" }}>
+                            <circle cx="44" cy="44" r="36" fill="none" stroke="#e2e5ec" strokeWidth="8" />
+                            <circle cx="44" cy="44" r="36" fill="none" stroke="#059669" strokeWidth="8"
+                              strokeDasharray="167.4 58.8" strokeLinecap="round" />
+                          </svg>
+                          <div className="rp-donut-center">
+                            <span className="rp-donut-pct">74<span style={{ fontSize: "11px", fontWeight: 600 }}>%</span></span>
+                            <span className="rp-donut-unit">readiness</span>
+                          </div>
+                        </div>
+                        <div className="rp-ready-sub">Up <strong>+3%</strong> from last week</div>
+                      </div>
+
+                      {/* Streak */}
+                      <div className="rp-card rp-streak">
+                        <div className="rp-card-label">Study Streak</div>
+                        <div className="rp-streak-num">12</div>
+                        <div className="rp-streak-lbl">days in a row</div>
+                        <div className="rp-stat-row"><span className="rp-stat-k">Total active days</span><span className="rp-stat-v">13 days</span></div>
+                        <div className="rp-stat-row"><span className="rp-stat-k">This week</span><span className="rp-stat-v good">7 / 7</span></div>
+                        <div className="rp-stat-row"><span className="rp-stat-k">Study time</span><span className="rp-stat-v">4 h 00 min</span></div>
+                        <div className="rp-stat-row"><span className="rp-stat-k">Sessions</span><span className="rp-stat-v">18</span></div>
+                      </div>
+
+                      {/* Week activity */}
+                      <div className="rp-card rp-week">
+                        <div className="rp-card-label">This Week</div>
+                        <div className="rp-week-days">
+                          {weekDays.map((d, i) => (
+                            <div className="rp-day-col" key={i}>
+                              <span className="rp-day-name">{d}</span>
+                              <div className={`rp-day-dot ${i === 1 ? "today" : "active"}`}>✓</div>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="rp-week-summary">Perfect week — <strong>7 of 7 days</strong></div>
+                        <hr className="rp-week-divider" />
+                        <div className="rp-stat-row">
+                          <span className="rp-stat-k" style={{ fontSize: "9.5px" }}>Consistency score</span>
+                          <span className="rp-stat-v good" style={{ fontSize: "10px" }}>78 / 100</span>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Week activity */}
-                    <div className="rp-card rp-week">
-                      <div className="rp-card-label">This Week</div>
-                      <div className="rp-week-days">
-                        {weekDays.map((d, i) => (
-                          <div className="rp-day-col" key={i}>
-                            <span className="rp-day-name">{d}</span>
-                            <div className={`rp-day-dot ${i === 1 ? "today" : "active"}`}>✓</div>
+                    {/* Skills profile */}
+                    <div className="rp-card" style={{ padding: "14px 16px 16px" }}>
+                      <div className="rp-section-title">Skills Profile</div>
+                      <div className="rp-section-sub">Based on quiz performance across all chapters (Bloom&apos;s Taxonomy)</div>
+                      <div className="rp-bloom-list">
+                        <div className="rp-bloom-row">
+                          <div className="rp-bloom-hd">
+                            <span className="rp-bloom-name">Remember <span className="rp-tag rp-tag-best">strongest</span></span>
+                            <span className="rp-bloom-score" style={{ color: "#059669" }}>93%</span>
+                          </div>
+                          <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "93%", background: "#059669" }} /></div>
+                        </div>
+                        <div className="rp-bloom-row">
+                          <div className="rp-bloom-hd">
+                            <span className="rp-bloom-name">Understand</span>
+                            <span className="rp-bloom-score" style={{ color: "#059669" }}>80%</span>
+                          </div>
+                          <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "80%", background: "#059669" }} /></div>
+                        </div>
+                        <div className="rp-bloom-row">
+                          <div className="rp-bloom-hd">
+                            <span className="rp-bloom-name">Apply</span>
+                            <span className="rp-bloom-score" style={{ color: "#d97706" }}>63%</span>
+                          </div>
+                          <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "63%", background: "#d97706" }} /></div>
+                        </div>
+                        <div className="rp-bloom-row">
+                          <div className="rp-bloom-hd">
+                            <span className="rp-bloom-name">Analyze <span className="rp-tag rp-tag-focus">needs work</span></span>
+                            <span className="rp-bloom-score" style={{ color: "#d97706" }}>53%</span>
+                          </div>
+                          <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "53%", background: "#d97706" }} /></div>
+                        </div>
+                      </div>
+                      <hr className="rp-divider" />
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+                        <div>
+                          <div className="rp-pill-label">Strong Concepts</div>
+                          <div className="rp-pills">
+                            <span className="rp-pill rp-pill-strong">Photosynthesis</span>
+                            <span className="rp-pill rp-pill-strong">Refraction of Light</span>
+                            <span className="rp-pill rp-pill-strong">Chemical Bonding</span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="rp-pill-label">Weak Concepts</div>
+                          <div className="rp-pills">
+                            <span className="rp-pill rp-pill-weak">Ohm&apos;s Law <span className="rp-pill-pct">48%</span></span>
+                            <span className="rp-pill rp-pill-weak">Heredity &amp; Variation <span className="rp-pill-pct">58%</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Insights + Actions */}
+                    <div className="rp-lower">
+                      <div className="rp-card" style={{ padding: "14px 16px" }}>
+                        <div className="rp-section-title">Parent Insights</div>
+                        <div className="rp-section-sub" style={{ marginBottom: "10px" }}>What Kivo noticed this week</div>
+                        <div className="rp-insight-list">
+                          <div className="rp-insight-row">
+                            <div className="rp-insight-icon ii-good">✓</div>
+                            <span className="rp-insight-text">Active 13 days and counting — great consistency.</span>
+                          </div>
+                          <div className="rp-insight-row">
+                            <div className="rp-insight-icon ii-good">✓</div>
+                            <span className="rp-insight-text">Life Processes (91%) and Our Environment (93%) fully mastered.</span>
+                          </div>
+                          <div className="rp-insight-row">
+                            <div className="rp-insight-icon ii-warn">!</div>
+                            <span className="rp-insight-text">Electricity accuracy dropped — down 11 points this week.</span>
+                          </div>
+                          <div className="rp-insight-row">
+                            <div className="rp-insight-icon ii-action">→</div>
+                            <span className="rp-insight-text" style={{ color: "#0d9488", fontWeight: 500 }}>
+                              Recommend: 5 questions on Ohm&apos;s Law today.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="rp-card" style={{ padding: "14px 16px" }}>
+                        <div className="rp-section-title">Suggested Actions</div>
+                        <div className="rp-section-sub" style={{ marginBottom: "10px" }}>Kivo&apos;s top priorities this week</div>
+                        <div className="rp-action-cards">
+                          <div className="rp-action-card">
+                            <div className="rp-priority rp-p1">1</div>
+                            <div className="rp-action-body">
+                              <div className="rp-action-title">Revise Electricity</div>
+                              <div className="rp-action-desc">Mastery at 48% — needs attention before the exam.</div>
+                            </div>
+                            <span className="rp-action-cta">Start ›</span>
+                          </div>
+                          <div className="rp-action-card">
+                            <div className="rp-priority rp-p2">2</div>
+                            <div className="rp-action-body">
+                              <div className="rp-action-title">Practice Ohm&apos;s Law</div>
+                              <div className="rp-action-desc">High hint usage and declining accuracy.</div>
+                            </div>
+                            <span className="rp-action-cta">Practice ›</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Chapter mastery */}
+                    <div className="rp-card" style={{ padding: "14px 16px 10px" }}>
+                      <div className="rp-section-title">Chapter Mastery</div>
+                      <div className="rp-section-sub">CBSE Grade X Science · 13 chapters</div>
+                      <div className="rp-chapters">
+                        {chapters.map((ch) => (
+                          <div className={`rp-ch-row${ch.flagged ? " rp-ch-flagged" : ""}`} key={ch.name}>
+                            <span className="rp-ch-name">{ch.name}</span>
+                            <div className="rp-bar-track">
+                              <div className={`rp-bar-fill bg-${ch.color}`} style={{ width: `${ch.pct}%` }} />
+                            </div>
+                            <span className={`rp-ch-pct c-${ch.color}`}>{ch.pct}%</span>
+                            <span className={`rp-ch-trend tr-${ch.trend}`}>{ch.trendLabel}</span>
                           </div>
                         ))}
                       </div>
-                      <div className="rp-week-summary">Perfect week — <strong>7 of 7 days</strong></div>
-                      <hr className="rp-week-divider" />
-                      <div className="rp-stat-row">
-                        <span className="rp-stat-k" style={{ fontSize: "9.5px" }}>Consistency score</span>
-                        <span className="rp-stat-v good" style={{ fontSize: "10px" }}>78 / 100</span>
-                      </div>
                     </div>
-                  </div>
 
-                  {/* Skills profile */}
-                  <div className="rp-card" style={{ padding: "14px 16px 16px" }}>
-                    <div className="rp-section-title">Skills Profile</div>
-                    <div className="rp-section-sub">Based on quiz performance across all chapters (Bloom&apos;s Taxonomy)</div>
-                    <div className="rp-bloom-list">
-                      <div className="rp-bloom-row">
-                        <div className="rp-bloom-hd">
-                          <span className="rp-bloom-name">Remember <span className="rp-tag rp-tag-best">strongest</span></span>
-                          <span className="rp-bloom-score" style={{ color: "#059669" }}>93%</span>
-                        </div>
-                        <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "93%", background: "#059669" }} /></div>
-                      </div>
-                      <div className="rp-bloom-row">
-                        <div className="rp-bloom-hd">
-                          <span className="rp-bloom-name">Understand</span>
-                          <span className="rp-bloom-score" style={{ color: "#059669" }}>80%</span>
-                        </div>
-                        <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "80%", background: "#059669" }} /></div>
-                      </div>
-                      <div className="rp-bloom-row">
-                        <div className="rp-bloom-hd">
-                          <span className="rp-bloom-name">Apply</span>
-                          <span className="rp-bloom-score" style={{ color: "#d97706" }}>63%</span>
-                        </div>
-                        <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "63%", background: "#d97706" }} /></div>
-                      </div>
-                      <div className="rp-bloom-row">
-                        <div className="rp-bloom-hd">
-                          <span className="rp-bloom-name">Analyze <span className="rp-tag rp-tag-focus">needs work</span></span>
-                          <span className="rp-bloom-score" style={{ color: "#d97706" }}>53%</span>
-                        </div>
-                        <div className="rp-bloom-track"><div className="rp-bloom-fill" style={{ width: "53%", background: "#d97706" }} /></div>
-                      </div>
-                    </div>
-                    <hr className="rp-divider" />
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-                      <div>
-                        <div className="rp-pill-label">Strong Concepts</div>
-                        <div className="rp-pills">
-                          <span className="rp-pill rp-pill-strong">Photosynthesis</span>
-                          <span className="rp-pill rp-pill-strong">Refraction of Light</span>
-                          <span className="rp-pill rp-pill-strong">Chemical Bonding</span>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="rp-pill-label">Weak Concepts</div>
-                        <div className="rp-pills">
-                          <span className="rp-pill rp-pill-weak">Ohm&apos;s Law <span className="rp-pill-pct">48%</span></span>
-                          <span className="rp-pill rp-pill-weak">Heredity &amp; Variation <span className="rp-pill-pct">58%</span></span>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-
-                  {/* Insights + Actions */}
-                  <div className="rp-lower">
-                    <div className="rp-card" style={{ padding: "14px 16px" }}>
-                      <div className="rp-section-title">Parent Insights</div>
-                      <div className="rp-section-sub" style={{ marginBottom: "10px" }}>What Kivo noticed this week</div>
-                      <div className="rp-insight-list">
-                        <div className="rp-insight-row">
-                          <div className="rp-insight-icon ii-good">✓</div>
-                          <span className="rp-insight-text">Active 13 days and counting — great consistency.</span>
-                        </div>
-                        <div className="rp-insight-row">
-                          <div className="rp-insight-icon ii-good">✓</div>
-                          <span className="rp-insight-text">Life Processes (91%) and Our Environment (93%) fully mastered.</span>
-                        </div>
-                        <div className="rp-insight-row">
-                          <div className="rp-insight-icon ii-warn">!</div>
-                          <span className="rp-insight-text">Electricity accuracy dropped — down 11 points this week.</span>
-                        </div>
-                        <div className="rp-insight-row">
-                          <div className="rp-insight-icon ii-action">→</div>
-                          <span className="rp-insight-text" style={{ color: "#0d9488", fontWeight: 500 }}>
-                            Recommend: 5 questions on Ohm&apos;s Law today.
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rp-card" style={{ padding: "14px 16px" }}>
-                      <div className="rp-section-title">Suggested Actions</div>
-                      <div className="rp-section-sub" style={{ marginBottom: "10px" }}>Kivo&apos;s top priorities this week</div>
-                      <div className="rp-action-cards">
-                        <div className="rp-action-card">
-                          <div className="rp-priority rp-p1">1</div>
-                          <div className="rp-action-body">
-                            <div className="rp-action-title">Revise Electricity</div>
-                            <div className="rp-action-desc">Mastery at 48% — needs attention before the exam.</div>
-                          </div>
-                          <span className="rp-action-cta">Start ›</span>
-                        </div>
-                        <div className="rp-action-card">
-                          <div className="rp-priority rp-p2">2</div>
-                          <div className="rp-action-body">
-                            <div className="rp-action-title">Practice Ohm&apos;s Law</div>
-                            <div className="rp-action-desc">High hint usage and declining accuracy.</div>
-                          </div>
-                          <span className="rp-action-cta">Practice ›</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Chapter mastery */}
-                  <div className="rp-card" style={{ padding: "14px 16px 10px" }}>
-                    <div className="rp-section-title">Chapter Mastery</div>
-                    <div className="rp-section-sub">CBSE Grade X Science · 13 chapters</div>
-                    <div className="rp-chapters">
-                      {chapters.map((ch) => (
-                        <div className={`rp-ch-row${ch.flagged ? " rp-ch-flagged" : ""}`} key={ch.name}>
-                          <span className="rp-ch-name">{ch.name}</span>
-                          <div className="rp-bar-track">
-                            <div className={`rp-bar-fill bg-${ch.color}`} style={{ width: `${ch.pct}%` }} />
-                          </div>
-                          <span className={`rp-ch-pct c-${ch.color}`}>{ch.pct}%</span>
-                          <span className={`rp-ch-trend tr-${ch.trend}`}>{ch.trendLabel}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -326,8 +379,56 @@ export default function ParentProgressPage() {
         </div>
       </section>
 
-      {/* ── Proof cards ── */}
-      {/* See Kivo in action */}
+      {/* ── Objection block ── */}
+      <section className="pp-objection-section" aria-labelledby="pp-objection-title">
+        <div className="pp-section-heading">
+          <h2 id="pp-objection-title">Built for Indian parents, not just students</h2>
+        </div>
+        <div className="pp-objection-grid">
+          {objectionCards.map(({ Icon, title, body }) => (
+            <article className="pp-objection-card" key={title}>
+              <span className="pp-objection-icon" aria-hidden="true">
+                <Icon size={20} strokeWidth={1.8} />
+              </span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Testimonials ── */}
+      {/* TODO: Replace placeholder testimonials with real parent quotes before launch */}
+      <section className="pp-testimonials-section" aria-label="What parents say">
+        <div className="pp-testimonials-grid">
+          {testimonials.map((t) => (
+            <article className="pp-testimonial-card" key={t.name}>
+              <p className="pp-testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+              <div className="pp-testimonial-attr">
+                <span className="pp-testimonial-name">{t.name}</span>
+                <span className="pp-testimonial-meta">{t.location} · {t.board}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="pp-faq-section" id="faq" aria-labelledby="pp-faq-title">
+        <div className="pp-section-heading">
+          <h2 id="pp-faq-title">Built for Indian Parents and Students</h2>
+        </div>
+        <div className="pp-faq-grid">
+          {faqs.map((faq) => (
+            <article className="pp-faq-card" key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ── See Kivo in action ── */}
       <section className="pp-demo-section" id="demo" aria-labelledby="pp-demo-title">
         <div className="pp-section-heading">
           <h2 id="pp-demo-title">See Kivo in Action</h2>
@@ -343,6 +444,8 @@ export default function ParentProgressPage() {
           ))}
         </div>
       </section>
+
+      {/* ── Proof cards ── */}
       <section className="pp-proof-section" aria-label="What parents see">
         <div className="pp-proof-inner">
           {proofPoints.map(({ Icon, title, body }) => (
@@ -358,31 +461,23 @@ export default function ParentProgressPage() {
       </section>
 
       {/* ── Bottom CTA ── */}
-      <section className="pp-faq-section" id="faq" aria-labelledby="pp-faq-title">
-        <div className="pp-section-heading">
-          <h2 id="pp-faq-title">Built for Indian Parents and Students</h2>
-        </div>
-        <div className="pp-faq-grid">
-          {faqs.map((faq) => (
-            <article className="pp-faq-card" key={faq.question}>
-              <h3>{faq.question}</h3>
-              <p>{faq.answer}</p>
-            </article>
-          ))}
-        </div>
-      </section>
       <section className="pp-cta-section">
         <div className="pp-cta-inner">
           <h2>See Kivo answer a real Grade 10 question</h2>
           <div className="pp-actions">
             <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
           </div>
+          <p className="pp-pricing-callout">
+            Kivo is free to try with no time limit on the demo.<br />
+            Full access plans start at &#x20B9;X/month.
+          </p>
           <p className="pp-pricing-note">
             No credit card required. Free to start. For full pricing,{" "}
             <Link href="/features#pricing">see pricing</Link>.
           </p>
         </div>
       </section>
+
       <footer className="pp-footer">
         <p>© 2026 KivoEdu. All rights reserved.</p>
         <div>
@@ -482,6 +577,11 @@ export default function ParentProgressPage() {
 
         .pp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
+        .pp-trust-line {
+          margin: 14px 0 0;
+          font-size: 0.82rem; color: var(--soft); letter-spacing: 0.01em;
+        }
+
         .pp-btn {
           display: inline-flex; align-items: center; justify-content: center; gap: 8px;
           min-height: 46px; border-radius: 999px; padding: 0 22px;
@@ -501,6 +601,16 @@ export default function ParentProgressPage() {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
         .pp-btn-ghost:hover { background: rgba(255, 255, 255, 0.085); }
+
+        /* ── Dashboard caption + chrome wrapper ─────────────────────── */
+        .pp-chrome-wrap { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+        .pp-dashboard-caption {
+          margin: 0;
+          font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+          text-align: center;
+          padding: 0 4px;
+        }
 
         /* ── App chrome ──────────────────────────────────────────────── */
         .pp-chrome {
@@ -681,7 +791,91 @@ export default function ParentProgressPage() {
         .rp-ch-flagged { background: rgba(220,38,38,0.04); border-radius: 6px; margin: 0 -4px; padding: 7px 4px; }
         .rp-ch-flagged .rp-ch-name { color: #dc2626; font-weight: 600; }
 
-        /* ── Proof section ───────────────────────────────────────────── */
+        /* ── Objection block ─────────────────────────────────────────── */
+        .pp-objection-section {
+          position: relative;
+          padding: 88px 0 80px;
+          overflow: hidden;
+          border-top: 1px solid rgba(196, 217, 255, 0.08);
+          background:
+            radial-gradient(ellipse 50% 44% at 88% 10%, rgba(79, 209, 197, 0.07), transparent 62%),
+            linear-gradient(180deg, rgba(7, 12, 23, 0.96), rgba(8, 14, 26, 0.88));
+        }
+        .pp-objection-grid {
+          width: min(1040px, calc(100% - 48px));
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 14px;
+        }
+        .pp-objection-card {
+          min-height: 190px;
+          padding: 22px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          background: linear-gradient(145deg, rgba(255,255,255,0.068), rgba(255,255,255,0.026)), rgba(13, 19, 32, 0.62);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.055), 0 14px 38px rgba(0,0,0,0.16);
+          backdrop-filter: blur(12px);
+        }
+        .pp-objection-icon {
+          width: 40px; height: 40px;
+          display: inline-flex; align-items: center; justify-content: center;
+          margin-bottom: 18px; border-radius: 8px;
+          border: 1px solid rgba(79, 209, 197, 0.28);
+          background: rgba(79, 209, 197, 0.10);
+          color: var(--cyan);
+        }
+        .pp-objection-card h3 {
+          margin: 0 0 10px;
+          color: var(--text);
+          font-size: 1.03rem;
+          line-height: 1.32;
+        }
+        .pp-objection-card p {
+          margin: 0;
+          color: var(--muted);
+          font-size: 0.92rem;
+          line-height: 1.62;
+        }
+
+        /* ── Testimonials ────────────────────────────────────────────── */
+        .pp-testimonials-section {
+          padding: 64px 0 72px;
+          border-top: 1px solid rgba(196, 217, 255, 0.08);
+        }
+        .pp-testimonials-grid {
+          width: min(1040px, calc(100% - 48px));
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 14px;
+        }
+        .pp-testimonial-card {
+          padding: 24px;
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+          display: flex; flex-direction: column; gap: 16px;
+        }
+        .pp-testimonial-quote {
+          margin: 0;
+          color: var(--text);
+          font-size: 0.97rem;
+          line-height: 1.65;
+          font-style: italic;
+          flex: 1;
+        }
+        .pp-testimonial-attr {
+          display: flex; flex-direction: column; gap: 3px;
+        }
+        .pp-testimonial-name {
+          font-size: 0.88rem; font-weight: 700; color: var(--text);
+        }
+        .pp-testimonial-meta {
+          font-size: 0.8rem; color: var(--soft);
+        }
+
+        /* ── Section headings ────────────────────────────────────────── */
         .pp-section-heading {
           width: min(740px, calc(100% - 48px));
           margin: 0 auto 28px;
@@ -722,6 +916,9 @@ export default function ParentProgressPage() {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 14px;
+        }
+        .pp-faq-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
         .pp-demo-card,
         .pp-faq-card {
@@ -795,6 +992,16 @@ export default function ParentProgressPage() {
           margin: 0 auto;
           display: flex; flex-direction: column; gap: 16px;
         }
+        .pp-pricing-callout {
+          margin: 0;
+          padding: 16px 20px;
+          border: 1px solid rgba(196, 217, 255, 0.12);
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.035);
+          color: var(--muted);
+          font-size: 0.92rem;
+          line-height: 1.7;
+        }
         .pp-pricing-note { margin: 0; color: var(--soft); font-size: 0.88rem; line-height: 1.5; }
         .pp-pricing-note a { color: var(--accent); font-weight: 760; text-decoration: none; }
         .pp-pricing-note a:hover { color: var(--text); }
@@ -826,10 +1033,14 @@ export default function ParentProgressPage() {
           .pp-chrome { max-width: 560px; margin: 0 auto; }
           .pp-demo-grid,
           .pp-faq-grid,
-          .pp-proof-inner { grid-template-columns: 1fr; }
+          .pp-proof-inner,
+          .pp-objection-grid,
+          .pp-testimonials-grid { grid-template-columns: 1fr; }
           .pp-demo-card,
           .pp-faq-card,
-          .pp-proof-card { min-height: 0; }
+          .pp-proof-card,
+          .pp-objection-card,
+          .pp-testimonial-card { min-height: 0; }
         }
 
         /* Nav switches to 2-row layout at 760px — becomes ~120px tall */
@@ -840,6 +1051,8 @@ export default function ParentProgressPage() {
           .pp-demo-grid,
           .pp-faq-grid,
           .pp-proof-inner,
+          .pp-objection-grid,
+          .pp-testimonials-grid,
           .pp-cta-inner { width: 343px; max-width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; }
           .pp-copy { width: 100%; max-width: calc(100vw - 32px); }
           .pp-headline { max-width: 100%; font-size: clamp(1.62rem, 7vw, 2rem); }
@@ -877,10 +1090,14 @@ export default function ParentProgressPage() {
 
           .pp-demo-section,
           .pp-faq-section,
-          .pp-proof-section { padding: 48px 0 40px; }
+          .pp-proof-section,
+          .pp-objection-section,
+          .pp-testimonials-section { padding: 48px 0 40px; }
           .pp-demo-card,
           .pp-faq-card,
-          .pp-proof-card { padding: 16px; }
+          .pp-proof-card,
+          .pp-objection-card,
+          .pp-testimonial-card { padding: 16px; }
           .pp-cta-section { padding: 40px 0 52px; }
           .pp-footer   { width: 343px; max-width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
           .pp-footer div { flex-wrap: wrap; gap: 14px; }
