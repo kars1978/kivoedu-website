@@ -11,6 +11,7 @@ export default function ChatMockup() {
   const [typing, setTyping]         = useState(false)
   const [showCaption, setShowCaption] = useState(false)
   const [phase, setPhase]           = useState(0)
+  const messagesRef = useRef<HTMLDivElement>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -72,7 +73,8 @@ export default function ChatMockup() {
   }, [phase])
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    const el = messagesRef.current
+    if (el) el.scrollTop = el.scrollHeight
   }, [items, typing])
 
   return (
@@ -86,7 +88,7 @@ export default function ChatMockup() {
             <span className="cm-header-online" />
           </div>
 
-          <div className="cm-messages">
+          <div className="cm-messages" ref={messagesRef}>
             {items.map((item, i) =>
               item.role === 'student' ? (
                 <div key={i} className="cm-row cm-row-student">
@@ -112,7 +114,6 @@ export default function ChatMockup() {
               </div>
             )}
 
-            <div ref={bottomRef} />
           </div>
 
           {showCaption && (
