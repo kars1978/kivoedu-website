@@ -22,7 +22,7 @@ export function TryKivoCta({ href }: { href: string }) {
       rel="noopener noreferrer"
       onClick={() => trackParentProgressCta("cta_try_click")}
     >
-      Try Kivo Free <ArrowRight size={16} aria-hidden="true" />
+      Try Kivo Demo <ArrowRight size={16} aria-hidden="true" />
     </a>
   );
 }
