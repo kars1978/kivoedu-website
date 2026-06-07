@@ -469,7 +469,7 @@ export default function ParentProgressPage() {
           </div>
           <p className="pp-pricing-callout">
             Kivo is free to try with no time limit on the demo.<br />
-            Full access plans start at &#x20B9;X/month.
+            Full access plans start at &#x20B9;1,999/year.
           </p>
           <p className="pp-pricing-note">
             No credit card required. Free to start. For full pricing,{" "}
