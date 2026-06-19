@@ -145,8 +145,8 @@ export default function Home() {
           <div className="hero-copy">
 
             <h1>
-              <span>Understand your school lessons with</span>
-              <span className="hero-title-accent">confidence.</span>
+              <span>Understand your school lessons</span>
+              <span className="hero-title-accent"> with confidence.</span>
             </h1>
             <p className="hero-sub">
               Learn chapter by chapter with clear explanations, guided practice, quizzes, and progress tracking—all aligned to your school curriculum.
