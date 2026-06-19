@@ -126,7 +126,7 @@ const aiLearningFeatures = [
 ];
 
 export const metadata: Metadata = {
-  title: "KivoEdu | AI Tutoring Built for Students",
+  title: { absolute: "Kivo Edu - Learn, Practice, and Master Every Chapter" },
   description:
     "KivoEdu is a curriculum-grounded AI tutor that helps students ask questions, practice, and revise with content approved by their school.",
 };
