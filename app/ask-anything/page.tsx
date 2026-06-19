@@ -30,7 +30,7 @@ const proofPoints = [
 export default function AskAnythingPage() {
   return (
     <main className="lp-root">
-      <SiteNav />
+      <SiteNav hideCta />
 
       <section className="lp-shell" aria-labelledby="landing-title">
 

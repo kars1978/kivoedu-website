@@ -5,7 +5,7 @@ import HomeLogoLink from "./HomeLogoLink";
 const joinUrl = "https://app.kivoedu.ai/join";
 const demoUrl = "https://app.kivoedu.ai/demo";
 
-export default function SiteNav() {
+export default function SiteNav({ hideCta = false }: { hideCta?: boolean }) {
   return (
     <>
       <nav className="sn">
@@ -26,10 +26,12 @@ export default function SiteNav() {
             <a href={joinUrl} className="sn-link" target="_blank" rel="noopener noreferrer">
               Log in
             </a>
-            <a href={demoUrl} className="sn-cta" target="_blank" rel="noopener noreferrer">
-              Try Kivo Free
-              <ArrowRight size={14} aria-hidden="true" />
-            </a>
+            {!hideCta && (
+              <a href={demoUrl} className="sn-cta" target="_blank" rel="noopener noreferrer">
+                Try Kivo Free
+                <ArrowRight size={14} aria-hidden="true" />
+              </a>
+            )}
           </div>
         </div>
       </nav>

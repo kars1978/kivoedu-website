@@ -44,7 +44,7 @@ const steps = [
 export default function WelcomeOfferPage() {
   return (
     <main className="lp-root">
-      <SiteNav />
+      <SiteNav hideCta />
 
       <section className="lp-shell" aria-labelledby="landing-title">
 

@@ -167,7 +167,7 @@ export function LandingPage({ slug, mockup, afterCta }: { slug: LandingKey; mock
 
   return (
     <main className="lp-root">
-      <SiteNav />
+      <SiteNav hideCta />
 
       <section className="lp-shell" aria-labelledby="landing-title">
         <div className="lp-hero">

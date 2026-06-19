@@ -135,7 +135,7 @@ const weekDays = ["M", "T", "W", "T", "F", "S", "S"];
 export default function ParentProgressPage() {
   return (
     <main className="pp-root">
-      <SiteNav />
+      <SiteNav hideCta />
 
       {/* ── 2-col hero: copy left + bouncy report chrome right ── */}
       <section className="pp-hero">
