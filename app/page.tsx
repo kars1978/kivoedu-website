@@ -145,14 +145,11 @@ export default function Home() {
           <div className="hero-copy">
 
             <h1>
-              <span>Your textbook,</span>
-              <span>turned into your</span>
-              <span className="hero-title-accent">personal 1-on-1 AI tutor.</span>
+              <span>Understand your school lessons with</span>
+              <span className="hero-title-accent">confidence.</span>
             </h1>
             <p className="hero-sub">
-              Kivo grounds your learning entirely in your specific school syllabus.
-              Study, ask any question, and get instant, stress-free explanations
-              and step-by-step practice problems.
+              Learn chapter by chapter with clear explanations, guided practice, quizzes, and progress tracking—all aligned to your school curriculum.
             </p>
 
             <div className="hero-feature-row" aria-label="Kivo learning benefits">
