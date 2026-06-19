@@ -127,8 +127,6 @@ export const landingPages: Record<LandingKey, LandingPageConfig> = {
       },
     ],
     ctaLabel: "Try Kivo Free",
-    secondaryCtaLabel: "See how it works",
-    secondaryCtaHref: "#how-it-works",
     analyticsPage: "ask_anything",
     metadata: {
       title: "Ask Grade 9-10 Math & Science Questions | KivoEdu",

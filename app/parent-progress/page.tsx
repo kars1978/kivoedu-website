@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, ShieldCheck, MoonStar, Brain, BookMarked, Bell } from "lucide-react";
 import SiteNav from "../SiteNav";
-import { ParentDashboardCta, TryKivoCta } from "./ParentProgressCtas";
+import { TryKivoCta } from "./ParentProgressCtas";
 
 export const metadata: Metadata = {
   title: "KivoEdu AI Tutor for Grade 9-10 Math & Science",
@@ -160,7 +160,6 @@ export default function ParentProgressPage() {
             </ul>
             <div className="pp-actions">
               <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
-              <ParentDashboardCta href="#parent-dashboard" />
             </div>
             <p className="pp-trust-line">Free to try · No credit card · Takes 5 minutes</p>
           </div>
@@ -460,13 +459,10 @@ export default function ParentProgressPage() {
         </div>
       </section>
 
-      {/* ── Bottom CTA ── */}
+      {/* ── Bottom CTA — text only, CTA is in the hero ── */}
       <section className="pp-cta-section">
         <div className="pp-cta-inner">
           <h2>See Kivo answer a real Grade 10 question</h2>
-          <div className="pp-actions">
-            <TryKivoCta href={`${demoUrl}?from=parent_progress`} />
-          </div>
           <p className="pp-pricing-callout">
             Kivo is free to try with no time limit on the demo.<br />
             Full access plans start at &#x20B9;1,999/year.

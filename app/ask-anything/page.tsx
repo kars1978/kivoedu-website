@@ -47,8 +47,6 @@ export default function AskAnythingPage() {
             <LandingPageActions
               primaryHref={demoHref}
               primaryLabel="Try Kivo Free"
-              secondaryHref="#how-it-works"
-              secondaryLabel="See how it works"
               analyticsPage="ask_anything"
             />
           </div>
@@ -77,11 +75,6 @@ export default function AskAnythingPage() {
             <p className="aa-mockup-caption">
               This is how Kivo answers — step by step, in textbook language, with chapter context.
             </p>
-            <div className="aa-mockup-cta">
-              <a href={demoHref} className="lp-btn" target="_blank" rel="noopener noreferrer">
-                Try it with your child&apos;s actual question →
-              </a>
-            </div>
           </div>
         </div>
 
@@ -132,13 +125,10 @@ export default function AskAnythingPage() {
           </blockquote>
         </div>
 
-        {/* Final CTA */}
+        {/* Final CTA — text only, CTA is in the hero */}
         <div className="aa-final-cta">
           <h2 className="aa-final-heading">Let your child try it on tonight&apos;s homework doubt.</h2>
           <p className="aa-final-sub">Free to start. If it helps, they&apos;ll come back on their own.</p>
-          <a href={demoHref} className="lp-btn" target="_blank" rel="noopener noreferrer">
-            Try Kivo Free →
-          </a>
           <p className="aa-final-note">Parents: after the demo, you&apos;ll see the progress dashboard too.</p>
         </div>
 

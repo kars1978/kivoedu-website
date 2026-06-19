@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const joinHref = "https://app.kivoedu.ai/join?from=welcome_offer";
+const demoHref = "https://app.kivoedu.ai/demo";
 
 const steps = [
   {
@@ -65,8 +65,8 @@ export default function WelcomeOfferPage() {
           </p>
           <div className="lp-hero-actions">
             <LandingPageActions
-              primaryHref={joinHref}
-              primaryLabel="Claim Your 75% Off"
+              primaryHref={demoHref}
+              primaryLabel="Try Free — Earn 75% Off"
               analyticsPage="welcome_offer"
             />
           </div>
@@ -123,15 +123,10 @@ export default function WelcomeOfferPage() {
           </ul>
         </div>
 
-        {/* Final CTA */}
+        {/* Final CTA — text only, CTA is in the hero */}
         <div className="wo-final-cta">
           <h2>50 spots. Once they&apos;re gone, this offer closes.</h2>
-          <p>Sign up free — no card needed. Try the features. Earn the discount.</p>
-          <LandingPageActions
-            primaryHref={joinHref}
-            primaryLabel="Claim Your 75% Off"
-            analyticsPage="welcome_offer_bottom"
-          />
+          <p>Try the features. Earn the discount. No credit card needed.</p>
         </div>
 
         <div className="lp-conversion">
